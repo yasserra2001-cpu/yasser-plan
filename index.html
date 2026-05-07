@@ -314,12 +314,24 @@ a{color:var(--ac3);text-decoration:none}
   .topnav{padding:0 8px;height:44px}
   .tn-tabs{display:none}.tn-name{display:none}
   .bb{display:block}
-  .main{margin-top:44px;height:calc(100vh - 44px - 56px);padding:10px;padding-bottom:60px}
+  .main{margin-top:44px;height:calc(100vh - 44px - 52px);padding:10px;padding-bottom:70px}
   .g2,.g3,.g4{grid-template-columns:1fr}
-  .hero{padding:10px;flex-direction:column;align-items:stretch;gap:8px}
-  .hero-right{justify-content:center;flex-wrap:wrap}
+  .hero{padding:10px;flex-direction:column;align-items:stretch;gap:8px;justify-content:center}
+  .hero-right{justify-content:center;flex-wrap:wrap;gap:6px}
+  .hero .ab2{font-size:11px!important;padding:6px 10px!important}
   .hero-left{text-align:center}
   .hero-greeting{font-size:16px}
+
+  /* Action buttons in hero - mobile */
+  .hero>div[style*="gap:6px"]{justify-content:center}
+  .hero>div[style*="gap:6px"] .ab2{font-size:11px!important;padding:6px 10px!important}
+  /* Ensure ring and badges stay visible */
+  .hero .ring{flex-shrink:0}
+  .hero .tip-wrap{flex-shrink:0}
+  /* Reactions visible */
+  #reactionSlot{justify-content:center}
+  #reactionSlot span{font-size:22px!important}
+
   /* Tabs scroll horizontally */
   .tabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
   .tabs::-webkit-scrollbar{display:none}
@@ -482,7 +494,7 @@ a{color:var(--ac3);text-decoration:none}
 .fab-checkin{position:fixed;top:50%;right:20px;transform:translateY(-50%);z-index:90;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--ac),#2d7bbf);color:#fff;border:none;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(55,138,221,.4);display:flex;align-items:center;justify-content:center;transition:.25s;font-family:inherit}
 .fab-checkin:hover{transform:translateY(-50%) scale(1.1);box-shadow:0 6px 24px rgba(55,138,221,.5)}
 .fab-checkin:active{transform:translateY(-50%) scale(.95)}
-@media(max-width:768px){.fab-checkin{top:50%;right:8px;width:44px;height:44px;font-size:18px}}
+@media(max-width:900px){.fab-checkin{top:auto;bottom:66px;right:14px;left:auto;transform:none;width:50px;height:50px;font-size:20px;box-shadow:0 4px 20px rgba(55,138,221,.5)}}
 .checkin-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .checkin-btn{display:flex;align-items:center;gap:8px;padding:12px 14px;border-radius:12px;border:2px solid var(--bdr);background:var(--bg3);cursor:pointer;transition:.2s;font-family:inherit;font-size:13px;color:var(--tx)}
 .checkin-btn:hover{border-color:var(--ac);background:rgba(55,138,221,.04)}
