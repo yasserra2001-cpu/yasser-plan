@@ -35,7 +35,7 @@
 :focus-visible{outline:2px solid var(--ac);outline-offset:2px;border-radius:var(--rs)}
 .skip-link{position:absolute;top:-40px;left:0;background:var(--ac);color:#fff;padding:8px 16px;z-index:9999;font-size:13px;border-radius:0 0 8px 0;transition:top .2s}
 .skip-link:focus{top:0}
-*{box-sizing:border-box;margin:0;padding:0}html,body{height:auto;min-height:100%;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}
+*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%;overflow:hidden}
 body{font-family:'DINAr','Segoe UI',sans-serif;font-size:var(--font);background:var(--bg);color:var(--tx);transition:.25s}
 [lang="en"] body,[lang="en"] input,[lang="en"] button{font-family:system-ui,-apple-system,sans-serif}
 a{color:var(--ac3);text-decoration:none}
@@ -63,7 +63,7 @@ a{color:var(--ac3);text-decoration:none}
 .tn-tabs{display:flex;gap:0;margin:0 auto;align-items:center;background:var(--bg3);border-radius:10px;padding:3px}
 .nt{padding:5px 10px;border-radius:8px;cursor:pointer;font-size:11px;font-weight:500;color:var(--tx2);border:none;background:0;font-family:inherit;transition:.2s;white-space:nowrap;display:flex;align-items:center;gap:3px}
 .nt:hover{background:var(--bg4);color:var(--tx)}
-.nt{touch-action:manipulation}
+
 .nt.a{background:var(--ac);color:#fff;font-weight:600;box-shadow:0 2px 8px rgba(55,138,221,.3)}
 .tn-acts{display:flex;gap:4px;align-items:center;flex-shrink:0}
 .ab2{padding:6px 12px;border-radius:var(--rs);border:1px solid var(--bdr);background:0;color:var(--tx2);cursor:pointer;font-size:12px;font-family:inherit;transition:.15s;display:flex;align-items:center;gap:4px}
@@ -318,15 +318,14 @@ a{color:var(--ac3);text-decoration:none}
   .topnav{padding:0 8px;height:44px}
   .tn-tabs{display:flex!important;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex:1}.tn-tabs::-webkit-scrollbar{display:none}.tn-name{display:none}
   .bb{display:flex}
-  .main{margin-top:44px;height:auto;min-height:calc(100dvh - 44px - 52px);overflow-y:auto;padding:10px;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+  .main{margin-top:44px;height:calc(100vh - 44px - 52px);padding:10px;padding-bottom:70px}
   .g2,.g3,.g4{grid-template-columns:1fr}
   .hero{padding:10px;flex-direction:column;align-items:stretch;gap:8px;justify-content:center}
   .hero-right{justify-content:center;flex-wrap:wrap;gap:6px}
   .hero .ab2{font-size:11px!important;padding:6px 10px!important}
   .nt{font-size:16px!important;padding:6px 8px!important}
   .nt span{display:none!important}
-  body{position:static!important;width:100%!important;overflow-x:hidden!important;overflow-y:auto!important}
-  .topnav{position:sticky!important;top:0;z-index:9999;gap:4px;padding:0 6px;display:flex!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:var(--bg2)!important;padding-top:env(safe-area-inset-top)}
+  .topnav{gap:4px;padding:0 6px}
   .hero-left{text-align:center}
   .hero-greeting{font-size:16px}
 
@@ -521,8 +520,8 @@ a{color:var(--ac3);text-decoration:none}
 .sec-icon{width:24px;height:24px;border-radius:6px;font-size:12px}
 .sec-title{font-size:12px}
 .g2,.g3,.g4{gap:8px}
-.tab{font-size:11px;padding:5px 10px;touch-action:manipulation}
-.ab2{font-size:11px;padding:4px 10px;border-radius:8px;touch-action:manipulation}
+.tab{font-size:11px;padding:5px 10px}
+.ab2{font-size:11px;padding:4px 10px;border-radius:8px}
 .kpi{border-radius:10px;padding:10px 12px}
 .kpi-val{font-size:18px}
 .kpi-label{font-size:10px}
@@ -586,12 +585,7 @@ a{color:var(--ac3);text-decoration:none}
 .onb-dot{width:8px;height:8px;border-radius:50%;background:var(--bg4)}
 .onb-dot.a{background:var(--ac);width:24px;border-radius:4px}
 .freeze-cell{background:rgba(99,179,237,.15)!important;color:var(--ac3)!important}
-</style>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-touch-fullscreen" content="yes">
-<meta name="format-detection" content="telephone=no">
-
-</head><body>
+</style></head><body>
 <a href="#mainArea" class="skip-link" data-a="تخطي إلى المحتوى" data-e="Skip to content">تخطي إلى المحتوى</a>
 
 <div class="lock-bg" id="lockScreen">
@@ -635,6 +629,7 @@ a{color:var(--ac3);text-decoration:none}
     <button class="ab2" id="hLang" title="🌐 تبديل اللغة عربي/English / Toggle Language" style="padding:3px 8px">🌐</button>
     <button class="ab2" id="hSet" title="⚙️ الإعدادات — المظهر، الصوت، البيانات / Settings" style="padding:3px 8px">⚙️</button>
   </div>
+</nav>
 </nav>
 
 <div class="main" id="mainArea">
@@ -1069,12 +1064,6 @@ a{color:var(--ac3);text-decoration:none}
 <!-- EXCEL IMPORT PREVIEW -->
 <div class="mo-bg" id="xlsPrevMo"><div class="mo"><div class="mo-h"><span class="mo-t" data-a="معاينة بيانات Excel" data-e="Excel Data Preview">معاينة بيانات Excel</span><button class="mo-x" id="xXlsPrev">✕</button></div><div class="mo-b" id="xlsPrevContent"></div><div class="mo-f" style="gap:8px;justify-content:flex-end"><button class="ab2" id="xlsCancel" data-a="إلغاء" data-e="Cancel">إلغاء</button><button class="ab2 primary" id="xlsConfirm" data-a="دمج البيانات" data-e="Merge Data">دمج البيانات</button></div></div></div>
 <script>
-window.onerror=function(msg,url,line,col,error){
-  var d=document.getElementById('vCheck');
-  if(d){d.style.display='block';d.textContent='ERROR L'+line+': '+msg;d.style.background='red';d.style.fontSize='11px';d.style.padding='8px';d.style.maxWidth='90vw';d.style.wordBreak='break-all';}
-  return false;
-};
-
 const DH={"Jan":{"1":[true,true,true,true,false,false,true,true,false,true,true,true],"2":[true,true,false,true,false,false,true,true,false,true,true,true],"3":[true,true,true,true,false,false,true,true,false,true,true,true],"4":[true,true,true,true,false,false,true,true,false,true,true,true],"5":[true,true,false,true,false,false,true,true,false,true,true,true],"6":[true,true,true,true,false,false,true,true,false,true,true,true],"7":[true,true,false,true,false,false,true,true,false,true,true,true],"8":[true,true,false,true,false,false,true,true,false,true,true,true],"9":[true,false,true,true,false,false,true,true,false,true,true,true],"10":[true,false,false,true,false,false,true,true,false,true,false,true],"11":[true,false,true,true,false,false,true,true,false,true,false,true],"12":[true,false,true,true,false,false,false,true,false,true,false,true],"13":[true,false,false,true,false,false,false,true,false,true,false,true],"14":[true,false,true,true,false,false,false,true,false,false,false,true],"15":[true,false,false,true,false,false,false,true,false,false,false,true],"16":[true,false,false,false,false,false,false,true,false,false,false,true],"17":[true,true,false,false,false,false,false,true,false,false,false,true],"18":[true,true,false,false,false,false,false,true,false,false,false,true],"19":[true,true,true,false,false,false,true,true,false,false,false,true],"20":[true,true,false,true,false,false,true,true,false,false,false,true],"21":[true,true,true,true,false,false,true,true,false,false,false,true],"22":[true,true,true,true,false,false,false,true,false,false,false,true],"23":[true,true,false,true,false,false,false,true,false,false,false,true],"24":[true,true,true,true,false,false,false,true,false,false,false,true],"25":[true,false,false,true,false,false,false,true,false,false,false,true],"26":[true,false,true,true,false,false,false,true,false,false,false,true],"27":[true,false,false,true,false,false,false,true,false,false,false,true],"28":[false,false,true,true,false,false,false,true,false,false,false,true],"29":[true,false,true,false,false,false,false,true,false,false,false,true],"30":[false,false,false,false,false,false,false,true,false,false,false,true],"31":[true,false,true,false,false,false,false,true,false,false,false,true]},"Feb":{"1":[true,true,false,true,false,true,false,true,false,false,false,true],"2":[true,false,true,true,false,true,true,true,false,true,false,true],"3":[true,true,false,true,false,true,false,true,false,false,true,true],"4":[true,false,false,false,false,false,false,true,false,false,false,true],"5":[true,false,false,false,false,false,false,true,false,true,false,true],"6":[true,false,true,true,false,false,false,true,false,false,false,true],"7":[true,true,false,true,false,false,false,true,false,false,false,true],"8":[true,false,false,false,false,false,false,true,false,true,false,true],"9":[true,false,true,false,false,true,true,true,false,false,true,true],"10":[true,false,true,true,false,true,false,true,false,false,false,true],"11":[true,true,true,true,false,true,false,true,false,true,false,true],"12":[true,false,true,true,false,false,false,true,false,false,false,true],"13":[true,true,true,false,false,false,false,true,false,false,true,true],"14":[true,false,false,false,false,false,false,true,false,true,false,true],"15":[true,false,false,false,false,false,false,true,false,false,false,true],"16":[true,false,false,false,false,false,false,true,false,false,false,true],"17":[true,false,false,true,false,false,false,true,false,true,false,true],"18":[true,false,false,true,false,true,false,true,false,false,false,true],"19":[true,false,false,true,false,true,false,true,false,false,false,true],"20":[true,false,false,true,false,true,false,true,false,true,false,true],"21":[true,true,false,true,false,false,false,true,false,false,false,true],"22":[true,false,false,true,false,false,false,true,false,false,false,true],"23":[true,false,false,true,false,false,false,true,false,true,false,true],"24":[true,false,false,true,false,false,false,true,false,false,false,true],"25":[true,false,false,true,false,false,false,true,false,false,false,true],"26":[true,true,false,false,false,false,false,true,false,false,false,true],"27":[true,false,false,false,false,false,false,true,false,false,false,true],"28":[true,false,false,false,false,false,false,true,false,false,false,true]},"Mar":{"1":[true,true,false,true,false,false,false,true,false,false,false,true],"2":[true,false,false,true,false,false,true,true,false,false,true,true],"3":[true,false,false,true,false,false,false,true,false,false,true,true],"4":[true,false,true,true,false,false,false,true,false,true,true,true],"5":[true,false,false,true,false,true,false,true,false,true,true,true],"6":[true,false,true,true,false,true,false,true,false,true,false,true],"7":[true,false,false,true,false,true,false,true,false,true,false,true],"8":[true,false,true,true,false,true,false,true,false,false,false,true],"9":[true,true,false,true,false,false,true,true,false,false,false,true],"10":[true,false,false,true,false,false,true,true,false,false,false,true],"11":[true,false,false,true,false,false,true,true,false,false,true,true],"12":[true,false,true,true,false,false,true,true,false,false,true,true],"13":[true,false,false,true,false,false,false,true,false,true,true,true],"14":[true,false,false,true,false,false,false,true,false,true,true,true],"15":[true,false,false,false,false,false,false,true,false,true,false,true],"16":[true,true,false,true,false,false,false,true,false,true,false,true],"17":[true,false,false,true,false,false,false,true,false,false,false,true],"18":[true,false,true,true,false,false,true,true,false,false,false,true],"19":[true,false,false,true,false,false,true,true,false,false,true,true],"20":[true,false,false,true,false,false,true,true,false,false,true,true],"21":[true,false,true,true,false,false,true,true,false,false,true,true],"22":[true,false,false,true,false,false,false,true,false,true,true,true],"23":[true,false,true,true,false,false,false,true,false,true,false,true],"24":[true,false,false,true,false,true,false,true,false,true,false,true],"25":[true,false,false,true,false,true,false,true,false,true,false,true],"26":[true,true,false,true,false,true,false,true,false,false,true,true],"27":[true,false,true,true,false,true,false,true,false,false,true,true],"28":[true,false,false,true,false,false,false,true,false,true,true,true],"29":[true,false,false,true,false,false,false,true,false,true,true,true],"30":[true,false,true,false,false,false,false,true,false,true,false,true],"31":[true,false,false,false,false,false,false,true,false,true,false,true]},"Apr":{"1":[true,true,true,true,true,true,true,true,true,true,true,true],"2":[true,false,false,true,false,false,true,true,false,true,true,true],"3":[true,false,true,true,false,true,true,true,false,true,false,true],"4":[true,false,false,true,false,false,true,true,false,true,false,true],"5":[true,false,true,true,false,true,false,true,false,true,false,true],"6":[true,true,false,true,false,false,false,true,false,true,false,true],"7":[true,false,true,true,false,false,true,true,false,true,false,true],"8":[true,false,false,true,false,true,true,true,false,true,false,true],"9":[true,false,false,true,false,false,true,true,false,true,true,true],"10":[true,false,false,true,false,true,true,true,false,true,true,true],"11":[true,false,false,true,false,false,false,true,false,true,false,true],"12":[true,false,true,false,false,true,true,true,false,true,false,true],"13":[true,false,false,false,false,false,true,true,false,true,false,true],"14":[true,false,true,true,false,true,true,true,false,true,false,true],"15":[true,false,false,true,false,false,true,true,false,true,true,true],"16":[true,false,false,true,false,false,false,true,false,true,true,true],"17":[true,true,false,false,false,true,false,true,false,true,false,true],"18":[true,false,false,false,false,false,true,true,false,true,false,true],"19":[true,false,true,true,false,false,true,true,false,true,false,true],"20":[true,false,false,true,false,true,true,true,false,true,true,true],"21":[true,false,true,true,false,false,true,true,false,true,true,true],"22":[true,false,false,false,false,true,false,true,false,true,false,true],"23":[true,true,false,false,false,false,true,true,false,true,false,true],"24":[true,false,false,true,false,true,true,true,false,true,false,true],"25":[true,true,false,true,false,false,true,true,false,true,true,true],"26":[true,false,true,true,false,false,true,true,false,true,true,true],"27":[true,false,false,true,false,true,true,true,false,true,false,true],"28":[true,false,true,true,false,false,true,true,false,true,true,true],"29":[true,true,false,true,false,false,true,true,false,true,true,true],"30":[true,false,false,true,true,false,false,true,false,true,false,true]},"May":{"1":[true,true,true,true,false,true,true,true,true,true,true,true],"2":[true,false,false,false,false,true,false,false,false,false,false,false],"3":[true,false,false,false,false,true,false,false,false,false,false,false],"4":[true,false,false,false,false,true,false,false,false,false,false,false],"5":[true,false,false,false,false,true,false,false,false,false,false,false],"6":[true,false,false,false,false,true,false,false,false,false,false,false],"7":[true,false,false,false,false,false,false,false,false,false,false,false],"8":[true,false,false,false,false,false,false,false,false,false,false,false],"9":[true,false,false,false,false,false,false,false,false,false,false,false],"10":[true,false,false,false,false,false,false,false,false,false,false,false],"11":[true,false,false,false,false,false,false,false,false,false,false,false],"12":[true,false,false,false,false,false,false,false,false,false,false,false],"13":[true,false,false,false,false,false,false,false,false,false,false,false],"14":[true,false,false,false,false,false,false,false,false,false,false,false],"15":[true,false,false,false,false,false,false,false,false,false,false,false],"16":[true,false,false,false,false,false,false,false,false,false,false,false],"17":[true,false,false,false,false,false,false,false,false,false,false,false],"18":[true,false,false,false,false,false,false,false,false,false,false,false],"19":[false,false,false,false,false,false,false,false,false,false,false,false],"20":[false,false,false,false,false,false,false,false,false,false,false,false],"21":[false,false,false,false,false,false,false,false,false,false,false,false],"22":[false,false,false,false,false,false,false,false,false,false,false,false],"23":[false,false,false,false,false,false,false,false,false,false,false,false],"24":[false,false,false,false,false,false,false,false,false,false,false,false],"25":[false,false,false,false,false,false,false,false,false,false,false,false],"26":[false,false,false,false,false,false,false,false,false,false,false,false],"27":[false,false,false,false,false,false,false,false,false,false,false,false],"28":[false,false,false,false,false,false,false,false,false,false,false,false],"29":[false,false,false,false,false,false,false,false,false,false,false,false],"30":[false,false,false,false,false,false,false,false,false,false,false,false],"31":[false,false,false,false,false,false,false,false,false,false,false,false]},"June":{"1":[true,true,true,false,true,true,false,true,true,true,true,true],"2":[false,false,false,false,false,false,false,false,true,false,false,false],"3":[false,false,false,false,false,false,false,false,true,false,false,false],"4":[false,false,false,false,false,false,false,false,true,false,false,false],"5":[false,false,false,false,false,false,false,false,false,false,false,false],"6":[false,false,false,false,false,false,false,false,false,false,false,false],"7":[false,false,false,false,false,false,false,false,false,false,false,false],"8":[false,false,false,false,false,false,false,false,false,false,false,false],"9":[false,false,false,false,false,false,false,false,false,false,false,false],"10":[false,false,false,false,false,false,false,false,false,false,false,false],"11":[false,false,false,false,false,false,false,false,false,false,false,false],"12":[false,false,false,false,false,false,false,false,false,false,false,false],"13":[false,false,false,false,false,false,false,false,false,false,false,false],"14":[false,false,false,false,false,false,false,false,false,false,false,false],"15":[false,false,false,false,false,false,false,false,false,false,false,false],"16":[false,false,false,false,false,false,false,false,false,false,false,false],"17":[false,false,false,false,false,false,false,false,false,false,false,false],"18":[false,false,false,false,false,false,false,false,false,false,false,false],"19":[false,false,false,false,false,false,false,false,false,false,false,false],"20":[false,false,false,false,false,false,false,false,false,false,false,false],"21":[false,false,false,false,false,false,false,false,false,false,false,false],"22":[false,false,false,false,false,false,false,false,false,false,false,false],"23":[false,false,false,false,false,false,false,false,false,false,false,false],"24":[false,false,false,false,false,false,false,false,false,false,false,false],"25":[false,false,false,false,false,false,false,false,false,false,false,false],"26":[false,false,false,false,false,false,false,false,false,false,false,false],"27":[false,false,false,false,false,false,false,false,false,false,false,false],"28":[false,false,false,false,false,false,false,false,false,false,false,false],"29":[false,false,false,false,false,false,false,false,false,false,false,false],"30":[false,false,false,false,false,false,false,false,false,false,false,false]},"July":{"1":[true,true,true,true,true,true,true,true,true,true,true,true],"2":[false,false,false,false,true,false,false,false,false,false,false,true],"3":[false,false,false,false,true,false,false,false,false,false,false,true],"4":[false,false,false,false,true,false,false,false,false,false,false,true],"5":[false,false,false,false,true,false,false,false,false,false,false,true],"6":[false,false,false,false,false,false,false,false,false,false,false,true],"7":[false,false,false,false,false,false,false,false,false,false,false,true],"8":[false,false,false,false,false,false,false,false,false,false,false,true],"9":[false,false,false,false,false,false,false,false,false,false,false,true],"10":[false,false,false,false,false,false,false,false,false,false,false,false],"11":[false,false,false,false,false,false,false,false,false,false,false,false],"12":[false,false,false,false,false,false,false,false,false,false,false,false],"13":[false,false,false,false,false,false,false,false,false,false,false,false],"14":[false,false,false,false,false,false,false,false,false,false,false,false],"15":[false,false,false,false,false,false,false,false,false,false,false,false],"16":[false,false,false,false,false,false,false,false,false,false,false,false],"17":[false,false,false,false,false,false,false,false,false,false,false,false],"18":[false,false,false,false,false,false,false,false,false,false,false,false],"19":[false,false,false,false,false,false,false,false,false,false,false,false],"20":[false,false,false,false,false,false,false,false,false,false,false,false],"21":[false,false,false,false,false,false,false,false,false,false,false,false],"22":[false,false,false,false,false,false,false,false,false,false,false,false],"23":[false,false,false,false,false,false,false,false,false,false,false,false],"24":[false,false,false,false,false,false,false,false,false,false,false,false],"25":[false,false,false,false,false,false,false,false,false,false,false,false],"26":[false,false,false,false,false,false,false,false,false,false,false,false],"27":[false,false,false,false,false,false,false,false,false,false,false,false],"28":[false,false,false,false,false,false,false,false,false,false,false,false],"29":[false,false,false,false,false,false,false,false,false,false,false,false],"30":[false,false,false,false,false,false,false,false,false,false,false,false],"31":[false,false,false,false,false,false,false,false,false,false,false,false]},"Aug":{"1":[true,true,true,true,true,true,true,true,true,true,true,true],"2":[false,false,false,true,false,false,false,true,false,false,false,true],"3":[false,false,false,true,false,false,false,true,false,false,false,true],"4":[false,false,false,true,false,false,false,true,false,false,false,true],"5":[false,false,false,true,false,false,false,true,false,false,false,true],"6":[false,false,false,false,false,false,false,true,false,false,false,true],"7":[false,false,false,false,false,false,false,true,false,false,false,true],"8":[false,false,false,false,false,false,false,true,false,false,false,true],"9":[false,false,false,false,false,false,false,false,false,false,false,true],"10":[false,false,false,false,false,false,false,false,false,false,false,true],"11":[false,false,false,false,false,false,false,false,false,false,false,true],"12":[false,false,false,false,false,false,false,false,false,false,false,true],"13":[false,false,false,false,false,false,false,false,false,false,false,true],"14":[false,false,false,false,false,false,false,false,false,false,false,true],"15":[false,false,false,false,false,false,false,false,false,false,false,false],"16":[false,false,false,false,false,false,false,false,false,false,false,false],"17":[false,false,false,false,false,false,false,false,false,false,false,false],"18":[false,false,false,false,false,false,false,false,false,false,false,false],"19":[false,false,false,false,false,false,false,false,false,false,false,false],"20":[false,false,false,false,false,false,false,false,false,false,false,false],"21":[false,false,false,false,false,false,false,false,false,false,false,false],"22":[false,false,false,false,false,false,false,false,false,false,false,false],"23":[false,false,false,false,false,false,false,false,false,false,false,false],"24":[false,false,false,false,false,false,false,false,false,false,false,false],"25":[false,false,false,false,false,false,false,false,false,false,false,false],"26":[false,false,false,false,false,false,false,false,false,false,false,false],"27":[false,false,false,false,false,false,false,false,false,false,false,false],"28":[false,false,false,false,false,false,false,false,false,false,false,false],"29":[false,false,false,false,false,false,false,false,false,false,false,false],"30":[false,false,false,false,false,false,false,false,false,false,false,false],"31":[false,false,false,false,false,false,false,false,false,false,false,false]},"Sep":{"1":[true,true,true,true,true,true,true,true,true,true,true,true],"2":[false,true,false,true,false,false,false,false,false,true,false,true],"3":[false,true,false,true,false,false,false,false,false,true,false,true],"4":[false,true,false,true,false,false,false,false,false,true,false,true],"5":[false,true,false,true,false,false,false,false,false,true,false,true],"6":[false,true,false,true,false,false,false,false,false,false,false,true],"7":[false,true,false,true,false,false,false,false,false,false,false,true],"8":[false,true,false,true,false,false,false,false,false,false,false,true],"9":[false,true,false,true,false,false,false,false,false,false,false,true],"10":[false,true,false,true,false,false,false,false,false,false,false,true],"11":[false,true,false,true,false,false,false,false,false,false,false,true],"12":[false,true,false,true,false,false,false,false,false,false,false,true],"13":[false,true,false,true,false,false,false,false,false,false,false,true],"14":[false,true,false,true,false,false,false,false,false,false,false,true],"15":[false,true,false,true,false,false,false,false,false,false,false,true],"16":[false,false,false,true,false,false,false,false,false,false,false,true],"17":[false,false,false,true,false,false,false,false,false,false,false,true],"18":[false,false,false,true,false,false,false,false,false,false,false,false],"19":[false,false,false,false,false,false,false,false,false,false,false,false],"20":[false,false,false,false,false,false,false,false,false,false,false,false],"21":[false,false,false,false,false,false,false,false,false,false,false,false],"22":[false,false,false,false,false,false,false,false,false,false,false,false],"23":[false,false,false,false,false,false,false,false,false,false,false,false],"24":[false,false,false,false,false,false,false,false,false,false,false,false],"25":[false,false,false,false,false,false,false,false,false,false,false,false],"26":[false,false,false,false,false,false,false,false,false,false,false,false],"27":[false,false,false,false,false,false,false,false,false,false,false,false],"28":[false,false,false,false,false,false,false,false,false,false,false,false],"29":[false,false,false,false,false,false,false,false,false,false,false,false],"30":[false,false,false,false,false,false,false,false,false,false,false,false]},"Oct":{"1":[true,true,true,true,true,true,true,true,true,true,true,true],"2":[false,false,false,true,false,false,false,false,false,false,false,false],"3":[false,false,false,true,false,false,false,false,false,false,false,false],"4":[false,false,false,false,false,false,false,false,false,false,false,false],"5":[false,false,false,false,false,false,false,false,false,false,false,false],"6":[false,false,false,false,false,false,false,false,false,false,false,false],"7":[false,false,false,false,false,false,false,false,false,false,false,false],"8":[false,false,false,false,false,false,false,false,false,false,false,false],"9":[false,false,false,false,false,false,false,false,false,false,false,false],"10":[false,false,false,false,false,false,false,false,false,false,false,false],"11":[false,false,false,false,false,false,false,false,false,false,false,false],"12":[false,false,false,false,false,false,false,false,false,false,false,false],"13":[false,false,false,false,false,false,false,false,false,false,false,false],"14":[false,false,false,false,false,false,false,false,false,false,false,false],"15":[false,false,false,false,false,false,false,false,false,false,false,false],"16":[false,false,false,false,false,false,false,false,false,false,false,false],"17":[false,false,false,false,false,false,false,false,false,false,false,false],"18":[false,false,false,false,false,false,false,false,false,false,false,false],"19":[false,false,false,false,false,false,false,false,false,false,false,false],"20":[false,false,false,false,false,false,false,false,false,false,false,false],"21":[false,false,false,false,false,false,false,false,false,false,false,false],"22":[false,false,false,false,false,false,false,false,false,false,false,false],"23":[false,false,false,false,false,false,false,false,false,false,false,false],"24":[false,false,false,false,false,false,false,false,false,false,false,false],"25":[false,false,false,false,false,false,false,false,false,false,false,false],"26":[false,false,false,false,false,false,false,false,false,false,false,false],"27":[false,false,false,false,false,false,false,false,false,false,false,false],"28":[false,false,false,false,false,false,false,false,false,false,false,false],"29":[false,false,false,false,false,false,false,false,false,false,false,false],"30":[false,false,false,false,false,false,false,false,false,false,false,false],"31":[false,false,false,false,false,false,false,false,false,false,false,false]},"Nov":{"1":[true,true,true,true,true,true,true,true,true,true,true,true],"2":[false,false,false,false,false,true,false,false,false,false,false,true],"3":[false,false,false,false,false,true,false,false,false,false,false,true],"4":[false,false,false,false,false,true,false,false,false,false,false,true],"5":[false,false,false,false,false,true,false,false,false,false,false,true],"6":[false,false,false,false,false,true,false,false,false,false,false,true],"7":[false,false,false,false,false,true,false,false,false,false,false,true],"8":[false,false,false,false,false,true,false,false,false,false,false,true],"9":[false,false,false,false,false,false,false,false,false,false,false,true],"10":[false,false,false,false,false,false,false,false,false,false,false,true],"11":[false,false,false,false,false,false,false,false,false,false,false,true],"12":[false,false,false,false,false,false,false,false,false,false,false,true],"13":[false,false,false,false,false,false,false,false,false,false,false,true],"14":[false,false,false,false,false,false,false,false,false,false,false,true],"15":[false,false,false,false,false,false,false,false,false,false,false,true],"16":[false,false,false,false,false,false,false,false,false,false,false,true],"17":[false,false,false,false,false,false,false,false,false,false,false,true],"18":[false,false,false,false,false,false,false,false,false,false,false,true],"19":[false,false,false,false,false,false,false,false,false,false,false,true],"20":[false,false,false,false,false,false,false,false,false,false,false,true],"21":[false,false,false,false,false,false,false,false,false,false,false,false],"22":[false,false,false,false,false,false,false,false,false,false,false,false],"23":[false,false,false,false,false,false,false,false,false,false,false,false],"24":[false,false,false,false,false,false,false,false,false,false,false,false],"25":[false,false,false,false,false,false,false,false,false,false,false,false],"26":[false,false,false,false,false,false,false,false,false,false,false,false],"27":[false,false,false,false,false,false,false,false,false,false,false,false],"28":[false,false,false,false,false,false,false,false,false,false,false,false],"29":[false,false,false,false,false,false,false,false,false,false,false,false],"30":[false,false,false,false,false,false,false,false,false,false,false,false]},"Dec":{"1":[true,true,true,true,true,true,true,true,true,true,true,true],"2":[false,false,false,false,true,false,false,false,false,false,false,false],"3":[false,false,false,false,true,false,false,false,false,false,false,false],"4":[false,false,false,false,true,false,false,false,false,false,false,false],"5":[false,false,false,false,true,false,false,false,false,false,false,false],"6":[false,false,false,false,true,false,false,false,false,false,false,false],"7":[false,false,false,false,true,false,false,false,false,false,false,false],"8":[false,false,false,false,true,false,false,false,false,false,false,false],"9":[false,false,false,false,true,false,false,false,false,false,false,false],"10":[false,false,false,false,true,false,false,false,false,false,false,false],"11":[false,false,false,false,true,false,false,false,false,false,false,false],"12":[false,false,false,false,true,false,false,false,false,false,false,false],"13":[false,false,false,false,true,false,false,false,false,false,false,false],"14":[false,false,false,false,true,false,false,false,false,false,false,false],"15":[false,false,false,false,false,false,false,false,false,false,false,false],"16":[false,false,false,false,false,false,false,false,false,false,false,false],"17":[false,false,false,false,false,false,false,false,false,false,false,false],"18":[false,false,false,false,false,false,false,false,false,false,false,false],"19":[false,false,false,false,false,false,false,false,false,false,false,false],"20":[false,false,false,false,false,false,false,false,false,false,false,false],"21":[false,false,false,false,false,false,false,false,false,false,false,false],"22":[false,false,false,false,false,false,false,false,false,false,false,false],"23":[false,false,false,false,false,false,false,false,false,false,false,false],"24":[false,false,false,false,false,false,false,false,false,false,false,false],"25":[false,false,false,false,false,false,false,false,false,false,false,false],"26":[false,false,false,false,false,false,false,false,false,false,false,false],"27":[false,false,false,false,false,false,false,false,false,false,false,false],"28":[false,false,false,false,false,false,false,false,false,false,false,false],"29":[false,false,false,false,false,false,false,false,false,false,false,false],"30":[false,false,false,false,false,false,false,false,false,false,false,false],"31":[false,false,false,false,false,false,false,false,false,false,false,false]}};
 const HA=["الصلوات","حفظ الورد","رياضه","ورد المراجعه","English","Reading","Tech","Jobs","التفسير","AI","Manag","تلاوة القران"];
 const MO=["Jan","Feb","Mar","Apr","May","June","July","Aug","Sep","Oct","Nov","Dec"];
@@ -2322,7 +2311,7 @@ rOverview=function(){
 
 // === FINAL INIT ===
 load();applyTheme();initPin();
-if(!S.pin)unlock();
+// PIN: wait for user action (set PIN or tap Skip)
 rOverview();
 setTimeout(checkRecovery,1500);
 setTimeout(autoBackup,3000);
@@ -4129,7 +4118,7 @@ function shareWhatsApp(){
   let bestH='',bestS=0;HA.forEach((h,hi)=>{let s=0;MO.forEach(m=>gD(m).forEach(d=>{if((S.hd[m][d]||[])[hi])s++;}));if(s>bestS){bestS=s;bestH=h;}});
   const text=L({a:'📊 خطة ياسر 2026\n🎯 النتيجة: '+score+'%\n⭐ XP: '+xp+'\n🔥 أفضل عادة: '+bestH+'\n🏅 شارات: '+(S.badges||[]).length+'/68\n💪 استمر في الطريق!',
   e:'📊 Yasser Plan 2026\n🎯 Score: '+score+'%\n⭐ XP: '+xp+'\n🔥 Best habit: '+(HE[bestH]||bestH)+'\n🏅 Badges: '+(S.badges||[]).length+'/68\n💪 Keep going!'});
-  openExternal('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+  window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
 }
 
 // === 6. TWITTER/X SHARE ===
@@ -4749,7 +4738,6 @@ const _prevNav4=nav;
 nav=function(p){_prevNav4(p);setTimeout(applyTooltips,200);};
 
 
-// mobile fix cleaned up
 
 setTimeout(()=>reAll(),500);
 
@@ -4777,94 +4765,6 @@ setTimeout(()=>reAll(),500);
     </div>
   </div>
 </div></div>
-
-
-
-
-
-<script>
-function openExternal(url){
-  try{
-    const a = document.createElement('a');
-    a.href = url;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.style.display = 'none';
-
-    document.body.appendChild(a);
-
-    const ev = new MouseEvent('click', {
-      view: window,
-      bubbles: true,
-      cancelable: true
-    });
-
-    a.dispatchEvent(ev);
-
-    setTimeout(function(){
-      document.body.removeChild(a);
-    }, 100);
-
-  }catch(e){
-    window.location.href = url;
-  }
-}
-
-/* Safari/iPhone override */
-(function(){
-  const originalOpen = window.open;
-  window.open = function(url){
-    if(url){
-      openExternal(url);
-    }
-    return null;
-  };
-})();
-</script>
-
-
-<script>
-/* ULTRA iPhone Safari compatibility fix */
-document.addEventListener('DOMContentLoaded', function(){
-
-  // Force all links to work on iPhone local files
-  document.querySelectorAll('a').forEach(function(a){
-
-    // remove problematic targets
-    a.removeAttribute('target');
-
-    // touch support
-    a.addEventListener('touchend', function(e){
-      const href = a.getAttribute('href');
-
-      if(href && href !== '#' && !href.startsWith('javascript')){
-        e.preventDefault();
-        window.location.assign(href);
-      }
-    }, {passive:false});
-
-    // click support
-    a.addEventListener('click', function(e){
-      const href = a.getAttribute('href');
-
-      if(href && href !== '#' && !href.startsWith('javascript')){
-        e.preventDefault();
-        window.location.assign(href);
-      }
-    });
-
-  });
-
-  // safer popup/share handling
-  window.open = function(url){
-    if(url){
-      window.location.href = url;
-    }
-    return null;
-  };
-
-});
-</script>
 
 </body>
 </html>
