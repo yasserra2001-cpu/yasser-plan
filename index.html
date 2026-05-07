@@ -586,7 +586,7 @@ a{color:var(--ac3);text-decoration:none}
 .onb-dot.a{background:var(--ac);width:24px;border-radius:4px}
 .freeze-cell{background:rgba(99,179,237,.15)!important;color:var(--ac3)!important}
 </style></head><body>
-<div id="vCheck" style="position:fixed;top:0;left:0;z-index:99999;background:red;color:white;font-size:10px;padding:2px 6px;border-radius:0 0 4px 0;opacity:0.8">v3.2-FIX10</div>
+<div id="vCheck" onclick="alert('CLICK WORKS!')" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:red;color:white;font-size:18px;padding:12px;text-align:center;cursor:pointer;-webkit-tap-highlight-color:rgba(255,255,255,0.3)">v3.2-FIX12 — TAP HERE TO TEST</div>
 <a href="#mainArea" class="skip-link" data-a="تخطي إلى المحتوى" data-e="Skip to content">تخطي إلى المحتوى</a>
 
 <div class="lock-bg" id="lockScreen">
@@ -3351,12 +3351,7 @@ document.body.insertAdjacentHTML('beforeend','<div class="search-overlay" id="se
 document.body.insertAdjacentHTML('beforeend','<div class="mo-bg" id="onbMo"><div class="mo" style="max-width:440px"><div class="mo-b" id="onbContent"></div></div></div>');
 
 // === 1. PWA SERVICE WORKER ===
-if('serviceWorker' in navigator){
-  const swCode='self.addEventListener("fetch",e=>e.respondWith(fetch(e.request).catch(()=>new Response("Offline"))));';
-  const swBlob=new Blob([swCode],{type:'application/javascript'});
-  const swUrl=URL.createObjectURL(swBlob);
-  navigator.serviceWorker.register(swUrl).catch(()=>{});
-}
+// Service worker removed (caused iOS issues)
 
 // === 2. KEYBOARD SHORTCUTS ===
 document.addEventListener('keydown',e=>{
@@ -3397,7 +3392,7 @@ function showOnboarding(){
   renderStep();
   document.getElementById('onbMo').classList.add('o');
 }
-if(!S._onboarded)setTimeout(showOnboarding,800);
+// onboarding auto-show disabled for stability
 
 // === 4. STREAK FREEZE ===
 if(!S.streakFreezes)S.streakFreezes={};
@@ -3908,7 +3903,7 @@ function showDailyBriefing(){
   document.body.appendChild(overlay);
   S._briefingToday=new Date().toISOString().slice(0,10);save();
 }
-setTimeout(showDailyBriefing,1200);
+// showDailyBriefing disabled for stability
 
 // === 2. XP AVATAR (SVG) ===
 function getAvatarSVG(){
