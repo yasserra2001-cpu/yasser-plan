@@ -3,6 +3,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>خطة ياسر 2026</title>
 <link rel="manifest" href="data:application/json,{%22name%22:%22Yasser%20Plan%202026%22,%22short_name%22:%22YPlan%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%230c1117%22,%22theme_color%22:%22%23378ADD%22,%22icons%22:[]}">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="theme-color" content="#378ADD">
 <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgMTgwIj48cmVjdCB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgcng9IjQwIiBmaWxsPSIjMGMxMTE3Ii8+PGNpcmNsZSBjeD0iOTAiIGN5PSI3MCIgcj0iMzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM3OEFERCIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHRleHQgeD0iOTAiIHk9IjgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjI4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzM3OEFERCI+MTclPC90ZXh0Pjx0ZXh0IHg9IjkwIiB5PSIxMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM4NDk1YWQiPtiu2LfYqSDZitin2LPYsTwvdGV4dD48dGV4dCB4PSI5MCIgeT0iMTQwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIiBmaWxsPSIjNTU2Mjc1Ij4yMDI2PC90ZXh0PjxjaXJjbGUgY3g9IjE0MCIgY3k9IjQwIiByPSIxMiIgZmlsbD0iI2Y2YWQ1NSIvPjx0ZXh0IHg9IjE0MCIgeT0iNDQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPvCfjq88L3RleHQ+PC9zdmc+">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -312,13 +315,16 @@ a{color:var(--ac3);text-decoration:none}
 /* RESPONSIVE */
 @media(max-width:900px){
   .topnav{padding:0 8px;height:44px}
-  .tn-tabs{display:none}.tn-name{display:none}
-  .bb{display:block}
+  .tn-tabs{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:60vw}.tn-tabs::-webkit-scrollbar{display:none}.tn-name{display:none}
+  .bb{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100}
   .main{margin-top:44px;height:calc(100vh - 44px - 52px);padding:10px;padding-bottom:70px}
   .g2,.g3,.g4{grid-template-columns:1fr}
   .hero{padding:10px;flex-direction:column;align-items:stretch;gap:8px;justify-content:center}
   .hero-right{justify-content:center;flex-wrap:wrap;gap:6px}
   .hero .ab2{font-size:11px!important;padding:6px 10px!important}
+  .nt{font-size:10px;padding:4px 6px;gap:2px}
+  .nt span{display:none}
+  .topnav{gap:4px;padding:0 6px}
   .hero-left{text-align:center}
   .hero-greeting{font-size:16px}
 
@@ -491,10 +497,10 @@ a{color:var(--ac3);text-decoration:none}
 
 
 /* FLOATING CHECK-IN BUTTON */
-.fab-checkin{position:fixed;top:50%;right:20px;transform:translateY(-50%);z-index:90;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--ac),#2d7bbf);color:#fff;border:none;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(55,138,221,.4);display:flex;align-items:center;justify-content:center;transition:.25s;font-family:inherit}
+.fab-checkin{position:fixed;top:50%;right:20px;transform:translateY(-50%);z-index:999;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--ac),#2d7bbf);color:#fff;border:none;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(55,138,221,.4);display:flex;align-items:center;justify-content:center;transition:.25s;font-family:inherit}
 .fab-checkin:hover{transform:translateY(-50%) scale(1.1);box-shadow:0 6px 24px rgba(55,138,221,.5)}
 .fab-checkin:active{transform:translateY(-50%) scale(.95)}
-@media(max-width:900px){.fab-checkin{top:auto;bottom:66px;right:14px;left:auto;transform:none;width:50px;height:50px;font-size:20px;box-shadow:0 4px 20px rgba(55,138,221,.5)}}
+@media(max-width:900px){.fab-checkin{top:auto;bottom:140px;right:12px;left:auto;transform:none;width:56px;height:56px;font-size:24px;z-index:999;box-shadow:0 6px 24px rgba(55,138,221,.6)}}
 .checkin-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .checkin-btn{display:flex;align-items:center;gap:8px;padding:12px 14px;border-radius:12px;border:2px solid var(--bdr);background:var(--bg3);cursor:pointer;transition:.2s;font-family:inherit;font-size:13px;color:var(--tx)}
 .checkin-btn:hover{border-color:var(--ac);background:rgba(55,138,221,.04)}
