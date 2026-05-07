@@ -63,6 +63,7 @@ a{color:var(--ac3);text-decoration:none}
 .tn-tabs{display:flex;gap:0;margin:0 auto;align-items:center;background:var(--bg3);border-radius:10px;padding:3px}
 .nt{padding:5px 10px;border-radius:8px;cursor:pointer;font-size:11px;font-weight:500;color:var(--tx2);border:none;background:0;font-family:inherit;transition:.2s;white-space:nowrap;display:flex;align-items:center;gap:3px}
 .nt:hover{background:var(--bg4);color:var(--tx)}
+.nt{touch-action:manipulation}
 .nt.a{background:var(--ac);color:#fff;font-weight:600;box-shadow:0 2px 8px rgba(55,138,221,.3)}
 .tn-acts{display:flex;gap:4px;align-items:center;flex-shrink:0}
 .ab2{padding:6px 12px;border-radius:var(--rs);border:1px solid var(--bdr);background:0;color:var(--tx2);cursor:pointer;font-size:12px;font-family:inherit;transition:.15s;display:flex;align-items:center;gap:4px}
@@ -315,16 +316,16 @@ a{color:var(--ac3);text-decoration:none}
 /* RESPONSIVE */
 @media(max-width:900px){
   .topnav{padding:0 8px;height:44px}
-  .tn-tabs{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:60vw}.tn-tabs::-webkit-scrollbar{display:none}.tn-name{display:none}
+  .tn-tabs{display:flex!important;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex:1}.tn-tabs::-webkit-scrollbar{display:none}.tn-name{display:none}
   .bb{display:flex}
   .main{margin-top:44px;height:calc(100vh - 44px - 52px);padding:10px;padding-bottom:70px}
   .g2,.g3,.g4{grid-template-columns:1fr}
   .hero{padding:10px;flex-direction:column;align-items:stretch;gap:8px;justify-content:center}
   .hero-right{justify-content:center;flex-wrap:wrap;gap:6px}
   .hero .ab2{font-size:11px!important;padding:6px 10px!important}
-  .nt{font-size:10px;padding:4px 6px;gap:2px}
-  .nt span{display:none}
-  .topnav{gap:4px;padding:0 6px}
+  .nt{font-size:16px!important;padding:6px 8px!important}
+  .nt span{display:none!important}
+  .topnav{gap:4px;padding:0 6px;display:flex!important}
   .hero-left{text-align:center}
   .hero-greeting{font-size:16px}
 
@@ -519,8 +520,8 @@ a{color:var(--ac3);text-decoration:none}
 .sec-icon{width:24px;height:24px;border-radius:6px;font-size:12px}
 .sec-title{font-size:12px}
 .g2,.g3,.g4{gap:8px}
-.tab{font-size:11px;padding:5px 10px}
-.ab2{font-size:11px;padding:4px 10px;border-radius:8px}
+.tab{font-size:11px;padding:5px 10px;touch-action:manipulation}
+.ab2{font-size:11px;padding:4px 10px;border-radius:8px;touch-action:manipulation}
 .kpi{border-radius:10px;padding:10px 12px}
 .kpi-val{font-size:18px}
 .kpi-label{font-size:10px}
@@ -534,6 +535,18 @@ a{color:var(--ac3);text-decoration:none}
 .tbl{font-size:11px}
 .tbl th{padding:6px 8px;font-size:10px;font-weight:600}
 .tbl td{padding:5px 8px}
+
+
+/* MOBILE SAFARI CLICK FIX */
+.mo-bg{pointer-events:none}
+.mo-bg.o{pointer-events:auto}
+[onclick]{cursor:pointer;-webkit-tap-highlight-color:rgba(55,138,221,.15)}
+.scroll-reveal{pointer-events:auto}
+.lock-bg.hidden,.lockScreen.hidden{pointer-events:none!important;display:none!important}
+#lockScreen.hidden{display:none!important;visibility:hidden!important;pointer-events:none!important}
+.confetti-wrap{pointer-events:none}
+.search-overlay{pointer-events:none}
+.search-overlay.o{pointer-events:auto}
 
 @media print{
   .topnav,.bb,.mo-bg,.toast,.lock-bg,.confetti-wrap{display:none!important}
@@ -4118,7 +4131,7 @@ function shareTwitter(){
   const score=R((YB._yearly_total||0)*0.6+(AA._yearly_total||0)*0.4);
   const text=L({a:'📊 نتيجتي في خطة ياسر 2026: '+score+'% | ⭐'+calcXP()+' XP | 🏅'+(S.badges||[]).length+' شارات #خطة_ياسر #تطوير_ذاتي',
   e:'📊 My Yasser Plan 2026: '+score+'% | ⭐'+calcXP()+' XP | 🏅'+(S.badges||[]).length+' badges #YasserPlan #SelfDevelopment'});
-  window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(text),'_blank');
+  location.href='https://twitter.com/intent/tweet?text='+encodeURIComponent(text);
 }
 
 // Social buttons now in HTML directly
