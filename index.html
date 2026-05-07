@@ -35,7 +35,7 @@
 :focus-visible{outline:2px solid var(--ac);outline-offset:2px;border-radius:var(--rs)}
 .skip-link{position:absolute;top:-40px;left:0;background:var(--ac);color:#fff;padding:8px 16px;z-index:9999;font-size:13px;border-radius:0 0 8px 0;transition:top .2s}
 .skip-link:focus{top:0}
-*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%;overflow:hidden}
+*{box-sizing:border-box;margin:0;padding:0}html,body{height:auto;min-height:100%;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}
 body{font-family:'DINAr','Segoe UI',sans-serif;font-size:var(--font);background:var(--bg);color:var(--tx);transition:.25s}
 [lang="en"] body,[lang="en"] input,[lang="en"] button{font-family:system-ui,-apple-system,sans-serif}
 a{color:var(--ac3);text-decoration:none}
@@ -318,15 +318,15 @@ a{color:var(--ac3);text-decoration:none}
   .topnav{padding:0 8px;height:44px}
   .tn-tabs{display:flex!important;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex:1}.tn-tabs::-webkit-scrollbar{display:none}.tn-name{display:none}
   .bb{display:flex}
-  .main{margin-top:44px;height:calc(100vh - 44px - 52px);padding:10px;padding-bottom:70px}
+  .main{margin-top:44px;height:auto;min-height:calc(100dvh - 44px - 52px);overflow-y:auto;padding:10px;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
   .g2,.g3,.g4{grid-template-columns:1fr}
   .hero{padding:10px;flex-direction:column;align-items:stretch;gap:8px;justify-content:center}
   .hero-right{justify-content:center;flex-wrap:wrap;gap:6px}
   .hero .ab2{font-size:11px!important;padding:6px 10px!important}
   .nt{font-size:16px!important;padding:6px 8px!important}
   .nt span{display:none!important}
-  body{position:fixed!important;width:100%!important;overflow:visible!important}
-  .topnav{gap:4px;padding:0 6px;display:flex!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:var(--bg2)!important}
+  body{position:static!important;width:100%!important;overflow-x:hidden!important;overflow-y:auto!important}
+  .topnav{position:sticky!important;top:0;z-index:9999;gap:4px;padding:0 6px;display:flex!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:var(--bg2)!important;padding-top:env(safe-area-inset-top)}
   .hero-left{text-align:center}
   .hero-greeting{font-size:16px}
 
@@ -630,7 +630,6 @@ a{color:var(--ac3);text-decoration:none}
     <button class="ab2" id="hLang" title="🌐 تبديل اللغة عربي/English / Toggle Language" style="padding:3px 8px">🌐</button>
     <button class="ab2" id="hSet" title="⚙️ الإعدادات — المظهر، الصوت، البيانات / Settings" style="padding:3px 8px">⚙️</button>
   </div>
-</nav>
 </nav>
 
 <div class="main" id="mainArea">
@@ -4773,6 +4772,20 @@ setTimeout(()=>reAll(),500);
     </div>
   </div>
 </div></div>
+
+
+<script>
+(function(){
+  const originalOpen = window.open;
+  window.open = function(url, target, features){
+    const w = originalOpen ? originalOpen.call(window, url, target || '_blank', features || 'noopener,noreferrer') : null;
+    if(!w && url){
+      window.location.href = url;
+    }
+    return w;
+  };
+})();
+</script>
 
 </body>
 </html>
