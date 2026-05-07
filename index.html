@@ -4822,5 +4822,49 @@ function openExternal(url){
 })();
 </script>
 
+
+<script>
+/* ULTRA iPhone Safari compatibility fix */
+document.addEventListener('DOMContentLoaded', function(){
+
+  // Force all links to work on iPhone local files
+  document.querySelectorAll('a').forEach(function(a){
+
+    // remove problematic targets
+    a.removeAttribute('target');
+
+    // touch support
+    a.addEventListener('touchend', function(e){
+      const href = a.getAttribute('href');
+
+      if(href && href !== '#' && !href.startsWith('javascript')){
+        e.preventDefault();
+        window.location.assign(href);
+      }
+    }, {passive:false});
+
+    // click support
+    a.addEventListener('click', function(e){
+      const href = a.getAttribute('href');
+
+      if(href && href !== '#' && !href.startsWith('javascript')){
+        e.preventDefault();
+        window.location.assign(href);
+      }
+    });
+
+  });
+
+  // safer popup/share handling
+  window.open = function(url){
+    if(url){
+      window.location.href = url;
+    }
+    return null;
+  };
+
+});
+</script>
+
 </body>
 </html>
