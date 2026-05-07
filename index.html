@@ -316,7 +316,7 @@ a{color:var(--ac3);text-decoration:none}
 @media(max-width:900px){
   .topnav{padding:0 8px;height:44px}
   .tn-tabs{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:60vw}.tn-tabs::-webkit-scrollbar{display:none}.tn-name{display:none}
-  .bb{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100}
+  .bb{display:flex}
   .main{margin-top:44px;height:calc(100vh - 44px - 52px);padding:10px;padding-bottom:70px}
   .g2,.g3,.g4{grid-template-columns:1fr}
   .hero{padding:10px;flex-direction:column;align-items:stretch;gap:8px;justify-content:center}
@@ -1092,7 +1092,13 @@ function load(){try{const x=localStorage.getItem(LK);if(x)Object.assign(S,JSON.p
   for(const m of MO){if(!S.hd[m])S.hd[m]={};const ex=DH[m]||{};for(const d in ex)if(!(d in S.hd[m]))S.hd[m][d]=ex[d];}
   for(const sh in DC)if(!S.cd[sh])S.cd[sh]=DC[sh].items.map(i=>({n:i.n,d:i.d}));
 }
-function save(){S.lastActive=Date.now();localStorage.setItem(LK,JSON.stringify(S));}
+function save(){
+  S.lastActive=Date.now();
+  if(S.years&&S.currentYear)S.years[S.currentYear]={hd:S.hd,cd:S.cd};
+  try{localStorage.setItem(LK,JSON.stringify(S));}catch(e){}
+  try{if(typeof check100Day==='function')check100Day();}catch(e){}
+  try{const el=document.getElementById('syncStatus');if(el)el.textContent=new Date().toLocaleTimeString();}catch(e){}
+}
 
 // Helpers
 function gD(m){return Object.keys(S.hd[m]||{}).map(Number).sort((a,b)=>a-b);}
@@ -3066,8 +3072,7 @@ function check100Day(){
 }
 
 // Wire to habit toggle
-const _origSave=save;
-save=function(){_origSave.call?_origSave():localStorage.setItem(LK,JSON.stringify(S));check100Day();};
+// check100Day merged into main save
 
 // ============================================================
 // INIT — FINAL
@@ -3578,12 +3583,7 @@ function initYearSelector(){
 }
 initYearSelector();
 
-// Sync on save
-const _origSave2=save;
-save=function(){
-  if(S.years&&S.currentYear)S.years[S.currentYear]={hd:S.hd,cd:S.cd};
-  _origSave2();
-};
+// Multi-year sync now in main save()
 
 // ============================================================
 // AI ASSISTANT (Claude API)
@@ -4555,11 +4555,7 @@ async function setupAutoSync(){
 }
 
 // Hook into save() for auto-push
-const _origSave3=save;
-save=function(){
-  _origSave3();
-  if(S._syncUrl)autoSyncPush();// Auto-push on every save
-};
+// auto-sync merged into main save
 
 // Auto-pull on page load
 if(S._syncUrl){
@@ -4597,8 +4593,7 @@ function showSyncCode(){
 }
 setTimeout(showSyncCode,1000);
 // Update sync status on every save
-const _origSave4=save;
-save=function(){_origSave4();const el=document.getElementById('syncStatus');if(el)el.textContent=L({a:'آخر:',e:'Last:'})+' '+new Date().toLocaleTimeString();};
+// sync status merged into main save
 
 // === iPHONE INSTALL BANNER ===
 function showiOSInstall(){
