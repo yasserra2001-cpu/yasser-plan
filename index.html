@@ -586,7 +586,12 @@ a{color:var(--ac3);text-decoration:none}
 .onb-dot{width:8px;height:8px;border-radius:50%;background:var(--bg4)}
 .onb-dot.a{background:var(--ac);width:24px;border-radius:4px}
 .freeze-cell{background:rgba(99,179,237,.15)!important;color:var(--ac3)!important}
-</style></head><body>
+</style>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+
+</head><body>
 <a href="#mainArea" class="skip-link" data-a="تخطي إلى المحتوى" data-e="Skip to content">تخطي إلى المحتوى</a>
 
 <div class="lock-bg" id="lockScreen">
@@ -4124,7 +4129,7 @@ function shareWhatsApp(){
   let bestH='',bestS=0;HA.forEach((h,hi)=>{let s=0;MO.forEach(m=>gD(m).forEach(d=>{if((S.hd[m][d]||[])[hi])s++;}));if(s>bestS){bestS=s;bestH=h;}});
   const text=L({a:'📊 خطة ياسر 2026\n🎯 النتيجة: '+score+'%\n⭐ XP: '+xp+'\n🔥 أفضل عادة: '+bestH+'\n🏅 شارات: '+(S.badges||[]).length+'/68\n💪 استمر في الطريق!',
   e:'📊 Yasser Plan 2026\n🎯 Score: '+score+'%\n⭐ XP: '+xp+'\n🔥 Best habit: '+(HE[bestH]||bestH)+'\n🏅 Badges: '+(S.badges||[]).length+'/68\n💪 Keep going!'});
-  window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+  openExternal('https://wa.me/?text='+encodeURIComponent(text),'_blank');
 }
 
 // === 6. TWITTER/X SHARE ===
@@ -4774,15 +4779,45 @@ setTimeout(()=>reAll(),500);
 </div></div>
 
 
+
+
+
 <script>
+function openExternal(url){
+  try{
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.style.display = 'none';
+
+    document.body.appendChild(a);
+
+    const ev = new MouseEvent('click', {
+      view: window,
+      bubbles: true,
+      cancelable: true
+    });
+
+    a.dispatchEvent(ev);
+
+    setTimeout(function(){
+      document.body.removeChild(a);
+    }, 100);
+
+  }catch(e){
+    window.location.href = url;
+  }
+}
+
+/* Safari/iPhone override */
 (function(){
   const originalOpen = window.open;
-  window.open = function(url, target, features){
-    const w = originalOpen ? originalOpen.call(window, url, target || '_blank', features || 'noopener,noreferrer') : null;
-    if(!w && url){
-      window.location.href = url;
+  window.open = function(url){
+    if(url){
+      openExternal(url);
     }
-    return w;
+    return null;
   };
 })();
 </script>
