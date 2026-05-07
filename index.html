@@ -325,7 +325,7 @@ a{color:var(--ac3);text-decoration:none}
   .hero .ab2{font-size:11px!important;padding:6px 10px!important}
   .nt{font-size:16px!important;padding:6px 8px!important}
   .nt span{display:none!important}
-  .topnav{gap:4px;padding:0 6px;display:flex!important}
+  .topnav{gap:4px;padding:0 6px;display:flex!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:var(--bg2)!important}
   .hero-left{text-align:center}
   .hero-greeting{font-size:16px}
 
@@ -586,7 +586,6 @@ a{color:var(--ac3);text-decoration:none}
 .onb-dot.a{background:var(--ac);width:24px;border-radius:4px}
 .freeze-cell{background:rgba(99,179,237,.15)!important;color:var(--ac3)!important}
 </style></head><body>
-<div id="vCheck" onclick="alert('CLICK WORKS!')" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:red;color:white;font-size:18px;padding:12px;text-align:center;cursor:pointer;-webkit-tap-highlight-color:rgba(255,255,255,0.3)">v3.2-FIX12 — TAP HERE TO TEST</div>
 <a href="#mainArea" class="skip-link" data-a="تخطي إلى المحتوى" data-e="Skip to content">تخطي إلى المحتوى</a>
 
 <div class="lock-bg" id="lockScreen">
@@ -4743,6 +4742,9 @@ setTimeout(applyTooltips,800);
 // Re-apply on page change
 const _prevNav4=nav;
 nav=function(p){_prevNav4(p);setTimeout(applyTooltips,200);};
+
+
+// mobile fix cleaned up
 
 setTimeout(()=>reAll(),500);
 
