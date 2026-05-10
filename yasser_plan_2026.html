@@ -1101,6 +1101,14 @@ const SUGGESTIONS={
 const LK='yp26v3';
 let S={theme:'dark',lang:'ar',fontsize:'M',notif:'off',accent:'#378ADD',pin:null,autoLock:15,hd:{},cd:{},todos:[],badges:[],lastActive:Date.now()};
 
+// === CLOUD SYNC CONFIG (GitHub Gist) ===
+// To disable cloud sync, set token to '' (empty string).
+const SYNC={
+  token:'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',
+  gistId:'2dc15293226d454923b2f0621379b234',
+  filename:'yasser_plan_state.json'
+};
+
 function load(){try{const x=localStorage.getItem(LK);if(x)Object.assign(S,JSON.parse(x));}catch(e){}
   for(const m of MO){if(!S.hd[m])S.hd[m]={};const ex=DH[m]||{};for(const d in ex)if(!(d in S.hd[m]))S.hd[m][d]=ex[d];}
   for(const sh in DC)if(!S.cd[sh])S.cd[sh]=DC[sh].items.map(i=>({n:i.n,d:i.d}));
@@ -1110,7 +1118,7 @@ function save(){
   if(S.years&&S.currentYear)S.years[S.currentYear]={hd:S.hd,cd:S.cd};
   try{localStorage.setItem(LK,JSON.stringify(S));}catch(e){}
   try{if(typeof check100Day==='function')check100Day();}catch(e){}
-  try{const el=document.getElementById('syncStatus');if(el)el.textContent=new Date().toLocaleTimeString();}catch(e){}
+  try{if(typeof schedulePush==='function')schedulePush();}catch(e){}
 }
 
 // Helpers
@@ -4495,87 +4503,70 @@ window.pasteSync=function(){
 };
 
 
-// === AUTO-SYNC SYSTEM ===
-// Tries npoint.io → falls back silently. Zero user action after first setup.
+// === GITHUB GIST AUTO-SYNC ===
+let _syncBusy=false,_pushTimer=null;
 
-window.autoSyncEnabled=false;
-window.syncInProgress=false;
-
-async function autoSyncPush(){
-  if(!S._syncUrl||syncInProgress)return;
-  syncInProgress=true;
-  try{
-    await fetch(S._syncUrl,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(S)});
-    S._lastSync=Date.now();
-    const el=document.getElementById('syncStatus');
-    if(el)el.textContent='☁️ '+new Date().toLocaleTimeString();
-  }catch(e){}
-  syncInProgress=false;
+function setSyncStatus(icon,note){
+  const el=document.getElementById('syncStatus');
+  if(!el)return;
+  el.textContent=icon+' '+(note||new Date().toLocaleTimeString());
 }
 
 async function autoSyncPull(){
-  if(!S._syncUrl)return;
+  if(!SYNC.token||!SYNC.gistId)return;
   try{
-    const resp=await fetch(S._syncUrl);
-    if(!resp.ok)return;
-    const remote=await resp.json();
-    // Only pull if remote is newer
-    if(remote.lastActive&&remote.lastActive>S.lastActive){
-      Object.assign(S,remote);save();applyTheme();reAll();
-      showToast('☁️',L({a:'تم تحديث البيانات من جهاز آخر',e:'Data updated from another device'}));
-    }
-  }catch(e){}
-}
-
-async function setupAutoSync(){
-  showToast('☁️',L({a:'جاري إعداد المزامنة التلقائية...',e:'Setting up auto-sync...'}));
-  try{
-    // Create a new sync endpoint
-    const resp=await fetch('https://api.npoint.io',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(S)
+    const r=await fetch('https://api.github.com/gists/'+SYNC.gistId,{
+      headers:{'Authorization':'Bearer '+SYNC.token,'Accept':'application/vnd.github+json'},
+      cache:'no-store'
     });
-    if(!resp.ok)throw new Error('API error');
-    const result=await resp.json();
-    // npoint returns the data back, but URL is based on the response
-    // Actually npoint.io/docs says POST to get an ID
-    throw new Error('fallback');
-  }catch(e){
-    // Try jsonbin.io (free, needs header)
-    try{
-      const resp=await fetch('https://api.jsonbin.io/v3/b',{
-        method:'POST',headers:{'Content-Type':'application/json','X-Bin-Private':false},
-        body:JSON.stringify(S)
-      });
-      if(resp.ok){
-        const result=await resp.json();
-        S._syncUrl='https://api.jsonbin.io/v3/b/'+result.metadata.id+'/latest';
-        S._syncPutUrl='https://api.jsonbin.io/v3/b/'+result.metadata.id;
-        save();
-        showToast('✅',L({a:'تم! المزامنة التلقائية مفعّلة',e:'Done! Auto-sync enabled'}));
-        window.autoSyncEnabled=true;
-        return;
-      }
-    }catch(e2){}
-    // All cloud services failed - use localStorage only
-    showToast('⚠️',L({a:'المزامنة السحابية غير متاحة — استخدم التصدير اليدوي',e:'Cloud sync unavailable — use manual export'}));
-  }
+    if(!r.ok){setSyncStatus('⚠️',L({a:'فشل المزامنة',e:'Sync failed'}));return;}
+    const data=await r.json();
+    const f=data.files&&data.files[SYNC.filename];
+    if(!f||!f.content||f.content.trim()===''||f.content.trim()==='{}'){setSyncStatus('☁️',L({a:'بانتظار البيانات',e:'Awaiting data'}));return;}
+    let remote;try{remote=JSON.parse(f.content);}catch(e){setSyncStatus('⚠️',L({a:'بيانات تالفة',e:'Corrupt data'}));return;}
+    if(remote&&remote.lastActive&&remote.lastActive>(S.lastActive||0)){
+      Object.assign(S,remote);
+      try{localStorage.setItem(LK,JSON.stringify(S));}catch(e){}
+      try{applyTheme();}catch(e){}
+      try{if(typeof reAll==='function')reAll();else if(typeof rOverview==='function')rOverview();}catch(e){}
+      try{showToast('☁️',L({a:'تم تحديث البيانات من جهاز آخر',e:'Data synced from another device'}));}catch(e){}
+    }
+    setSyncStatus('✅');
+  }catch(e){setSyncStatus('⚠️',L({a:'غير متصل',e:'Offline'}));}
 }
 
-// Hook into save() for auto-push
-// auto-sync merged into main save
+async function autoSyncPush(){
+  if(!SYNC.token||!SYNC.gistId||_syncBusy)return;
+  _syncBusy=true;
+  setSyncStatus('⏳',L({a:'جاري الحفظ...',e:'Syncing...'}));
+  try{
+    const body={files:{}};
+    body.files[SYNC.filename]={content:JSON.stringify(S)};
+    const r=await fetch('https://api.github.com/gists/'+SYNC.gistId,{
+      method:'PATCH',
+      headers:{'Authorization':'Bearer '+SYNC.token,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    });
+    setSyncStatus(r.ok?'✅':'⚠️',r.ok?null:L({a:'فشل الرفع',e:'Push failed'}));
+  }catch(e){setSyncStatus('⚠️',L({a:'غير متصل',e:'Offline'}));}
+  _syncBusy=false;
+}
 
-// Auto-pull on page load
-if(S._syncUrl){
-  window.autoSyncEnabled=true;
-  setTimeout(autoSyncPull,2000);// Pull on load
+function schedulePush(){
+  if(!SYNC.token||!SYNC.gistId)return;
+  if(_pushTimer)clearTimeout(_pushTimer);
+  _pushTimer=setTimeout(()=>{_pushTimer=null;autoSyncPush();},3000);
+}
+
+if(SYNC.token&&SYNC.gistId){
+  setTimeout(autoSyncPull,1500);// Pull on load
   setInterval(autoSyncPull,120000);// Pull every 2 minutes
+  document.addEventListener('visibilitychange',()=>{
+    if(document.visibilityState==='hidden'&&_pushTimer){clearTimeout(_pushTimer);_pushTimer=null;autoSyncPush();}
+    else if(document.visibilityState==='visible'){autoSyncPull();}
+  });
+  window.addEventListener('beforeunload',()=>{if(_pushTimer){clearTimeout(_pushTimer);_pushTimer=null;autoSyncPush();}});
 }
-
-// Auto-backup before page close
-window.addEventListener('beforeunload',function(){
-  if(S._syncUrl)autoSyncPush();// Last push
-});
 
 // Manual cloud setup/toggle
 window.cloudPush=async function(){
@@ -4595,9 +4586,13 @@ window.cloudPull=function(){document.getElementById('syncImpF').click();};
 function showSyncCode(){
   const el=document.getElementById('syncCodeDisplay');
   if(!el)return;
-  const lastSave=new Date(S.lastActive||Date.now()).toLocaleTimeString();
-  el.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;margin-top:6px;padding:6px 8px;background:rgba(72,187,120,.06);border:1px solid rgba(72,187,120,.15);border-radius:6px"><span style="color:var(--gn)">🟢 '+L({a:'الحفظ التلقائي مفعّل',e:'Auto-save ON'})+'</span><span id="syncStatus" style="color:var(--tx3)">'+L({a:'آخر حفظ:',e:'Last save:'})+' '+lastSave+'</span></div>'+
-  '<div style="font-size:9px;color:var(--tx3);margin-top:4px;line-height:1.6">'+L({a:'✅ يتم الحفظ تلقائيًا عند كل تعديل\n📱 لنقل البيانات لجهاز آخر: استخدم الأزرار أعلاه',e:'✅ Auto-saves on every change\n📱 To transfer to another device: use buttons above'})+'</div>';
+  const cloudOn=!!(SYNC.token&&SYNC.gistId);
+  const headLabel=cloudOn?L({a:'☁️ مزامنة سحابية مفعّلة (GitHub)',e:'☁️ Cloud sync ON (GitHub)'}):L({a:'🟢 الحفظ التلقائي مفعّل',e:'🟢 Auto-save ON'});
+  const subLabel=cloudOn
+    ?L({a:'✅ يتم الرفع تلقائيًا لكل التعديلات\n📱 يتم السحب عند فتح التطبيق وكل دقيقتين',e:'✅ Auto-uploads on every change\n📱 Auto-pulls on open and every 2 minutes'})
+    :L({a:'✅ يتم الحفظ تلقائيًا عند كل تعديل\n📱 لنقل البيانات لجهاز آخر: استخدم الأزرار أعلاه',e:'✅ Auto-saves on every change\n📱 To transfer to another device: use buttons above'});
+  el.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;margin-top:6px;padding:6px 8px;background:rgba(72,187,120,.06);border:1px solid rgba(72,187,120,.15);border-radius:6px"><span style="color:var(--gn)">'+headLabel+'</span><span id="syncStatus" style="color:var(--tx3)">…</span></div>'+
+  '<div style="font-size:9px;color:var(--tx3);margin-top:4px;line-height:1.6">'+subLabel+'</div>';
 }
 setTimeout(showSyncCode,1000);
 // Update sync status on every save
