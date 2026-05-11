@@ -1,0 +1,42 @@
+name: Daily Master Plan Reminder
+
+# Uses the SAME Telegram bot/chat as the Plan 2026 reminder
+# (same TG_TOKEN, TG_CHAT_ID secrets) — just sent at a different time
+# with interview-prep-focused content.
+
+on:
+  schedule:
+    # 9 AM Cairo (covers DST: 06 UTC at +3, 07 UTC at +2)
+    - cron: '0 6 * * *'
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install requests tzdata
+      - name: Skip duplicate runs (only one of the two crons should send)
+        id: skip
+        run: |
+          HOUR=$(TZ='Africa/Cairo' date +%H)
+          if [ "$HOUR" = "09" ]; then
+            echo "send=true" >> $GITHUB_OUTPUT
+          else
+            echo "send=false" >> $GITHUB_OUTPUT
+            echo "Skip — Cairo hour is $HOUR, not 9"
+          fi
+      - name: Send reminder
+        if: steps.skip.outputs.send == 'true' || github.event_name == 'workflow_dispatch'
+        env:
+          GIST_ID: ${{ secrets.GIST_ID }}
+          GH_TOKEN: ${{ secrets.GH_PAT_GIST }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: python scripts/master_plan_reminder.py

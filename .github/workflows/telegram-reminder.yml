@@ -1,0 +1,45 @@
+name: Daily Telegram Reminder
+
+# Cron times cover both DST scenarios — script self-decides whether to send
+# based on actual Cairo time (auto via Africa/Cairo zoneinfo, or via the
+# state.dstOverride setting from the app: 'auto' | 'on' | 'off').
+on:
+  schedule:
+    # 7 AM Cairo: 04 UTC (DST = UTC+3) and 05 UTC (no DST = UTC+2)
+    - cron: '0 4 * * *'
+    - cron: '0 5 * * *'
+    # 1 PM Cairo: 10 UTC (DST) and 11 UTC (no DST)
+    - cron: '0 10 * * *'
+    - cron: '0 11 * * *'
+    # 6 PM Cairo: 15 UTC (DST) and 16 UTC (no DST)
+    - cron: '0 15 * * *'
+    - cron: '0 16 * * *'
+  workflow_dispatch:
+    inputs:
+      tod:
+        description: 'morning, midday, evening, or auto (let script decide)'
+        required: false
+        default: 'auto'
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests hijri-converter gtts tzdata
+
+      - name: Send Telegram reminder
+        env:
+          GIST_ID: ${{ secrets.GIST_ID }}
+          GH_TOKEN: ${{ secrets.GH_PAT_GIST }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          TIME_OF_DAY: ${{ github.event.inputs.tod || 'auto' }}
+        run: python scripts/telegram_reminder.py
