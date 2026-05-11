@@ -75,7 +75,11 @@ a{color:var(--ac3);text-decoration:none}
 
 /* TOP NAV */
 .topnav{display:flex!important;align-items:center;padding:max(env(safe-area-inset-top,0px),20px) 12px 0;min-height:calc(48px + max(env(safe-area-inset-top,0px),20px));border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:1000;gap:6px;background:rgba(20,27,36,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);width:100%;visibility:visible!important;opacity:1!important}
-[data-t="light"] .topnav{background:rgba(255,255,255,.92)}
+[data-t="light"] .topnav{background:rgba(255,255,255,.98)!important;border-bottom:2px solid #cbd5e1!important;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+[data-t="light"] .tn-tabs{background:#e2e8f0!important;border:1px solid #cbd5e1}
+[data-t="light"] .nt{color:#1a202c!important}
+[data-t="light"] .nt.a{background:var(--ac,#378ADD)!important;color:#fff!important;font-weight:700}
+[data-t="light"] .tn-logo{color:#1a202c!important}
 .tn-logo{display:flex;align-items:center;gap:6px;font-weight:700;font-size:13px;flex-shrink:0}
 .tn-tabs{display:flex;gap:0;margin:0 auto;align-items:center;background:var(--bg3);border-radius:10px;padding:3px}
 .nt{padding:5px 10px;border-radius:8px;cursor:pointer;font-size:11px;font-weight:500;color:var(--tx2);border:none;background:0;font-family:inherit;transition:.2s;white-space:nowrap;display:flex;align-items:center;gap:3px}
