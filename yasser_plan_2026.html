@@ -2699,6 +2699,42 @@ rOverview();
 setTimeout(checkRecovery,1500);
 setTimeout(autoBackup,3000);
 
+// === TOPNAV VISIBILITY GUARD === (debug — forces topnav to stay visible)
+function _ensureTopnav(){
+  const tn=document.querySelector('.topnav');
+  if(!tn)return;
+  tn.style.setProperty('display','flex','important');
+  tn.style.setProperty('visibility','visible','important');
+  tn.style.setProperty('opacity','1','important');
+  tn.style.setProperty('position','sticky','important');
+  tn.style.setProperty('top','0','important');
+  tn.style.setProperty('z-index','99999','important');
+  tn.style.setProperty('background','#378ADD','important');
+  tn.style.setProperty('color','#fff','important');
+  tn.style.setProperty('min-height','calc(64px + env(safe-area-inset-top, 0px))','important');
+  tn.style.setProperty('padding-top','max(env(safe-area-inset-top, 0px), 20px)','important');
+  // Also ensure all child text is white/visible
+  tn.querySelectorAll('button, span, div').forEach(el=>{
+    const cur=getComputedStyle(el).color;
+    if(cur.includes('255, 255, 255')||cur==='rgb(255, 255, 255)')return;
+    if(!el.classList.contains('nt')||!el.classList.contains('a'))el.style.setProperty('color','#fff','important');
+  });
+}
+// Run immediately and repeatedly to fight whatever's hiding it
+_ensureTopnav();
+setTimeout(_ensureTopnav,100);
+setTimeout(_ensureTopnav,500);
+setTimeout(_ensureTopnav,1000);
+setTimeout(_ensureTopnav,2000);
+setTimeout(_ensureTopnav,5000);
+// MutationObserver to detect if anything hides it
+try{
+  const tn=document.querySelector('.topnav');
+  if(tn){
+    new MutationObserver(_ensureTopnav).observe(tn,{attributes:true,attributeFilter:['style','class']});
+  }
+}catch(e){}
+
 // ============================================================
 // BATCH: ALL 43 REMAINING FEATURES
 // ============================================================
