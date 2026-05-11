@@ -637,7 +637,7 @@ a{color:var(--ac3);text-decoration:none}
 </div>
 
 <div id="appWrap">
-<nav class="topnav" role="navigation" style="padding-top:max(env(safe-area-inset-top,0px),20px);min-height:calc(44px + max(env(safe-area-inset-top,0px),20px));position:sticky;top:0;z-index:1000;display:flex!important;visibility:visible!important;opacity:1!important;background:#378ADD!important;color:#fff!important;border-bottom:3px solid #1e40af!important">
+<nav class="topnav" role="navigation" style="padding-top:max(env(safe-area-inset-top,0px),20px);min-height:calc(44px + max(env(safe-area-inset-top,0px),20px));position:fixed;top:0;left:0;right:0;z-index:1000;display:flex!important;visibility:visible!important;opacity:1!important;background:#378ADD!important;color:#fff!important;border-bottom:3px solid #1e40af!important">
   <div class="tn-logo">🎯 <span class="tn-name" data-a="خطة ياسر" data-e="Yasser Plan">خطة ياسر</span></div>
   <div class="tn-tabs">
     <button class="nt a" data-p="overview" title="🏠 الرئيسية — لوحة التحكم الرئيسية / Main Dashboard">🏠 <span data-a="الرئيسية" data-e="Overview">الرئيسية</span></button>
@@ -2706,13 +2706,17 @@ function _ensureTopnav(){
   tn.style.setProperty('display','flex','important');
   tn.style.setProperty('visibility','visible','important');
   tn.style.setProperty('opacity','1','important');
-  tn.style.setProperty('position','sticky','important');
+  tn.style.setProperty('position','fixed','important');
   tn.style.setProperty('top','0','important');
+  tn.style.setProperty('left','0','important');
+  tn.style.setProperty('right','0','important');
   tn.style.setProperty('z-index','99999','important');
   tn.style.setProperty('background','#378ADD','important');
   tn.style.setProperty('color','#fff','important');
   tn.style.setProperty('min-height','calc(64px + env(safe-area-inset-top, 0px))','important');
   tn.style.setProperty('padding-top','max(env(safe-area-inset-top, 0px), 20px)','important');
+  // Push body content down so it's not hidden under the fixed topnav
+  document.body.style.paddingTop='calc(64px + max(env(safe-area-inset-top, 0px), 20px))';
   // Also ensure all child text is white/visible
   tn.querySelectorAll('button, span, div').forEach(el=>{
     const cur=getComputedStyle(el).color;
@@ -2720,20 +2724,15 @@ function _ensureTopnav(){
     if(!el.classList.contains('nt')||!el.classList.contains('a'))el.style.setProperty('color','#fff','important');
   });
 }
-// Run immediately and repeatedly to fight whatever's hiding it
+// Run immediately and on a few key events
 _ensureTopnav();
 setTimeout(_ensureTopnav,100);
 setTimeout(_ensureTopnav,500);
-setTimeout(_ensureTopnav,1000);
 setTimeout(_ensureTopnav,2000);
-setTimeout(_ensureTopnav,5000);
-// MutationObserver to detect if anything hides it
-try{
-  const tn=document.querySelector('.topnav');
-  if(tn){
-    new MutationObserver(_ensureTopnav).observe(tn,{attributes:true,attributeFilter:['style','class']});
-  }
-}catch(e){}
+// Re-apply on scroll/resize (covers iOS URL bar resize bug)
+window.addEventListener('scroll',_ensureTopnav,{passive:true});
+window.addEventListener('resize',_ensureTopnav);
+window.addEventListener('orientationchange',_ensureTopnav);
 
 // ============================================================
 // BATCH: ALL 43 REMAINING FEATURES
