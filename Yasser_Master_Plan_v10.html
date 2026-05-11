@@ -2843,12 +2843,24 @@ function importData(event){
 }
 
 // ═══ GITHUB GIST AUTO-SYNC ═══
-// To disable: set SYNC_M.token to ''.
+// Token + gist ID stored in localStorage (per device). Prompted on first load.
+// To clear and re-enter, run resetSync() in browser console.
 const SYNC_M={
-  token:'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',
-  gistId:'2dc15293226d454923b2f0621379b234',
+  get token(){return localStorage.getItem('_syncToken')||'';},
+  get gistId(){return localStorage.getItem('_syncGistId')||'2dc15293226d454923b2f0621379b234';},
   filename:'yasser_master_state.json'
 };
+function ensureSyncSetup(){
+  if(localStorage.getItem('_syncToken'))return true;
+  const t=prompt('Enable cloud sync?\n\nPaste a GitHub Personal Access Token (Classic, "gist" scope only).\nGet one at: https://github.com/settings/tokens\n\nLeave empty to disable sync on this device.');
+  if(t&&t.trim()){
+    localStorage.setItem('_syncToken',t.trim());
+    if(!localStorage.getItem('_syncGistId'))localStorage.setItem('_syncGistId','2dc15293226d454923b2f0621379b234');
+    return true;
+  }
+  return false;
+}
+window.resetSync=function(){localStorage.removeItem('_syncToken');alert('Sync token cleared. Reload the page to enter a new one.');};
 // Explicit key list — prevents leaking other apps' data if both files share an origin (e.g. on GitHub Pages).
 const SYNC_KEYS=['yk','ysr','ygrammar','ycompanies','yvoice','yspeed','ypitch','yvol','ytheme','yfontsize','yqanotes','ypractime','ydebriefs','ychecklist','yintdate','yassess','yapps','ylinkedin','ynetwork','ybbc','yjournal','yassess_hist','qa_conf','qa_sr','log_sessions','ylogs','interviewDate','lastTab','yai_explain_count','yasser_api_key'];
 let _syncBusy=false,_pushTimer=null,_syncSuspend=false;
@@ -2943,14 +2955,21 @@ function _scheduleSyncPush(){
   };
 })();
 
-if(SYNC_M.token&&SYNC_M.gistId){
-  setTimeout(_syncPull,1500);
-  document.addEventListener('visibilitychange',()=>{
-    if(document.visibilityState==='hidden'){if(_pushTimer){clearTimeout(_pushTimer);_pushTimer=null;}_syncPush();}
-    else if(document.visibilityState==='visible'){_syncPull();}
-  });
-  window.addEventListener('beforeunload',()=>{if(_pushTimer){clearTimeout(_pushTimer);_pushTimer=null;_syncPush();}});
-}
+// Listeners self-check token at runtime
+document.addEventListener('visibilitychange',()=>{
+  if(!SYNC_M.token||!SYNC_M.gistId)return;
+  if(document.visibilityState==='hidden'){if(_pushTimer){clearTimeout(_pushTimer);_pushTimer=null;}_syncPush();}
+  else if(document.visibilityState==='visible'){_syncPull();}
+});
+window.addEventListener('beforeunload',()=>{
+  if(!SYNC_M.token||!SYNC_M.gistId)return;
+  if(_pushTimer){clearTimeout(_pushTimer);_pushTimer=null;_syncPush();}
+});
+// Prompt on first load if token missing, then pull
+setTimeout(()=>{
+  ensureSyncSetup();
+  if(SYNC_M.token&&SYNC_M.gistId)_syncPull();
+},1500);
 
 // ═══ ELEVATOR PITCH VARIANTS ═══
 // Add to Shadowing section
