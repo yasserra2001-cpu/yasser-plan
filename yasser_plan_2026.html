@@ -52,7 +52,7 @@
 :focus-visible{outline:2px solid var(--ac);outline-offset:2px;border-radius:var(--rs)}
 .skip-link{position:absolute;top:-40px;left:0;background:var(--ac);color:#fff;padding:8px 16px;z-index:9999;font-size:13px;border-radius:0 0 8px 0;transition:top .2s}
 .skip-link:focus{top:0}
-*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%;overflow:hidden}
+*{box-sizing:border-box;margin:0;padding:0}html,body{min-height:100%}
 body{font-family:'DINAr','Segoe UI',sans-serif;font-size:var(--font);background:var(--bg);color:var(--tx);transition:.25s}
 [lang="en"] body,[lang="en"] input,[lang="en"] button{font-family:system-ui,-apple-system,sans-serif}
 a{color:var(--ac3);text-decoration:none}
@@ -74,9 +74,7 @@ a{color:var(--ac3);text-decoration:none}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 
 /* TOP NAV */
-/* iOS notch filler — separate fixed div to cover safe area with topnav background */
-.notch-filler{position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0);background:var(--bg2,#141b24);z-index:1001;pointer-events:none}
-.topnav{display:flex;align-items:center;padding:0 12px;height:48px;border-bottom:1px solid var(--bdr);position:fixed;top:env(safe-area-inset-top,0);left:0;right:0;z-index:1000;gap:6px;background:var(--bg2,#141b24);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.topnav{display:flex;align-items:center;padding:env(safe-area-inset-top,0) 12px 0;min-height:calc(48px + env(safe-area-inset-top,0px));border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100;gap:6px;background:rgba(20,27,36,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
 [data-t="light"] .topnav{background:rgba(255,255,255,.92)}
 .tn-logo{display:flex;align-items:center;gap:6px;font-weight:700;font-size:13px;flex-shrink:0}
 .tn-tabs{display:flex;gap:0;margin:0 auto;align-items:center;background:var(--bg3);border-radius:10px;padding:3px}
@@ -91,7 +89,7 @@ a{color:var(--ac3);text-decoration:none}
 .ab2.primary:hover{background:var(--ac2)}
 
 /* MAIN */
-.main{margin-top:calc(48px + env(safe-area-inset-top,0px));height:calc(100vh - 48px - env(safe-area-inset-top,0px));overflow-y:auto;padding:14px;background:var(--bg);scroll-behavior:smooth}
+.main{padding:14px;background:var(--bg);scroll-behavior:smooth;padding-bottom:calc(70px + env(safe-area-inset-bottom,0px))}
 .pg{display:none}.pg.a{display:block;animation:fi .2s ease}
 @keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 
@@ -344,10 +342,10 @@ a{color:var(--ac3);text-decoration:none}
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  .topnav{padding:0 8px;height:44px}
+  .topnav{padding:env(safe-area-inset-top,0) 8px 0;min-height:calc(44px + env(safe-area-inset-top,0px))}
   .tn-tabs{display:flex!important;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex:1}.tn-tabs::-webkit-scrollbar{display:none}.tn-name{display:none}
   .bb{display:flex}
-  .main{margin-top:calc(44px + env(safe-area-inset-top,0px));height:calc(100vh - 44px - env(safe-area-inset-top,0px) - 52px - env(safe-area-inset-bottom,0px));padding:10px;padding-bottom:70px}
+  .main{padding:10px;padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
   .g2,.g3,.g4{grid-template-columns:1fr}
   .hero{padding:10px;flex-direction:column;align-items:stretch;gap:8px;justify-content:center}
   .hero-right{justify-content:center;flex-wrap:wrap;gap:6px}
@@ -635,7 +633,6 @@ a{color:var(--ac3);text-decoration:none}
 </div>
 
 <div id="appWrap">
-<div class="notch-filler"></div>
 <nav class="topnav" role="navigation">
   <div class="tn-logo">🎯 <span class="tn-name" data-a="خطة ياسر" data-e="Yasser Plan">خطة ياسر</span></div>
   <div class="tn-tabs">
