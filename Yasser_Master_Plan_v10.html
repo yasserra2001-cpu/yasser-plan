@@ -2,12 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0c0c14">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237b6cf7'/><text x='50' y='70' text-anchor='middle' fill='%23ffffff' font-size='46' font-family='sans-serif' font-weight='800'>MP</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%237b6cf7'/><text x='90' y='115' text-anchor='middle' fill='%23ffffff' font-size='84' font-family='sans-serif' font-weight='800'>MP</text><text x='90' y='150' text-anchor='middle' fill='%23ffffff' font-size='13' font-family='sans-serif' font-weight='700' letter-spacing='2' opacity='0.9'>MASTER PLAN</text></svg>">
+<link rel="icon" type="image/svg+xml" sizes="any" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxODAgMTgwJz48cmVjdCB3aWR0aD0nMTgwJyBoZWlnaHQ9JzE4MCcgcng9JzQwJyBmaWxsPScjN2I2Y2Y3Jy8+PHRleHQgeD0nOTAnIHk9JzExOCcgdGV4dC1hbmNob3I9J21pZGRsZScgZmlsbD0nI2ZmZmZmZicgZm9udC1zaXplPSc5MCcgZm9udC1mYW1pbHk9J3NhbnMtc2VyaWYnIGZvbnQtd2VpZ2h0PSc4MDAnPk1QPC90ZXh0Pjwvc3ZnPg==">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxODAgMTgwJz48cmVjdCB3aWR0aD0nMTgwJyBoZWlnaHQ9JzE4MCcgcng9JzQwJyBmaWxsPScjN2I2Y2Y3Jy8+PHRleHQgeD0nOTAnIHk9JzExOCcgdGV4dC1hbmNob3I9J21pZGRsZScgZmlsbD0nI2ZmZmZmZicgZm9udC1zaXplPSc5MCcgZm9udC1mYW1pbHk9J3NhbnMtc2VyaWYnIGZvbnQtd2VpZ2h0PSc4MDAnPk1QPC90ZXh0Pjwvc3ZnPg==">
+<link rel="apple-touch-icon-precomposed" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxODAgMTgwJz48cmVjdCB3aWR0aD0nMTgwJyBoZWlnaHQ9JzE4MCcgcng9JzQwJyBmaWxsPScjN2I2Y2Y3Jy8+PHRleHQgeD0nOTAnIHk9JzExOCcgdGV4dC1hbmNob3I9J21pZGRsZScgZmlsbD0nI2ZmZmZmZicgZm9udC1zaXplPSc5MCcgZm9udC1mYW1pbHk9J3NhbnMtc2VyaWYnIGZvbnQtd2VpZ2h0PSc4MDAnPk1QPC90ZXh0Pjwvc3ZnPg==">
+<script>
+// Generate PNG favicon at runtime for browsers that don't render inline SVG
+(function(){try{
+  var c=document.createElement('canvas');c.width=180;c.height=180;
+  var ctx=c.getContext('2d');
+  ctx.fillStyle='#7b6cf7';
+  var r=40;ctx.beginPath();ctx.moveTo(r,0);ctx.lineTo(180-r,0);ctx.quadraticCurveTo(180,0,180,r);ctx.lineTo(180,180-r);ctx.quadraticCurveTo(180,180,180-r,180);ctx.lineTo(r,180);ctx.quadraticCurveTo(0,180,0,180-r);ctx.lineTo(0,r);ctx.quadraticCurveTo(0,0,r,0);ctx.closePath();ctx.fill();
+  ctx.fillStyle='#ffffff';ctx.font='800 90px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText('MP',90,95);
+  var url=c.toDataURL('image/png');
+  document.querySelectorAll('link[rel*="icon"]').forEach(function(el){el.href=url;el.type='image/png';});
+}catch(e){}})();
+</script>
 <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiWWFzc2VyIEludGVydmlldyBQbGFuIiwic2hvcnRfbmFtZSI6Ikludml3UGxhbiIsInN0YXJ0X3VybCI6Ii4iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMGMwYzE0IiwidGhlbWVfY29sb3IiOiIjN2I2Y2Y3IiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbCw8c3ZnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgdmlld0JveD0nMCAwIDEwMCAxMDAnPjxyZWN0IHdpZHRoPScxMDAnIGhlaWdodD0nMTAwJyByeD0nMjAnIGZpbGw9JyM3YjZjZjcnLz48dGV4dCB4PSc1MCcgeT0nNjUnIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZpbGw9JyNmZmYnIGZvbnQtc2l6ZT0nNDAnIGZvbnQtZmFtaWx5PSdzYW5zLXNlcmlmJz5ZSDwvdGV4dD48L3N2Zz4iLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9XX0=">
 <meta name="version" content="v5-1777881737">
 <title>Yasser Hassan — 90-Day Interview Mastery Plan v5</title>
@@ -20,7 +34,7 @@
 body{background:var(--bg);color:var(--tx);font-family:var(--font);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:var(--putx);text-decoration:none}a:hover{text-decoration:underline}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bdr2);border-radius:3px}
-.topnav{background:rgba(12,12,20,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100}
+.topnav{background:rgba(12,12,20,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100;padding-top:env(safe-area-inset-top,0)}
 .tn{display:flex;align-items:center;gap:4px;padding:10px 9px;border:none;background:none;color:var(--tx3);font:500 12px var(--font);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.15s}
 .tn:hover{color:var(--tx);background:rgba(255,255,255,.04)}.tn.on{color:var(--putx);border-bottom-color:var(--pu);background:rgba(123,108,247,.08)}
 .tn-action{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;border:1px solid var(--bdr);background:var(--card2);color:var(--tx2);font-size:15px;cursor:pointer;transition:.15s;flex-shrink:0}
@@ -114,7 +128,7 @@ a{color:var(--putx);text-decoration:none}a:hover{text-decoration:underline}
 .mock-sim-box{background:var(--card);border:1px solid var(--bdr);border-radius:16px;padding:30px;max-width:600px;width:90%;text-align:center}
 @media print{body{background:#fff;color:#000}.topnav,.btn,.sr-btns,.timer-bar{display:none}.card{border:1px solid #ddd;break-inside:avoid}}
 
-.scroll-top{position:fixed;bottom:80px;right:20px;width:48px;height:48px;border-radius:50%;background:var(--pu);color:#fff;border:none;font-size:22px;cursor:pointer;z-index:200;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(123,108,247,.5);transition:.2s}
+.scroll-top{position:fixed;bottom:calc(80px + env(safe-area-inset-bottom,0px));right:calc(20px + env(safe-area-inset-right,0px));width:48px;height:48px;border-radius:50%;background:var(--pu);color:#fff;border:none;font-size:22px;cursor:pointer;z-index:200;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(123,108,247,.5);transition:.2s}
 .scroll-top:hover{transform:scale(1.1)}
 .voice-panel{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r2);padding:14px;margin-bottom:16px}
 .voice-panel select{background:var(--card2);border:1px solid var(--bdr);border-radius:6px;color:var(--tx);font:12px var(--font);padding:6px 8px;outline:none;max-width:260px;width:100%}
@@ -271,7 +285,7 @@ body.font-l{zoom:1.25}
 .font-toggle button.on{color:var(--putx);background:var(--pudim)}
 
 /* Panic button */
-.panic-btn{position:fixed;bottom:80px;left:20px;width:48px;height:48px;border-radius:50%;background:var(--co);color:#fff;border:none;font-size:20px;cursor:pointer;z-index:200;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(240,96,96,.5);transition:.2s}
+.panic-btn{position:fixed;bottom:calc(80px + env(safe-area-inset-bottom,0px));left:calc(20px + env(safe-area-inset-left,0px));width:48px;height:48px;border-radius:50%;background:var(--co);color:#fff;border:none;font-size:20px;cursor:pointer;z-index:200;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(240,96,96,.5);transition:.2s}
 .panic-btn:hover{transform:scale(1.1)}
 .panic-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
 .panic-box{background:var(--card);border:2px solid var(--co);border-radius:28px;padding:24px;max-width:520px;width:100%;max-height:85vh;overflow-y:auto}
@@ -516,7 +530,7 @@ body.light .ref-card th{background:#edeaff!important;color:#3d2ea6!important}
 .bottom-tabs .bt span{font-size:16px;line-height:1}
 body.light .bottom-tabs{background:#fff!important;border-top-color:#d0d2de!important}
 /* Offline banner */
-#offlineBanner{display:none;position:fixed;top:48px;left:0;width:100%;background:var(--amdim);color:var(--amtx);text-align:center;padding:6px;font-size:11px;font-weight:600;z-index:101}
+#offlineBanner{display:none;position:fixed;top:calc(48px + env(safe-area-inset-top,0px));left:0;width:100%;background:var(--amdim);color:var(--amtx);text-align:center;padding:6px;font-size:11px;font-weight:600;z-index:101}
 /* Animated rings */
 @keyframes ringGrow{from{stroke-dasharray:0 999}to{stroke-dasharray:var(--target) 999}}
 .ring-fg.animate{animation:ringGrow 1.2s ease-out forwards}
@@ -944,7 +958,7 @@ l
 </div>
 
 <!-- ═══ INSTALL BANNER (PWA) ═══ -->
-<div id="installBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:99998;background:linear-gradient(135deg,#7b6cf7,#06b6d4);color:#fff;padding:8px 12px;font-size:12px;text-align:center">
+<div id="installBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:99998;background:linear-gradient(135deg,#7b6cf7,#06b6d4);color:#fff;padding:calc(8px + env(safe-area-inset-top,0px)) 12px 8px;font-size:12px;text-align:center">
   <span id="installMsg">📱 Tap Share → Add to Home Screen for the best experience.</span>
   <button onclick="document.getElementById('installBanner').style.display='none';localStorage.setItem('yInstallDismissed','1')" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:3px 10px;border-radius:4px;cursor:pointer;margin-left:8px;font-size:11px">×</button>
 </div>
