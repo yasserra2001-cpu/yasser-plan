@@ -30,10 +30,22 @@ except ImportError:
     HIJRI_OK = False
 
 try:
-    from gtts import gTTS
+    import edge_tts
+    import asyncio
     TTS_OK = True
+    TTS_ENGINE = 'edge'
 except ImportError:
-    TTS_OK = False
+    try:
+        from gtts import gTTS
+        TTS_OK = True
+        TTS_ENGINE = 'gtts'
+    except ImportError:
+        TTS_OK = False
+        TTS_ENGINE = None
+
+# Egyptian Arabic male voice (most natural for Yasser)
+# Alternatives: ar-EG-SalmaNeural (female), ar-SA-HamedNeural (Saudi male)
+EDGE_VOICE = 'ar-EG-ShakirNeural'
 
 def _env(key, default=None):
     v = os.environ.get(key, default)
@@ -524,15 +536,39 @@ def send_telegram_text(text):
     r.raise_for_status()
 
 
+def _generate_voice_edge(text, output_path):
+    """Generate natural Arabic voice via Microsoft Edge TTS (free)."""
+    async def _run():
+        # rate +5% sounds slightly more natural than default
+        communicate = edge_tts.Communicate(text, EDGE_VOICE, rate='+5%')
+        await communicate.save(output_path)
+    asyncio.run(_run())
+
+
+def _generate_voice_gtts(text, output_path):
+    """Fallback: gTTS (less natural but reliable)."""
+    from gtts import gTTS
+    gTTS(text=text, lang='ar', slow=False).save(output_path)
+
+
 def send_telegram_voice(text):
-    """Generate Arabic TTS via gTTS and send as audio."""
+    """Generate Arabic TTS and send as audio. Prefers Edge TTS (more natural)."""
     if not TTS_OK:
-        print('⚠️ gTTS not installed, skipping voice')
+        print('⚠️ No TTS engine installed, skipping voice')
         return
     try:
         with tempfile.NamedTemporaryFile(suffix='.mp3', delete=False) as f:
             tmppath = f.name
-        gTTS(text=text, lang='ar', slow=False).save(tmppath)
+        if TTS_ENGINE == 'edge':
+            print(f'Generating voice with Edge TTS ({EDGE_VOICE})...')
+            try:
+                _generate_voice_edge(text, tmppath)
+            except Exception as e:
+                print(f'⚠️ Edge TTS failed ({e}), falling back to gTTS')
+                _generate_voice_gtts(text, tmppath)
+        else:
+            print('Generating voice with gTTS (fallback)...')
+            _generate_voice_gtts(text, tmppath)
         with open(tmppath, 'rb') as audio_file:
             r = requests.post(
                 f'https://api.telegram.org/bot{TG_TOKEN}/sendAudio',
