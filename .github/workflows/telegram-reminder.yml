@@ -33,7 +33,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests hijri-converter gtts tzdata
+        run: pip install requests hijri-converter edge-tts gtts tzdata
 
       - name: Send Telegram reminder
         env:
