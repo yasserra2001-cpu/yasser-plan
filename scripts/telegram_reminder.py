@@ -415,30 +415,91 @@ def build_message(state, time_of_day):
 
 
 def build_voice_summary(state, time_of_day):
-    """Short Arabic spoken summary — kept brief so audio is ~15-25 seconds."""
+    """Arabic spoken summary — reads the same data shown in the text message."""
     now = cairo_now()
+    today_key = now.strftime('%Y-%m-%d')
+    meds = (state.get('meds') or {}).get(today_key, {})
+    fasting = (state.get('fasting') or {}).get(today_key, {})
+    health = (state.get('health') or {}).get(f'h_{today_key}', {})
     fast_today = fasting_info_for(now)
+    weight_target = (state.get('weightGoal') or {}).get('target', 74)
+
+    # Today's meal plan
+    day_idx = ['monday', 'tuesday', 'wednesday', 'thursday',
+               'friday', 'saturday', 'sunday'][now.weekday()]
+    plan = (state.get('mealPlan') or {}).get(day_idx)
+    custom = state.get('customFoods') or []
 
     if time_of_day == 'morning':
         v = "صباح الخير يا ياسر. "
-        v += "تذكير بدواء الكاربيمازول خمسة ملج صباحا. "
+        v += "تذكير بدواء الكاربيمازول خمسة ملج صباحا. " if not meds.get('carbAM') else "تم تسجيل الكاربيمازول. "
         if fast_today:
             v += f"اليوم يوم صيام، {fast_today}. "
-        v += "وجبات اليوم: الفطار فول وبيض، الغداء سمك مشوي مع الأرز البني، العشاء شوربة عدس وسلطة. "
-        v += "لا تنس شرب ثمانية أكواب ماء والمشي ثلاثين دقيقة."
+            if not fasting.get('fasted'):
+                v += "لا تنس تسجيل النية. "
+        if plan:
+            # Read meal names from actual plan
+            meal_ar = {'breakfast': 'الفطار', 'lunch': 'الغداء',
+                       'dinner': 'العشاء', 'snack': 'سناك'}
+            for mk in MEAL_KEYS:
+                items = plan.get(mk, [])
+                if not items:
+                    continue
+                names = []
+                for it in items:
+                    f = lookup_food(it.get('id'), custom)
+                    if f:
+                        # Use Arabic-style food name (strip parens)
+                        n = f['n'].split('(')[0].strip()
+                        names.append(n)
+                if names:
+                    v += f"{meal_ar.get(mk, mk)}: {' و '.join(names[:3])}. "
+            dt = day_totals(plan, custom)
+            v += f"إجمالي السعرات حوالي {int(dt['cal'])} سعر. "
+        v += "لا تنس شرب الماء والمشي ثلاثين دقيقة. "
+        v += f"الهدف: {weight_target} كجم بنهاية العام."
         return v
 
     if time_of_day == 'midday':
         v = "منتصف النهار يا ياسر. "
-        v += "راجع عاداتك وأهم ثلاث مهام لليوم. "
-        v += "تأكد من أنك تناولت دواء الكاربيمازول صباحا. "
-        v += "أكمل المشي والعادات المتبقية، وادفع نفسك لإنهاء اليوم بقوة."
+        v += "تذكير بأن الكاربيمازول الصباحي " + ("تم تناوله. " if meds.get('carbAM') else "لم يُسجَّل بعد. ")
+        if fast_today:
+            v += "اليوم يوم صيام. " + ("الصيام مسجل. " if fasting.get('fasted') else "")
+        # Read lunch + dinner from plan
+        if plan:
+            meal_ar = {'lunch': 'الغداء', 'dinner': 'العشاء'}
+            for mk in ['lunch', 'dinner']:
+                items = plan.get(mk, [])
+                if not items:
+                    continue
+                names = []
+                for it in items:
+                    f = lookup_food(it.get('id'), custom)
+                    if f:
+                        names.append(f['n'].split('(')[0].strip())
+                if names:
+                    v += f"{meal_ar[mk]}: {' و '.join(names[:3])}. "
+        water = health.get('water', 0)
+        v += f"شربت {water} من ثمانية أكواب ماء. " if water else "لم يُسجَّل ماء بعد. "
+        v += "اندرال في السادسة مساء. "
+        v += "أكمل المهام والعادات المتبقية بقوة."
         return v
 
     # evening
     v = "مساء الخير يا ياسر. "
-    v += "تذكير بدواء الاندرال عشرة ملج مساء. "
-    v += "راجع إنجاز اليوم: الأدوية، الصلوات، الماء، والمشي. "
+    v += "تذكير بدواء الاندرال عشرة ملج مساء. " if not meds.get('indPM') else "تم تسجيل الاندرال. "
+    v += "مراجعة اليوم: "
+    v += "الكاربيمازول الصباحي " + ("تم. " if meds.get('carbAM') else "فات. ")
+    if fast_today:
+        v += "الصيام " + ("تم. " if fasting.get('fasted') else "لم يُسجَّل. ")
+    water = health.get('water', 0)
+    v += f"الماء {water} أكواب. "
+    exercise = health.get('exercise', 0)
+    if exercise:
+        v += f"المشي {exercise} دقيقة. "
+    if plan:
+        dt = day_totals(plan, custom)
+        v += f"إجمالي السعرات اليوم حوالي {int(dt['cal'])} سعر. "
     tomorrow = now + timedelta(days=1)
     suhoor = fasting_info_for(tomorrow)
     if suhoor:
