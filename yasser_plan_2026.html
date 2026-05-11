@@ -7,7 +7,8 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="theme-color" content="#378ADD">
-<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgMTgwIj48cmVjdCB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgcng9IjQwIiBmaWxsPSIjMGMxMTE3Ii8+PGNpcmNsZSBjeD0iOTAiIGN5PSI3MCIgcj0iMzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM3OEFERCIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHRleHQgeD0iOTAiIHk9IjgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjI4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzM3OEFERCI+MTclPC90ZXh0Pjx0ZXh0IHg9IjkwIiB5PSIxMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM4NDk1YWQiPtiu2LfYqSDZitin2LPYsTwvdGV4dD48dGV4dCB4PSI5MCIgeT0iMTQwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIiBmaWxsPSIjNTU2Mjc1Ij4yMDI2PC90ZXh0PjxjaXJjbGUgY3g9IjE0MCIgY3k9IjQwIiByPSIxMiIgZmlsbD0iI2Y2YWQ1NSIvPjx0ZXh0IHg9IjE0MCIgeT0iNDQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPvCfjq88L3RleHQ+PC9zdmc+">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23378ADD'/><text x='50' y='68' text-anchor='middle' fill='%23ffffff' font-size='38' font-family='sans-serif' font-weight='800'>P26</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%23378ADD'/><text x='90' y='110' text-anchor='middle' fill='%23ffffff' font-size='72' font-family='sans-serif' font-weight='800'>P26</text><text x='90' y='148' text-anchor='middle' fill='%23ffffff' font-size='14' font-family='sans-serif' font-weight='700' letter-spacing='2' opacity='0.9'>YASSER PLAN</text></svg>">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Yasser Plan">
@@ -238,6 +239,16 @@ a{color:var(--ac3);text-decoration:none}
 .sg{margin-bottom:16px}
 .sg label{display:block;font-size:11.5px;font-weight:600;color:var(--tx2);margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px}
 .tg{display:flex;gap:5px}
+/* Compact settings overrides — applied only inside the Settings modal */
+#setMo .mo-b{padding:8px 10px!important}
+#setMo .sg{margin-bottom:5px}
+#setMo .sg label{font-size:9.5px;margin-bottom:2px;letter-spacing:.3px;text-transform:none}
+#setMo .tg{gap:3px}
+#setMo .to{padding:3px 5px;font-size:10px;border-radius:4px}
+#setMo .db{padding:3px 6px;font-size:10px;margin-bottom:0;border-radius:4px;gap:3px}
+#setMo .color-row{gap:4px}
+#setMo .color-row>*{width:18px!important;height:18px!important}
+#setMo #syncCodeDisplay{font-size:9px}
 .to{flex:1;padding:8px;border:1px solid var(--bdr);border-radius:var(--rs);background:0;color:var(--tx2);cursor:pointer;font-size:11.5px;font-family:inherit;text-align:center;transition:.2s}
 .to:hover{background:var(--bg3);color:var(--tx)}
 .to.a{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600;box-shadow:0 2px 8px rgba(55,138,221,.2)}
@@ -588,7 +599,7 @@ a{color:var(--ac3);text-decoration:none}
 </style></head><body>
 <a href="#mainArea" class="skip-link" data-a="تخطي إلى المحتوى" data-e="Skip to content">تخطي إلى المحتوى</a>
 
-<div class="lock-bg" id="lockScreen">
+<div class="lock-bg hidden" id="lockScreen">
   <div class="lock-logo">🎯</div>
   <div class="lock-title" data-a="خطة ياسر 2026" data-e="Yasser Plan 2026">خطة ياسر 2026</div>
   <div class="lock-sub" id="lockMsg" data-a="أدخل رمز PIN" data-e="Enter PIN">أدخل رمز PIN</div>
@@ -605,7 +616,7 @@ a{color:var(--ac3);text-decoration:none}
   <div style="margin-top:16px"><button onclick="if(confirm('سيتم حذف كل البيانات. متأكد؟')){localStorage.clear();location.reload();}" style="background:none;border:none;color:var(--tx3);font-size:11px;cursor:pointer;font-family:inherit;text-decoration:underline">نسيت رمز PIN؟</button></div>
 </div>
 
-<div id="appWrap" style="display:none">
+<div id="appWrap">
 <nav class="topnav" role="navigation">
   <div class="tn-logo">🎯 <span class="tn-name" data-a="خطة ياسر" data-e="Yasser Plan">خطة ياسر</span></div>
   <div class="tn-tabs">
@@ -878,6 +889,64 @@ a{color:var(--ac3);text-decoration:none}
       <div class="widget w-accent-orange"><div class="w-head">🏃 <span data-a="التمرين" data-e="Exercise">التمرين</span></div><div class="w-body"><div style="display:flex;align-items:center;gap:8px"><input type="number" class="inp" id="exerciseInp" min="0" style="width:80px"><span style="font-size:12px;color:var(--tx2)" data-a="دقيقة / 30" data-e="min / 30">دقيقة / 30</span></div><div class="pb" style="margin-top:6px"><div class="pf or" id="exBar"></div></div></div></div>
       <div class="widget w-accent-red"><div class="w-head">⚖️ <span data-a="الوزن" data-e="Weight">الوزن</span></div><div class="w-body"><div style="display:flex;align-items:center;gap:8px"><input type="number" class="inp" id="weightInp" min="30" max="200" step="0.1" style="width:80px"><span style="font-size:12px;color:var(--tx2)">kg</span><span id="weightDelta" style="font-size:11px"></span></div></div></div>
       <div class="widget w-accent-teal"><div class="w-head">😊 <span data-a="المزاج" data-e="Mood">المزاج</span></div><div class="w-body"><div style="display:flex;gap:8px" id="healthMoodRow"><span class="tab" onclick="setHealthMood(1)">😢</span><span class="tab" onclick="setHealthMood(2)">😐</span><span class="tab" onclick="setHealthMood(3)">🙂</span><span class="tab" onclick="setHealthMood(4)">😊</span><span class="tab" onclick="setHealthMood(5)">🤩</span></div></div></div>
+
+      <!-- ═══ NEW: FASTING TRACKER ═══ -->
+      <div class="widget w-accent-purple"><div class="w-head">🌙 <span data-a="صيام السنة" data-e="Sunnah Fasting">صيام السنة</span></div><div class="w-body">
+        <div id="fastingTodayInfo" style="font-size:11px;color:var(--tx2);margin-bottom:6px"></div>
+        <button id="fastingBtn" class="ab2" onclick="toggleFasted()" style="width:100%;font-size:11px"></button>
+        <div id="fastingStats" style="font-size:10px;color:var(--tx3);margin-top:6px"></div>
+      </div></div>
+
+      <!-- ═══ NEW: MORNING MED ═══ -->
+      <div class="widget w-accent-orange"><div class="w-head">☀️ <span data-a="دواء الصباح" data-e="Morning Med">دواء الصباح</span></div><div class="w-body">
+        <div style="font-size:12px;font-weight:600;margin-bottom:4px" data-a="كاربيمازول 5 ملج" data-e="Carbimazole 5mg">كاربيمازول 5 ملج</div>
+        <button id="medAMBtn" class="ab2" onclick="toggleMed('AM')" style="width:100%;font-size:11px"></button>
+        <div id="medAMStats" style="font-size:10px;color:var(--tx3);margin-top:6px"></div>
+      </div></div>
+
+      <!-- ═══ NEW: EVENING MED ═══ -->
+      <div class="widget w-accent-blue"><div class="w-head">🌃 <span data-a="دواء المساء" data-e="Evening Med">دواء المساء</span></div><div class="w-body">
+        <div style="font-size:12px;font-weight:600;margin-bottom:4px" data-a="اندرال 10 ملج" data-e="Inderal 10mg">اندرال 10 ملج</div>
+        <button id="medPMBtn" class="ab2" onclick="toggleMed('PM')" style="width:100%;font-size:11px"></button>
+        <div id="medPMStats" style="font-size:10px;color:var(--tx3);margin-top:6px"></div>
+      </div></div>
+
+      <!-- ═══ NEW: WEIGHT GOAL ═══ -->
+      <div class="widget w-accent-green"><div class="w-head">🎯 <span data-a="هدف الوزن" data-e="Weight Goal">هدف الوزن</span></div><div class="w-body">
+        <div style="font-size:11px;color:var(--tx2);margin-bottom:4px">من <b id="wgStart">82</b> → <b id="wgTarget">74</b> كجم</div>
+        <div class="pb"><div class="pf gn" id="wgBar" style="width:0%"></div></div>
+        <div id="wgStatus" style="font-size:11px;color:var(--tx2);margin-top:6px"></div>
+      </div></div>
+
+      <!-- ═══ NEW: MEAL PLAN ═══ -->
+      <div class="widget w-accent-green" style="grid-column:span 2"><div class="w-head">🍽️ <span data-a="خطة الوجبات اليوم" data-e="Today's Meals">خطة الوجبات اليوم</span></div><div class="w-body">
+        <div id="mpTodaySummary" style="font-size:11px;margin-bottom:6px"></div>
+        <div class="pb"><div class="pf gn" id="mpProgBar" style="width:0%"></div></div>
+        <div id="mpAdvice" style="font-size:11px;margin-top:6px;padding:6px 8px;background:var(--bg2);border-radius:6px;color:var(--tx2)"></div>
+        <button class="ab2 primary" onclick="openMealPlanner()" style="width:100%;margin-top:8px;font-size:11px" data-a="📝 افتح محرر الخطة الأسبوعية" data-e="📝 Open weekly meal plan editor">📝 افتح محرر الخطة الأسبوعية</button>
+      </div></div>
+
+      <!-- ═══ NEW: DST / TIMEZONE OVERRIDE ═══ -->
+      <div class="widget w-accent-orange"><div class="w-head">⏰ <span data-a="التوقيت الصيفي" data-e="DST">التوقيت الصيفي</span></div><div class="w-body">
+        <div style="font-size:10px;color:var(--tx3);margin-bottom:4px" data-a="يحدد توقيت إرسال رسائل Telegram" data-e="Determines Telegram send timing">يحدد توقيت إرسال رسائل Telegram</div>
+        <select id="dstSel" onchange="setDST(this.value)" style="width:100%;padding:6px 8px;background:var(--bg2);border:1px solid var(--bdr);border-radius:6px;color:var(--tx);font-size:11px;font-family:inherit">
+          <option value="auto" data-a="تلقائي (يتبع نظام مصر)" data-e="Auto (follow Egypt system)">تلقائي (يتبع نظام مصر)</option>
+          <option value="on" data-a="مفعّل (UTC+3)" data-e="On (UTC+3)">مفعّل (UTC+3)</option>
+          <option value="off" data-a="معطّل (UTC+2)" data-e="Off (UTC+2)">معطّل (UTC+2)</option>
+        </select>
+        <div id="dstNow" style="font-size:10px;color:var(--tx3);margin-top:6px"></div>
+      </div></div>
+
+      <!-- ═══ NEW: TELEGRAM PREVIEW ═══ -->
+      <div class="widget w-accent-green" style="grid-column:span 2"><div class="w-head">📨 <span data-a="رسالة Telegram اليوم" data-e="Today's Telegram Reminder">رسالة Telegram اليوم</span></div><div class="w-body">
+        <div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap">
+          <button class="ab2" onclick="showWAPreview('morning')" style="font-size:11px" data-a="🌅 الصباح" data-e="🌅 Morning">🌅 الصباح</button>
+          <button class="ab2" onclick="showWAPreview('midday')" style="font-size:11px" data-a="☀️ منتصف اليوم" data-e="☀️ Midday">☀️ منتصف اليوم</button>
+          <button class="ab2" onclick="showWAPreview('evening')" style="font-size:11px" data-a="🌙 المساء" data-e="🌙 Evening">🌙 المساء</button>
+          <button class="ab2 primary" onclick="sendWANow()" style="font-size:11px" data-a="📱 إرسال الآن" data-e="📱 Send now">📱 إرسال الآن</button>
+        </div>
+        <pre id="waPreview" style="background:var(--bg2);padding:10px;border-radius:6px;font-size:11px;line-height:1.6;max-height:280px;overflow-y:auto;white-space:pre-wrap;font-family:inherit;color:var(--tx);margin:0" data-a="اضغط 🌅 أو 🌙 لمعاينة رسالة اليوم" data-e="Tap 🌅 or 🌙 to preview today's message">اضغط 🌅 أو 🌙 لمعاينة رسالة اليوم</pre>
+      </div></div>
     </div>
     <button class="ab2 primary" style="width:100%;margin-top:10px" onclick="saveHealth()">💾 <span data-a="حفظ بيانات الصحة" data-e="Save Health Data">حفظ بيانات الصحة</span></button>
   </div>
@@ -977,69 +1046,72 @@ a{color:var(--ac3);text-decoration:none}
 
 <!-- SETTINGS MODAL -->
 <div class="mo-bg" id="setMo">
-<div class="mo" style="max-width:800px;max-height:92vh">
-  <div class="mo-h"><span class="mo-t">⚙️ <span data-a="الإعدادات" data-e="Settings">الإعدادات</span></span><button class="mo-x" id="xSet" title="إغلاق / Close">✕</button></div>
-  <div class="mo-b" style="padding:20px 24px">
-    
-    <!-- SECTION 1: APPEARANCE -->
-    <div style="font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px;color:var(--ac3)"><span style="width:24px;height:24px;border-radius:6px;background:rgba(55,138,221,.1);display:flex;align-items:center;justify-content:center;font-size:12px">🎨</span> <span data-a="المظهر والعرض" data-e="Appearance">المظهر والعرض</span></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:18px">
-      <div class="sg"><label data-a="المظهر" data-e="Theme">المظهر</label><div class="tg"><button class="to a" data-s="theme" data-v="dark" data-a="داكن" data-e="Dark">🌙 داكن</button><button class="to" data-s="theme" data-v="light" data-a="فاتح" data-e="Light">☀️ فاتح</button></div></div>
-      <div class="sg"><label data-a="اللغة" data-e="Language">اللغة</label><div class="tg"><button class="to a" data-s="lang" data-v="ar">العربية</button><button class="to" data-s="lang" data-v="en">English</button></div></div>
-      <div class="sg"><label data-a="الخط" data-e="Font Size">الخط</label><div class="tg"><button class="to" data-s="fontsize" data-v="S">S</button><button class="to a" data-s="fontsize" data-v="M">M</button><button class="to" data-s="fontsize" data-v="L">L</button><button class="to" data-s="fontsize" data-v="XL">XL</button></div></div>
-    </div>
-    <div class="sg" style="margin-bottom:18px"><label data-a="اللون المميز" data-e="Accent Color">اللون المميز</label><div class="color-row" id="colorRow"></div></div>
-    
-    <div style="height:1px;background:var(--bdr);margin-bottom:16px"></div>
-    
-    <!-- SECTION 2: NOTIFICATIONS & SECURITY -->
-    <div style="font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px;color:var(--or)"><span style="width:24px;height:24px;border-radius:6px;background:rgba(246,173,85,.1);display:flex;align-items:center;justify-content:center;font-size:12px">🔔</span> <span data-a="الإشعارات والأمان" data-e="Alerts & Security">الإشعارات والأمان</span></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px">
-      <div class="sg"><label data-a="الإشعارات" data-e="Notifications">الإشعارات</label><div class="tg"><button class="to" data-s="notif" data-v="on" data-a="تشغيل" data-e="On">✅ تشغيل</button><button class="to a" data-s="notif" data-v="off" data-a="إيقاف" data-e="Off">❌ إيقاف</button></div></div>
-      <div class="sg"><label data-a="رمز PIN" data-e="PIN Lock">رمز PIN</label><button class="db" id="changePin" title="تغيير أو إنشاء رمز PIN جديد / Change or set new PIN">🔒 <span data-a="تغيير رمز PIN" data-e="Change PIN">تغيير PIN</span></button></div>
-    </div>
-    
-    <div style="height:1px;background:var(--bdr);margin-bottom:16px"></div>
-    
-    <!-- SECTION 3: DATA MANAGEMENT -->
-    <div style="font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px;color:var(--gn)"><span style="width:24px;height:24px;border-radius:6px;background:rgba(72,187,120,.1);display:flex;align-items:center;justify-content:center;font-size:12px">📦</span> <span data-a="إدارة البيانات" data-e="Data Management">إدارة البيانات</span></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px">
-      <div style="text-align:center"><div style="font-size:9px;color:var(--tx3);margin-bottom:4px" data-a="تصدير" data-e="Export">تصدير</div>
-        <button class="db" id="expJ" style="justify-content:center" title="تصدير كل البيانات كملف JSON / Export all data as JSON">💾 JSON</button>
-        <button class="db" id="expPdfReport" style="justify-content:center" title="تصدير تقرير شهري كـ PDF / Export monthly report as PDF">📄 PDF</button>
-        <button class="db" id="expSnapshot" style="justify-content:center" title="إنشاء صورة مشاركة / Generate shareable image">📸 PNG</button>
-      </div>
-      <div style="text-align:center"><div style="font-size:9px;color:var(--tx3);margin-bottom:4px" data-a="استيراد" data-e="Import">استيراد</div>
-        <button class="db" onclick="document.getElementById('impF').click()" style="justify-content:center" title="استيراد بيانات من ملف JSON / Import data from JSON file">📂 JSON</button><input type="file" id="impF" style="display:none" accept=".json">
-        <button class="db" onclick="document.getElementById('xlsF').click()" style="justify-content:center" title="تحديث البيانات من ملف Excel الأصلي / Sync from original Excel file">📊 Excel</button><input type="file" id="xlsF" style="display:none" accept=".xlsx,.xls">
-      </div>
-      <div style="text-align:center"><div style="font-size:9px;color:var(--tx3);margin-bottom:4px" data-a="خطر" data-e="Danger">خطر</div>
-        <button class="db dg" id="rstD" style="justify-content:center">🗑️ <span data-a="مسح كل البيانات" data-e="Reset All Data">مسح الكل</span></button>
+<div class="mo" style="max-width:1200px;max-height:94vh;width:min(98vw,1200px)">
+  <div class="mo-h" style="background:linear-gradient(135deg,rgba(55,138,221,.12),transparent);padding:14px 22px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:36px;height:36px;border-radius:10px;background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff">⚙️</div>
+      <div>
+        <div class="mo-t" style="font-size:16px;font-weight:700"><span data-a="الإعدادات" data-e="Settings">الإعدادات</span></div>
+        <div style="font-size:10px;color:var(--tx3)" data-a="تخصيص تجربتك" data-e="Customize your experience">تخصيص تجربتك</div>
       </div>
     </div>
-    
+    <button class="mo-x" id="xSet" title="إغلاق / Close" style="width:32px;height:32px;font-size:16px">✕</button>
   </div>
+  <div class="mo-b" style="padding:12px 14px">
+    <!-- Compact 3-column layout with vertical dividers -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
 
-    <div style="height:1px;background:var(--bdr);margin-bottom:16px"></div>
-    <!-- SECTION 4: SYNC -->
-    <div style="font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px;color:var(--ac3)"><span style="width:24px;height:24px;border-radius:6px;background:rgba(55,138,221,.1);display:flex;align-items:center;justify-content:center;font-size:12px">🔄</span> <span data-a="المزامنة بين الأجهزة" data-e="Cross-Device Sync">المزامنة</span></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px">
-      <button class="db" onclick="quickExport()" title="تصدير سريع بتاريخ تلقائي / Quick export with auto date" style="justify-content:center">💾 <span data-a="تصدير سريع" data-e="Quick Export">تصدير سريع</span></button>
-      <button class="db" onclick="document.getElementById('syncImpF').click()" title="استيراد من ملف / Import from file" style="justify-content:center">📂 <span data-a="استيراد" data-e="Import">استيراد</span></button><input type="file" id="syncImpF" style="display:none" accept=".json" onchange="quickImport(this.files[0])">
-      <button class="db" onclick="copySync()" title="نسخ البيانات / Copy data" style="justify-content:center">📋 <span data-a="نسخ" data-e="Copy">نسخ</span></button>
-      <button class="db" onclick="pasteSync()" title="لصق بيانات / Paste data" style="justify-content:center">📥 <span data-a="لصق" data-e="Paste">لصق</span></button>
+      <!-- ═══ COLUMN 1: APPEARANCE ═══ -->
+      <div style="padding:0 14px;border-right:1px solid var(--bdr)">
+        <div style="font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;color:var(--ac3);padding-bottom:6px;border-bottom:2px solid rgba(55,138,221,.18)"><span style="width:24px;height:24px;border-radius:6px;background:rgba(55,138,221,.18);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0">🎨</span> <span data-a="المظهر" data-e="Appearance">المظهر والعرض</span></div>
+        <div class="sg" style="margin-bottom:8px"><label data-a="المظهر" data-e="Theme">🌗 المظهر</label><div class="tg"><button class="to a" data-s="theme" data-v="dark" data-a="داكن" data-e="Dark">🌙</button><button class="to" data-s="theme" data-v="light" data-a="فاتح" data-e="Light">☀️</button></div></div>
+        <div class="sg" style="margin-bottom:8px"><label data-a="اللغة" data-e="Language">🌐 اللغة</label><div class="tg"><button class="to a" data-s="lang" data-v="ar">عربي</button><button class="to" data-s="lang" data-v="en">EN</button></div></div>
+        <div class="sg" style="margin-bottom:8px"><label data-a="الخط" data-e="Font">🔤 الخط</label><div class="tg"><button class="to" data-s="fontsize" data-v="S">S</button><button class="to a" data-s="fontsize" data-v="M">M</button><button class="to" data-s="fontsize" data-v="L">L</button><button class="to" data-s="fontsize" data-v="XL">XL</button></div></div>
+        <div class="sg" style="margin-bottom:8px"><label data-a="اللون" data-e="Accent">🎨 اللون المميز</label><div class="color-row" id="colorRow"></div></div>
+      </div>
+
+      <!-- ═══ COLUMN 2: ALERTS & SECURITY ═══ -->
+      <div style="padding:0 14px;border-right:1px solid var(--bdr)">
+        <div style="font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;color:#f6ad55;padding-bottom:6px;border-bottom:2px solid rgba(246,173,85,.18)"><span style="width:24px;height:24px;border-radius:6px;background:rgba(246,173,85,.18);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0">🔔</span> <span data-a="الإشعارات والأمان" data-e="Alerts & Security">الإشعارات والأمان</span></div>
+        <div class="sg" style="margin-bottom:8px"><label data-a="الإشعارات" data-e="Notifications">📢 الإشعارات</label><div class="tg"><button class="to" data-s="notif" data-v="on" data-a="تشغيل" data-e="On">✅</button><button class="to a" data-s="notif" data-v="off" data-a="إيقاف" data-e="Off">❌</button></div></div>
+        <div class="sg" style="margin-bottom:8px"><label data-a="رمز PIN" data-e="PIN">🔒 رمز PIN</label><button class="db" id="changePin" title="تغيير أو إنشاء رمز PIN جديد" style="width:100%;justify-content:center;padding:5px 10px">🔒 <span data-a="تغيير" data-e="Change">تغيير PIN</span></button></div>
+        <div id="soundSettingsAnchor"></div>
+      </div>
+
+      <!-- ═══ COLUMN 3: DATA & SYNC (two sub-sections) ═══ -->
+      <div style="padding:0 14px">
+        <!-- Sub-section A: Data -->
+        <div style="font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;color:var(--gn);padding-bottom:6px;border-bottom:2px solid rgba(72,187,120,.18)"><span style="width:24px;height:24px;border-radius:6px;background:rgba(72,187,120,.18);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0">💾</span> <span data-a="البيانات" data-e="Data">إدارة البيانات</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:10px">
+          <button class="db" id="expJ" style="justify-content:center;padding:5px 8px;font-size:11px" title="تصدير JSON">💾 JSON</button>
+          <button class="db" onclick="document.getElementById('impF').click()" style="justify-content:center;padding:5px 8px;font-size:11px" title="استيراد JSON">📂 <span data-a="استيراد" data-e="Import">استيراد</span></button><input type="file" id="impF" style="display:none" accept=".json">
+          <button class="db" id="expPdfReport" style="justify-content:center;padding:5px 8px;font-size:11px" title="تقرير PDF">📄 PDF</button>
+          <button class="db" id="expSnapshot" style="justify-content:center;padding:5px 8px;font-size:11px" title="صورة">📸 PNG</button>
+          <button class="db" onclick="document.getElementById('xlsF').click()" style="justify-content:center;padding:5px 8px;font-size:11px" title="Excel">📊 Excel</button><input type="file" id="xlsF" style="display:none" accept=".xlsx,.xls">
+          <button class="db dg" id="rstD" style="justify-content:center;padding:5px 8px;font-size:11px">🗑️ <span data-a="مسح" data-e="Reset">مسح</span></button>
+        </div>
+
+        <!-- Sub-section divider -->
+        <div style="height:1px;background:var(--bdr);margin:10px 0"></div>
+
+        <!-- Sub-section B: Sync -->
+        <div style="font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;color:var(--ac3);padding-bottom:6px;border-bottom:2px solid rgba(55,138,221,.18)"><span style="width:24px;height:24px;border-radius:6px;background:rgba(55,138,221,.18);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0">☁️</span> <span data-a="المزامنة" data-e="Sync">المزامنة بين الأجهزة</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+          <button class="db" onclick="quickExport()" style="justify-content:center;padding:5px 8px;font-size:11px">💾 <span data-a="سريع" data-e="Quick">سريع</span></button>
+          <button class="db" onclick="document.getElementById('syncImpF').click()" style="justify-content:center;padding:5px 8px;font-size:11px">📂 <span data-a="استيراد" data-e="Import">استيراد</span></button><input type="file" id="syncImpF" style="display:none" accept=".json" onchange="quickImport(this.files[0])">
+          <button class="db" onclick="copySync()" style="justify-content:center;padding:5px 8px;font-size:11px">📋 <span data-a="نسخ" data-e="Copy">نسخ</span></button>
+          <button class="db" onclick="pasteSync()" style="justify-content:center;padding:5px 8px;font-size:11px">📥 <span data-a="لصق" data-e="Paste">لصق</span></button>
+          <button class="db" onclick="cloudPush()" style="justify-content:center;padding:5px 8px;font-size:11px;background:rgba(55,138,221,.08);border-color:rgba(55,138,221,.25);color:var(--ac3)">📤 <span data-a="إرسال" data-e="Send">إرسال</span></button>
+          <button class="db" onclick="cloudPull()" style="justify-content:center;padding:5px 8px;font-size:11px;background:rgba(72,187,120,.08);border-color:rgba(72,187,120,.25);color:var(--gn)">📥 <span data-a="استقبال" data-e="Receive">استقبال</span></button>
+          <button class="db" onclick="textSync()" style="justify-content:center;padding:5px 8px;font-size:11px">📋 <span data-a="نص" data-e="Text">نص</span></button>
+          <button class="db" onclick="textPull()" style="justify-content:center;padding:5px 8px;font-size:11px">📥 <span data-a="لصق نص" data-e="Paste Text">لصق نص</span></button>
+        </div>
+        <div id="syncCodeDisplay" style="margin-top:6px"></div>
+      </div>
+
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">
-      <button class="db" onclick="cloudPush()" title="مشاركة / إرسال الملف / Share sync file" style="justify-content:center;background:rgba(55,138,221,.08);border-color:rgba(55,138,221,.2);color:var(--ac3)">📤 <span data-a="إرسال (AirDrop/بريد)" data-e="Send (AirDrop/Email)">إرسال</span></button>
-      <button class="db" onclick="cloudPull()" title="استقبال ملف المزامنة / Receive sync file" style="justify-content:center;background:rgba(72,187,120,.08);border-color:rgba(72,187,120,.2);color:var(--gn)">📥 <span data-a="استقبال ملف" data-e="Receive File">استقبال</span></button>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px">
-      <button class="db" onclick="textSync()" title="نسخ كل البيانات كنص / Copy all data as text" style="justify-content:center">📋 <span data-a="نسخ نصي" data-e="Copy as Text">نسخ نصي</span></button>
-      <button class="db" onclick="textPull()" title="لصق بيانات منسوخة / Paste copied data" style="justify-content:center">📥 <span data-a="لصق نصي" data-e="Paste Text">لصق نصي</span></button>
-    </div>
-    <div id="syncCodeDisplay"></div>
   </div>
-  <div class="mo-f"><span>Yasser Plan 2026 • v3.2 • 580 KB</span><span>© 2026 Yasser</span></div>
+  <div class="mo-f"><span>Yasser Plan 2026 • v3.2</span><span>© 2026 Yasser</span></div>
 </div></div>
 
 <!-- BADGE GALLERY MODAL -->
@@ -1048,6 +1120,52 @@ a{color:var(--ac3);text-decoration:none}
   <div class="mo-h"><span class="mo-t" data-a="الإنجازات" data-e="Achievements">الإنجازات</span><button class="mo-x" id="xBdg" title="إغلاق / Close">✕</button></div>
   <div class="mo-b"><div class="gauto" id="bdgGrid"></div></div>
 </div></div>
+
+<!-- ═══ MEAL PLANNER MODAL ═══ -->
+<div id="mealPlannerModal" onclick="if(event.target===this)closeMealPlanner()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9998;align-items:center;justify-content:center;padding:12px">
+<div style="background:var(--bg);border:1px solid var(--bdr);border-radius:14px;width:min(98vw,1100px);max-height:96vh;overflow:hidden;display:flex;flex-direction:column">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--bdr);background:var(--bg2)">
+<span style="font-size:15px;font-weight:700" data-a="🍽️ محرر خطة الوجبات الأسبوعية" data-e="🍽️ Weekly Meal Plan Editor">🍽️ محرر خطة الوجبات الأسبوعية</span>
+<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+<button onclick="exportMealPlanPDF()" title="تصدير الخطة الأسبوعية PDF" style="padding:5px 10px;background:linear-gradient(135deg,#7b6cf7,#06b6d4);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600;font-family:inherit">📄 <span data-a="خطة PDF" data-e="Plan PDF">خطة PDF</span></button>
+<button onclick="exportShoppingPDF()" title="تصدير قائمة التسوق بأسعار السوق المصري" style="padding:5px 10px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600;font-family:inherit">🛒 <span data-a="قائمة تسوق PDF" data-e="Shopping PDF">قائمة تسوق PDF</span></button>
+<span style="font-size:11px;color:var(--tx2);margin-right:6px" data-a="هدف يومي:" data-e="Daily goal:">هدف يومي:</span>
+<input id="mpCalGoal" type="number" min="800" max="4000" step="50" onchange="setCalorieGoal(this.value)" style="width:60px;padding:4px 6px;background:var(--bg2);border:1px solid var(--bdr);border-radius:6px;color:var(--tx);font-size:11px">
+<span style="font-size:11px;color:var(--tx2)" data-a="سعر" data-e="cal">سعر</span>
+<button onclick="closeMealPlanner()" style="width:28px;height:28px;border-radius:50%;background:var(--bg2);border:1px solid var(--bdr);cursor:pointer;font-size:14px;color:var(--tx)">×</button>
+</div>
+</div>
+<div style="display:flex;flex:1;overflow:hidden">
+<div style="flex:1.6;padding:14px 18px;overflow-y:auto;border-right:1px solid var(--bdr)">
+<div id="mpDayTabs" style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px"></div>
+<div id="mpDayContent"></div>
+<div id="mpDaySummary" style="margin-top:14px;padding:12px;background:var(--bg2);border-radius:8px"></div>
+</div>
+<div style="flex:1;padding:14px 18px;overflow-y:auto;background:var(--bg2)">
+<div style="font-size:13px;font-weight:700;margin-bottom:8px" data-a="🗂️ بنك الأطعمة (الطيبات)" data-e="🗂️ Food Bank (Tayyibat)">🗂️ بنك الأطعمة (الطيبات)</div>
+<input id="mpFoodSearch" type="text" data-a-placeholder="بحث..." data-e-placeholder="Search..." placeholder="بحث..." oninput="renderFoodBank()" style="width:100%;padding:6px 10px;background:var(--bg);border:1px solid var(--bdr);border-radius:6px;color:var(--tx);font-size:11px;margin-bottom:10px">
+<div id="mpFoodBank"></div>
+<div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--bdr)">
+<button class="ab2" onclick="addCustomFood()" style="width:100%;font-size:11px" data-a="+ أضف صنف جديد" data-e="+ Add new food item">+ أضف صنف جديد</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ═══ ADD ITEM TO MEAL PROMPT (small modal) ═══ -->
+<div id="mpQtyModal" onclick="if(event.target===this)this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;align-items:center;justify-content:center">
+<div style="background:var(--bg);border:1px solid var(--bdr);border-radius:12px;padding:16px;width:min(90vw,340px)">
+<div style="font-size:13px;font-weight:700;margin-bottom:8px" id="mpQtyTitle" data-a="الكمية" data-e="Quantity">الكمية</div>
+<div style="font-size:11px;color:var(--tx2);margin-bottom:8px" id="mpQtyHint"></div>
+<input id="mpQtyInput" type="number" min="0" step="0.5" style="width:100%;padding:8px 10px;background:var(--bg2);border:1px solid var(--bdr);border-radius:6px;color:var(--tx);font-size:13px;margin-bottom:10px">
+<div style="font-size:11px;color:var(--tx2);margin-bottom:10px" id="mpQtyPreview"></div>
+<div style="display:flex;gap:6px">
+<button class="ab2" onclick="document.getElementById('mpQtyModal').style.display='none'" style="flex:1;font-size:11px" data-a="إلغاء" data-e="Cancel">إلغاء</button>
+<button class="ab2 primary" id="mpQtyConfirm" style="flex:1;font-size:11px" data-a="تأكيد" data-e="Confirm">تأكيد</button>
+</div>
+</div>
+</div>
 
 <!-- TOAST -->
 <div class="toast" id="toast"><span id="toastIcon"></span><span id="toastMsg"></span></div>
@@ -1099,7 +1217,232 @@ const SUGGESTIONS={
 
 // === STATE ===
 const LK='yp26v3';
-let S={theme:'dark',lang:'ar',fontsize:'M',notif:'off',accent:'#378ADD',pin:null,autoLock:15,hd:{},cd:{},todos:[],badges:[],lastActive:Date.now()};
+let S={theme:'dark',lang:'ar',fontsize:'M',notif:'off',accent:'#378ADD',pin:null,autoLock:15,hd:{},cd:{},todos:[],badges:[],lastActive:Date.now(),fasting:{},meds:{},weightGoal:{start:82,target:74,startDate:'2026-05-11',deadline:'2026-12-31'},dstOverride:'auto',calorieGoal:2000,mealPlan:null,customFoods:[]};
+
+// ═══════════ FOOD DATABASE (Tayyibat) — bilingual ═══════════
+// Calories per 100g unless 'unit' specified. p=protein g, c=carbs g, f=fat g
+// Each item: n={ar,en} (name), unit={ar,en}
+const FOOD_DB={
+  proteins:[
+    {id:'fish_grilled',n:{ar:'سمك مشوي',en:'Grilled fish'},cal:150,p:25,c:0,f:5,unit:{ar:'100ج',en:'100g'}},
+    {id:'chicken_grilled',n:{ar:'فراخ مشوية (صدر)',en:'Grilled chicken (breast)'},cal:165,p:31,c:0,f:3.6,unit:{ar:'100ج',en:'100g'}},
+    {id:'lamb_grilled',n:{ar:'لحم ضاني مشوي',en:'Grilled lamb'},cal:250,p:25,c:0,f:16,unit:{ar:'100ج',en:'100g'}},
+    {id:'egg_boiled',n:{ar:'بيض مسلوق',en:'Boiled egg'},cal:78,p:6,c:0.6,f:5,unit:{ar:'حبة',en:'piece'}},
+    {id:'tuna',n:{ar:'تونة',en:'Tuna'},cal:130,p:28,c:0,f:1,unit:{ar:'100ج',en:'100g'}},
+    {id:'shrimp',n:{ar:'جمبري',en:'Shrimp'},cal:99,p:24,c:0.2,f:0.3,unit:{ar:'100ج',en:'100g'}},
+    {id:'kebab',n:{ar:'كباب لحم',en:'Kebab'},cal:220,p:22,c:2,f:14,unit:{ar:'100ج',en:'100g'}},
+    {id:'kofta',n:{ar:'كفتة',en:'Kofta'},cal:200,p:18,c:3,f:13,unit:{ar:'100ج',en:'100g'}}
+  ],
+  legumes:[
+    {id:'foul',n:{ar:'فول مدمس',en:'Foul medames (fava beans)'},cal:110,p:8,c:19,f:0.4,unit:{ar:'100ج',en:'100g'}},
+    {id:'lentils',n:{ar:'عدس مطبوخ',en:'Cooked lentils'},cal:116,p:9,c:20,f:0.4,unit:{ar:'100ج',en:'100g'}},
+    {id:'chickpeas',n:{ar:'حمص مطبوخ',en:'Cooked chickpeas'},cal:164,p:9,c:27,f:2.6,unit:{ar:'100ج',en:'100g'}},
+    {id:'beans',n:{ar:'فاصولياء',en:'Beans'},cal:130,p:9,c:24,f:0.5,unit:{ar:'100ج',en:'100g'}}
+  ],
+  carbs:[
+    {id:'brown_rice',n:{ar:'أرز بني مطبوخ',en:'Cooked brown rice'},cal:112,p:2.6,c:23,f:0.9,unit:{ar:'100ج',en:'100g'}},
+    {id:'bulgur',n:{ar:'برغل مطبوخ',en:'Cooked bulgur'},cal:83,p:3,c:19,f:0.2,unit:{ar:'100ج',en:'100g'}},
+    {id:'oats',n:{ar:'شوفان (جاف)',en:'Oats (dry)'},cal:389,p:17,c:66,f:7,unit:{ar:'100ج',en:'100g'}},
+    {id:'bread_baladi',n:{ar:'خبز بلدي',en:'Whole wheat bread'},cal:80,p:4,c:15,f:1,unit:{ar:'شريحة',en:'slice'}},
+    {id:'sweet_potato',n:{ar:'بطاطا حلوة مشوية',en:'Baked sweet potato'},cal:90,p:2,c:21,f:0.2,unit:{ar:'100ج',en:'100g'}},
+    {id:'pasta_whole',n:{ar:'مكرونة قمح كامل',en:'Whole wheat pasta'},cal:124,p:5,c:26,f:0.7,unit:{ar:'100ج',en:'100g'}}
+  ],
+  vegetables:[
+    {id:'salad_green',n:{ar:'سلطة خضراء',en:'Green salad'},cal:20,p:1,c:4,f:0.2,unit:{ar:'100ج',en:'100g'}},
+    {id:'cucumber',n:{ar:'خيار',en:'Cucumber'},cal:16,p:0.7,c:3.6,f:0.1,unit:{ar:'100ج',en:'100g'}},
+    {id:'tomato',n:{ar:'طماطم',en:'Tomato'},cal:18,p:0.9,c:3.9,f:0.2,unit:{ar:'100ج',en:'100g'}},
+    {id:'arugula',n:{ar:'جرجير',en:'Arugula'},cal:25,p:2.6,c:3.7,f:0.7,unit:{ar:'100ج',en:'100g'}},
+    {id:'mixed_veg',n:{ar:'خضار مشكل مطبوخ',en:'Cooked mixed vegetables'},cal:50,p:3,c:10,f:0.5,unit:{ar:'100ج',en:'100g'}},
+    {id:'carrot',n:{ar:'جزر',en:'Carrot'},cal:41,p:0.9,c:10,f:0.2,unit:{ar:'100ج',en:'100g'}},
+    {id:'mahshi',n:{ar:'محشي ورق عنب',en:'Stuffed grape leaves'},cal:170,p:3,c:30,f:5,unit:{ar:'100ج',en:'100g'}}
+  ],
+  fruits:[
+    {id:'apple',n:{ar:'تفاح',en:'Apple'},cal:78,p:0.5,c:21,f:0.3,unit:{ar:'حبة 150ج',en:'piece 150g'}},
+    {id:'banana',n:{ar:'موز',en:'Banana'},cal:107,p:1.3,c:27,f:0.4,unit:{ar:'حبة 120ج',en:'piece 120g'}},
+    {id:'orange',n:{ar:'برتقال',en:'Orange'},cal:70,p:1.4,c:18,f:0.2,unit:{ar:'حبة 150ج',en:'piece 150g'}},
+    {id:'pomegranate',n:{ar:'رمان (نصف)',en:'Pomegranate (half)'},cal:125,p:2.5,c:30,f:1.7,unit:{ar:'نصف 150ج',en:'half 150g'}},
+    {id:'date',n:{ar:'تمر',en:'Date'},cal:28,p:0.3,c:7,f:0.04,unit:{ar:'تمرة 10ج',en:'date 10g'}},
+    {id:'grapes',n:{ar:'عنب',en:'Grapes'},cal:67,p:0.6,c:17,f:0.4,unit:{ar:'100ج',en:'100g'}},
+    {id:'watermelon',n:{ar:'بطيخ',en:'Watermelon'},cal:90,p:1.8,c:23,f:0.5,unit:{ar:'شريحة 300ج',en:'slice 300g'}},
+    {id:'cantaloupe',n:{ar:'شمام',en:'Cantaloupe'},cal:68,p:1.7,c:16,f:0.4,unit:{ar:'شريحة 200ج',en:'slice 200g'}},
+    {id:'strawberry',n:{ar:'فراولة',en:'Strawberry'},cal:32,p:0.7,c:7.7,f:0.3,unit:{ar:'100ج',en:'100g'}},
+    {id:'pear',n:{ar:'كمثرى',en:'Pear'},cal:85,p:0.5,c:23,f:0.2,unit:{ar:'حبة 150ج',en:'piece 150g'}},
+    {id:'peach',n:{ar:'خوخ',en:'Peach'},cal:58,p:1.4,c:14,f:0.4,unit:{ar:'حبة 150ج',en:'piece 150g'}},
+    {id:'apricot',n:{ar:'مشمش',en:'Apricot'},cal:24,p:0.7,c:5.6,f:0.2,unit:{ar:'حبة 50ج',en:'piece 50g'}},
+    {id:'fig',n:{ar:'تين',en:'Fig'},cal:37,p:0.4,c:10,f:0.2,unit:{ar:'حبة 50ج',en:'piece 50g'}},
+    {id:'plum',n:{ar:'برقوق',en:'Plum'},cal:30,p:0.5,c:8,f:0.2,unit:{ar:'حبة 65ج',en:'piece 65g'}}
+  ],
+  dairy:[
+    {id:'yogurt_low',n:{ar:'زبادي قليل الدسم',en:'Low-fat yogurt'},cal:56,p:5,c:7,f:1.5,unit:{ar:'100ج',en:'100g'}},
+    {id:'milk',n:{ar:'لبن كامل الدسم',en:'Whole milk'},cal:60,p:3.2,c:4.8,f:3.3,unit:{ar:'100مل',en:'100ml'}},
+    {id:'labneh',n:{ar:'لبنة',en:'Labneh'},cal:230,p:8,c:4,f:22,unit:{ar:'100ج',en:'100g'}},
+    {id:'cheese_white',n:{ar:'جبن أبيض قليل الملح',en:'Low-salt white cheese'},cal:250,p:18,c:3,f:19,unit:{ar:'100ج',en:'100g'}}
+  ],
+  nuts_oils:[
+    {id:'almonds',n:{ar:'لوز',en:'Almonds'},cal:162,p:6,c:6,f:14,unit:{ar:'حفنة 28ج',en:'handful 28g'}},
+    {id:'walnuts',n:{ar:'جوز',en:'Walnuts'},cal:183,p:4,c:4,f:18,unit:{ar:'حفنة 28ج',en:'handful 28g'}},
+    {id:'olive_oil',n:{ar:'زيت زيتون',en:'Olive oil'},cal:124,p:0,c:0,f:14,unit:{ar:'ملعقة 14ج',en:'tbsp 14g'}},
+    {id:'tahini',n:{ar:'طحينة',en:'Tahini'},cal:89,p:3,c:3,f:8,unit:{ar:'ملعقة 15ج',en:'tbsp 15g'}},
+    {id:'honey',n:{ar:'عسل',en:'Honey'},cal:21,p:0,c:6,f:0,unit:{ar:'ملعقة صغيرة 7ج',en:'tsp 7g'}},
+    {id:'olives',n:{ar:'زيتون',en:'Olives'},cal:115,p:0.8,c:6,f:11,unit:{ar:'100ج',en:'100g'}}
+  ],
+  drinks:[
+    {id:'water',n:{ar:'ماء',en:'Water'},cal:0,p:0,c:0,f:0,unit:{ar:'كوب',en:'cup'}},
+    {id:'tea',n:{ar:'شاي بدون سكر',en:'Tea unsweetened'},cal:0,p:0,c:0,f:0,unit:{ar:'كوب',en:'cup'}},
+    {id:'green_tea',n:{ar:'شاي أخضر',en:'Green tea'},cal:0,p:0,c:0,f:0,unit:{ar:'كوب',en:'cup'}},
+    {id:'coffee',n:{ar:'قهوة بدون سكر',en:'Coffee unsweetened'},cal:2,p:0,c:0,f:0,unit:{ar:'كوب',en:'cup'}}
+  ]
+};
+
+const FOOD_CATS={
+  proteins:{ar:'🥩 بروتينات',en:'🥩 Proteins'},
+  legumes:{ar:'🫘 بقوليات',en:'🫘 Legumes'},
+  carbs:{ar:'🌾 كربوهيدرات',en:'🌾 Carbs'},
+  vegetables:{ar:'🥬 خضروات',en:'🥬 Vegetables'},
+  fruits:{ar:'🍎 فواكه',en:'🍎 Fruits'},
+  dairy:{ar:'🥛 ألبان',en:'🥛 Dairy'},
+  nuts_oils:{ar:'🥜 مكسرات وزيوت',en:'🥜 Nuts & Oils'},
+  drinks:{ar:'🥤 مشروبات',en:'🥤 Drinks'}
+};
+
+const DAYS_AR=['saturday','sunday','monday','tuesday','wednesday','thursday','friday'];
+const DAYS_LABEL={
+  saturday:{ar:'السبت',en:'Saturday'},
+  sunday:{ar:'الأحد',en:'Sunday'},
+  monday:{ar:'الإثنين 🌙',en:'Monday 🌙'},
+  tuesday:{ar:'الثلاثاء',en:'Tuesday'},
+  wednesday:{ar:'الأربعاء',en:'Wednesday'},
+  thursday:{ar:'الخميس 🌙',en:'Thursday 🌙'},
+  friday:{ar:'الجمعة',en:'Friday'}
+};
+// Backward-compat alias
+const DAYS_AR_LABEL=Object.fromEntries(Object.entries(DAYS_LABEL).map(([k,v])=>[k,v.ar]));
+const MEALS_LIST=['breakfast','lunch','dinner','snack'];
+const MEALS_LABEL={
+  breakfast:{ar:'🌅 فطار',en:'🌅 Breakfast'},
+  lunch:{ar:'☀️ غداء',en:'☀️ Lunch'},
+  dinner:{ar:'🌙 عشاء',en:'🌙 Dinner'},
+  snack:{ar:'🍎 سناك',en:'🍎 Snack'}
+};
+
+// Generic localizer for {ar:'',en:''} objects
+function loc(obj){if(!obj)return '';if(typeof obj==='string')return obj;return S.lang==='en'?(obj.en||obj.ar||''):(obj.ar||obj.en||'');}
+function foodName(f){return f?loc(f.n):'';}
+function foodUnit(f){return f?loc(f.unit):'';}
+function mealLabel(m){return loc(MEALS_LABEL[m]);}
+function dayLabel(d){return loc(DAYS_LABEL[d]);}
+function catLabel(c){return loc(FOOD_CATS[c]);}
+
+// Egyptian market prices (May 2026 — rough estimates in EGP)
+// pricePer100g = price for 100 grams. priceEach = price per unit (for piece-based items).
+// Approximate retail prices in Cairo/Egypt — adjust as needed.
+const PRICES_EGP={
+  fish_grilled:{per100g:35},
+  chicken_grilled:{per100g:18},
+  lamb_grilled:{per100g:60},
+  egg_boiled:{each:8},
+  tuna:{per100g:50},
+  shrimp:{per100g:45},
+  kebab:{per100g:40},
+  kofta:{per100g:35},
+  foul:{per100g:5},
+  lentils:{per100g:7},
+  chickpeas:{per100g:6},
+  beans:{per100g:6},
+  brown_rice:{per100g:10},
+  bulgur:{per100g:5},
+  oats:{per100g:8},
+  bread_baladi:{each:2},
+  sweet_potato:{per100g:4},
+  pasta_whole:{per100g:8},
+  salad_green:{per100g:3},
+  cucumber:{per100g:2},
+  tomato:{per100g:3},
+  arugula:{per100g:5},
+  mixed_veg:{per100g:5},
+  carrot:{per100g:3},
+  mahshi:{per100g:15},
+  apple:{each:12},
+  banana:{each:6},
+  orange:{each:5},
+  pomegranate:{each:35},
+  date:{each:3},
+  grapes:{per100g:8},
+  watermelon:{each:30},
+  cantaloupe:{each:25},
+  strawberry:{per100g:6},
+  pear:{each:14},
+  peach:{each:10},
+  apricot:{each:3},
+  fig:{each:5},
+  plum:{each:3},
+  yogurt_low:{per100g:4},
+  milk:{per100g:4},
+  labneh:{per100g:18},
+  cheese_white:{per100g:18},
+  almonds:{each:30},
+  walnuts:{each:35},
+  olive_oil:{each:5},
+  tahini:{each:3},
+  honey:{each:4},
+  olives:{per100g:12},
+  water:{each:0},
+  tea:{each:0.5},
+  green_tea:{each:1},
+  coffee:{each:2}
+};
+function itemPriceEGP(item){
+  const p=PRICES_EGP[item.id];if(!p)return 0;
+  if(p.each!==undefined)return p.each*item.q;
+  if(p.per100g!==undefined)return p.per100g*(item.q/100);
+  return 0;
+}
+
+// Default weekly meal plan (Tayyibat-based, ~2000 cal target)
+const DEFAULT_MEAL_PLAN={
+  saturday:{
+    breakfast:[{id:'foul',q:150},{id:'egg_boiled',q:2},{id:'date',q:7},{id:'milk',q:200}],
+    lunch:[{id:'chicken_grilled',q:150},{id:'brown_rice',q:150},{id:'salad_green',q:150},{id:'olive_oil',q:1}],
+    dinner:[{id:'mixed_veg',q:200},{id:'cheese_white',q:50},{id:'cucumber',q:100},{id:'tomato',q:100}],
+    snack:[{id:'apple',q:1},{id:'pomegranate',q:1}]
+  },
+  sunday:{
+    breakfast:[{id:'oats',q:50},{id:'milk',q:200},{id:'banana',q:1},{id:'honey',q:1},{id:'almonds',q:1}],
+    lunch:[{id:'fish_grilled',q:180},{id:'sweet_potato',q:200},{id:'salad_green',q:150},{id:'olive_oil',q:1}],
+    dinner:[{id:'lentils',q:200},{id:'chickpeas',q:50},{id:'salad_green',q:150},{id:'yogurt_low',q:150}],
+    snack:[{id:'grapes',q:100},{id:'orange',q:1}]
+  },
+  monday:{
+    breakfast:[{id:'foul',q:150},{id:'egg_boiled',q:2},{id:'bread_baladi',q:1},{id:'date',q:7},{id:'milk',q:200}],
+    lunch:[],
+    dinner:[{id:'date',q:3},{id:'water',q:2},{id:'lentils',q:200},{id:'salad_green',q:150},{id:'cheese_white',q:50},{id:'bread_baladi',q:1}],
+    snack:[{id:'pear',q:1},{id:'plum',q:2}]
+  },
+  tuesday:{
+    breakfast:[{id:'labneh',q:50},{id:'olive_oil',q:1},{id:'bread_baladi',q:2},{id:'cucumber',q:100}],
+    lunch:[{id:'mahshi',q:200},{id:'yogurt_low',q:150},{id:'salad_green',q:150}],
+    dinner:[{id:'egg_boiled',q:2},{id:'salad_green',q:150},{id:'cheese_white',q:30}],
+    snack:[{id:'strawberry',q:150},{id:'banana',q:1}]
+  },
+  wednesday:{
+    breakfast:[{id:'foul',q:150},{id:'tahini',q:1},{id:'bread_baladi',q:1},{id:'salad_green',q:100}],
+    lunch:[{id:'kebab',q:150},{id:'bulgur',q:150},{id:'mixed_veg',q:150}],
+    dinner:[{id:'chicken_grilled',q:100},{id:'salad_green',q:150},{id:'olives',q:30}],
+    snack:[{id:'watermelon',q:1},{id:'cantaloupe',q:1}]
+  },
+  thursday:{
+    breakfast:[{id:'oats',q:50},{id:'milk',q:200},{id:'date',q:5},{id:'almonds',q:1},{id:'banana',q:1}],
+    lunch:[],
+    dinner:[{id:'date',q:3},{id:'water',q:2},{id:'chicken_grilled',q:150},{id:'brown_rice',q:150},{id:'salad_green',q:150}],
+    snack:[{id:'banana',q:1},{id:'apple',q:1}]
+  },
+  friday:{
+    breakfast:[{id:'egg_boiled',q:2},{id:'cheese_white',q:30},{id:'bread_baladi',q:1},{id:'olives',q:30}],
+    lunch:[{id:'lamb_grilled',q:150},{id:'brown_rice',q:150},{id:'mixed_veg',q:150},{id:'salad_green',q:100}],
+    dinner:[{id:'tuna',q:100},{id:'salad_green',q:200},{id:'bread_baladi',q:1},{id:'olives',q:20}],
+    snack:[{id:'pomegranate',q:1},{id:'fig',q:3}]
+  }
+};
 
 // === CLOUD SYNC CONFIG (GitHub Gist) ===
 // Token + gist ID stored in localStorage (per device). Prompted on first load.
@@ -3050,9 +3393,11 @@ checkBadges=function(){const b4=S.badges?S.badges.length:0;_prevCheckBadges();co
 // SOUND SETTINGS INJECTION
 // ============================================================
 function injectSoundSettings(){
-  const setBody=document.querySelector('#setMo .mo-b');
+  // Prefer the anchor inside Column 2; fallback to mo-b for backward compatibility
+  const anchor=document.getElementById('soundSettingsAnchor');
+  const setBody=anchor||document.querySelector('#setMo .mo-b');
   if(!setBody||document.getElementById('soundSettings'))return;
-  setBody.insertAdjacentHTML('beforeend','<div class="sg" style="grid-column:span 2" id="soundSettings"><label data-a="🔔 الصوت والتنبيهات" data-e="🔔 Sound & Alerts">🔔 الصوت والتنبيهات</label>'+
+  setBody.insertAdjacentHTML('beforeend','<div class="sg" id="soundSettings" style="margin-top:8px"><label data-a="🔔 الصوت والتنبيهات" data-e="🔔 Sound & Alerts">🔔 الصوت والتنبيهات</label>'+
   '<div style="margin-bottom:8px"><span style="font-size:11px;color:var(--tx2)">'+L({a:'نمط الصوت',e:'Sound Profile'})+'</span><div class="tg" style="margin-top:4px">'+
   '<button class="to'+(S.soundProfile==='full'?' a':'')+'" onclick="S.soundProfile=\'full\';save();document.querySelectorAll(\'#soundSettings .tg:first-of-type .to\').forEach(b=>b.classList.remove(\'a\'));this.classList.add(\'a\')">🔊 '+L({a:'كامل',e:'Full'})+'</button>'+
   '<button class="to'+(S.soundProfile==='prayer'?' a':'')+'" onclick="S.soundProfile=\'prayer\';save();document.querySelectorAll(\'#soundSettings .tg:first-of-type .to\').forEach(b=>b.classList.remove(\'a\'));this.classList.add(\'a\')">🔔 '+L({a:'صلاة فقط',e:'Prayer'})+'</button>'+
@@ -3276,6 +3621,810 @@ window.saveHealth=function(){
   S.health[key]={water:(S.health[key]||{}).water||0,sleep:+(document.getElementById('sleepInp').value)||0,steps:+(document.getElementById('stepsInp').value)||0,exercise:+(document.getElementById('exerciseInp').value)||0,weight:+(document.getElementById('weightInp').value)||0,mood:_healthMood};
   save();loadHealth();showToast('💪',L({a:'تم حفظ بيانات الصحة',e:'Health data saved'}));
 };
+
+// ═══════════════════════════════════════════════════════════════
+// FASTING / MEDS / WEIGHT GOAL / WHATSAPP REMINDER (added)
+// ═══════════════════════════════════════════════════════════════
+
+const TG_TOKEN='8652333381:AAHtPiWWl9By2Jb18BXk4W-uBLOnS7k8Mu8';
+const TG_CHAT_ID='6379835999';
+const TODAY_KEY=()=>new Date().toISOString().slice(0,10);
+const HIJRI_MONTHS=['','محرم','صفر','ربيع الأول','ربيع الآخر','جمادى الأولى','جمادى الآخرة','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'];
+const HIJRI_MONTHS_EN=['','Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada al-Ula','Jumada al-Thaniya','Rajab','Shaban','Ramadan','Shawwal','Dhu al-Qadah','Dhu al-Hijjah'];
+function hijriMonthName(m){return S.lang==='en'?(HIJRI_MONTHS_EN[m]||''):(HIJRI_MONTHS[m]||'');}
+
+function getHijriDate(date){
+  try{
+    const fmt=new Intl.DateTimeFormat('en-u-ca-islamic-umalqura',{day:'numeric',month:'numeric',year:'numeric'});
+    const parts=fmt.formatToParts(date||new Date());
+    return{day:parseInt(parts.find(p=>p.type==='day').value),month:parseInt(parts.find(p=>p.type==='month').value),year:parseInt(parts.find(p=>p.type==='year').value)};
+  }catch(e){return{day:0,month:0,year:0};}
+}
+
+function isFastingDay(date){
+  date=date||new Date();
+  const dow=date.getDay();
+  if(dow===1)return{is:true,type:'monday',name:L({a:'الإثنين (سنة)',e:'Monday (Sunnah)'})};
+  if(dow===4)return{is:true,type:'thursday',name:L({a:'الخميس (سنة)',e:'Thursday (Sunnah)'})};
+  const h=getHijriDate(date);
+  if(h.day>=13&&h.day<=15){const mn=hijriMonthName(h.month);return{is:true,type:'white',name:L({a:'الأيام البيض',e:'White Days'})+' ('+h.day+' '+mn+')'};}
+  return{is:false};
+}
+
+function getNextFastingDay(){
+  for(let i=1;i<=10;i++){
+    const d=new Date();d.setDate(d.getDate()+i);
+    const f=isFastingDay(d);
+    if(f.is)return{date:d,info:f};
+  }
+  return null;
+}
+
+function isSuhoorTonight(){
+  // Check if tomorrow is a fasting day → tonight is Suhoor
+  const tomorrow=new Date();tomorrow.setDate(tomorrow.getDate()+1);
+  return isFastingDay(tomorrow);
+}
+
+window.toggleFasted=function(){
+  const k=TODAY_KEY();
+  if(!S.fasting)S.fasting={};
+  const today=isFastingDay();
+  if(!today.is){alert(L({a:'اليوم ليس يوم صيام سنة. لا يمكن تسجيل صيام.',e:'Today is not a Sunnah fasting day. Cannot log fast.'}));return;}
+  if(S.fasting[k]&&S.fasting[k].fasted){
+    delete S.fasting[k];
+  }else{
+    S.fasting[k]={fasted:true,type:today.type,name:today.name};
+  }
+  save();renderFastingWidget();
+};
+
+function renderFastingWidget(){
+  const today=isFastingDay();
+  const k=TODAY_KEY();
+  const isFastedToday=!!(S.fasting&&S.fasting[k]&&S.fasting[k].fasted);
+  const info=document.getElementById('fastingTodayInfo');
+  const btn=document.getElementById('fastingBtn');
+  const stats=document.getElementById('fastingStats');
+  if(!info||!btn||!stats)return;
+  const dateLocale=S.lang==='en'?'en-US':'ar-EG';
+  if(today.is){
+    info.innerHTML='🌙 <b>'+L({a:'اليوم يوم صيام:',e:'Today is fasting day:'})+'</b> '+today.name;
+    btn.textContent=isFastedToday?L({a:'✅ صمت اليوم — اضغط للإلغاء',e:'✅ Fasted today — click to undo'}):L({a:'🤲 سجل صيام اليوم',e:'🤲 Log today\'s fast'});
+    btn.style.background=isFastedToday?'var(--gn)':'var(--ac)';
+    btn.style.color='#fff';
+  }else{
+    const next=getNextFastingDay();
+    info.innerHTML=next?'⏰ <b>'+L({a:'صيام قادم:',e:'Upcoming fast:'})+'</b> '+next.info.name+' ('+next.date.toLocaleDateString(dateLocale,{weekday:'long',day:'numeric',month:'short'})+')':L({a:'لا يوجد صيام قريب',e:'No upcoming fast'});
+    btn.textContent=L({a:'ليس يوم صيام اليوم',e:'Not a fasting day'});
+    btn.style.background='var(--bg3)';btn.style.color='var(--tx3)';
+    btn.disabled=true;
+  }
+  // Suhoor reminder for tomorrow
+  const suhoor=isSuhoorTonight();
+  if(suhoor.is&&!today.is){info.innerHTML+='<div style="margin-top:4px;color:var(--ac3);font-weight:600">🌅 '+L({a:'تذكير سحور الليلة — غدًا',e:'Suhoor reminder tonight — tomorrow'})+' '+suhoor.name+'</div>';}
+  // Monthly stats
+  const month=k.slice(0,7);
+  const monthFasted=Object.keys(S.fasting||{}).filter(d=>d.startsWith(month)).length;
+  stats.textContent=L({a:'هذا الشهر:',e:'This month:'})+' '+monthFasted+' '+L({a:'أيام صيام',e:'fasting days'})+' ✅';
+}
+
+window.toggleMed=function(slot){
+  // slot = 'AM' or 'PM'
+  const k=TODAY_KEY();
+  if(!S.meds)S.meds={};
+  if(!S.meds[k])S.meds[k]={};
+  const field=slot==='AM'?'carbAM':'indPM';
+  S.meds[k][field]=!S.meds[k][field];
+  if(S.meds[k][field])S.meds[k][field+'_time']=new Date().toISOString();
+  save();renderMedsWidget();
+};
+
+function renderMedsWidget(){
+  const k=TODAY_KEY();
+  const meds=(S.meds&&S.meds[k])||{};
+  const amBtn=document.getElementById('medAMBtn');
+  const pmBtn=document.getElementById('medPMBtn');
+  const dateLocale=S.lang==='en'?'en-US':'ar-EG';
+  const doneLabel=L({a:'✅ تم — ',e:'✅ Done — '});
+  const logAMLabel=L({a:'☀️ سجل تناول الجرعة',e:'☀️ Log dose taken'});
+  const logPMLabel=L({a:'🌃 سجل تناول الجرعة',e:'🌃 Log dose taken'});
+  if(amBtn){
+    amBtn.textContent=meds.carbAM?doneLabel+(meds.carbAM_time?new Date(meds.carbAM_time).toLocaleTimeString(dateLocale,{hour:'2-digit',minute:'2-digit'}):''):logAMLabel;
+    amBtn.style.background=meds.carbAM?'var(--gn)':'var(--ac)';amBtn.style.color='#fff';
+  }
+  if(pmBtn){
+    pmBtn.textContent=meds.indPM?doneLabel+(meds.indPM_time?new Date(meds.indPM_time).toLocaleTimeString(dateLocale,{hour:'2-digit',minute:'2-digit'}):''):logPMLabel;
+    pmBtn.style.background=meds.indPM?'var(--gn)':'var(--ac)';pmBtn.style.color='#fff';
+  }
+  // Stats: 30-day adherence
+  const last30=[];for(let i=0;i<30;i++){const d=new Date();d.setDate(d.getDate()-i);last30.push(d.toISOString().slice(0,10));}
+  const amTaken=last30.filter(d=>(S.meds[d]||{}).carbAM).length;
+  const pmTaken=last30.filter(d=>(S.meds[d]||{}).indPM).length;
+  const amStats=document.getElementById('medAMStats');const pmStats=document.getElementById('medPMStats');
+  const daysLbl=L({a:'30 يوم:',e:'30 days:'});
+  if(amStats)amStats.textContent=daysLbl+' '+amTaken+'/30 ('+R(amTaken/30*100)+'%)';
+  if(pmStats)pmStats.textContent=daysLbl+' '+pmTaken+'/30 ('+R(pmTaken/30*100)+'%)';
+}
+
+function renderWeightGoal(){
+  if(!S.weightGoal)S.weightGoal={start:82,target:74,startDate:'2026-05-11',deadline:'2026-12-31'};
+  document.getElementById('wgStart').textContent=S.weightGoal.start;
+  document.getElementById('wgTarget').textContent=S.weightGoal.target;
+  // Find latest weight from S.health
+  let latestWeight=S.weightGoal.start;
+  let latestDate=S.weightGoal.startDate;
+  for(const k in (S.health||{})){
+    if(S.health[k]&&S.health[k].weight){
+      const d=k.replace('h_','');
+      if(d>latestDate){latestDate=d;latestWeight=S.health[k].weight;}
+    }
+  }
+  const lostKg=S.weightGoal.start-latestWeight;
+  const targetKg=S.weightGoal.start-S.weightGoal.target;
+  const pct=Math.max(0,Math.min(100,(lostKg/targetKg)*100));
+  document.getElementById('wgBar').style.width=pct+'%';
+  const remaining=(latestWeight-S.weightGoal.target).toFixed(1);
+  const kg=L({a:'كجم',e:'kg'});
+  document.getElementById('wgStatus').innerHTML=L({a:'حالي:',e:'Current:'})+' <b>'+latestWeight+' '+kg+'</b> · '+L({a:'فقدت',e:'Lost'})+' <b style="color:var(--gn)">'+lostKg.toFixed(1)+' '+kg+'</b> · '+L({a:'متبقي',e:'Remaining'})+' '+remaining+' '+kg;
+}
+
+function generateWAMessage(timeOfDay){
+  const today=new Date();
+  const dateLocale=S.lang==='en'?'en-US':'ar-EG';
+  const dateStr=today.toLocaleDateString(dateLocale,{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const h=getHijriDate(today);
+  const hMonthName=(h.month>=1&&h.month<=12)?hijriMonthName(h.month):'';
+  const dateHeader='📅 '+dateStr+' '+L({a:'ميلادي',e:'Gregorian'})+(h.day?'\n🌙 '+h.day+' '+hMonthName+' '+h.year:'');
+  const k=TODAY_KEY();
+  const meds=(S.meds&&S.meds[k])||{};
+  const fast=isFastingDay();
+  const isFasted=!!(S.fasting&&S.fasting[k]&&S.fasting[k].fasted);
+  const health=(S.health&&S.health[getHealthKey()])||{};
+  const water=health.water||0;
+  const steps=health.steps||0;
+  const exercise=health.exercise||0;
+  const lastWeight=(()=>{let lw=S.weightGoal?.start||82;let ld=S.weightGoal?.startDate||'';for(const kk in (S.health||{})){if(S.health[kk]?.weight){const d=kk.replace('h_','');if(d>ld){ld=d;lw=S.health[kk].weight;}}}return lw;})();
+  const remainingKg=(lastWeight-(S.weightGoal?.target||74)).toFixed(1);
+  const suhoor=isSuhoorTonight();
+  // Today's habits
+  const monthKey=MO[today.getMonth()];
+  const dayKey=String(today.getDate());
+  const todayHabits=((S.hd&&S.hd[monthKey])||{})[dayKey]||[];
+  const habitsDone=todayHabits.filter(Boolean).length;
+
+  const cal=L({a:'سعر',e:'cal'});const kg=L({a:'كجم',e:'kg'});const min=L({a:'دقيقة',e:'min'});
+  const yet=L({a:'لم يُؤخذ بعد',e:'not yet taken'});
+  if(timeOfDay==='morning'){
+    let m='🌅 *'+L({a:'صباح الخير يا ياسر',e:'Good morning Yasser'})+'*\n';
+    m+=dateHeader+'\n\n';
+    m+='💊 *'+L({a:'دواء الصباح:',e:'Morning medication:'})+'*\n';
+    m+='• '+L({a:'كاربيمازول 5 ملج',e:'Carbimazole 5mg'})+' '+(meds.carbAM?'✅':'⏰ '+yet)+'\n\n';
+    if(fast.is){m+='🌙 *'+L({a:'اليوم يوم صيام:',e:'Today is fasting day:'})+' '+fast.name+'*\n'+(isFasted?'✅ '+L({a:'مسجّل',e:'Logged'})+'\n':L({a:'تذكر تسجيل النية',e:'Remember to log intention'})+'\n')+'\n';}
+    // Use real meal plan if available
+    ensureMealPlan&&ensureMealPlan();
+    const todayKey=todayDayKey&&todayDayKey();
+    const goal=S.calorieGoal||2000;
+    if(todayKey&&S.mealPlan&&S.mealPlan[todayKey]){
+      const day=S.mealPlan[todayKey];
+      m+='🥗 *'+L({a:'وجبات اليوم (الطيبات):',e:'Today\'s meals (Tayyibat):'})+'*\n';
+      MEALS_LIST.forEach(meal=>{
+        const items=day[meal]||[];
+        if(!items.length)return;
+        const t=calcMealTotals(items);
+        const names=items.map(it=>{const f=getFoodById(it.id);return f?foodName(f):'';}).filter(Boolean).join(' + ');
+        m+='• '+mealLabel(meal)+' ('+t.cal.toFixed(0)+' '+cal+'): '+names+'\n';
+      });
+      const dayTotal=calcDayTotals(todayKey);
+      const a=adviceFor(dayTotal,goal);
+      m+='\n📊 *'+L({a:'الإجمالي:',e:'Total:'})+'* '+dayTotal.cal.toFixed(0)+' / '+goal+' '+cal+' ('+a.pct+'%)\n';
+      m+=a.icon+' '+a.msg+'\n\n';
+    }else{
+      m+='🥗 *'+L({a:'وجبات اليوم:',e:'Today\'s meals:'})+'*\n• '+L({a:'فطار + غداء + عشاء حسب الخطة',e:'Breakfast + lunch + dinner per plan'})+'\n\n';
+    }
+    m+='💧 '+L({a:'8 أكواب ماء (حالي:',e:'8 cups water (current:'})+' '+water+')\n';
+    m+='🚶 '+L({a:'30 دقيقة مشي',e:'30 min walk'})+'\n';
+    m+='⚖️ '+L({a:'الهدف:',e:'Goal:'})+' '+S.weightGoal?.target+' '+kg+' — '+L({a:'متبقي',e:'remaining'})+' '+remainingKg+' '+kg+'\n\n';
+    m+='💪 '+L({a:'بالتوفيق وكن مع الله',e:'Best of luck — may God be with you'});
+    return m;
+  }
+  if(timeOfDay==='midday'){
+    let m='☀️ *'+L({a:'منتصف اليوم يا ياسر',e:'Midday Yasser'})+'*\n';
+    m+=dateHeader+'\n\n';
+    if(todayHabits.length>=12){
+      m+='✅ *'+L({a:'العادات:',e:'Habits:'})+' '+habitsDone+'/12*\n';
+      HA.forEach((name,i)=>{m+='  '+(todayHabits[i]?'✅':'⏰')+' '+name+'\n';});
+      m+='\n';
+    }else{
+      m+='✅ *'+L({a:'العادات',e:'Habits'})+'*: '+L({a:'لم تُحدَّث بعد',e:'not updated yet'})+'\n\n';
+    }
+    const pendingTodos=(S.todos||[]).filter(t=>!t.done&&!t.completed).slice(0,3);
+    if(pendingTodos.length){
+      m+='📋 *'+L({a:'أهم 3 مهام:',e:'Top 3 tasks:'})+'*\n';
+      pendingTodos.forEach((t,i)=>{m+='  '+(i+1)+'. '+(t.text||t.title||L({a:'(بدون عنوان)',e:'(no title)'}))+'\n';});
+      m+='\n';
+    }else{
+      m+='📋 *'+L({a:'المهام',e:'Tasks'})+'*: '+L({a:'لا توجد مهام معلقة 🎉',e:'No pending tasks 🎉'})+'\n\n';
+    }
+    m+='🌅 *'+L({a:'إنجاز الصباح:',e:'Morning progress:'})+'*\n';
+    m+='  • '+L({a:'كاربيمازول:',e:'Carbimazole:'})+' '+(meds.carbAM?'✅':'⏰ '+L({a:'ذكّر نفسك',e:'remind yourself'}))+'\n';
+    if(fast.is)m+='  • '+L({a:'الصيام:',e:'Fasting:'})+' '+(isFasted?'✅':'⏰ '+L({a:'سجّل النية',e:'log intention'}))+'\n';
+    m+='  • '+L({a:'ماء:',e:'Water:'})+' '+water+'/8\n';
+    m+='  • '+L({a:'خطوات:',e:'Steps:'})+' '+steps+'\n\n';
+    m+='🚀 *'+L({a:'المتبقي للمساء:',e:'For the evening:'})+'*\n';
+    m+='  • '+L({a:'اندرال 10 ملج (6م)',e:'Inderal 10mg (6PM)'})+'\n';
+    m+='  • '+L({a:'مشي 30 دقيقة',e:'30 min walk'})+'\n';
+    m+='  • '+L({a:'أكمل العادات والمهام',e:'Complete habits and tasks'})+'\n\n';
+    m+='💪 '+L({a:'يلا نكمل بقوة!',e:'Let\'s finish strong!'});
+    return m;
+  }
+  // evening
+  let m='🌙 *'+L({a:'مراجعة المساء يا ياسر',e:'Evening review Yasser'})+'*\n';
+  m+=dateHeader+'\n\n';
+  m+='💊 *'+L({a:'دواء المساء:',e:'Evening medication:'})+'*\n';
+  m+='• '+L({a:'اندرال 10 ملج',e:'Inderal 10mg'})+' '+(meds.indPM?'✅':'⏰ '+yet)+'\n\n';
+  m+='📊 *'+L({a:'مراجعة اليوم:',e:'Day review:'})+'*\n';
+  m+='• '+L({a:'كاربيمازول الصباح:',e:'Morning Carbimazole:'})+' '+(meds.carbAM?'✅':'❌ '+L({a:'فاتت',e:'missed'}))+'\n';
+  if(fast.is)m+='• '+L({a:'الصيام:',e:'Fasting:'})+' '+(isFasted?'✅ '+L({a:'صمت',e:'fasted'}):'⚠️ '+L({a:'لم يُسجّل',e:'not logged'}))+'\n';
+  m+='• '+L({a:'الماء:',e:'Water:'})+' '+water+'/8 '+(water>=8?'✅':'')+'\n';
+  m+='• '+L({a:'المشي:',e:'Walking:'})+' '+exercise+' '+min+' '+(exercise>=30?'✅':'')+'\n';
+  m+='• '+L({a:'الخطوات:',e:'Steps:'})+' '+steps+'\n\n';
+  if(suhoor.is)m+='🌅 *'+L({a:'تذكير',e:'Reminder'})+'*: '+L({a:'غدًا',e:'tomorrow'})+' '+suhoor.name+' — '+L({a:'لا تنس السحور!',e:'don\'t forget Suhoor!'})+'\n\n';
+  m+='🛌 '+L({a:'نوم 8 ساعات',e:'Sleep 8 hours'})+'\n';
+  m+='🤲 '+L({a:'ادعُ لي ولأهلك',e:'Pray for me and your family'});
+  return m;
+}
+
+window.showWAPreview=function(timeOfDay){
+  document.getElementById('waPreview').textContent=generateWAMessage(timeOfDay);
+};
+
+window.sendWANow=function(){
+  const now=new Date().getHours();
+  const tod=(now<11)?'morning':(now<16)?'midday':'evening';
+  const msg=generateWAMessage(tod);
+  // Send via Telegram Bot API directly (POST so token isn't logged in URL bar)
+  fetch('https://api.telegram.org/bot'+TG_TOKEN+'/sendMessage',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({chat_id:TG_CHAT_ID,text:msg,parse_mode:'Markdown',disable_web_page_preview:true})
+  }).then(r=>r.json()).then(d=>{
+    if(d.ok)showToast('✅',L({a:'تم الإرسال على Telegram',e:'Sent to Telegram'}));
+    else showToast('⚠️',L({a:'فشل الإرسال: '+(d.description||''),e:'Failed: '+(d.description||'')}));
+  }).catch(e=>showToast('⚠️',L({a:'خطأ شبكة',e:'Network error'})));
+};
+
+window.setDST=function(v){
+  if(!['auto','on','off'].includes(v))return;
+  S.dstOverride=v;
+  save();
+  renderDSTWidget();
+  showToast('⏰',L({a:'تم تحديث التوقيت — سيُطبَّق على رسائل Telegram التالية',e:'DST setting updated — applies to next Telegram run'}));
+};
+
+// ═══════════════════════════════════════════════
+// MEAL PLANNER
+// ═══════════════════════════════════════════════
+let _mpActiveDay='saturday',_mpActiveMeal=null,_mpPendingFood=null;
+
+function getFoodById(id){
+  if(!id)return null;
+  for(const cat in FOOD_DB){const f=FOOD_DB[cat].find(x=>x.id===id);if(f)return f;}
+  if(S.customFoods)return S.customFoods.find(x=>x.id===id)||null;
+  return null;
+}
+
+function ensureMealPlan(){
+  if(!S.mealPlan||typeof S.mealPlan!=='object'){S.mealPlan=JSON.parse(JSON.stringify(DEFAULT_MEAL_PLAN));save();}
+  // Make sure all days exist
+  DAYS_AR.forEach(d=>{if(!S.mealPlan[d])S.mealPlan[d]={breakfast:[],lunch:[],dinner:[],snack:[]};
+    MEALS_LIST.forEach(m=>{if(!S.mealPlan[d][m])S.mealPlan[d][m]=[];});});
+}
+
+function isPer100(food){
+  // unit is now {ar:'100ج',en:'100g'} or similar; or sometimes string for legacy
+  const u=foodUnit(food)||'';
+  return /100\s*[gmlج]/i.test(u)||/100ج|100مل/.test(u);
+}
+function calcItemTotals(item){
+  const f=getFoodById(item.id);if(!f)return{cal:0,p:0,c:0,f:0};
+  const factor=isPer100(f)?(item.q/100):item.q;
+  return{cal:f.cal*factor,p:f.p*factor,c:f.c*factor,f:f.f*factor};
+}
+
+function calcMealTotals(items){
+  const t={cal:0,p:0,c:0,f:0};
+  (items||[]).forEach(it=>{const x=calcItemTotals(it);t.cal+=x.cal;t.p+=x.p;t.c+=x.c;t.f+=x.f;});
+  return t;
+}
+
+function calcDayTotals(day){
+  const t={cal:0,p:0,c:0,f:0};
+  MEALS_LIST.forEach(m=>{const x=calcMealTotals((S.mealPlan[day]||{})[m]);t.cal+=x.cal;t.p+=x.p;t.c+=x.c;t.f+=x.f;});
+  return t;
+}
+
+function todayDayKey(){
+  const dow=new Date().getDay(); // 0=Sun, 1=Mon...6=Sat
+  return ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][dow];
+}
+
+function adviceFor(totals,goal){
+  const pct=Math.round((totals.cal/goal)*100);
+  const proteinPct=totals.cal>0?Math.round((totals.p*4/totals.cal)*100):0;
+  const carbPct=totals.cal>0?Math.round((totals.c*4/totals.cal)*100):0;
+  const fatPct=totals.cal>0?Math.round((totals.f*9/totals.cal)*100):0;
+  const cal=L({a:'سعر',e:'cal'});
+  let icon='🟢',msg='',col='var(--gn)';
+  if(pct>=110){icon='🔴';col='var(--rd)';msg=L({a:'تجاوزت الهدف بـ',e:'Exceeded target by'})+' '+(totals.cal-goal).toFixed(0)+' '+cal+L({a:' — قلّل من العشاء أو السناك',e:' — reduce dinner or snack'});}
+  else if(pct>=95){icon='🟡';col='var(--am,#f6ad55)';msg=L({a:'قريب من الحد',e:'Close to limit'})+' ('+pct+'%) — '+L({a:'انتبه للسناك',e:'watch the snack'});}
+  else if(pct>=70){icon='🟢';col='var(--gn)';msg=L({a:'ضمن الهدف',e:'Within target'})+' ('+pct+'%) — '+L({a:'توازن جيد',e:'good balance'});}
+  else if(totals.cal>0){icon='🟡';col='var(--am,#f6ad55)';msg=L({a:'قليل',e:'Low'})+' ('+pct+'%) — '+L({a:'قد تحتاج وجبة أو سناك إضافي',e:'you may need an extra meal or snack'});}
+  else{icon='⚪';col='var(--tx3)';msg=L({a:'لا توجد وجبات مضافة',e:'No meals added'});}
+  // Macro tips
+  const macros=[];
+  if(totals.cal>500){
+    if(proteinPct<20)macros.push(L({a:'بروتين قليل',e:'Low protein'})+' ('+proteinPct+'%)');
+    if(proteinPct>40)macros.push(L({a:'بروتين عالي',e:'High protein'}));
+    if(fatPct>40)macros.push(L({a:'دهون عالية',e:'High fat'}));
+    if(carbPct<30)macros.push(L({a:'كربوهيدرات قليلة',e:'Low carbs'}));
+  }
+  return{icon,col,msg,pct,proteinPct,carbPct,fatPct,macros};
+}
+
+function renderMPTodayWidget(){
+  ensureMealPlan();
+  const summary=document.getElementById('mpTodaySummary');
+  const bar=document.getElementById('mpProgBar');
+  const advice=document.getElementById('mpAdvice');
+  if(!summary)return;
+  const day=todayDayKey();
+  const totals=calcDayTotals(day);
+  const goal=S.calorieGoal||2000;
+  const a=adviceFor(totals,goal);
+  const cal=L({a:'سعر',e:'cal'});const g=L({a:'ج',e:'g'});
+  summary.innerHTML='<b>'+dayLabel(day)+'</b> · '+totals.cal.toFixed(0)+' / '+goal+' '+cal+' · '+L({a:'بروتين',e:'Protein'})+' '+totals.p.toFixed(0)+g;
+  bar.style.width=Math.min(100,a.pct)+'%';
+  bar.style.background=a.col;
+  advice.innerHTML=a.icon+' '+a.msg+(a.macros.length?'<br>📊 '+a.macros.join(' · '):'');
+}
+
+window.openMealPlanner=function(){
+  ensureMealPlan();
+  document.getElementById('mealPlannerModal').style.display='flex';
+  document.getElementById('mpCalGoal').value=S.calorieGoal||2000;
+  _mpActiveDay=todayDayKey();
+  renderDayTabs();
+  renderActiveDay();
+  renderFoodBank();
+};
+window.closeMealPlanner=function(){document.getElementById('mealPlannerModal').style.display='none';renderMPTodayWidget();};
+
+window.setCalorieGoal=function(v){
+  const n=parseInt(v)||2000;
+  S.calorieGoal=Math.max(800,Math.min(4000,n));
+  save();
+  renderActiveDay();
+  renderMPTodayWidget();
+};
+
+function renderDayTabs(){
+  const el=document.getElementById('mpDayTabs');
+  const cal=L({a:'سعر',e:'cal'});
+  el.innerHTML=DAYS_AR.map(d=>{
+    const totals=calcDayTotals(d);
+    const isActive=d===_mpActiveDay;
+    return '<button onclick="_mpActiveDay=\''+d+'\';renderActiveDay();renderDayTabs();" style="padding:6px 10px;background:'+(isActive?'var(--ac)':'var(--bg2)')+';color:'+(isActive?'#fff':'var(--tx2)')+';border:1px solid var(--bdr);border-radius:6px;cursor:pointer;font-size:11px;font-family:inherit">'+dayLabel(d)+'<br><span style="font-size:9px;opacity:.8">'+totals.cal.toFixed(0)+' '+cal+'</span></button>';
+  }).join('');
+}
+
+function renderActiveDay(){
+  const day=_mpActiveDay;
+  const goal=S.calorieGoal||2000;
+  const cont=document.getElementById('mpDayContent');
+  let html='';
+  const cal=L({a:'سعر',e:'cal'});const g=L({a:'ج',e:'g'});
+  MEALS_LIST.forEach(m=>{
+    const items=S.mealPlan[day][m]||[];
+    const totals=calcMealTotals(items);
+    const isActive=_mpActiveMeal===m;
+    html+='<div style="margin-bottom:14px;background:'+(isActive?'rgba(55,138,221,0.12)':'var(--bg2)')+';border:1px solid '+(isActive?'var(--ac)':'transparent')+';border-radius:8px;padding:10px">';
+    html+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px"><b style="font-size:13px;flex:1">'+mealLabel(m)+'</b>';
+    html+='<span style="font-size:11px;color:var(--tx2)">'+totals.cal.toFixed(0)+' '+cal+' · '+totals.p.toFixed(0)+g+' '+L({a:'بروتين',e:'protein'})+'</span>';
+    html+='<button onclick="setActiveMeal(\''+m+'\')" style="background:'+(isActive?'var(--ac)':'var(--bg)')+';color:'+(isActive?'#fff':'var(--tx2)')+';border:1px solid var(--bdr);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:10px;font-family:inherit">'+(isActive?L({a:'✓ نشطة',e:'✓ Active'}):L({a:'+ أضف',e:'+ Add'}))+'</button></div>';
+    if(items.length){
+      html+='<div style="display:flex;flex-wrap:wrap;gap:6px">';
+      items.forEach((it,idx)=>{
+        const f=getFoodById(it.id);if(!f)return;
+        const t=calcItemTotals(it);
+        const unitStr=foodUnit(f);
+        const qSuffix=/100/.test(unitStr)?g:'';
+        html+='<div style="display:flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--bdr);border-radius:14px;padding:4px 4px 4px 10px;font-size:11px">';
+        html+='<span onclick="editItemQty(\''+day+'\',\''+m+'\','+idx+')" style="cursor:pointer">'+foodName(f)+' · '+it.q+qSuffix+' <b>('+t.cal.toFixed(0)+' '+cal+')</b></span>';
+        html+='<button onclick="removeItem(\''+day+'\',\''+m+'\','+idx+')" style="width:20px;height:20px;border-radius:50%;background:var(--bg2);border:none;color:var(--rd);cursor:pointer;font-size:12px">×</button>';
+        html+='</div>';
+      });
+      html+='</div>';
+    }else{
+      html+='<div style="font-size:11px;color:var(--tx3);font-style:italic">'+L({a:'لا توجد أصناف — اختر من بنك الأطعمة',e:'No items — pick from food bank'})+'</div>';
+    }
+    html+='</div>';
+  });
+  cont.innerHTML=html;
+  // Day summary
+  const total=calcDayTotals(day);
+  const a=adviceFor(total,goal);
+  document.getElementById('mpDaySummary').innerHTML='<div style="display:flex;justify-content:space-between;margin-bottom:6px"><b>📊 '+L({a:'إجمالي اليوم',e:'Daily total'})+'</b><span style="font-size:14px;font-weight:700;color:'+a.col+'">'+total.cal.toFixed(0)+' / '+goal+' '+cal+' ('+a.pct+'%)</span></div>'+
+    '<div style="font-size:10px;color:var(--tx2);margin-bottom:8px">'+L({a:'بروتين',e:'Protein'})+' '+total.p.toFixed(0)+g+' ('+a.proteinPct+'%) · '+L({a:'كربوهيدرات',e:'Carbs'})+' '+total.c.toFixed(0)+g+' ('+a.carbPct+'%) · '+L({a:'دهون',e:'Fat'})+' '+total.f.toFixed(0)+g+' ('+a.fatPct+'%)</div>'+
+    '<div class="pb"><div class="pf" id="mpDayBar" style="width:'+Math.min(100,a.pct)+'%;background:'+a.col+'"></div></div>'+
+    '<div style="font-size:11px;margin-top:8px;color:'+a.col+'">'+a.icon+' '+a.msg+'</div>'+
+    (a.macros.length?'<div style="font-size:10px;color:var(--tx2);margin-top:4px">⚠️ '+a.macros.join(' · ')+'</div>':'');
+  renderDayTabs();
+}
+
+function renderFoodBank(){
+  const search=(document.getElementById('mpFoodSearch')||{}).value||'';
+  const lower=search.toLowerCase();
+  const el=document.getElementById('mpFoodBank');
+  let html='';
+  const matchesSearch=f=>{const n=foodName(f).toLowerCase();const nAr=(f.n&&f.n.ar||'').toLowerCase();const nEn=(f.n&&f.n.en||'').toLowerCase();return !lower||n.includes(lower)||nAr.includes(lower)||nEn.includes(lower);};
+  // Custom foods first if any
+  if(S.customFoods&&S.customFoods.length){
+    const items=S.customFoods.filter(matchesSearch);
+    if(items.length){
+      html+='<div style="font-size:11px;font-weight:700;color:var(--tx);margin:8px 0 4px">'+L({a:'⭐ مخصصة',e:'⭐ Custom'})+'</div>';
+      html+='<div style="display:flex;flex-direction:column;gap:3px">'+items.map(f=>foodChip(f)).join('')+'</div>';
+    }
+  }
+  Object.keys(FOOD_CATS).forEach(cat=>{
+    const items=(FOOD_DB[cat]||[]).filter(matchesSearch);
+    if(!items.length)return;
+    html+='<div style="font-size:11px;font-weight:700;color:var(--tx);margin:10px 0 4px">'+catLabel(cat)+'</div>';
+    html+='<div style="display:flex;flex-direction:column;gap:3px">'+items.map(f=>foodChip(f)).join('')+'</div>';
+  });
+  el.innerHTML=html||'<div style="color:var(--tx3);font-size:11px">'+L({a:'لا توجد نتائج',e:'No results'})+'</div>';
+}
+function foodChip(f){
+  const cal=L({a:'سعر',e:'cal'});
+  return '<button onclick="addFoodToActive(\''+f.id+'\')" style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:var(--bg);border:1px solid var(--bdr);border-radius:6px;cursor:pointer;color:var(--tx);font-family:inherit;font-size:11px;text-align:right"><span>'+foodName(f)+'</span><span style="color:var(--tx3);font-size:10px">'+f.cal+' '+cal+' / '+(foodUnit(f)||'100g')+'</span></button>';
+}
+
+window.setActiveMeal=function(m){
+  if(MEALS_LIST.includes(m)){_mpActiveMeal=m;renderActiveDay();}
+};
+window.addFoodToActive=function(foodId){
+  const f=getFoodById(foodId);if(!f)return;
+  if(!_mpActiveMeal){
+    showToast('☝️',L({a:'اختر وجبة أولاً (اضغط "+ أضف" بجانب الوجبة)',e:'Select a meal first (click "+ Add" next to a meal)'}));
+    return;
+  }
+  _mpPendingFood={foodId,meal:_mpActiveMeal,day:_mpActiveDay,editIdx:null};
+  showQtyModal(f,1);
+};
+function showQtyModal(food,defaultQty){
+  const cal=L({a:'سعر',e:'cal'});const g=L({a:'ج',e:'g'});
+  document.getElementById('mpQtyTitle').textContent=foodName(food);
+  document.getElementById('mpQtyHint').textContent=L({a:'الوحدة:',e:'Unit:'})+' '+(foodUnit(food)||'100g')+' · '+food.cal+' '+cal;
+  const inp=document.getElementById('mpQtyInput');inp.value=defaultQty;
+  const updatePreview=()=>{const q=parseFloat(inp.value)||0;const factor=isPer100(food)?(q/100):q;document.getElementById('mpQtyPreview').textContent='= '+(food.cal*factor).toFixed(0)+' '+cal+' · '+(food.p*factor).toFixed(1)+g+' '+L({a:'بروتين',e:'protein'})+' · '+(food.c*factor).toFixed(1)+g+' '+L({a:'كربوهيدرات',e:'carbs'})+' · '+(food.f*factor).toFixed(1)+g+' '+L({a:'دهون',e:'fat'});};
+  updatePreview();
+  inp.oninput=updatePreview;
+  document.getElementById('mpQtyConfirm').onclick=()=>{
+    const q=parseFloat(inp.value)||0;if(q<=0){alert(L({a:'أدخل كمية صحيحة',e:'Enter a valid quantity'}));return;}
+    if(!S.mealPlan[_mpPendingFood.day][_mpPendingFood.meal])S.mealPlan[_mpPendingFood.day][_mpPendingFood.meal]=[];
+    if(_mpPendingFood.editIdx!==null){S.mealPlan[_mpPendingFood.day][_mpPendingFood.meal][_mpPendingFood.editIdx]={id:_mpPendingFood.foodId,q};}
+    else{S.mealPlan[_mpPendingFood.day][_mpPendingFood.meal].push({id:_mpPendingFood.foodId,q});}
+    save();
+    document.getElementById('mpQtyModal').style.display='none';
+    renderActiveDay();
+  };
+  document.getElementById('mpQtyModal').style.display='flex';
+  inp.focus();inp.select();
+}
+
+window.editItemQty=function(day,meal,idx){
+  const it=S.mealPlan[day][meal][idx];if(!it)return;
+  const f=getFoodById(it.id);if(!f)return;
+  _mpPendingFood={foodId:it.id,meal,day,editIdx:idx};
+  showQtyModal(f,it.q);
+};
+window.removeItem=function(day,meal,idx){
+  if(!confirm(L({a:'حذف هذا الصنف من ',e:'Delete this item from '})+mealLabel(meal)+'؟'))return;
+  S.mealPlan[day][meal].splice(idx,1);
+  save();renderActiveDay();
+};
+
+window.addCustomFood=function(){
+  const nameStr=prompt(L({a:'اسم الصنف:',e:'Food name:'}));if(!nameStr)return;
+  const cal=parseFloat(prompt(L({a:'السعرات لكل 100ج (أو لكل وحدة):',e:'Calories per 100g (or per unit):'}),'100'))||0;
+  const p=parseFloat(prompt(L({a:'بروتين بالجرام:',e:'Protein in grams:'}),'0'))||0;
+  const c=parseFloat(prompt(L({a:'كربوهيدرات بالجرام:',e:'Carbs in grams:'}),'0'))||0;
+  const f=parseFloat(prompt(L({a:'دهون بالجرام:',e:'Fat in grams:'}),'0'))||0;
+  const unitStr=prompt(L({a:'الوحدة (100g أو حبة أو كوب...):',e:'Unit (100g, piece, cup...):'}),'100g')||'100g';
+  if(!S.customFoods)S.customFoods=[];
+  const id='custom_'+Date.now();
+  // Use the same string for both ar/en — user can later edit if bilingual needed
+  S.customFoods.push({id,n:{ar:nameStr,en:nameStr},cal,p,c,f,unit:{ar:unitStr,en:unitStr}});
+  save();renderFoodBank();
+  showToast('✅',L({a:'تم إضافة ',e:'Added '})+nameStr);
+};
+
+// Wire meal slot click to set active meal — alternative to prompt
+function wireMealSlots(){
+  // not needed — addFoodToActive prompts if no active meal
+}
+
+// ═══════════════════════════════════════════════════════════════
+// PDF EXPORT — WEEKLY MEAL PLAN (beautifully formatted)
+// ═══════════════════════════════════════════════════════════════
+window.exportMealPlanPDF=function(){
+  ensureMealPlan();
+  const dayColors={
+    saturday:'#3b82f6',sunday:'#10b981',monday:'#8b5cf6',
+    tuesday:'#f59e0b',wednesday:'#ec4899',thursday:'#6366f1',friday:'#ef4444'
+  };
+  const mealColors={breakfast:'#fbbf24',lunch:'#fb923c',dinner:'#a78bfa',snack:'#34d399'};
+  const goal=S.calorieGoal||2000;
+  const today=new Date().toLocaleDateString('ar-EG',{day:'numeric',month:'long',year:'numeric'});
+  let html=`<!DOCTYPE html><html dir="rtl" lang="ar"><head><meta charset="UTF-8"><title>خطة الوجبات الأسبوعية</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+@page{size:A4;margin:10mm}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Cairo','Segoe UI',sans-serif;background:#fff;color:#1a202c;line-height:1.5;padding:0}
+.hdr{background:linear-gradient(135deg,#7b6cf7,#06b6d4,#10b981);color:#fff;padding:24px 28px;border-radius:12px;margin-bottom:18px;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:-30%;left:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.15),transparent);border-radius:50%}
+.hdr h1{font-size:26px;font-weight:900;margin:0 0 6px;position:relative}
+.hdr .sub{font-size:13px;opacity:.95;position:relative}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.s-card{background:#f8fafc;border-radius:10px;padding:12px;text-align:center;border:1px solid #e2e8f0}
+.s-card .v{font-size:20px;font-weight:900;color:#7b6cf7}
+.s-card .l{font-size:10px;color:#64748b;margin-top:2px;text-transform:uppercase;letter-spacing:.3px}
+.day{margin-bottom:18px;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;page-break-inside:avoid}
+.day-hdr{padding:14px 18px;color:#fff;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+.day-hdr .name{font-size:18px}
+.day-hdr .total{font-size:13px;background:rgba(255,255,255,.25);padding:4px 12px;border-radius:14px}
+.meals{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px;background:#fafbfc}
+.meal{background:#fff;border-radius:10px;padding:12px 14px;border-right:4px solid;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.meal h3{font-size:13px;margin:0 0 8px;display:flex;justify-content:space-between;align-items:center}
+.meal h3 .cal{font-size:11px;color:#64748b;background:#f1f5f9;padding:3px 10px;border-radius:10px;font-weight:600}
+.meal ul{list-style:none;padding:0;margin:0}
+.meal li{font-size:11.5px;padding:3px 0;color:#334155;display:flex;justify-content:space-between}
+.meal li .qty{color:#94a3b8;font-size:10px;margin-right:6px}
+.meal-empty{font-size:11px;color:#94a3b8;font-style:italic;text-align:center;padding:12px 0}
+.day-foot{padding:8px 18px;background:#f1f5f9;font-size:11px;color:#64748b;display:flex;justify-content:space-between;align-items:center}
+.macros{display:flex;gap:12px}
+.macros span b{color:#1e293b}
+.advice{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:600}
+.adv-good{background:#d1fae5;color:#047857}
+.adv-warn{background:#fef3c7;color:#92400e}
+.adv-bad{background:#fee2e2;color:#991b1b}
+.foot{margin-top:24px;padding:16px;background:#f8fafc;border-radius:10px;border:1px dashed #cbd5e1;text-align:center;font-size:11px;color:#64748b}
+.foot b{color:#7b6cf7}
+.tayyibat{background:linear-gradient(135deg,#fef3c7,#fde68a);padding:12px 18px;border-radius:10px;margin-bottom:18px;border-right:4px solid #f59e0b;font-size:12px;color:#78350f}
+.tayyibat b{color:#92400e}
+@media print{body{padding:8mm}.day{break-inside:avoid}.hdr{break-after:avoid}}
+</style></head><body>
+<div class="hdr"><h1>🍽️ خطة الوجبات الأسبوعية — الطيبات</h1><div class="sub">📅 ${today} · ياسر حسن · 🎯 الهدف: ${goal} سعر يوميًا · ⚖️ ${S.weightGoal?.target||74} كجم بنهاية 2026</div></div>
+
+<div class="tayyibat">🌿 <b>الطيبات:</b> الأكل الحلال الطيب من الموارد الطبيعية الكاملة. اتباع سنة النبي ﷺ في الأكل والشرب: ⅓ طعام، ⅓ ماء، ⅓ هواء.</div>
+`;
+  // Weekly summary
+  let weekTotalCal=0,weekTotalP=0,weekTotalC=0,weekTotalF=0;
+  DAYS_AR.forEach(d=>{const t=calcDayTotals(d);weekTotalCal+=t.cal;weekTotalP+=t.p;weekTotalC+=t.c;weekTotalF+=t.f;});
+  html+=`<div class="summary">
+    <div class="s-card"><div class="v">${weekTotalCal.toFixed(0)}</div><div class="l">سعر/أسبوع</div></div>
+    <div class="s-card"><div class="v">${(weekTotalCal/7).toFixed(0)}</div><div class="l">متوسط يومي</div></div>
+    <div class="s-card"><div class="v">${weekTotalP.toFixed(0)}ج</div><div class="l">بروتين/أسبوع</div></div>
+    <div class="s-card"><div class="v">${Math.round(weekTotalP*7/(weekTotalCal||1)*400)}%</div><div class="l">% بروتين</div></div>
+  </div>`;
+  // Days
+  DAYS_AR.forEach(d=>{
+    const dayData=S.mealPlan[d];
+    const totals=calcDayTotals(d);
+    const a=adviceFor(totals,goal);
+    const advCls=a.pct>=110?'adv-bad':a.pct>=95?'adv-warn':'adv-good';
+    html+=`<div class="day">
+      <div class="day-hdr" style="background:linear-gradient(135deg,${dayColors[d]},${dayColors[d]}cc)">
+        <span class="name">${dayLabel(d)}</span>
+        <span class="total">${totals.cal.toFixed(0)} / ${goal} سعر</span>
+      </div>
+      <div class="meals">`;
+    MEALS_LIST.forEach(m=>{
+      const items=dayData[m]||[];
+      const mt=calcMealTotals(items);
+      html+=`<div class="meal" style="border-right-color:${mealColors[m]}">
+        <h3><span>${mealLabel(m)}</span><span class="cal">${mt.cal.toFixed(0)} سعر</span></h3>`;
+      if(items.length){
+        html+='<ul>';
+        items.forEach(it=>{const f=getFoodById(it.id);if(!f)return;
+          const t=calcItemTotals(it);const u=foodUnit(f);const qSuf=/100/.test(u)?'ج':'';
+          html+=`<li><span>• ${foodName(f)}</span><span><span class="qty">${it.q}${qSuf}</span><b>${t.cal.toFixed(0)}</b></span></li>`;
+        });
+        html+='</ul>';
+      }else{html+='<div class="meal-empty">— صيام —</div>';}
+      html+='</div>';
+    });
+    html+=`</div>
+      <div class="day-foot">
+        <div class="macros">
+          <span>🥩 <b>${totals.p.toFixed(0)}ج</b></span>
+          <span>🌾 <b>${totals.c.toFixed(0)}ج</b></span>
+          <span>🥑 <b>${totals.f.toFixed(0)}ج</b></span>
+        </div>
+        <div class="advice ${advCls}">${a.icon} ${a.msg}</div>
+      </div>
+    </div>`;
+  });
+  html+=`<div class="foot">
+    💡 <b>تذكير:</b> هذا تخطيط مبدئي — يُعدّل حسب الجوع والشبع. اتبع سنة النبي ﷺ في الأكل قبل الجوع والتوقف قبل الشبع. استشر طبيبك قبل أي خطة تخسيس.<br><br>
+    <small>🌐 تم التوليد من تطبيق Yasser Plan 2026 · ${new Date().toLocaleString('ar-EG')}</small>
+  </div>
+  <div style="text-align:center;margin-top:14px"><button onclick="window.print()" style="padding:10px 24px;background:#7b6cf7;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">🖨 طباعة / حفظ PDF</button></div>
+  </body></html>`;
+  const w=window.open('','_blank');
+  if(!w){alert('Pop-ups blocked. Please allow pop-ups for this site.');return;}
+  w.document.write(html);w.document.close();
+};
+
+// ═══════════════════════════════════════════════════════════════
+// PDF EXPORT — WEEKLY SHOPPING LIST WITH EGYPTIAN MARKET PRICES
+// ═══════════════════════════════════════════════════════════════
+window.exportShoppingPDF=function(){
+  ensureMealPlan();
+  // Aggregate quantities per food id across the whole week
+  const agg={};
+  DAYS_AR.forEach(d=>{
+    MEALS_LIST.forEach(m=>{
+      (S.mealPlan[d][m]||[]).forEach(it=>{
+        if(!agg[it.id])agg[it.id]={qty:0,uses:0};
+        agg[it.id].qty+=it.q;
+        agg[it.id].uses++;
+      });
+    });
+  });
+  // Group by category
+  const byCategory={};
+  Object.keys(FOOD_CATS).forEach(cat=>{byCategory[cat]=[];});
+  Object.keys(agg).forEach(id=>{
+    const f=getFoodById(id);if(!f)return;
+    let cat=null;
+    Object.keys(FOOD_DB).forEach(c=>{if(FOOD_DB[c].some(x=>x.id===id))cat=c;});
+    if(!cat){if(!byCategory.custom)byCategory.custom=[];byCategory.custom.push({id,food:f,...agg[id]});return;}
+    byCategory[cat].push({id,food:f,...agg[id]});
+  });
+  // Calculate totals
+  let grandTotal=0;
+  const today=new Date().toLocaleDateString('ar-EG',{day:'numeric',month:'long',year:'numeric'});
+  const catColors={proteins:'#ef4444',legumes:'#f59e0b',carbs:'#eab308',vegetables:'#22c55e',fruits:'#ec4899',dairy:'#06b6d4',nuts_oils:'#8b5cf6',drinks:'#64748b',custom:'#94a3b8'};
+  const catIcons={proteins:'🥩',legumes:'🫘',carbs:'🌾',vegetables:'🥬',fruits:'🍎',dairy:'🥛',nuts_oils:'🥜',drinks:'🥤',custom:'⭐'};
+  let html=`<!DOCTYPE html><html dir="rtl" lang="ar"><head><meta charset="UTF-8"><title>قائمة التسوق الأسبوعية</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+@page{size:A4;margin:10mm}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Cairo','Segoe UI',sans-serif;background:#fff;color:#1a202c;line-height:1.5}
+.hdr{background:linear-gradient(135deg,#10b981,#059669);color:#fff;padding:24px 28px;border-radius:12px;margin-bottom:18px;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:-30%;left:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.15),transparent);border-radius:50%}
+.hdr h1{font-size:26px;font-weight:900;margin:0 0 6px;position:relative}
+.hdr .sub{font-size:13px;opacity:.95;position:relative}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.s-card{background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border:1px solid #bbf7d0;border-radius:10px;padding:16px;text-align:center}
+.s-card .v{font-size:24px;font-weight:900;color:#047857}
+.s-card .l{font-size:10px;color:#065f46;margin-top:4px;text-transform:uppercase;letter-spacing:.4px;font-weight:600}
+.cat{margin-bottom:14px;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;page-break-inside:avoid}
+.cat-hdr{padding:10px 16px;color:#fff;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px}
+.cat-hdr .total{font-size:12px;background:rgba(255,255,255,.3);padding:3px 12px;border-radius:12px;font-weight:700}
+.cat-body{padding:0}
+.item{display:grid;grid-template-columns:36px 1fr 90px 90px 80px;gap:8px;padding:9px 14px;border-bottom:1px solid #f1f5f9;align-items:center;font-size:12.5px}
+.item:last-child{border-bottom:none}
+.item:nth-child(even){background:#fafbfc}
+.item .check{width:20px;height:20px;border:2px solid #cbd5e1;border-radius:4px}
+.item .name{font-weight:600;color:#1e293b}
+.item .qty{color:#64748b;text-align:center;font-family:ui-monospace,monospace;background:#f1f5f9;padding:2px 8px;border-radius:6px;font-size:11px}
+.item .uses{color:#94a3b8;text-align:center;font-size:10px}
+.item .price{color:#047857;font-weight:700;text-align:left;font-family:ui-monospace,monospace}
+.grand{margin-top:18px;background:linear-gradient(135deg,#7b6cf7,#06b6d4);color:#fff;padding:18px 24px;border-radius:12px;display:flex;justify-content:space-between;align-items:center}
+.grand .label{font-size:14px;font-weight:600}
+.grand .amount{font-size:28px;font-weight:900}
+.notes{margin-top:18px;padding:14px 18px;background:#fef3c7;border-radius:10px;border-right:4px solid #f59e0b;font-size:12px;color:#78350f;line-height:1.7}
+.notes b{color:#92400e}
+.foot{margin-top:18px;padding:14px;background:#f8fafc;border-radius:10px;text-align:center;font-size:11px;color:#64748b}
+.tip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:600;margin-right:6px}
+.tip-organic{background:#dcfce7;color:#166534}
+.tip-cheap{background:#dbeafe;color:#1e40af}
+.tip-protein{background:#fee2e2;color:#991b1b}
+@media print{body{padding:8mm}.cat{break-inside:avoid}}
+</style></head><body>
+<div class="hdr"><h1>🛒 قائمة التسوق الأسبوعية</h1><div class="sub">📅 ${today} · لـ ياسر حسن · أسعار السوق المصري التقديرية (${new Date().getFullYear()})</div></div>`;
+  // Render categories
+  Object.keys(byCategory).forEach(cat=>{
+    const items=byCategory[cat];if(!items.length)return;
+    let catTotal=0;
+    items.forEach(i=>{catTotal+=itemPriceEGP({id:i.id,q:i.qty});});
+    grandTotal+=catTotal;
+    html+=`<div class="cat">
+      <div class="cat-hdr" style="background:linear-gradient(135deg,${catColors[cat]||'#94a3b8'},${(catColors[cat]||'#94a3b8')}dd)">
+        <span>${catIcons[cat]||'📦'} ${(FOOD_CATS[cat]&&loc(FOOD_CATS[cat]))||cat}</span>
+        <span class="total">${catTotal.toFixed(0)} ج.م</span>
+      </div>
+      <div class="cat-body">`;
+    items.sort((a,b)=>b.qty-a.qty).forEach(i=>{
+      const u=foodUnit(i.food);const qSuf=/100/.test(u)?'ج':' '+u;
+      const price=itemPriceEGP({id:i.id,q:i.qty});
+      html+=`<div class="item">
+        <div class="check"></div>
+        <div class="name">${foodName(i.food)}</div>
+        <div class="qty">${i.qty}${qSuf}</div>
+        <div class="uses">${i.uses}× أسبوعيًا</div>
+        <div class="price">${price.toFixed(1)} ج.م</div>
+      </div>`;
+    });
+    html+='</div></div>';
+  });
+  html+=`<div class="grand">
+    <span class="label">💰 الإجمالي التقديري للأسبوع:</span>
+    <span class="amount">${grandTotal.toFixed(0)} ج.م</span>
+  </div>
+  <div class="notes">
+    <b>📌 ملاحظات مهمة:</b><br>
+    • الأسعار تقديرية حسب السوق المصري لعام ${new Date().getFullYear()} وقد تختلف حسب المنطقة والموسم.<br>
+    • <span class="tip tip-organic">عضوي</span> الفواكه والخضار العضوية أغلى بـ 30-50%<br>
+    • <span class="tip tip-cheap">ادخار</span> اشترِ بكميات كبيرة من الأسواق الشعبية (روض الفرج، العتبة) لتوفير 20-30%<br>
+    • <span class="tip tip-protein">بروتين</span> أسعار اللحوم والدواجن ترتفع في رمضان والأعياد<br>
+    • للأكل الطيب: اختر الموسمي، الطازج، والأقرب لطبيعته
+  </div>
+  <div class="foot">
+    🌐 توليد تلقائي من Yasser Plan 2026 · ${new Date().toLocaleString('ar-EG')}<br>
+    <button onclick="window.print()" style="margin-top:10px;padding:10px 24px;background:#10b981;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">🖨 طباعة / حفظ PDF</button>
+  </div>
+  </body></html>`;
+  const w=window.open('','_blank');
+  if(!w){alert('Pop-ups blocked. Please allow pop-ups for this site.');return;}
+  w.document.write(html);w.document.close();
+};
+
+// Hook meal planner widget into health load
+const _origLoadHealth2=window.loadHealth;
+window.loadHealth=function(){
+  _origLoadHealth2&&_origLoadHealth2();
+  try{renderMPTodayWidget();}catch(e){}
+};
+
+// Initial render
+setTimeout(()=>{try{ensureMealPlan();renderMPTodayWidget();}catch(e){}},2200);
+
+function renderDSTWidget(){
+  const sel=document.getElementById('dstSel');
+  const info=document.getElementById('dstNow');
+  if(!sel||!info)return;
+  sel.value=S.dstOverride||'auto';
+  // Compute Cairo time preview based on selection
+  const now=new Date();
+  let cairo;
+  if(S.dstOverride==='on')cairo=new Date(now.getTime()+(3*60-now.getTimezoneOffset())*60000);
+  else if(S.dstOverride==='off')cairo=new Date(now.getTime()+(2*60-now.getTimezoneOffset())*60000);
+  else{
+    // Auto: use system Africa/Cairo via Intl
+    try{cairo=new Date(now.toLocaleString('en-US',{timeZone:'Africa/Cairo'}));}
+    catch(e){cairo=new Date(now.getTime()+(3*60-now.getTimezoneOffset())*60000);}
+  }
+  const dateLocale=S.lang==='en'?'en-US':'ar-EG';
+  info.innerHTML=L({a:'القاهرة الآن:',e:'Cairo now:'})+' <b>'+cairo.toLocaleTimeString(dateLocale,{hour:'2-digit',minute:'2-digit'})+'</b>';
+}
+
+// Hook into loadHealth so widgets refresh together
+const _origLoadHealth=window.loadHealth;
+window.loadHealth=function(){
+  _origLoadHealth&&_origLoadHealth();
+  try{renderFastingWidget();}catch(e){}
+  try{renderMedsWidget();}catch(e){}
+  try{renderWeightGoal();}catch(e){}
+  try{renderDSTWidget();}catch(e){}
+};
+
+// Initial render on script load
+setTimeout(()=>{try{renderFastingWidget();renderMedsWidget();renderWeightGoal();renderDSTWidget();}catch(e){}},2000);
 
 // --- WEEK VIEW ---
 let weekOffset=0;
@@ -4532,9 +5681,10 @@ async function autoSyncPull(){
       cache:'no-store'
     });
     if(!r.ok){setSyncStatus('⚠️',L({a:'فشل المزامنة',e:'Sync failed'}));return;}
+    localStorage.setItem('_lastPullAt',String(Date.now()));
     const data=await r.json();
     const f=data.files&&data.files[SYNC.filename];
-    if(!f||!f.content||f.content.trim()===''||f.content.trim()==='{}'){setSyncStatus('☁️',L({a:'بانتظار البيانات',e:'Awaiting data'}));return;}
+    if(!f||!f.content||f.content.trim()===''||f.content.trim()==='{}'){setSyncStatus('☁️',L({a:'بانتظار البيانات',e:'Awaiting data'}));updateSyncTimes();return;}
     let remote;try{remote=JSON.parse(f.content);}catch(e){setSyncStatus('⚠️',L({a:'بيانات تالفة',e:'Corrupt data'}));return;}
     if(remote&&remote.lastActive&&remote.lastActive>(S.lastActive||0)){
       Object.assign(S,remote);
@@ -4544,6 +5694,7 @@ async function autoSyncPull(){
       try{showToast('☁️',L({a:'تم تحديث البيانات من جهاز آخر',e:'Data synced from another device'}));}catch(e){}
     }
     setSyncStatus('✅');
+    updateSyncTimes();
   }catch(e){setSyncStatus('⚠️',L({a:'غير متصل',e:'Offline'}));}
 }
 
@@ -4559,7 +5710,9 @@ async function autoSyncPush(){
       headers:{'Authorization':'Bearer '+SYNC.token,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
       body:JSON.stringify(body)
     });
+    if(r.ok)localStorage.setItem('_lastPushAt',String(Date.now()));
     setSyncStatus(r.ok?'✅':'⚠️',r.ok?null:L({a:'فشل الرفع',e:'Push failed'}));
+    updateSyncTimes();
   }catch(e){setSyncStatus('⚠️',L({a:'غير متصل',e:'Offline'}));}
   _syncBusy=false;
 }
@@ -4612,8 +5765,21 @@ function showSyncCode(){
   const subLabel=cloudOn
     ?L({a:'✅ يتم الرفع تلقائيًا لكل التعديلات\n📱 يتم السحب عند فتح التطبيق وكل دقيقتين',e:'✅ Auto-uploads on every change\n📱 Auto-pulls on open and every 2 minutes'})
     :L({a:'✅ يتم الحفظ تلقائيًا عند كل تعديل\n📱 لنقل البيانات لجهاز آخر: استخدم الأزرار أعلاه',e:'✅ Auto-saves on every change\n📱 To transfer to another device: use buttons above'});
+  const timeRows=cloudOn
+    ?'<div style="display:flex;justify-content:space-between;font-size:10px;margin-top:6px;padding:4px 8px;color:var(--tx2)"><span>⬇️ '+L({a:'آخر سحب',e:'Last Pull'})+'</span><span id="lastPullTime" style="font-family:monospace">—</span></div>'+
+     '<div style="display:flex;justify-content:space-between;font-size:10px;padding:4px 8px;color:var(--tx2)"><span>⬆️ '+L({a:'آخر رفع',e:'Last Push'})+'</span><span id="lastPushTime" style="font-family:monospace">—</span></div>'
+    :'';
   el.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;margin-top:6px;padding:6px 8px;background:rgba(72,187,120,.06);border:1px solid rgba(72,187,120,.15);border-radius:6px"><span style="color:var(--gn)">'+headLabel+'</span><span id="syncStatus" style="color:var(--tx3)">…</span></div>'+
+  timeRows+
   '<div style="font-size:9px;color:var(--tx3);margin-top:4px;line-height:1.6">'+subLabel+'</div>';
+  updateSyncTimes();
+}
+function updateSyncTimes(){
+  const fmt=ts=>{if(!ts)return '—';const d=new Date(parseInt(ts));if(isNaN(d.getTime()))return '—';return d.toLocaleString();};
+  const pullEl=document.getElementById('lastPullTime');
+  if(pullEl)pullEl.textContent=fmt(localStorage.getItem('_lastPullAt'));
+  const pushEl=document.getElementById('lastPushTime');
+  if(pushEl)pushEl.textContent=fmt(localStorage.getItem('_lastPushAt'));
 }
 setTimeout(showSyncCode,1000);
 // Update sync status on every save

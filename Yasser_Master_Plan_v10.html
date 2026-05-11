@@ -6,6 +6,8 @@
 <meta name="theme-color" content="#0c0c14">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237b6cf7'/><text x='50' y='70' text-anchor='middle' fill='%23ffffff' font-size='46' font-family='sans-serif' font-weight='800'>MP</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%237b6cf7'/><text x='90' y='115' text-anchor='middle' fill='%23ffffff' font-size='84' font-family='sans-serif' font-weight='800'>MP</text><text x='90' y='150' text-anchor='middle' fill='%23ffffff' font-size='13' font-family='sans-serif' font-weight='700' letter-spacing='2' opacity='0.9'>MASTER PLAN</text></svg>">
 <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiWWFzc2VyIEludGVydmlldyBQbGFuIiwic2hvcnRfbmFtZSI6Ikludml3UGxhbiIsInN0YXJ0X3VybCI6Ii4iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMGMwYzE0IiwidGhlbWVfY29sb3IiOiIjN2I2Y2Y3IiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbCw8c3ZnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgdmlld0JveD0nMCAwIDEwMCAxMDAnPjxyZWN0IHdpZHRoPScxMDAnIGhlaWdodD0nMTAwJyByeD0nMjAnIGZpbGw9JyM3YjZjZjcnLz48dGV4dCB4PSc1MCcgeT0nNjUnIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZpbGw9JyNmZmYnIGZvbnQtc2l6ZT0nNDAnIGZvbnQtZmFtaWx5PSdzYW5zLXNlcmlmJz5ZSDwvdGV4dD48L3N2Zz4iLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9XX0=">
 <meta name="version" content="v5-1777881737">
 <title>Yasser Hassan — 90-Day Interview Mastery Plan v5</title>
@@ -731,25 +733,49 @@ l
 #badgeTip-title{font-size:13px;font-weight:700;margin-bottom:4px;color:var(--putx)}
 #badgeTip-status{font-size:10px;font-weight:600;margin-bottom:6px}
 #badgeTip-desc{font-size:11px;color:var(--tx2);line-height:1.5}
+
+/* Print-friendly mode for Q&A digest */
+@media print {
+  body { background:#fff !important; color:#000 !important; }
+  .topnav, .bottom-tabs, #settingsBtn, #installBanner, #pomodoroWidget,
+  #mockSimModal, #aiCoachModal, #weakAreasModal, #confTrendModal { display:none !important; }
+  .tab:not(#t-qa) { display:none !important; }
+  .qa-card, .qa-item { page-break-inside:avoid; border:1px solid #ccc !important; padding:8px !important; margin-bottom:6px !important; background:#fff !important; }
+  .cp { display:none !important; }
+  #qaSearch, button { display:none !important; }
+  details { display:block !important; }
+  details > summary { font-weight:bold; }
+}
+
+/* Compact Settings Modal */
+#settingsModal button{font-size:10px!important}
+#settingsModal input,#settingsModal select{font-size:10px!important;padding:3px 6px!important}
+#settingsModal input[type=range]{padding:0!important}
+#settingsModal label,#settingsModal span{font-size:10.5px}
+#settingsModal .sec-title,#settingsModal h3{font-size:11px}
+#settingsModal>div>div>div{gap:6px}
 </style>
 
 </head>
 <body>
-<div id="settingsModal" onclick="if(event.target===this)this.style.display='none'" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.65);z-index:9999;align-items:center;justify-content:center;padding:16px">
-<div style="background:var(--card);border:1px solid var(--bdr);border-radius:18px;width:min(96vw,820px);display:flex;flex-direction:column;font-size:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)">
+<div id="settingsModal" onclick="if(event.target===this)this.style.display='none'" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:9999;align-items:center;justify-content:center;padding:16px">
+<div style="background:var(--card);border:1px solid var(--bdr);border-radius:18px;width:min(98vw,1150px);max-height:94vh;display:flex;flex-direction:column;font-size:12px;box-shadow:0 20px 60px rgba(0,0,0,.5);overflow:hidden">
 <!-- Header -->
-<div style="display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--bdr);background:var(--card2);border-radius:18px 18px 0 0">
-<div style="display:flex;align-items:center;gap:10px">
-<div style="width:30px;height:30px;border-radius:8px;background:var(--pu);display:flex;align-items:center;justify-content:center;font-size:14px">⚙️</div>
-<span style="font-size:15px;font-weight:700;color:var(--tx)">Settings</span>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--bdr);background:linear-gradient(135deg,rgba(123,108,247,.12),var(--card2));border-radius:18px 18px 0 0">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="width:36px;height:36px;border-radius:10px;background:var(--pu);display:flex;align-items:center;justify-content:center;font-size:18px">⚙️</div>
+<div>
+<div style="font-size:16px;font-weight:700;color:var(--tx)">Settings</div>
+<div style="font-size:10px;color:var(--tx3)">Customize your experience</div>
 </div>
-<button id="stgClose" onclick="document.getElementById('settingsModal').style.display='none'" style="width:28px;height:28px;border-radius:50%;background:var(--card);border:1px solid var(--bdr);cursor:pointer;font-size:15px;color:var(--tx2);line-height:1;display:flex;align-items:center;justify-content:center">×</button>
 </div>
-<!-- 2-column body -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<!-- LEFT: Appearance + AI Key + Data -->
-<div style="padding:18px 22px;border-right:1px solid var(--bdr);display:flex;flex-direction:column;gap:0">
-<div style="font-size:9px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Appearance</div>
+<button id="stgClose" onclick="document.getElementById('settingsModal').style.display='none'" style="width:32px;height:32px;border-radius:50%;background:var(--card);border:1px solid var(--bdr);cursor:pointer;font-size:16px;color:var(--tx2);line-height:1;display:flex;align-items:center;justify-content:center">×</button>
+</div>
+<!-- 3-column body -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;overflow-y:auto">
+<!-- COLUMN 1: Appearance + AI Key -->
+<div style="padding:12px 16px;border-right:1px solid var(--bdr);display:flex;flex-direction:column;gap:0">
+<div style="font-size:11px;font-weight:700;color:var(--putx);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;align-items:center;gap:6px;padding-bottom:5px;border-bottom:1px solid var(--bdr)"><span style="width:22px;height:22px;border-radius:5px;background:rgba(123,108,247,.15);display:flex;align-items:center;justify-content:center;font-size:12px">🎨</span> Appearance</div>
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
 <div style="display:flex;align-items:center;gap:8px"><span style="font-size:14px">🌙</span><span style="color:var(--tx)">Theme</span></div>
 <div style="display:flex;background:var(--card2);border:1px solid var(--bdr);border-radius:6px;overflow:hidden">
@@ -763,7 +789,7 @@ l
 <button onclick="setFontSize('m')" id="stgFM" style="padding:4px 12px;font-size:12px;border:none;border-right:1px solid var(--bdr);cursor:pointer">M</button>
 <button onclick="setFontSize('l')" id="stgFL" style="padding:4px 12px;font-size:14px;border:none;cursor:pointer">L</button>
 </div></div>
-<div style="font-size:9px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">AI Key</div>
+<div style="font-size:11px;font-weight:700;color:var(--cotx,#48bb78);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;align-items:center;gap:6px;padding-bottom:5px;border-bottom:1px solid var(--bdr)"><span style="width:22px;height:22px;border-radius:5px;background:rgba(72,187,120,.15);display:flex;align-items:center;justify-content:center;font-size:12px">🤖</span> AI Key</div>
 <div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--bdr)">
 <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
 <span style="font-size:14px">🤖</span><span style="color:var(--tx)">Claude API key</span>
@@ -773,7 +799,10 @@ l
 <input id="stgApiKey" type="password" placeholder="sk-ant-api03-..." style="flex:1;font-size:11px;padding:6px 9px;border-radius:6px;background:var(--card2);border:1px solid var(--bdr);color:var(--tx);outline:none">
 <button onclick="var v=document.getElementById('stgApiKey').value.trim();if(v&&v!=='••••••••••••••••'){localStorage.setItem('yasser_api_key',v);document.getElementById('stgApiKey').value='••••••••••••••••';document.getElementById('stgApiDot').style.background='#27ae60';alert('Saved.');}" id="stgApiSave" style="font-size:11px;padding:6px 13px;background:var(--pu);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600">Save</button>
 </div></div>
-<div style="font-size:9px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Data</div>
+</div>
+<!-- COLUMN 2: Data + Cloud Sync + Time Zone -->
+<div style="padding:12px 16px;border-right:1px solid var(--bdr);display:flex;flex-direction:column;gap:0">
+<div style="font-size:11px;font-weight:700;color:#3b82f6;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;align-items:center;gap:6px;padding-bottom:5px;border-bottom:1px solid var(--bdr)"><span style="width:22px;height:22px;border-radius:5px;background:rgba(59,130,246,.15);display:flex;align-items:center;justify-content:center;font-size:12px">💾</span> Data</div>
 <div style="display:flex;flex-direction:column;gap:9px">
 <div style="display:flex;align-items:center;justify-content:space-between">
 <div style="display:flex;align-items:center;gap:8px"><span style="font-size:14px">📤</span><span style="color:var(--tx)">Export backup</span></div>
@@ -785,10 +814,31 @@ l
 <div style="display:flex;align-items:center;gap:8px"><span style="font-size:14px">📄</span><span style="color:var(--tx)">Progress report</span></div>
 <button onclick="exportProgressPDF()" id="stgPDF" style="font-size:11px;padding:4px 13px;background:var(--card2);border:1px solid var(--bdr);border-radius:6px;cursor:pointer;color:var(--tx2)">PDF</button></div>
 </div>
+<div style="font-size:11px;font-weight:700;color:#06b6d4;text-transform:uppercase;letter-spacing:.08em;margin-top:18px;margin-bottom:8px;display:flex;align-items:center;gap:6px;padding-bottom:5px;border-bottom:1px solid var(--bdr)"><span style="width:22px;height:22px;border-radius:5px;background:rgba(6,182,212,.15);display:flex;align-items:center;justify-content:center;font-size:12px">⏰</span> Time Zone (DST)</div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:14px">⏰</span><span style="color:var(--tx)">Cairo offset</span></div>
+<select id="stgDstSel" onchange="setDSTMaster(this.value)" style="font-size:11px;padding:4px 8px;background:var(--card2);border:1px solid var(--bdr);border-radius:6px;color:var(--tx);font-family:inherit">
+<option value="auto">Auto (Africa/Cairo)</option>
+<option value="on">DST On (UTC+3)</option>
+<option value="off">DST Off (UTC+2)</option>
+</select>
 </div>
-<!-- RIGHT: Voice + Reset -->
-<div style="padding:18px 22px;display:flex;flex-direction:column;gap:0">
-<div style="font-size:9px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Voice</div>
+<div style="font-size:11px;font-weight:700;color:#3b82f6;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;align-items:center;gap:6px;padding-bottom:5px;border-bottom:1px solid var(--bdr)"><span style="width:22px;height:22px;border-radius:5px;background:rgba(59,130,246,.15);display:flex;align-items:center;justify-content:center;font-size:12px">☁️</span> Cloud Sync</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:14px">⬇️</span><span style="color:var(--tx)">Last pull</span></div>
+<span id="stgLastPull" style="font-size:11px;color:var(--tx2);font-family:monospace">—</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:14px">⬆️</span><span style="color:var(--tx)">Last push</span></div>
+<span id="stgLastPush" style="font-size:11px;color:var(--tx2);font-family:monospace">—</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:14px">🔄</span><span style="color:var(--tx)">Force sync now</span></div>
+<button onclick="if(typeof _syncPush==='function')_syncPush();setTimeout(function(){if(typeof _syncPull==='function')_syncPull();},800);" style="font-size:11px;padding:4px 13px;background:var(--card2);border:1px solid var(--bdr);border-radius:6px;cursor:pointer;color:var(--tx2)">Sync now</button></div>
+</div>
+</div>
+<!-- COLUMN 3: Voice + Reset -->
+<div style="padding:12px 16px;display:flex;flex-direction:column;gap:0">
+<div style="font-size:11px;font-weight:700;color:#f6ad55;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;align-items:center;gap:6px;padding-bottom:5px;border-bottom:1px solid var(--bdr)"><span style="width:22px;height:22px;border-radius:5px;background:rgba(246,173,85,.15);display:flex;align-items:center;justify-content:center;font-size:12px">🔊</span> Voice</div>
 <div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--bdr)">
 <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:14px">🔊</span><span style="font-size:11px;color:var(--tx);font-weight:600">Voice settings</span></div>
 <select id="stgVoiceSelect" onchange="changeVoice(this.value)" style="width:100%;font-size:11px;padding:5px 8px;background:var(--card2);border:1px solid var(--bdr);color:var(--tx);border-radius:6px;margin-bottom:10px"><option>Loading voices...</option></select>
@@ -812,7 +862,7 @@ l
 <button onclick="ttsRate=0.85;ttsPitch=1;ttsVolume=1;document.getElementById('voiceSpeed').value=0.85;document.getElementById('stgSpeedVal').textContent='0.85x';document.getElementById('stgPitch').value=1;document.getElementById('stgPitchVal').textContent='1.0x';document.getElementById('stgVol').value=1;document.getElementById('stgVolVal').textContent='100%';localStorage.setItem('yspeed','0.85');localStorage.removeItem('ypitch');localStorage.removeItem('yvol');" style="font-size:11px;padding:6px 12px;background:var(--card2);border:1px solid var(--bdr);border-radius:6px;cursor:pointer;color:var(--tx3)">Reset</button>
 </div>
 </div>
-<div style="font-size:9px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Reset</div>
+<div style="font-size:11px;font-weight:700;color:#e74c3c;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;align-items:center;gap:6px;padding-bottom:5px;border-bottom:1px solid var(--bdr)"><span style="width:22px;height:22px;border-radius:5px;background:rgba(231,76,60,.15);display:flex;align-items:center;justify-content:center;font-size:12px">⚠️</span> Reset (Danger)</div>
 <div style="display:flex;flex-direction:column;gap:9px">
 <div style="display:flex;align-items:center;justify-content:space-between">
 <div style="display:flex;align-items:center;gap:8px"><span style="font-size:14px">🔄</span><span style="color:var(--tx)">Reset assessment scores</span></div>
@@ -826,7 +876,105 @@ l
 <!-- Footer -->
 <div style="padding:9px 20px;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;background:var(--card2);border-radius:0 0 18px 18px">
 <span style="font-size:10px;color:var(--tx3)">Yasser Master Plan v7</span>
-<span style="font-size:10px;color:var(--tx3)">3,588 questions · 255 Q&amp;A</span>
+<span style="font-size:10px;color:var(--tx3)" id="stgCounts">— questions · — Q&amp;A</span>
+</div>
+</div>
+</div>
+
+<!-- ═══ JOB-FIT SCORECARD MODAL ═══ -->
+<div id="scorecardModal" onclick="if(event.target===this)closeScorecard()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9998;align-items:center;justify-content:center;padding:16px">
+<div style="background:var(--card);border:1px solid var(--bdr);border-radius:18px;width:min(96vw,640px);max-height:90vh;overflow-y:auto;font-size:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--bdr);background:var(--card2);border-radius:18px 18px 0 0">
+<span style="font-size:15px;font-weight:700">📊 Job-Fit Scorecard</span>
+<button onclick="closeScorecard()" style="width:28px;height:28px;border-radius:50%;background:var(--card);border:1px solid var(--bdr);cursor:pointer;font-size:15px">×</button>
+</div>
+<div style="padding:18px 20px">
+<input id="scoOpp" type="text" placeholder="Opportunity name (e.g. DAAM PM Role)" style="width:100%;padding:8px 10px;background:var(--card2);border:1px solid var(--bdr);border-radius:8px;color:var(--tx);font-size:12px;margin-bottom:14px">
+<div id="scoFields" style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:14px"></div>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--card2);border-radius:8px;margin-bottom:12px">
+<span style="font-size:13px;font-weight:700">Total Score:</span>
+<span id="scoTotal" style="font-size:18px;font-weight:800;color:var(--pu)">— / 10</span>
+</div>
+<div id="scoVerdict" style="font-size:11px;color:var(--tx2);margin-bottom:10px;padding:8px 12px;background:var(--card2);border-radius:6px;display:none"></div>
+<textarea id="scoNotes" placeholder="Notes / positioning advice / where to be careful..." style="width:100%;min-height:60px;padding:8px 10px;background:var(--card2);border:1px solid var(--bdr);border-radius:8px;color:var(--tx);font-size:12px;font-family:inherit;margin-bottom:12px;resize:vertical"></textarea>
+<div style="display:flex;gap:8px;margin-bottom:18px">
+<button class="btn" onclick="saveScorecard()" style="flex:1">💾 Save Scorecard</button>
+<button class="btn btn-sm btn-ghost" onclick="resetScorecard()">Reset</button>
+</div>
+<div style="font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Saved Scorecards</div>
+<div id="scoSaved" style="font-size:11px;color:var(--tx2)"></div>
+</div>
+</div>
+</div>
+
+<!-- ═══ TOOLS SELF-RATING MODAL ═══ -->
+<div id="toolsRatingModal" onclick="if(event.target===this)closeToolsRating()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9998;align-items:center;justify-content:center;padding:16px">
+<div style="background:var(--card);border:1px solid var(--bdr);border-radius:18px;width:min(96vw,820px);max-height:90vh;overflow-y:auto;font-size:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--bdr);background:var(--card2);border-radius:18px 18px 0 0">
+<span style="font-size:15px;font-weight:700">🛠️ Tools Self-Rating Dashboard</span>
+<button onclick="closeToolsRating()" style="width:28px;height:28px;border-radius:50%;background:var(--card);border:1px solid var(--bdr);cursor:pointer;font-size:15px">×</button>
+</div>
+<div style="padding:18px 20px">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+<div>
+<div style="font-size:11px;color:var(--tx3);margin-bottom:10px">Rate 1 (none) → 5 (expert). Tools rated below 3 are flagged for focus.</div>
+<div id="toolsList" style="display:flex;flex-direction:column;gap:6px"></div>
+</div>
+<div>
+<div style="font-size:11px;color:var(--tx3);margin-bottom:10px;text-align:center">Skill Radar</div>
+<canvas id="toolsRadar" style="width:100%;max-height:340px"></canvas>
+<div id="toolsFocus" style="margin-top:14px;padding:10px;background:var(--card2);border-radius:8px;font-size:11px"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ═══ POMODORO MINI-WIDGET ═══ -->
+<div id="pomodoroWidget" style="display:none;position:fixed;bottom:calc(60px + env(safe-area-inset-bottom,0px));left:8px;z-index:9997;background:rgba(123,108,247,.95);color:#fff;padding:8px 12px;border-radius:10px;font-size:12px;font-family:monospace;box-shadow:0 4px 14px rgba(0,0,0,.3);min-width:140px">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+    <span id="pomLabel" style="font-weight:700">🍅 Focus</span>
+    <span id="pomTime" style="font-size:14px;font-weight:700">25:00</span>
+  </div>
+  <div style="display:flex;gap:4px;margin-top:6px">
+    <button onclick="togglePom()" id="pomBtn" style="flex:1;padding:3px 6px;background:rgba(255,255,255,.2);border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:10px">▶</button>
+    <button onclick="resetPom()" style="padding:3px 8px;background:rgba(255,255,255,.2);border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:10px">↻</button>
+    <button onclick="closePom()" style="padding:3px 8px;background:rgba(255,255,255,.2);border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:10px">×</button>
+  </div>
+</div>
+
+<!-- ═══ INSTALL BANNER (PWA) ═══ -->
+<div id="installBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:99998;background:linear-gradient(135deg,#7b6cf7,#06b6d4);color:#fff;padding:8px 12px;font-size:12px;text-align:center">
+  <span id="installMsg">📱 Tap Share → Add to Home Screen for the best experience.</span>
+  <button onclick="document.getElementById('installBanner').style.display='none';localStorage.setItem('yInstallDismissed','1')" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:3px 10px;border-radius:4px;cursor:pointer;margin-left:8px;font-size:11px">×</button>
+</div>
+
+<!-- ═══ MOCK INTERVIEW SIMULATOR MODAL ═══ -->
+<div id="mockSimModal" onclick="if(event.target===this)closeMockSim()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9998;align-items:center;justify-content:center;padding:12px">
+<div style="background:var(--card);border:1px solid var(--bdr);border-radius:14px;width:min(96vw,800px);max-height:96vh;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--bdr);background:var(--card2)">
+<div><span style="font-size:15px;font-weight:700">🎬 Mock Interview Simulator</span>
+<div id="mockTimerHdr" style="font-size:11px;color:var(--tx3);margin-top:2px"></div></div>
+<button onclick="closeMockSim()" style="width:30px;height:30px;border-radius:50%;background:var(--card);border:1px solid var(--bdr);cursor:pointer;font-size:14px;color:var(--tx)">×</button>
+</div>
+<div id="mockSimBody" style="padding:20px 24px;overflow-y:auto;flex:1"></div>
+<div id="mockSimFooter" style="padding:12px 18px;border-top:1px solid var(--bdr);background:var(--card2);display:flex;justify-content:space-between;gap:8px"></div>
+</div>
+</div>
+
+<!-- ═══ AI COACH MODAL ═══ -->
+<div id="aiCoachModal" onclick="if(event.target===this)closeAiCoach()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9998;align-items:center;justify-content:center;padding:12px">
+<div style="background:var(--card);border:1px solid var(--bdr);border-radius:14px;width:min(96vw,720px);max-height:94vh;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--bdr);background:var(--card2)">
+<span style="font-size:15px;font-weight:700">🤖 AI Coach Feedback</span>
+<button onclick="closeAiCoach()" style="width:30px;height:30px;border-radius:50%;background:var(--card);border:1px solid var(--bdr);cursor:pointer;font-size:14px;color:var(--tx)">×</button>
+</div>
+<div style="padding:18px 22px;overflow-y:auto;flex:1">
+<div id="aiCoachQuestion" style="font-size:13px;font-weight:700;margin-bottom:12px;padding:10px;background:var(--card2);border-radius:8px"></div>
+<div style="font-size:11px;color:var(--tx3);margin-bottom:6px">Type your answer (or paste your transcript):</div>
+<textarea id="aiCoachAnswer" placeholder="Speak your answer first, then type or transcribe it here..." style="width:100%;min-height:160px;padding:10px;background:var(--card2);border:1px solid var(--bdr);border-radius:8px;color:var(--tx);font-size:12px;font-family:inherit;resize:vertical;margin-bottom:10px"></textarea>
+<button onclick="submitAiCoach()" id="aiCoachBtn" style="width:100%;padding:10px;background:var(--pu);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-size:13px">📊 Get AI Feedback</button>
+<div id="aiCoachResult" style="margin-top:14px"></div>
 </div>
 </div>
 </div>
@@ -864,7 +1012,7 @@ ackground:var(--bdr);flex-shrink:0;align-self:center"></span>
 <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;padding:0 10px;border-left:1px solid var(--bdr)">
 <button class="tn-action" onclick="openLogModal()" title="Log Session">📝</button>
 <button class="tn-action" onclick="toggleFeatureMap()" title="Feature Map">🗺️</button>
-<button class="tn-action" id="settingsBtn" title="Settings" onclick="var m=document.getElementById('settingsModal');if(m){m.style.display='flex';var vs=document.getElementById('voiceSelect'),svs=document.getElementById('stgVoiceSelect');if(vs&&svs){svs.innerHTML=vs.innerHTML;svs.value=vs.value;}var sp=localStorage.getItem('yspeed')||'0.85';document.getElementById('stgSpeedVal').textContent=parseFloat(sp).toFixed(2)+'x';}">⚙️</button>
+<button class="tn-action" id="settingsBtn" title="Settings" onclick="var m=document.getElementById('settingsModal');if(m){m.style.display='flex';var vs=document.getElementById('voiceSelect'),svs=document.getElementById('stgVoiceSelect');if(vs&&svs){svs.innerHTML=vs.innerHTML;svs.value=vs.value;}var sp=localStorage.getItem('yspeed')||'0.85';document.getElementById('stgSpeedVal').textContent=parseFloat(sp).toFixed(2)+'x';if(typeof updateSyncTimes==='function')updateSyncTimes();}">⚙️</button>
 <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
 </div>
 </nav>
@@ -991,8 +1139,9 @@ ackground:var(--bdr);flex-shrink:0;align-self:center"></span>
 <div class="card" style="text-align:center"><div class="kpi-l">Grammar Errors</div><div id="grammarSummary" style="font-size:12px;color:var(--tx2)">—</div></div>
 </div>
 <div class="card mb16">
-<div style="font-size:14px;font-weight:600;color:var(--putx);margin-bottom:12px">📝 Log Today's Session</div>
+<div style="font-size:14px;font-weight:600;color:var(--putx);margin-bottom:12px">📝 Log Session</div>
 <div class="log-grid">
+<div class="lf"><label>Date</label><input type="date" id="ldate"></div>
 <div class="lf"><label>Day (1-90)</label><input type="number" id="ld" min="1" max="90"></div>
 <div class="lf"><label>Confidence (1-10)</label><input type="number" id="lc" min="1" max="10"></div>
 <div class="lf"><label>Words Learned</label><input type="number" id="lw" min="0"></div>
@@ -1061,7 +1210,7 @@ ackground:var(--bdr);flex-shrink:0;align-self:center"></span>
 
 <!-- ═══════════ Q&A SCRIPTS ═══════════ -->
 <div class="tab" id="t-qa">
-<div style="font-size:12px;color:var(--tx2);margin-bottom:10px;line-height:1.5">255 interview questions with personalized scripts. Use search, filter by category, and track mastery with spaced repetition.</div>
+<div style="font-size:12px;color:var(--tx2);margin-bottom:10px;line-height:1.5"><span id="qaIntroCount">—</span> interview questions with personalized scripts. Use search, filter by category, and track mastery with spaced repetition.</div>
 <div class="qa-search-wrap" style="display:flex;align-items:center;gap:8px"><input class="qa-search" id="qaSearch" type="text" placeholder="Search questions..." oninput="renderQA()"><button onclick="exportQANotes()" style="flex-shrink:0;font-size:11px;background:var(--card2);border:1px solid var(--bdr);border-radius:8px;padding:7px 12px;cursor:pointer;color:var(--tx2);white-space:nowrap">📝 Export Notes</button></div>
 <div class="cat-pills" id="cpills"></div>
 <div id="qlist"></div>
@@ -1200,6 +1349,11 @@ ackground:var(--bdr);flex-shrink:0;align-self:center"></span>
 <div class="tab" id="t-company">
 <div class="sec">🏢 Target Company Research</div>
 <div style="font-size:12px;color:var(--tx2);margin-bottom:14px">Research each target company before interviews. All data saved automatically.</div>
+<div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+<button class="btn btn-sm" onclick="loadSuggestedCompanies()" title="Add DAAM, Royal Sky, OdooTec to your companies (won't duplicate existing)">🆕 Load suggested companies</button>
+<button class="btn btn-sm" onclick="openScorecard()" title="Score your fit against any opportunity (1-10 per area)">📊 Job-Fit Scorecard</button>
+<button class="btn btn-sm" onclick="openToolsRating()" title="Self-rate your skill on 12 PM tools, see radar chart">🛠️ Tools Self-Rating</button>
+</div>
 <div id="companyCards"></div>
 <button class="btn" onclick="addCompanyCard()" style="margin-top:12px">+ Add Company</button>
 </div>
@@ -1422,8 +1576,9 @@ ackground:var(--bdr);flex-shrink:0;align-self:center"></span>
 <div class="modal-overlay" id="logModal" style="display:none" onclick="if(event.target===this)closeLogModal()">
 <div class="modal-box" style="position:relative">
 <button class="modal-close" onclick="closeLogModal()">&times;</button>
-<div class="modal-title">📝 Log Today's Session</div>
+<div class="modal-title">📝 Log Session</div>
 <div class="log-grid">
+<div class="lf"><label>Date</label><input type="date" id="ldate"></div>
 <div class="lf"><label>Day (1-90)</label><input type="number" id="ld" min="1" max="90"></div>
 <div class="lf"><label>Confidence (1-10)</label><input type="number" id="lc" min="1" max="10"></div>
 <div class="lf"><label>Words Learned</label><input type="number" id="lw" min="0"></div>
@@ -1446,7 +1601,7 @@ ackground:var(--bdr);flex-shrink:0;align-self:center"></span>
 <script>
 
 // ═══ CONSTANTS ═══
-const CATS={core:"🎯 Core Questions",lead:"👥 Leadership & Team",pm:"📋 PM Methodology",agile:"🔄 Agile & Scrum",erp:"🏗️ ERP & Projects",pmo:"🏢 PMO & Strategy",stakeholder:"🤝 Stakeholder",tech:"🤖 PMP Technical",ai:"🧠 AI Tools & Strategy",career:"🎯 Career & Goals"};
+const CATS={core:"🎯 Core Questions",lead:"👥 Leadership & Team",pm:"📋 PM Methodology",agile:"🔄 Agile & Scrum",erp:"🏗️ ERP & Projects",pmo:"🏢 PMO & Strategy",stakeholder:"🤝 Stakeholder",tech:"🤖 PMP Technical",ai:"🧠 AI Tools & Strategy",career:"🎯 Career & Goals",stories:"⭐ Project Stories (STAR)",salary:"💰 Salary & Negotiation",tools:"🛠️ PM Tools Mastery",security:"🔒 Cybersecurity & Privacy",vendor:"🤝 Vendor Negotiation",culture:"🌍 Multi-Cultural Teams",crisis:"🚨 Crisis Management",refs:"📞 Reference Check Prep",present:"🎤 Presentation Skills",frameworks:"🧩 Behavioral Frameworks"};
 const WEEKS={1:"Professional Identity",2:"STAR & Achievements",3:"Leadership & Management",4:"Career Goals + Writing",5:"PMP 7th Ed + AI Strategy",6:"Agile + Change Mgmt",7:"ERP + Financial Analysis",8:"PMO + Contracts + Negotiation",9:"Gulf Market + Companies",10:"Executive Presence + AI Gov",11:"Pressure + Mock Scripts",12:"Final Polish & Readiness"};
 const MONTHS={1:{l:"Month 1 — Core Scripts",c:"var(--putx)"},2:{l:"Month 2 — PM Domains",c:"var(--amtx)"},3:{l:"Month 3 — Gulf & AI",c:"var(--grtx)"}};
 const TNAMES={S:"Script",D:"Drill",V:"Vocab",M:"Mock",P:"PM/Tech",L:"Listening",W:"Writing",R:"Review"};
@@ -1494,7 +1649,108 @@ const QA=[{"n": 1, "c": "core", "q": "Tell me about yourself", "a": "I'm Yasser 
 {"n":252,"c":"english","q":"Describe a situation where language or communication created a challenge on a project and how you resolved it.","a":"On a joint team with Egyptian, Saudi, and British colleagues, I observed that my Egyptian and Saudi team members were communicating in ways that British colleagues interpreted as less confident or less direct than they actually were — soft agreement signals being mistaken for genuine commitment, indirect concern being missed entirely. I introduced a structured communication protocol for the mixed team: written confirmation of commitments regardless of verbal agreement, an explicit 'concerns and risks' agenda item at every meeting to create a safe channel for indirect communicators to surface concerns, and a brief team session on cultural communication styles that normalised the differences rather than treating them as problems. Team communication quality improved measurably and two significant risks were surfaced that had previously been mentioned indirectly but not formally acknowledged."},
 {"n":253,"c":"english","q":"How do you handle a situation where you don't understand what someone has said in English?","a":"I use professional clarification techniques that signal engagement rather than limitation. For a missed word or phrase: 'Could you clarify what you meant by [X]?' — specific and professional. For a complex point I need to process: 'That is a valuable point — let me make sure I have captured it correctly: you are saying [paraphrase]?' For a fast-paced discussion I have partially lost: 'I want to make sure I have the full picture — could you walk me through the key points again?' I never pretend to have understood when I have not — professional consequences of acting on misunderstanding are far worse than the momentary discomfort of asking for clarification. I have found that seeking clarification thoughtfully is consistently perceived as intellectual engagement, not linguistic limitation."},
 {"n":254,"c":"english","q":"How do you ensure your written English in professional documents meets executive standards?","a":"I apply a three-stage discipline to professional writing. First, structure before content — I outline the pyramid structure of any significant document before writing a word: what is the conclusion, what are the three supporting arguments, what evidence supports each. Second, register check — I read the draft aloud and identify any informal vocabulary, contractions, or phrasal verbs that should be replaced with formal equivalents. Third, clarity review — I ask: would a reader who has never met me understand exactly what is being asked of them from this document? I also use grammar tools for surface accuracy and, for critical documents, I request a review from a native English colleague. My written communication has been specifically cited by British and American clients as a differentiating professional strength — something I have developed deliberately over 15 years of international client engagement."},
-{"n":255,"c":"english","q":"How do you adapt your spoken English style between different professional audiences?","a":"I consciously adjust three dimensions: vocabulary level, directness, and pace. With technical teams, I use precise technical vocabulary and can be direct — they value accuracy over diplomacy. With senior executives, I shift to strategic vocabulary and the pyramid principle — recommendation first. With non-native English speakers, I slow my pace, avoid idioms, and confirm comprehension more frequently. With Gulf Arab professionals, I use more formal register, allow more relationship conversation before business content, and read the non-verbal signals that often carry as much meaning as the words. The most important skill is reading the room: noticing comprehension signals, adjusting when I see confusion, and checking in explicitly when communication stakes are high. Code-switching between these registers is a professional skill I have developed through 25 years of multicultural professional environments."}];
+{"n":255,"c":"english","q":"How do you adapt your spoken English style between different professional audiences?","a":"I consciously adjust three dimensions: vocabulary level, directness, and pace. With technical teams, I use precise technical vocabulary and can be direct — they value accuracy over diplomacy. With senior executives, I shift to strategic vocabulary and the pyramid principle — recommendation first. With non-native English speakers, I slow my pace, avoid idioms, and confirm comprehension more frequently. With Gulf Arab professionals, I use more formal register, allow more relationship conversation before business content, and read the non-verbal signals that often carry as much meaning as the words. The most important skill is reading the room: noticing comprehension signals, adjusting when I see confusion, and checking in explicitly when communication stakes are high. Code-switching between these registers is a professional skill I have developed through 25 years of multicultural professional environments."},
+{"n":256,"c":"ai","q":"How do you use AI tools to improve project planning, estimation, and scheduling?","a":"I use AI as a force multiplier across the planning lifecycle. For estimation, I feed Claude or GPT a detailed scope and ask it to surface complexity hotspots, comparable projects, and effort risks I might have missed — then validate with the team. For scheduling, I use AI to generate initial WBS drafts that I refine with the team rather than starting from a blank page. For risk prediction, I feed historical project data and ask the AI to flag patterns — late integrations, vendor concentration, dependency clusters. I treat AI as a structured second opinion that accelerates my thinking, never as the final answer. I always validate AI output against my own judgment and team input before any plan goes to a stakeholder."},
+{"n":257,"c":"ai","q":"What AI-powered tools or platforms have you used to enhance communication, reporting, or documentation?","a":"I have hands-on experience with several. Notion AI for meeting summaries and lessons-learned drafts. ClickUp AI and Jira Smart Assist for sprint summaries and ticket prioritization. ChatGPT and Claude for executive status report drafts — I write the data and bullet points, then ask AI to compose a polished narrative for the steering committee. Microsoft Copilot in Teams for meeting recap and action-item extraction. Miro AI for workflow and process diagrams. The pattern is consistent — AI drafts, the human approves. I never let AI be the final voice in a stakeholder communication. The time savings are real, especially on weekly reports and meeting minutes."},
+{"n":258,"c":"ai","q":"How can AI assist in analyzing project risks and predicting delivery delays?","a":"AI is strong at pattern recognition across data humans process slowly. I use it three ways. First, predictive analytics on historical project data — feeding velocity trends, defect rates, and integration history to surface early warning signs before they become red flags. Second, Jira Insights and Azure DevOps Analytics give built-in AI features for ticket aging, cycle time anomalies, and bottleneck identification. Third, qualitative risk analysis — I describe the project context to Claude or GPT and ask it to challenge my risk register and suggest risks I have not considered. The AI almost always raises angles I had not weighted enough — vendor concentration, integration complexity, regulatory dependencies. I treat it as a structured devil's advocate."},
+{"n":259,"c":"ai","q":"How do you use AI to support software development teams (backend, mobile, QA, DevOps)?","a":"I work alongside teams that use GitHub Copilot for inline code generation and refactoring suggestions, AI-powered code review tools that catch issues before human review, automated test generation tools that accelerate QA coverage, and DevOps automation with anomaly detection on logs and deployments. As PM, I do not write the code but I make sure the team has the tools, the governance to use them safely, and the time to integrate them into their workflow. I also push for measurable outcomes — does AI assistance actually improve our throughput, defect rate, or PR cycle time? Without that measurement, AI tools become noise, not productivity."},
+{"n":260,"c":"ai","q":"What governance or quality measures do you implement when teams use AI tools (Copilot, ChatGPT, Sonar AI)?","a":"This is where leadership shows. I implement five controls. First, an approved tools list — only sanctioned tools, with justifications and procurement records. Second, a data classification policy — Public, Internal, Confidential, Restricted — with explicit rules on what can be sent to external AI services. Third, mandatory human review of AI-generated code, documentation, or stakeholder content before it leaves the team. Fourth, IP and licensing checks — especially around code generated by Copilot, validated against open-source licensing concerns. Fifth, training — every team member understands the prompt engineering basics, the data rules, and the accountability model. The principle is simple: AI drafts, humans validate, humans are accountable."},
+{"n":261,"c":"erp","q":"Walk us through your end-to-end approach to managing an Odoo/ERP implementation.","a":"I start with discovery and scoping — mapping current business processes, critical integrations, and pain points. I then define a phased plan with milestones, budgets, RACI, and a risk register, and align stakeholders on success metrics before any build starts. Build phase is incremental: Sandbox → SIT → UAT, with demos every sprint and a tight CR process for any scope change. Data migration runs in waves — templates, data cleansing, trial loads — with a full cutover rehearsal before go-live. Go-live uses a readiness checklist (users, roles, permissions, backups), then we move to hypercare with explicit KPIs (ticket MTTR, adoption rate, defect trend). Closure includes lessons learned and handover to operations."},
+{"n":262,"c":"erp","q":"How do you make sure ERP projects finish on time, within scope, and within budget?","a":"Five disciplines. First, baseline scope with a detailed WBS and team-validated estimates; freeze the MVP. Second, manage variance through a formal CR board — every change has impact analysis on cost, schedule, and scope. Third, track SPI/CPI weekly using earned value, with thresholds for escalation. Fourth, timebox sprints, protect critical path, and budget realistic buffers for data migration and UAT — these are the most common timeline killers. Fifth, transparent weekly status with risks, decisions, forecast EAC, and a clear ask from the steering committee. Project recovery is always cheaper when you start it three weeks earlier — the data tells you when to escalate."},
+{"n":263,"c":"erp","q":"Describe your plan for Odoo data migration including masters and opening balances.","a":"Migration is split into well-defined waves. First, scope the data — partners, products, chart of accounts, inventory, open AR/AP, serials/batches. Second, provide migration templates and business rules, then run profiling to identify duplicates and missing keys. Third, execute ETL: extract → cleanse → transform with mapping → validate via trial loads in Staging. Fourth, reconcile — inventory valuation, trial balance, sample-to-ledger checks — and obtain sign-off per domain (Finance, Inventory, Sales). Fifth, cutover weekend: freeze legacy systems, perform final delta load, smoke test critical processes, and convene a go/no-go committee before opening the new system. Migration always takes longer than planned — the rehearsal is what tells you the truth."},
+{"n":264,"c":"erp","q":"What integrations with Odoo have you led and how did you manage them?","a":"POS for retail clients, e-commerce platforms via Odoo APIs and webhooks, HR/payroll integrations, and external accounting gateways. For each integration I define sequence diagrams, SLAs, and error-handling protocols up front. We mock endpoints to test end-to-end before real integration, and we test idempotency — replays should never double-post. For legacy ERP integrations, I use message queues or scheduled jobs with retry and dead-letter policies. Non-functional tests cover throughput, security (token scopes, encryption), and auditability. Each integration has a named owner, a runbook, and a monitoring dashboard. Integrations are where ERP projects fail most often — clear ownership and operational readiness are non-negotiable."},
+{"n":265,"c":"erp","q":"How do you manage client expectations and scope creep on ERP projects?","a":"Set a clear MVP and explicit success KPIs at kickoff — anything beyond MVP goes through a CR board with impact analysis on cost, schedule, scope, and risk. I document scope decisions in writing — not just verbally. I introduce demos every sprint so the client sees progress in real software, not just status reports — this reduces 'we did not realize' conversations later. For scope pressure, I never say 'no' without an alternative — I say 'yes, here are the trade-offs: that adds two weeks and consumes the contingency, or we can de-scope X to fit it in.' Clients respect transparent trade-off conversations far more than rigid scope refusal."},
+{"n":266,"c":"erp","q":"How do you plan resources and team allocation for an ERP project?","a":"Capacity planning is data-driven. I calculate realistic capacity per role, accounting for holidays, support load, and overhead — typically 65-70% of theoretical capacity. I size the team for the critical path of the build, not for peak demand. For ERP specifically, I always have a dedicated data migration owner — this work is consistently underestimated. I use a RACI per workstream so accountability is unambiguous. For shared resources across projects, I escalate conflicts with a clear options analysis rather than splitting people 50/50, which usually means both projects suffer. I also plan for the post-go-live phase deliberately — hypercare needs the right people, not just whoever is left."},
+{"n":267,"c":"erp","q":"How do you manage risk on ERP projects?","a":"I maintain a live risk register with probability, impact, and mitigation owners — reviewed weekly with the team, monthly with the steering committee. For ERP specifically, I focus on the recurring risk patterns: data quality (always worse than the client thinks), integration complexity, business process change resistance, and resource conflicts. For each high-impact risk, I define a mitigation plan AND a contingency plan. I escalate early — if a risk likelihood crosses 70% I treat it as an issue. I also build explicit slack into the schedule for migration rehearsal and UAT — these are where ERP projects discover the risks they did not anticipate."},
+{"n":268,"c":"erp","q":"How do you plan and execute go-live and hypercare?","a":"Go-live readiness has a checklist: data migration validated and signed off, all roles and permissions configured, training completed, backup and rollback procedures tested, communication plan executed, support team staffed. We hold a formal go/no-go meeting 48 hours before cutover. During hypercare (typically 2-4 weeks), I track ticket volume, MTTR, severity distribution, and adoption metrics — daily for the first week, weekly thereafter. We hold a daily triage call. I also set explicit exit criteria from hypercare to BAU support — defects below threshold, adoption above target, no critical issues open. Skipping hypercare is the most common reason ERP projects feel like failures even when go-live succeeded."},
+{"n":269,"c":"erp","q":"How do you manage stakeholder relationships on ERP projects?","a":"ERP touches every department — Finance, HR, Inventory, Sales, IT — each with different priorities. I run a structured stakeholder analysis at kickoff: who is impacted, what they need, how often they need updates, what their decision authority is. I establish a steering committee with the right level of seniority — usually the CFO or COO as sponsor. I run department-level workshops during discovery so each function feels heard. For weekly communication, I tailor reports — strategic for steering committee, operational for working teams. I never let scope decisions be made in side conversations — every change goes through documented governance so we have one version of the truth."},
+{"n":270,"c":"erp","q":"What is your approach to QA and UAT on ERP projects?","a":"Quality is built in, not bolted on. We define quality criteria at the requirements stage — every user story has acceptance criteria. SIT runs continuously through development. UAT is led by business users, not IT — I provide structured test scripts based on real business scenarios, not synthetic data. I track defect density, severity distribution, and resolution velocity. UAT exit requires all critical and high-severity defects fixed, and a documented sign-off from each business domain owner. I always allow time for at least two UAT cycles — the first cycle finds the real issues, the second confirms the fixes. Compressed UAT is the leading cause of post-go-live chaos."},
+{"n":271,"c":"erp","q":"How do you manage vendors and partners on ERP delivery?","a":"Vendor management starts before contract signing — I assess capability, references, and team continuity. The contract includes explicit deliverables, acceptance criteria, SLAs, and remedies. During execution, I integrate the vendor into our governance — they attend the same standups and steering committees, with the same transparency on risks and issues. I track vendor performance against agreed metrics. For poor performance, I document, meet, agree on a remediation plan with timeline — termination is the last resort after remediation fails. The relationship works best when the vendor feels like part of the team, not an external supplier — but with clear accountability and contractual boundaries."},
+{"n":272,"c":"erp","q":"How do you capture and apply lessons learned on ERP projects?","a":"Lessons learned are not just an end-of-project ritual. I capture them at every phase end — discovery, build, UAT, go-live, hypercare. The format is consistent: what worked, what did not, what we will do differently. The key is making the lessons actionable — not 'communication was poor' but 'we will introduce a cross-team weekly sync starting in week 2 of the next project.' I also feed lessons into our organizational PMO playbook so future projects benefit. The hardest part is honesty — people are reluctant to surface failures. I create psychological safety by sharing my own mistakes first and framing lessons as improvement, not blame."},
+{"n":273,"c":"tech","q":"Walk me through how you create a full project plan from initiation to delivery.","a":"I start by understanding the business objective and success criteria — without these, the plan has no anchor. I run requirement workshops to convert high-level goals into a structured scope document. Then the project charter — constraints, assumptions, measurable success criteria, sponsor and key stakeholders. I break the product into modules and convert them into a WBS, then estimate timelines, dependencies, and resource needs across backend, frontend, mobile, QA, and DevOps. I validate the schedule with the team before committing. I also create a risk register, communication plan, quality plan, and procurement plan. After stakeholder approval, the plan becomes a living document — updated weekly with progress, deviations, and revised forecasts."},
+{"n":274,"c":"tech","q":"What are the essential components of a software project schedule?","a":"A complete schedule has WBS-level work breakdown, clear milestones, dependencies, and realistic durations based on team capacity. I include QA cycles, regression testing, UAT, security testing, and deployment windows — these are commonly forgotten. I incorporate internal and client approval gates to avoid surprises. I base timelines on team capacity, historical velocity, and complexity ratings — not optimistic guesses. I include explicit buffer for high-risk modules and integrations. I visualize in Gantt or Jira roadmap so stakeholders can see dependencies. Most importantly, I keep the schedule alive — updated weekly to reflect scope changes, risk impact, and actual progress."},
+{"n":275,"c":"tech","q":"Describe how you estimate effort and define realistic timelines.","a":"Estimation starts with clarity — detailed user stories with acceptance criteria. I run estimation workshops with developers, QA, and architects using techniques like Planning Poker or T-shirt sizing. For complex items, we decompose them into smaller tasks. I validate against historical velocity from previous sprints or comparable projects. Capacity is based on availability, holidays, and support load — typically 65-70% of theoretical. I always add contingency for integration, refactoring, and unforeseen risks. I never commit to dates the team has not validated — and I push back on stakeholder pressure for unrealistic dates by presenting the trade-offs in scope, quality, or resources required."},
+{"n":276,"c":"tech","q":"How do you build a Work Breakdown Structure (WBS)?","a":"WBS is decomposition by deliverable, not by activity. I start with the top-level deliverables from the scope document, then break each one down through 3-5 levels until I reach work packages of 8-80 hours that can be assigned to a single owner. I follow the 100% rule — the WBS must capture all the work, no more, no less. I use mind-mapping with the team to draft it visually, then convert to a structured outline. Each work package has clear acceptance criteria. The WBS becomes the foundation for estimation, scheduling, cost baseline, and risk identification. Done well, the WBS prevents scope ambiguity and forms the contract between the team and stakeholders."},
+{"n":277,"c":"tech","q":"How do you manage the critical path?","a":"I identify the critical path from the network diagram — the longest sequence of dependent activities determining minimum project duration. Once identified, I monitor it weekly and protect it relentlessly: any delay on the critical path delays the project. I add explicit buffers to high-risk activities on the critical path. I monitor near-critical paths too — those with 1-2 weeks of float can become critical fast. For schedule compression, I use fast-tracking (parallelizing) cautiously — it adds risk — and crashing (adding resources) when fast-tracking is not safe. I update the critical path after every major change. The critical path is not a static artifact — it is a live management tool."},
+{"n":278,"c":"tech","q":"How do you handle sprint planning and team velocity?","a":"Sprint planning starts with a refined backlog — stories with clear acceptance criteria estimated in story points. The team commits to a sprint based on observed velocity, not optimistic capacity. I track velocity trend across sprints — sudden drops trigger investigation, not blame. I protect the team from mid-sprint scope changes — new urgent items go into the next sprint unless something critical is dropped. I use burndown charts to visualize progress and identify slippage early. Velocity is a planning tool, not a performance metric — using it to compare teams or pressure individuals destroys its predictive value."},
+{"n":279,"c":"tech","q":"How do you manage defects and quality gates in software delivery?","a":"Quality is engineered in from the start — clear acceptance criteria, automated tests in CI/CD, code review discipline, and definition of done. Defects are tracked with severity (critical/high/medium/low) and prioritized accordingly. I review defect trends weekly — rising defect density signals quality debt accumulating. Quality gates apply at module exit, SIT exit, UAT exit, and pre-production deployment — each with explicit pass criteria and sign-off authority. For critical defects in production, I run formal RCA (5 Whys or Fishbone) and feed lessons into the prevention plan. The cheapest defect to fix is the one prevented — investing in QA earlier always pays off versus fixing in production."},
+{"n":280,"c":"tech","q":"How do you plan and execute software releases and deployments?","a":"I plan releases backwards from the deployment date. The release plan includes: code freeze date, testing windows, deployment runbook, rollback plan, communication plan, and post-deployment verification. I use deployment checklists — every step documented, every owner named. For critical systems, I use blue-green or canary deployments to reduce risk. Rollback is rehearsed — we never deploy without confirming we can roll back. For business-critical systems, I require a formal go/no-go meeting 24-48 hours before deployment with all stakeholders. Post-deployment, I monitor key metrics for 24-72 hours before declaring success. Deployments fail when teams skip the boring discipline."},
+{"n":281,"c":"tech","q":"What is your approach to project documentation?","a":"Documentation follows the principle of 'minimum useful' — enough to support delivery, governance, and handover; not so much that it becomes overhead nobody reads. The essentials: project charter, scope statement, WBS, schedule, risk register, RAID log, decision log, change requests, status reports, lessons learned. For technical work: architecture decisions, API contracts, deployment runbooks, integration specs. For business: requirements traceability matrix linking each requirement to design, test cases, and delivery. Documentation is a living asset — kept current or it becomes harmful. I assign explicit documentation owners and review cycles. Bad documentation is worse than no documentation because it creates false confidence."},
+{"n":282,"c":"tech","q":"How do you coordinate cross-functional teams across backend, mobile, QA, and DevOps?","a":"Coordination starts with shared ownership of outcomes, not handoffs of activities. I run cross-functional planning at the start of each sprint — every discipline understands what the others need from them and when. For integration-heavy work, I create joint working sessions rather than relying on tickets. I use a single visible board (Jira) showing the full pipeline so dependencies surface early. I run a weekly sync with leads from each function to anticipate friction. For DevOps specifically, I integrate them from day one — environments, CI/CD, deployment automation are not afterthoughts. The cultural shift is treating delivery as one team, not five departments serving each other."},
+{"n":283,"c":"core","q":"Tell me about yourself (HR introduction style).","a":"I have over 25 years in software development and 18 years in project and delivery management — across government, enterprise, and large-scale digital platforms. My background spans software engineering, PMO leadership, and full SDLC management. I have led cross-functional teams and managed enterprise systems, portals, ERPs, and mobile applications. I have implemented standards like CMMI and PMP frameworks. Over the years I have developed strong capabilities in delivery planning, stakeholder management, risk control, and aligning technical teams with business goals. I am now looking to bring that experience to a fast-growing environment where delivery excellence and structured growth are essential."},
+{"n":284,"c":"core","q":"What attracted you to this role and company?","a":"I researched the company and three things stood out. First, the technology focus matches my background — your work aligns with what I have delivered for over a decade. Second, the structured project delivery and stakeholder management emphasis in the role description is exactly what I have spent my career mastering. Third, the company values — ownership, communication, leadership in managing remote and on-site teams — match how I work. I am particularly motivated by the opportunity to work on end-to-end software solutions that require balancing business needs, deadlines, and technical constraints. This is the kind of role where I can contribute immediately and grow."},
+{"n":285,"c":"core","q":"What do you consider your strongest skill as a project manager?","a":"My strongest skill is structured delivery management — translating high-level requirements into controlled execution with clear timelines, risk mitigation, and transparent communication. I am also strong in handling complex stakeholders and aligning technical and business expectations, which has helped me deliver many ERP, portal, and mobile projects on time. I bring discipline without bureaucracy — the right amount of process for the project's risk profile, no more. And I bring credibility on both sides of the table: I can challenge developers on technical estimates because I started as a developer, and I can speak strategy with executives because of my MBA and 18 years of senior delivery experience."},
+{"n":286,"c":"core","q":"Tell me about a major project you led and why you are proud of it.","a":"At Pointability I led the GOOO Delivery logistics platform — a 24-month delivery serving multi-country operations. The team grew from 5 to 15 across backend, mobile, and QA pods. The challenge was unifying two different operational models into one real-time platform under tight regulatory deadlines. I structured the delivery into phases, ran daily risk reviews, and coordinated with vendors through joint troubleshooting. We delivered on schedule and the platform processes thousands of transactions daily. I am proud because it demonstrated multi-country, multi-vendor, technically complex delivery from end to end — and the team that built it is still strong years later."},
+{"n":287,"c":"core","q":"How do you handle pressure and tight deadlines?","a":"I handle pressure structurally, not emotionally. When pressure rises I do three things. First, I reset on what success actually requires — sometimes the perceived deadline is not the real deadline, and clarifying this changes the conversation. Second, I prioritize ruthlessly — what is critical, what is important, what can wait. Third, I communicate proactively to the sponsor and team — pressure reduces when everyone shares the same view of trade-offs. I also protect the team from pressure where possible — my role is to absorb stakeholder pressure and translate it into clear priorities for the team, not to amplify it downward. Calm leadership in pressure moments builds long-term trust."},
+{"n":288,"c":"core","q":"Where do you see yourself in 3-5 years?","a":"I see myself operating at PMO Director or Program Director level — leading a portfolio of strategic programs rather than individual projects. My focus would be on building delivery capability at organizational scale: process maturity, talent development, and strategic alignment between projects and business outcomes. I would specifically want to be in a role where I can contribute to Saudi Arabia Vision 2030 programs — that is the scale and significance I am ready for. I am not looking to escape execution; I am looking to multiply my impact by enabling many teams to deliver well, not just one team."},
+{"n":289,"c":"core","q":"What is your greatest weakness?","a":"My greatest weakness has historically been delegation — for years I felt that doing things myself ensured quality, and I underdelegated as a result. This created two problems: I became a bottleneck and team members did not grow. I addressed it deliberately. I now delegate work with clear acceptance criteria, then resist the urge to redo it. I focus my energy on coaching the team to higher quality rather than doing their work for them. The team I work with now is significantly stronger because I gave them ownership. The weakness is mostly resolved, but I still have to consciously check myself when a high-stakes deliverable is involved."},
+{"n":290,"c":"core","q":"Why should we hire you?","a":"Three reasons that are hard to find in one person. First, technical credibility — I started as a developer in 1998 and spent a decade coding. I can sit in architecture reviews, challenge unrealistic estimates, and earn development team respect. Second, strategic capability — PMP since 2009, MBA from ESLSCA 2015 — I think in business value and ROI, not just timelines. Third, proven Gulf experience — 24 months at Qassim University in Saudi Arabia, plus the Absher e-government app and ministry projects. Technical plus strategic plus Gulf-ready — that combination is rare. I bring delivery results, not just process; team-building, not just task management; and immediate value from week one."},
+{"n":291,"c":"core","q":"Do you have any questions for us?","a":"Yes, I have several. First, what does success look like in this role at the 6-month and 12-month mark? Second, what are the top three challenges the person in this role will face in the first quarter? Third, how is the PMO structured today and what is your vision for it in 12-24 months? Fourth, who are the key stakeholders I would partner with most closely? Fifth, what does the decision-making process look like when there is tension between scope, schedule, and budget? And finally, what do high-performers in this organization do that average performers do not?"},
+{"n":292,"c":"core","q":"Why are you considering leaving your current role?","a":"After 8 years at Pointability I am genuinely proud of what I have built. But I have reached a point where I want to operate at larger scale — larger programs, more complex organizational challenges, and more strategic scope. I want to shape how an organization delivers, not just deliver projects within an existing structure. The opportunity at this company represents exactly the next step I am ready for — strategic scale, regional impact, and the chance to apply 25 years of experience to a different class of challenges. I am leaving on excellent terms — this is about where I am going, not what I am leaving."},
+{"n":293,"c":"stories","q":"Project Story — Qassim University Portal (24 months, 40K students).","a":"SITUATION: In 2012 I relocated to Saudi Arabia to manage the Portal and E-Services Department at Qassim University — a 24-month transformation program serving over 40,000 students across multiple campuses with a multinational team of 50 people. TASK: Deliver a unified portal and e-services platform replacing fragmented legacy systems, while integrating with student information systems, financial systems, and ministry of education reporting. ACTION: I structured the program in three phases — discovery and architecture, core platform build, and progressive feature rollout. I established a steering committee with the Vice President for Academic Affairs as sponsor. I ran cross-functional pods (backend, frontend, mobile, integration, QA) with daily standups and weekly cross-pod sync. I introduced formal change control to manage scope pressure from multiple academic departments. RESULT: The portal launched on schedule, was adopted by all 40,000 students in the first semester, and became a reference implementation for other Saudi universities. The program established my credibility in the Gulf market."},
+{"n":294,"c":"stories","q":"Project Story — GOOO Delivery / Logistics Platform (multi-country).","a":"SITUATION: At Pointability since 2017, I led the GOOO Delivery program — a logistics platform delivering operations across Egypt, Saudi Arabia, and other Gulf countries. The team grew from 5 to 15 across backend, mobile, and QA pods over 24 months. TASK: Unify two different country operational models into one real-time platform with mobile apps for drivers, dispatch tools for operators, and dashboards for management — under tight regulatory and integration deadlines. ACTION: I split delivery into phased releases by country and feature group. I ran daily risk reviews to surface integration and regulatory blockers early. I coordinated with multiple third-party vendors through joint troubleshooting sessions rather than ticket ping-pong. I scaled the team using a pod structure with clear ownership rather than functional silos. RESULT: Platform delivered on schedule. Now processing thousands of transactions daily across multiple countries. Demonstrated multi-country multi-vendor technically complex delivery end-to-end."},
+{"n":295,"c":"stories","q":"Project Story — Absher e-Government App (Ministry of Interior).","a":"SITUATION: At Exa IT, I managed the project portfolio for Saudi government clients including the Absher e-government passport and travel application — used by millions of Saudi citizens and residents for civil affairs services. TASK: Deliver high-availability, security-critical mobile application meeting Ministry of Interior requirements and Saudi citizen experience expectations. ACTION: I implemented CMMI Level 3 process discipline across the team — formal requirements management, configuration management, peer reviews, and quantitative project management. I established direct relationships with the ministry program office to reduce communication friction. I negotiated realistic timelines based on data, not optimism, and held the line on quality gates despite delivery pressure. RESULT: Application launched successfully and became one of the most-used Saudi government mobile services. I was personally recognized as CMMI Best Implementer at Exa IT for driving the process maturity that enabled this delivery."},
+{"n":296,"c":"stories","q":"Project Story — Al Ahsa E-Services Portals (multi-portal program).","a":"SITUATION: At Exa IT, I led the Al Ahsa region e-services portal program for a Saudi government client — multiple integrated portals serving citizen services, business licensing, and inter-ministerial workflows. TASK: Deliver a portfolio of portals on a coordinated timeline, integrating with multiple back-end government systems and meeting strict accessibility and Arabic-language requirements. ACTION: I treated this as a program rather than a collection of projects — shared architecture team, shared integration layer, coordinated release calendar. I established a single steering committee for cross-portal decisions. I introduced a content governance model so the right content owners maintained their portal content rather than overloading central IT. RESULT: All portals delivered on schedule and integrated as designed. The program established Exa IT as a credible Saudi government IT partner and led to follow-on contracts."},
+{"n":297,"c":"stories","q":"Project Story — CMMI Level 3 Best Implementer (Exa IT).","a":"SITUATION: At Exa IT, the company was pursuing CMMI Level 3 certification to qualify for larger Saudi government contracts. I was assigned as the implementation lead alongside my delivery responsibilities. TASK: Drive process maturity across all project teams while maintaining current delivery commitments, with no excuse for delivery slippage during the certification effort. ACTION: I introduced incremental process improvement rather than big-bang change — small, measurable improvements per quarter. I ran practical workshops focused on what teams actually needed (estimation, requirements management, peer review) rather than abstract process theory. I tracked process compliance with metrics, not opinion. I trained other PMs as process champions so the discipline scaled beyond me. RESULT: Exa IT achieved CMMI Level 3 certification on schedule. I was personally recognized as CMMI Best Implementer for the practical, results-focused approach. The certification unlocked new contract opportunities and the process maturity continued to benefit projects long after."},
+{"n":298,"c":"salary","q":"How do you approach salary expectations in an interview?","a":"I approach this strategically. Early in the process, I avoid giving a number first — I prefer to understand the role scope, expectations, and team structure before pricing. If pushed for a number, I provide a range based on market research, my current compensation, and the value I bring. I also separate base from total comp — base, bonus, equity, allowances, and benefits. For Gulf markets, I factor in tax-free positioning, housing/transport allowances, schooling, flights home, and end-of-service. I am clear about what is firm and what is negotiable for me. The goal is mutual fit — a compensation conversation that ends with both sides feeling well-treated."},
+{"n":299,"c":"salary","q":"How do you negotiate a job offer effectively?","a":"Negotiation works when you have clarity on three things: the market range for the role, the gap between their initial offer and your target, and what alternatives you have. I start by thanking them for the offer and confirming my interest. Then I lay out specifically what I am asking to adjust and why — based on data, not just preference. I focus on total package, not just base — sometimes a small base adjustment unlocks a bonus structure or allowances that materially improve total comp. I always remain professional and collaborative — the negotiation is the start of the working relationship, not a fight to win. I am willing to walk away if the gap is too large."},
+{"n":300,"c":"salary","q":"How do you handle a counter-offer from your current employer?","a":"I treat counter-offers cautiously. Statistics show most people who accept counter-offers leave within 12 months because the underlying reasons for considering a move (growth, scope, environment) are rarely fixed by a salary increase. I evaluate any counter-offer on its full merit — does it actually address my reasons for considering the move, or is it just compensation? Is the trust relationship with my employer fundamentally changed by the conversation? I am honest with both parties about my decision criteria and timeline. If I accept the counter-offer, I do so for substantive reasons not just money. If I decline, I leave on excellent terms — Gulf is a small market and reputations follow you."},
+{"n":301,"c":"salary","q":"How do you discuss total compensation breakdown?","a":"I think about total comp in five components. First, base salary — the predictable monthly cash. Second, variable compensation — bonus structure, KPIs that trigger it, historical payout rates. Third, allowances — housing, transport, schooling, flights — particularly important in Gulf packages. Fourth, benefits — health insurance for self and family, life insurance, end-of-service entitlement. Fifth, equity or long-term incentive if applicable. I evaluate each component for value and risk — a guaranteed base is worth more than a contingent bonus. I also consider lifestyle factors: commute, work hours, travel, work-from-home flexibility. The best package is the one that supports both my financial goals and quality of life."},
+{"n":302,"c":"tools","q":"Tool Mastery — Jira (Atlassian).","a":"I have used Jira extensively for backlog management, sprint planning, defect tracking, and release management. I configure custom workflows per project type — different states for ERP delivery vs mobile app vs integration project. I use Jira dashboards for team visibility and stakeholder reporting — burndown, velocity, defect trends, cycle time. I integrate with Bitbucket/Confluence for traceability from requirement through code commit to release. I also use Jira Smart Assist (the AI features) for sprint summaries and ticket prioritization recommendations. Jira is the most important tool in my PM stack for software projects."},
+{"n":303,"c":"tools","q":"Tool Mastery — Microsoft Project.","a":"I use MS Project for traditional plan-driven projects — Gantt charts, resource leveling, critical path analysis, and EVM tracking. I have built schedules with hundreds of tasks and complex dependency networks for ERP and government portal projects. I use baselines to track variance and EVM features for cost performance reporting. I am familiar with MS Project Online for portfolio-level visibility. I also use MS Project Copilot for AI-assisted timeline risk prediction and meeting notes/task extraction. For Agile projects I use Jira; for plan-driven projects I use MS Project; for hybrid projects I integrate both."},
+{"n":304,"c":"tools","q":"Tool Mastery — Microsoft Teams and MS 365.","a":"I use Teams as the primary collaboration platform for distributed teams — channels per project workstream, document collaboration, video meetings, and integrations with Planner and Project. I use Microsoft Copilot in Teams for meeting recap and action-item extraction — significant time savings on weekly status meetings. I use SharePoint for project document libraries with proper version control and access governance. PowerPoint and Excel are still my go-to for executive communication. The MS 365 stack is what most enterprise clients use, so fluency here is non-negotiable for senior PM roles."},
+{"n":305,"c":"tools","q":"Tool Mastery — Notion AI.","a":"I have used Notion AI to draft project charters, summarize meeting transcripts into action items, generate first-draft requirement documents, and create lessons-learned writeups. I find it strongest for transforming unstructured notes into structured, professional documents — something that used to take 90 minutes can take 20 minutes. The pattern is consistent: I provide the data and bullet points, AI drafts the polished narrative, I edit for accuracy and voice. I never let it be the final voice without review."},
+{"n":306,"c":"tools","q":"Tool Mastery — ClickUp AI.","a":"I have used ClickUp AI for sprint user story generation, auto-generated acceptance criteria, automatic risk identification in project plans, and task summarization. The story generation is particularly useful for backlog refinement — feeding the AI a feature description and getting a structured set of user stories with acceptance criteria as a starting point. The risk identification feature surfaces dependencies and concerns that might otherwise be missed in planning sessions. As always, AI drafts, humans validate and refine."},
+{"n":307,"c":"tools","q":"Tool Mastery — Miro / Miro AI.","a":"I use Miro for visual collaboration — process flows, workflow diagrams, mind maps, user journey mapping, and brainstorming sessions with distributed teams. Miro AI generates first-draft mind maps and workflow diagrams from text descriptions, which accelerates discovery sessions significantly. I also use Miro for retrospectives and for visualizing complex stakeholder maps and integration architectures. The visual collaboration removes ambiguity that spreadsheets and documents leave open."},
+{"n":308,"c":"tools","q":"Tool Mastery — Trello / Asana / Monday.com.","a":"I have used all three for lighter-weight project management — particularly for cross-functional collaboration outside of software development. Trello for personal task management and small projects. Asana for marketing and operational projects with workflow automation needs. Monday.com for cross-departmental project portfolios with strong dashboard requirements. I select the tool to fit the team — forcing a Jira workflow on a marketing team is poor PM judgment. Tool flexibility is part of stakeholder fit."},
+{"n":309,"c":"tools","q":"Tool Mastery — Power BI / Tableau.","a":"I have built executive dashboards in Power BI for project portfolio reporting — health indicators across multiple projects, EVM trends, defect metrics, resource utilization. I use Power BI primarily because it integrates well with the MS 365 stack most enterprises use. I have working knowledge of Tableau for clients who prefer it. The dashboards are a tool to drive decision-making at the steering committee level — not pretty visualizations for their own sake. Each dashboard answers a specific question for a specific audience."},
+{"n":310,"c":"tools","q":"Tool Mastery — Azure DevOps.","a":"I have used Azure DevOps for the full DevOps lifecycle — work item tracking, source control with Repos, CI/CD pipelines, test plans, and dashboards. I use Azure Boards as an alternative to Jira for Microsoft-stack clients. The integrated nature of Azure DevOps is its strength — single source for plan, code, build, test, deploy. I also use Azure DevOps Analytics for the AI-driven insights on cycle time, ticket aging, and bottleneck identification. Familiarity with Azure DevOps is increasingly expected for PMO roles in MS-centric organizations."},
+{"n":311,"c":"tools","q":"Tool Mastery — ChatGPT / Claude (AI assistants for PM).","a":"I use Claude and ChatGPT daily for PM work — not as a replacement for thinking, but as a structured second opinion. Use cases: drafting executive status reports from raw data, generating risk analysis on project descriptions, creating user story drafts, summarizing long meeting transcripts, drafting professional communication. I follow strict data classification — only Public/Internal data goes to external AI services; Confidential and Restricted data stays in approved enterprise tools. I never let AI be the final voice — every output is reviewed and accountable to the human who signs off. AI is a force multiplier for senior PM judgment, not a replacement."},
+{"n":312,"c":"tools","q":"Tool Mastery — GitHub Copilot.","a":"I have managed teams using GitHub Copilot for AI-assisted development. As PM, my role is governance and outcome measurement: ensuring the team has the tools, that data and IP rules are followed (no proprietary code in prompts), that AI-generated code goes through the same review discipline as human code, and that we measure whether AI assistance actually improves throughput, defect rate, or PR cycle time. Without measurement, AI tools become noise rather than productivity. Done well, GitHub Copilot has measurable impact on developer productivity, particularly for boilerplate and test code generation."},
+{"n":313,"c":"tools","q":"Tool Mastery — Slack and modern team communication.","a":"I have used Slack extensively for cross-team communication — channels per project workstream, integration with development tools, automated status notifications. I prefer Slack for fast asynchronous collaboration and Teams for enterprise document collaboration — both have a place. Critical PM discipline: not letting the tool become a replacement for documented decisions. Major decisions and commitments must end up in a structured place (Jira, Confluence, decision log) — not lost in chat history. Tool fluency is necessary; tool discipline is what separates senior PMs from juniors."},
+{"n":314,"c":"security","d":2,"q":"How do you handle data privacy and security on government/enterprise projects in the Gulf?","a":"I treat data classification as the foundation. At kickoff I get the client to classify data into Public, Internal, Confidential, and Restricted categories — most clients haven't done this explicitly. We then map data flows: where it's stored, who accesses it, how it crosses borders. For Gulf government work (KSA PDPL, UAE PDPL), I ensure compliance: data residency requirements, encryption at rest and in transit, access logging, and incident response plans. I integrate security from day one — not as an audit at the end. Critical for Vision 2030 programs where SDAIA oversight is increasingly strict."},
+{"n":315,"c":"security","d":3,"q":"A vendor's tool will process customer PII offshore. The CISO is concerned. What do you do?","a":"This is a real scenario I've navigated. First, document the data flow precisely — what PII fields, what destinations, what processing happens. Second, engage CISO and legal early; don't try to solve alone. Third, evaluate options: data localization (process within GCC), tokenization/anonymization before transfer, contractual safeguards (DPA, SCCs), or vendor change. I present options with trade-offs (cost, time, risk, contractual obligations) to the steering committee and let them decide with full information. I never proceed with PII offshore processing without explicit CISO sign-off — that's a career-ender if it goes wrong."},
+{"n":316,"c":"security","d":2,"q":"How do you manage AI tool data privacy when teams want to use ChatGPT/Claude?","a":"I implement a tiered policy. Tier 1 (Public data only): allow free use of ChatGPT/Claude for general drafting, learning, public docs. Tier 2 (Internal data): require enterprise versions with data protection (ChatGPT Team/Enterprise, Claude Team) where prompts aren't used for training. Tier 3 (Confidential/Restricted): block external AI; only use internally-hosted models or pre-approved tools. I maintain a documented Approved Tools list and require team training on data classification before granting access. The principle: AI productivity gains aren't worth a data breach."},
+{"n":317,"c":"security","d":2,"q":"Walk me through your incident response approach for a security breach during a project.","a":"I follow a structured incident response: Detect (escalate immediately to security team and sponsor), Contain (isolate the breach, halt affected systems if needed), Investigate (preserve evidence, root cause analysis), Communicate (regulator notifications per PDPL/GDPR timelines, stakeholder updates without speculation), Recover (restore services with hardened controls), Learn (post-incident review, prevention plan). Critical: don't hide the breach or downplay it. Transparency with the sponsor and following regulatory requirements is non-negotiable. I keep a draft incident communication template ready for fast deployment."},
+{"n":318,"c":"security","d":1,"q":"What is your stance on shadow IT in PM-managed teams?","a":"Pragmatic: I'd rather know about it than have it happen invisibly. I create a no-blame channel for teams to disclose tools they're using outside official approval. Then I work with IT/Security to either approve, replace, or migrate to sanctioned alternatives. Banning shadow IT outright drives it underground. The goal is visibility and risk-managed flexibility — teams need to ship, IT needs to govern, both must compromise."},
+{"n":319,"c":"security","d":3,"q":"How do you balance security requirements with delivery deadlines under pressure?","a":"Security is a non-negotiable quality dimension — like correctness. If pressed to skip security reviews to meet a date, I document the risk formally with quantified impact (potential breach cost, regulatory fines, reputation damage) and present to the sponsor with options: extend the deadline, descope the high-risk feature, or accept and document the residual risk in writing. I never silently bypass security to ship. Sponsors who understand the risk almost always accept a delay or descope. Sponsors who insist on shipping unsafe should sign off in writing — and that signature changes the conversation immediately."},
+{"n":320,"c":"vendor","d":2,"q":"How do you negotiate fixed-price vs T&M contracts with Gulf vendors?","a":"I prefer fixed-price for well-defined scope (e.g., portal build with clear specs) and T&M for discovery/exploratory work. With Gulf vendors specifically, I negotiate: clear acceptance criteria per deliverable, payment milestones tied to outcomes (not just time), penalty clauses for delays beyond grace period, IP transfer terms upfront. I avoid open-ended T&M without caps — it leaks budget. I also negotiate change request rates upfront so we don't fight over them mid-project. Cultural note: Gulf negotiations often start with strong positions; build rapport first, then negotiate firm terms once trust is established."},
+{"n":321,"c":"vendor","d":2,"q":"A vendor is consistently late on deliverables. Walk me through your remediation playbook.","a":"Step 1: Document the pattern — specific dates missed, impact on project, root cause discussions. Step 2: Formal meeting with vendor PM and their account manager — facts, not blame. Get their honest assessment of why and what's needed. Step 3: Joint remediation plan with measurable milestones (e.g., 'next 3 deliverables on time, weekly checkpoints, root cause owner identified'). Step 4: Track adherence to the plan. Step 5: If remediation fails, formal escalation — invoke contract clauses, executive-to-executive escalation, consider vendor replacement. Step 6: Termination is the last resort, not the first. Most vendor issues are addressable; severing relationships disrupts delivery and burns bridges in a small Gulf market."},
+{"n":322,"c":"vendor","d":2,"q":"How do you handle vendor lock-in concerns on long-term projects?","a":"Lock-in is a real risk on multi-year ERP/platform deals. I mitigate through: (1) Open standards and API-first architecture — vendor must expose data via standard APIs, not just their UI. (2) Data export rights in contract — we can extract our data in standard formats anytime. (3) IP ownership of customizations — we own what we paid to build, not vendor. (4) Documented runbooks and architecture — we can transition to another vendor without their cooperation. (5) Multi-vendor strategy where feasible — don't put all delivery in one vendor's hands. Lock-in usually happens through neglect, not malice. Build the off-ramp from day one."},
+{"n":323,"c":"vendor","d":3,"q":"You discover a vendor is overcharging or padding invoices. What's your approach?","a":"Tread carefully but firmly. First, gather evidence — invoices, time logs, deliverables — without alerting the vendor. Verify with finance and procurement that my read is correct (not a misunderstanding of the contract). Then formal meeting with vendor account manager and their finance lead — present the evidence, ask for their explanation. Sometimes it's a billing error; sometimes it's deliberate. If deliberate, document, freeze further payments pending resolution, and escalate to procurement and legal. Most vendors will correct the issue once exposed; if they don't, contract enforcement and termination follow. Critical: I keep my emotional response out of it — facts and contract terms only. The relationship may continue after, professionally."},
+{"n":324,"c":"vendor","d":1,"q":"How do you build long-term partnerships vs transactional vendor relationships?","a":"Long-term partners get: shared roadmap visibility (we tell them about upcoming demand), invitation to strategic planning sessions, fair payment terms (paid on time, no nickel-and-diming), public credit when they deliver well, executive-to-executive relationship beyond the project. Transactional vendors get: clear deliverables, fair payment, professional treatment, but no special access. The difference matters because long-term partners flex for you (extra effort, priority capacity) when needed. Build the partnership before you need the favor."},
+{"n":325,"c":"vendor","d":2,"q":"Describe a vendor situation where you had to escalate to executive level.","a":"On a Saudi government program, our key integration vendor missed three consecutive milestones with poor explanations. Their PM was promising recovery that wasn't materializing. After two rounds of formal remediation discussions failed, I escalated through three levels: (1) wrote a structured executive memo summarizing the situation, impact on our program, attempts at remediation, and recommended actions. (2) Briefed our COO and the vendor's CEO contact in our company. (3) Joint executive meeting where the CEO of the vendor was held accountable. Result: vendor swapped their PM, brought in senior recovery resources, and delivered the next two milestones on time. Lesson: escalation works when it's based on documented facts and presented respectfully — not as a complaint, but as a request for executive intervention."},
+{"n":326,"c":"vendor","d":1,"q":"How do you handle cultural differences with international vendors?","a":"I research cultural norms before engaging. With Indian-based vendors, expect strong hierarchy and 'yes' responses that may not always mean full agreement — I probe for specifics. With European vendors, expect direct communication and detailed contracts — I prepare thoroughly. With Gulf vendors, relationships precede transactions — I invest in face time. With US vendors, expect outcome focus and assertive negotiation. The constant: clarity of expectations, written documentation of decisions, and respect for the other side's working style. Cultural fluency is a senior PM skill — it directly affects vendor performance."},
+{"n":327,"c":"culture","d":2,"q":"Tell me about a time cultural differences caused conflict on a team — and how you resolved it.","a":"On a joint Saudi-Egyptian-British team, the British team lead pushed for direct, blunt status updates. The Saudi team members felt this was disrespectful and started avoiding the meetings. The Egyptians were caught in the middle. I held three separate conversations: with the British lead (explained the cultural impact and need to ask, not demand), with the Saudi members (acknowledged their concern and committed to a solution), with the Egyptians (asked for their perspective on bridging). Then I introduced a structured meeting format: warm opening, structured agenda (not interrogation), explicit invitation for concerns separately written first if preferred. Within two sprints the meetings were productive again. Cultural conflict isn't 'soft' — it's a delivery risk."},
+{"n":328,"c":"culture","d":2,"q":"How do you build trust with a team that has hierarchical communication norms (e.g., Gulf, Asian)?","a":"I lead with respect for hierarchy: I address the most senior person first in introductions, allow them to lead the conversation initially, and don't bypass them publicly. I create private channels (1-1s, written follow-ups) for the more junior team members to raise concerns without losing face publicly. I'm consistent — what I promise, I deliver — which builds trust faster than assertive talk. I learn key cultural norms (greetings, prayer times, working hours during Ramadan, family event protocols) and respect them visibly. Trust in hierarchical cultures is patient — built over months, not days. But once built, it's deep and durable."},
+{"n":329,"c":"culture","d":2,"q":"How do you give critical feedback across cultures without damaging the relationship?","a":"I adapt the delivery, not the content. Direct cultures (US, UK, Germany): I'm specific and frank, but with constructive framing. Indirect cultures (Saudi, UAE, India, China): I use 'praise sandwich' more often, deliver critical feedback in private (never publicly), and may use a written note for them to process privately. I always separate the behavior from the person: 'this report missed the deadline' vs 'you are unreliable'. I check for understanding without making them confirm in front of others. The goal is behavior change with relationship preservation — both are achievable with cultural awareness."},
+{"n":330,"c":"culture","d":1,"q":"How do you handle prayer times, Ramadan, and religious accommodations on mixed teams?","a":"I integrate them into the schedule from the start. Prayer times: I leave 15-20 minute buffers around standard prayer times in meeting schedules; I never schedule meetings during them. Ramadan: I shift core hours earlier (e.g., 8 AM-2 PM with extra evening flexibility), reduce meeting load by ~30%, and avoid major decisions/launches during the last 10 days. Eid: holidays are protected; I plan around them. I check with team members who fast — they know their own capacity better than I do. The accommodation isn't 'softness' — it's professional respect, and teams reward it with loyalty."},
+{"n":331,"c":"culture","d":3,"q":"A team member from a different culture is consistently underperforming. How do you investigate?","a":"I start by checking my assumptions. Underperformance can stem from: (1) cultural misalignment with my management style — I may be missing signals or speaking past them. (2) Real skill gap — solvable with training/coaching. (3) Personal issues — family, health, financial — that they may not raise due to cultural norms. (4) Mismatch between role and capability. I have a private 1-1, with cultural sensitivity: open-ended questions, acknowledging I might not understand fully, asking what support they need. I sometimes engage a culturally-aware mentor or HR partner to help bridge. I never label as 'underperformer' until I've ruled out cultural and personal factors. Fairness is non-negotiable."},
+{"n":332,"c":"culture","d":2,"q":"How do you onboard a foreign team member into a Gulf workplace?","a":"Cultural onboarding is as important as technical onboarding. I provide a written cultural primer: working week (Sun-Thu in KSA), Ramadan expectations, dress code, social norms (no public criticism, importance of relationship-building, hierarchical respect). I pair them with a local team member as cultural buddy for 90 days. I brief the local team to be patient and welcoming — assume good intent on both sides. I check in at 30/60/90 day marks specifically on cultural fit, not just role performance. I've seen great hires fail because no one helped them navigate the cultural side."},
+{"n":333,"c":"crisis","d":3,"q":"Your project is failing — months behind, over budget, sponsor losing confidence. Walk me through your turnaround approach.","a":"Step 1: Honest assessment. I run a structured project audit in 5-7 days: scope reality vs original, true schedule status (not optimistic), budget burn vs forecast, team morale, root causes. Step 2: Brutal transparency with sponsor — I present the reality, not the spin. I propose options: (a) Re-baseline with realistic dates and budget. (b) Descope to MVP and ship the critical path. (c) Pause and reset team. (d) Cancel if business case no longer holds. Step 3: Sponsor decides; I execute. Step 4: Communicate transparently with team — they already know things are bad; honesty rebuilds trust. Step 5: Implement chosen path with weekly check-ins to sponsor. Most failed projects fail because of denial, not because of the underlying problems. Naming the problem is half the recovery."},
+{"n":334,"c":"crisis","d":3,"q":"A go-live blew up — major data corruption, customer-facing impact. What do you do in the first 24 hours?","a":"Hour 0-1: Activate incident response. Form war room (in-person/virtual). Notify CIO, CFO, sponsor, and legal. Decide: rollback or fix-forward (depends on data integrity). If customer-facing impact, brief PR/customer service immediately so they have aligned messaging. Hour 1-4: Diagnose root cause, contain damage (e.g., stop new transactions if needed, isolate affected systems). Hour 4-12: Execute recovery (rollback, restore from backup, or hotfix). Hour 12-24: Restore services, validate data integrity, communicate status to all stakeholders. Day 2-7: Formal post-incident review — what failed, why, prevention plan. Critical: own the failure publicly, don't blame individuals during the crisis. Recovery and accountability come after stabilization."},
+{"n":335,"c":"crisis","d":2,"q":"How do you handle reputation damage after a public project failure?","a":"Reputation recovery requires three things: time, demonstrated change, and consistent delivery. I never try to spin a failure into a success — stakeholders see through it and trust drops further. I openly acknowledge what went wrong, take accountability where I or my team failed, and present a credible plan for prevention. Then I deliver — one successful project at a time. Reputation is built over years, lost in days, and rebuilt over months of consistent execution. I also use the failure publicly as a learning case (with permission) — turning it into thought leadership demonstrates growth and signals maturity to future stakeholders."},
+{"n":336,"c":"crisis","d":2,"q":"A key team member quits during a critical phase. How do you stabilize?","a":"First 24 hours: meet privately, understand reasons (career growth, money, relationship issues, competing offer). If retention is possible and worth it, I make the case to leadership for a counter — but only if the underlying reason is fixable. Second: knowledge extraction — I prioritize documentation/handoff during their notice period over their normal work. Third: communicate to the team — frame as opportunity (someone steps up) not crisis. Fourth: identify replacement strategy — internal stretch assignment, recruiter outreach, contractor bridge. Fifth: sponsor briefing if it impacts critical path. Most departures aren't catastrophic if handled with discipline — and the loss often reveals strengths in others I hadn't noticed."},
+{"n":337,"c":"crisis","d":3,"q":"A regulator finds a compliance violation on your project. How do you respond?","a":"Step 1: Don't argue with the finding initially — acknowledge receipt, ask for the specific evidence, and request reasonable time to respond formally. Step 2: Engage legal counsel immediately — this is no longer just a project issue. Step 3: Internal investigation: validate the finding objectively, root cause, scope of impact (was it isolated or systemic?). Step 4: Sponsor and executive briefing with facts, impact, and recommended response. Step 5: Formal response to regulator — own the finding if valid, present remediation plan with timeline, request reasonable resolution period. Step 6: Execute remediation visibly. Step 7: Post-mortem to prevent recurrence. Critical: never hide, never downplay, never argue prematurely. Regulators reward cooperation with proportionate enforcement; they punish defensiveness with maximum penalty."},
+{"n":338,"c":"crisis","d":2,"q":"A team makes a public mistake that goes viral on social media. What's your immediate response?","a":"First 30 minutes: assess scale and verify facts internally before responding publicly. Engage Communications/PR — they own the public response, not me. Internally, brief the team — they will see the social media buzz; honest communication prevents panic. First 2-4 hours: public acknowledgment from the right level (organization, not individual scapegoat). 'We are aware, we are investigating, we will share findings'. Avoid premature explanations. First 24 hours: fact-based statement of what happened, what we are doing, who is accountable (organization). Days 2-7: implement visible corrections, share progress publicly. Critical: protect individual team members from public blame even if internal accountability follows. Public scapegoating breeds fear and worse mistakes downstream."},
+{"n":339,"c":"refs","d":1,"q":"Who do you choose as professional references and why?","a":"I choose references who can speak credibly to specific dimensions: (1) A direct manager who can speak to delivery, leadership, and outcomes. (2) A peer-level cross-functional partner (e.g., engineering lead) who can speak to collaboration. (3) A senior stakeholder (sponsor, client) who can speak to executive presence and business impact. (4) A direct report who can speak to people leadership. I avoid references that are too distant or too close (no family, no friends) and choose people who have observed me recently (within 2-3 years). I always ask permission first and brief them on the role."},
+{"n":340,"c":"refs","d":2,"q":"How do you brief your references before they're contacted?","a":"I send a structured brief: role I'm interviewing for (title, company, key responsibilities), what aspects I'd like them to highlight (specific to this role), 2-3 specific examples they may want to recall, and any sensitive context (e.g., 'they may ask about the X project — feel free to be candid'). I also share my updated CV so they're aligned on the narrative. I follow up after the reference call to ask how it went — useful to learn what was emphasized and to thank them. References who feel briefed and respected give stronger references than those caught off-guard."},
+{"n":341,"c":"refs","d":2,"q":"What if a previous manager would give a bad reference? How do you handle?","a":"I never include them as a reference — but I don't hide them from the recruiter either. I name them in the work history, acknowledge the relationship, and provide alternative references who worked with me in that role (a peer, a stakeholder, a cross-functional partner). If asked directly, I address it briefly and professionally: 'My relationship with that manager was difficult due to [specific factor]; I learned from it and grew. Other team members from that period can speak to my contribution.' I never criticize the manager — that reflects on me, not them. Recruiters expect some difficult relationships in any career; how you talk about them tells them more than the reference itself."},
+{"n":342,"c":"refs","d":1,"q":"How do you stay in touch with potential references over years?","a":"I maintain relationships intentionally: LinkedIn engagement (genuine, not transactional), occasional check-in messages (e.g., congratulating on their wins), grabbing coffee when I'm in their city, and sending year-end updates. I also offer to be a reference for THEM — relationships are reciprocal. I keep a private list of 10-15 potential references with their current contact info, last touchpoint, and what they could speak to. Then references aren't a scramble when needed — they're already warm."},
+{"n":343,"c":"refs","d":2,"q":"What questions do reference-checkers typically ask, and how do you prep references for them?","a":"Common questions: (1) How long did you work with X and in what capacity? (2) What were X's strongest contributions? (3) What are areas where X could improve? (4) How did X handle pressure/conflict? (5) Would you hire/work with X again? (6) Anything you'd want a future employer to know? I brief references with a one-pager: my talking points for each likely question, specific examples to draw on, the angle to lean into for THIS role, and the one weakness I'm comfortable being mentioned (chosen strategically — usually one I've already addressed in interviews). Coordination across references creates a coherent story."},
+{"n":344,"c":"present","d":2,"q":"How do you structure a 15-minute case study presentation in a panel interview?","a":"I follow a clear structure: 90 seconds — context (situation, my role, what was at stake). 4 minutes — challenge (specific problem, complexity, why it mattered). 6 minutes — approach (decisions I made, why, how I executed). 2 minutes — outcome (results, metrics, lessons learned). 1.5 minutes — strategic insight (what this case demonstrates about how I think). I use 5-7 slides max, visual not text-heavy. I rehearse to nail timing — running long signals poor preparation. I anticipate 3 likely follow-up questions per section and prepare crisp answers. Panel presentations are about clarity of thinking, not depth of detail."},
+{"n":345,"c":"present","d":2,"q":"How do you handle aggressive or skeptical questioning from a panel?","a":"Stay calm and structured. (1) Don't react emotionally — pause, breathe, then respond. (2) Acknowledge the question's validity: 'That's a fair challenge.' (3) Restate what I think they're asking to confirm understanding. (4) Answer with evidence, not assertion. (5) If I don't know, say so honestly: 'I haven't faced that exact situation, but here's how I'd approach it...' (6) Don't get defensive about past decisions — own what I'd do differently with hindsight. Aggressive questioning is often a stress test, not personal. The panel wants to see how I handle pressure and ambiguity. Composure under fire is the answer they're looking for."},
+{"n":346,"c":"present","d":1,"q":"What's your approach to virtual interview presentations vs in-person?","a":"Virtual demands extra discipline. (1) Camera at eye level, good lighting, clean background. (2) Look at the camera, not the screen, when speaking — it creates eye contact. (3) Speak more slowly than feels natural — bandwidth and audio compression hide nuance. (4) Use a wired connection if possible. (5) Test all tech 24 hours before. (6) Keep slides simple — small text doesn't read well on screens. (7) Have water and notepad nearby. (8) Schedule with 15-min buffer in case of delays. (9) Send a follow-up email within 4 hours — virtual interviews need extra effort to leave a memorable impression."},
+{"n":347,"c":"present","d":2,"q":"How do you present complex data (EVM metrics, project dashboards) to non-technical executives?","a":"I follow the pyramid principle: lead with the conclusion, then 2-3 supporting points, then evidence on demand. For EVM specifically: I translate metrics into business language. 'CPI 0.85' becomes 'We're spending 18% more than planned per unit of value delivered.' 'SPI 0.92' becomes 'We're 2 weeks behind a 6-month plan.' I use one strong visual per concept — never raw spreadsheet dumps. I pre-empt the obvious question: 'You're going to ask about the budget overrun — here's what's driving it and what we're doing.' Executives reward clarity and ownership, not technical depth."},
+{"n":348,"c":"present","d":3,"q":"How do you handle a presentation where you discover mid-way that you're losing the room?","a":"Recognize the signals fast: people checking phones, side conversations, glazed eyes, no questions. Don't pretend it's fine. I pause and reset: 'Let me stop here — I can see this isn't landing. What's the one thing you most want to understand from me right now?' This pivot does three things: shows situational awareness, transfers control to the audience, and surfaces what actually matters to them. Then I answer that question directly, often abandoning the planned content. This works because executives appreciate the meta-skill — knowing when the room has changed and adjusting. It's a senior move."},
+{"n":349,"c":"present","d":1,"q":"How do you prepare for a 'tell me about a project' question — short, medium, long versions?","a":"I prepare three versions of each signature project: 30-second elevator (situation, action, single result), 2-minute concise (full STAR with one quantified result), and 5-minute deep dive (STAR with multiple results, lessons, and reflection). Match version to context: phone screen = 30 sec, standard interview = 2 min, panel deep-dive = 5 min. I rehearse them aloud — written sounds different than spoken. I always end with the strategic insight: what does this project tell you about how I think and lead?"},
+{"n":350,"c":"frameworks","d":1,"q":"When do you use STAR vs CAR vs SOAR for behavioral questions?","a":"STAR (Situation, Task, Action, Result) is the universal default — works for any 'tell me about a time' question. CAR (Challenge, Action, Result) is shorter, useful when time is tight or the situation is well-known. SOAR (Situation, Obstacles, Actions, Results) emphasizes obstacles overcome — useful for resilience or change-management questions. PAR (Problem, Action, Result) is similar to CAR. I default to STAR for completeness, switch to CAR when interviewer signals urgency, and use SOAR when the question explicitly probes for difficulty. Knowing the framework matters less than landing the result clearly."},
+{"n":351,"c":"frameworks","d":2,"q":"What's the CAMPS framework for stakeholder analysis and when do you use it?","a":"CAMPS (Communication, Alignment, Motivation, Power, Support) is a structured approach to analyzing each stakeholder. Communication: how do they prefer to receive updates? Alignment: do they support the project goals? Motivation: what's in it for them personally and professionally? Power: how much influence do they have on outcomes? Support: are they actively backing or quietly resisting? I use CAMPS at project kickoff for each key stakeholder — it forces explicit thinking instead of assumptions. The output drives my engagement strategy: who to brief weekly vs monthly, who to win over, who to neutralize."},
+{"n":352,"c":"frameworks","d":2,"q":"What is the RAID log and how do you use it effectively?","a":"RAID = Risks, Assumptions, Issues, Dependencies. I maintain it as a single living document, reviewed weekly with the team and monthly with the steering committee. Risks: things that might happen, with probability/impact/owner/mitigation. Assumptions: things we believe to be true but haven't validated — these are tomorrow's risks if wrong. Issues: things that have already happened needing action — owner, due date, status. Dependencies: external commitments others owe us, with status and risk if late. RAID separates 'might', 'is', and 'depends on' into clear buckets. I never let it become a graveyard — items move to closed/realized with explanation."},
+{"n":353,"c":"frameworks","d":2,"q":"Compare PMI's process groups vs PRINCE2 vs Agile — when do you use which?","a":"PMI process groups (Initiating, Planning, Executing, Monitoring, Closing) work for any project structure — they're a way of thinking, not a strict methodology. PRINCE2 is more prescriptive with defined roles, stages, and management products — strong fit for government and regulated environments where governance is paramount. Agile (Scrum/Kanban/SAFe) fits product development with evolving requirements and tight customer feedback loops. I use hybrid by default: PMI/PRINCE2 governance overlay (charter, RAID, EVM, formal stage gates) on top of Agile execution within stages. Pure Agile in regulated/contract environments creates governance gaps; pure waterfall in product environments creates rigidity. Match the framework to the environment, not the other way around."},
+{"n":354,"c":"frameworks","d":1,"q":"What's the difference between a stakeholder map and a power/interest grid? When do you use each?","a":"Stakeholder map (or register) is a comprehensive list of everyone affected — names, roles, interests, communication preferences. It's exhaustive and informational. Power/Interest Grid is analytical — plots stakeholders on two axes (high/low power × high/low interest) and assigns engagement strategies: Manage Closely (high/high), Keep Satisfied (high power/low interest), Keep Informed (low power/high interest), Monitor (low/low). I build the map first, then use the grid to prioritize attention. The grid prevents me from over-investing in people with low influence and under-investing in quiet powerful stakeholders."},
+{"n":355,"c":"frameworks","d":2,"q":"Walk me through the 5 Whys root cause analysis with a real example.","a":"5 Whys is iterative questioning to drill past symptoms to root cause. Real example: Our weekly status report was consistently late. Why 1: Because the PM finished compiling it Friday night, not Thursday. Why 2: Because team members submitted their inputs Friday afternoon, not Wednesday. Why 3: Because the request went out Tuesday with vague format. Why 4: Because we had no template — each person formatted differently. Why 5: Because no one had created a template at project start. Root cause = missing template, not 'team is late'. Fix: 30-min session to design template + automate via shared spreadsheet. Reports moved from Friday-night fire drills to Wednesday automatic compilation. The discipline is asking 'why' to causes, not assigning blame."},
+{"n":356,"c":"frameworks","d":2,"q":"What is the MoSCoW prioritization technique and how do you facilitate it with stakeholders?","a":"MoSCoW = Must Have, Should Have, Could Have, Won't Have (this time). I facilitate it as a workshop: 1 hour, all key stakeholders, list of features. Round 1: each stakeholder privately marks each feature MSC or W. Round 2: review where there's disagreement, discuss why, reach consensus. Round 3: stress-test 'Musts' — can we cut anything if forced to? Common pitfall: too many 'Musts'. I push hard on this — if everything is critical, nothing is. Aim for: ~60% Should/Could, ~30% Must, ~10% Won't (this release). The 'Won't have THIS time' framing is important — it preserves them for future releases and reduces resistance."}];
 
 const PD=[
 // M1W1
@@ -2005,10 +2261,59 @@ function updateGrammarChart(){
 
 // ═══ Q&A RENDERING WITH SPACED REPETITION ═══
 let activeCat="all";
+// ═══ STUDY STREAK ═══
+function getStreak(){
+  try{return JSON.parse(localStorage.getItem('yStudyStreak')||'{"count":0,"lastDay":""}');}catch(e){return{count:0,lastDay:''};}
+}
+function bumpStreak(){
+  const today=new Date().toISOString().slice(0,10);
+  const s=getStreak();
+  if(s.lastDay===today)return s;
+  // Check if yesterday — continue streak; else reset
+  const y=new Date();y.setDate(y.getDate()-1);const yKey=y.toISOString().slice(0,10);
+  s.count=(s.lastDay===yKey)?(s.count+1):1;
+  s.lastDay=today;
+  localStorage.setItem('yStudyStreak',JSON.stringify(s));
+  return s;
+}
+// ═══ FAVORITES + DIFFICULTY FILTERS ═══
+let activeFavOnly=false,activeDifficulty='all';
+function getFavSet(){try{return new Set(JSON.parse(localStorage.getItem('yfavQA')||'[]'));}catch(e){return new Set();}}
+function toggleFavQ(n){
+  const s=getFavSet();
+  if(s.has(n))s.delete(n);else s.add(n);
+  localStorage.setItem('yfavQA',JSON.stringify(Array.from(s)));
+  bumpStreak();
+  renderQA();
+}
+function setDifficulty(d){activeDifficulty=d;renderQA();}
+function setFavOnly(v){activeFavOnly=v;renderQA();}
+
 function renderQA(){
   const pills=document.getElementById("cpills");
   if(!pills)return;
-  let ph=`<button class="cp ${activeCat==="all"?"on":""}" onclick="activeCat='all';renderQA()">All (${QA.length})</button>`;
+  // Streak + filters bar (rendered inside cpills before category pills)
+  const streak=getStreak();
+  const favSet=getFavSet();
+  const diffCount=QA.filter(q=>q.d).length;
+  let bar=`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px;padding:6px 10px;background:var(--card2);border-radius:8px;border:1px solid var(--bdr)">
+    <span title="Daily study streak" style="font-size:12px;font-weight:700">🔥 ${streak.count}d</span>
+    <span style="color:var(--tx3)">·</span>
+    <button onclick="setFavOnly(${!activeFavOnly})" style="background:${activeFavOnly?'var(--pu)':'var(--card)'};color:${activeFavOnly?'#fff':'var(--tx2)'};border:1px solid var(--bdr);border-radius:6px;padding:3px 8px;cursor:pointer;font-size:11px">⭐ ${favSet.size}</button>
+    ${diffCount>0?`<select onchange="setDifficulty(this.value)" style="background:var(--card);color:var(--tx);border:1px solid var(--bdr);border-radius:6px;padding:3px 6px;font-size:11px">
+      <option value="all"${activeDifficulty==='all'?' selected':''}>All difficulty</option>
+      <option value="1"${activeDifficulty==='1'?' selected':''}>🟢 Easy</option>
+      <option value="2"${activeDifficulty==='2'?' selected':''}>🟡 Medium</option>
+      <option value="3"${activeDifficulty==='3'?' selected':''}>🔴 Hard</option>
+    </select>`:''}
+    <span style="flex:1"></span>
+    <button onclick="openMockSim()" style="background:var(--pu);color:#fff;border:none;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:11px;font-weight:600">🎬 Mock</button>
+    <button onclick="openWeakAreas()" style="background:var(--card);color:var(--tx2);border:1px solid var(--bdr);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:11px">📊 Weak Areas</button>
+    <button onclick="openConfTrend()" style="background:var(--card);color:var(--tx2);border:1px solid var(--bdr);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:11px">📈 Trend</button>
+    <button onclick="openPom()" style="background:var(--card);color:var(--tx2);border:1px solid var(--bdr);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:11px" title="25 min focus / 5 min break">🍅 Focus</button>
+    <button onclick="window.print()" style="background:var(--card);color:var(--tx2);border:1px solid var(--bdr);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:11px" title="Print Q&A digest">🖨</button>
+  </div>`;
+  let ph=bar+`<button class="cp ${activeCat==="all"?"on":""}" onclick="activeCat='all';renderQA()">All (${QA.length})</button>`;
   const catCounts={};
   QA.forEach(q=>{catCounts[q.c]=(catCounts[q.c]||0)+1;});
   Object.keys(CATS).forEach(c=>{
@@ -2020,6 +2325,8 @@ function renderQA(){
   const searchTerm=(document.getElementById("qaSearch")||{}).value||"";
   const searchLower=searchTerm.toLowerCase();
   let filtered=activeCat==="all"?QA:QA.filter(q=>q.c===activeCat);
+  if(activeFavOnly)filtered=filtered.filter(q=>favSet.has(q.n));
+  if(activeDifficulty!=='all')filtered=filtered.filter(q=>String(q.d||'')===activeDifficulty);
   if(searchLower)filtered=filtered.filter(q=>q.q.toLowerCase().includes(searchLower)||q.a.toLowerCase().includes(searchLower));
   list.innerHTML=filtered.map(q=>{
     const status=sr[q.n]||"";
@@ -2028,8 +2335,11 @@ function renderQA(){
     const safeQ=q.q.replace(/"/g,"&quot;");
     const safeA=q.a.replace(/"/g,"&quot;").substring(0,800);
     return `<div class="qcard" onclick="if(!window.getSelection().toString())this.classList.toggle('open')">${badgeHtml}<div class="qh"><span class="qn">Q${q.n}</span><span class="qt">${q.q}</span><span class="cv">▶</span></div><div class="qb"><div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap"><button onclick="event.stopPropagation();speak(this.closest('.qb').querySelector('.qa-body').textContent,this)" style="background:var(--tedim);border:1px solid #0c3030;color:var(--tetx);padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer">🔊 Hear Answer</button><button onclick="event.stopPropagation();speak('${safeQ}',this)" style="background:var(--pudim);border:1px solid #2a1850;color:var(--putx);padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer">🔊 Hear Question</button></div><div class="qa-answer"><div class="qa-header">${CATS[q.c]||q.c}</div><div class="qa-body">${formatAnswer(q.a)}</div>${QA_DIAGRAMS[q.n]?"<div class=\"qa-diagram\">"+QA_DIAGRAMS[q.n]+"</div>":""}${QA_TABLES[q.n]||""}<div class="qa-takeaway">Key: <em>${getLastSentence(q.a)}</em></div></div><div class="sr-btns"><button class="sr-btn sr-know" onclick="event.stopPropagation();markSR(${q.n},'know')">I know this ✓</button><button class="sr-btn sr-need" onclick="event.stopPropagation();markSR(${q.n},'need')">Need practice ✗</button><button class="rec-btn rec-start" onclick="event.stopPropagation();toggleRec(this,${q.n})">🎙️ Record</button><audio id="playback_${q.n}" style="display:none;margin-top:6px;width:100%"></audio></div><div class="qp" style="margin-top:8px">Rehearsal: "Ask me Q${q.n}: ${q.q.substring(0,50)}... Give me feedback on content and language."</div><textarea class="qa-notes" placeholder="Write YOUR version of this answer..." onclick="event.stopPropagation()" oninput="autoSaveNote(${q.n},this.value)" onchange="saveQANote(${q.n},this.value)" id="qanote_${q.n}"></textarea>
-    <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap" onclick="event.stopPropagation()">
+    <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;align-items:center" onclick="event.stopPropagation()">
+      <button onclick="event.stopPropagation();toggleFavQ(${q.n})" title="Favorite" style="font-size:14px;background:none;border:none;cursor:pointer;color:${favSet.has(q.n)?'#f6ad55':'var(--tx3)'}">${favSet.has(q.n)?'⭐':'☆'}</button>
+      ${q.d?`<span style="font-size:9px;padding:2px 6px;border-radius:8px;background:${q.d==1?'rgba(72,187,120,.15)':q.d==2?'rgba(246,173,85,.15)':'rgba(231,76,60,.15)'};color:${q.d==1?'var(--grtx)':q.d==2?'var(--amtx)':'var(--cotx)'}">${q.d==1?'🟢 Easy':q.d==2?'🟡 Med':'🔴 Hard'}</span>`:''}
       <button onclick="event.stopPropagation();checkSTAR(${q.n})" style="font-size:10px;background:var(--pu);color:#fff;border:none;border-radius:6px;padding:4px 10px;cursor:pointer">⭐ STAR Check</button>
+      <button onclick="event.stopPropagation();aiCoach(${q.n})" style="font-size:10px;background:var(--pu);color:#fff;border:none;border-radius:6px;padding:4px 10px;cursor:pointer" title="Get AI feedback on your answer">🤖 AI Coach</button>
       <div style="display:flex;align-items:center;gap:4px">
         <span style="font-size:10px;color:var(--tx3)">Confidence:</span>
         ${[1,2,3,4,5].map(r=>`<button onclick="event.stopPropagation();rateConfidence(${q.n},${r})" id="conf_${q.n}_${r}" style="width:22px;height:22px;border-radius:4px;border:1px solid var(--bdr);background:var(--card2);font-size:10px;cursor:pointer">${r}</button>`).join("")}
@@ -2107,8 +2417,354 @@ function checkSTAR(qn){
 
 // ═══ CONFIDENCE RATING ═══
 var _confData=JSON.parse(localStorage.getItem('qa_conf')||'{}');
+// ═══════════════════════════════════════════════════════════════
+// POMODORO TIMER (25/5 cycles)
+// ═══════════════════════════════════════════════════════════════
+let _pomMode='focus',_pomLeft=25*60,_pomTimer=null,_pomCycles=0;
+window.openPom=function(){document.getElementById('pomodoroWidget').style.display='block';renderPom();};
+window.closePom=function(){document.getElementById('pomodoroWidget').style.display='none';if(_pomTimer){clearInterval(_pomTimer);_pomTimer=null;}};
+window.togglePom=function(){
+  if(_pomTimer){clearInterval(_pomTimer);_pomTimer=null;document.getElementById('pomBtn').textContent='▶';}
+  else{
+    document.getElementById('pomBtn').textContent='⏸';
+    _pomTimer=setInterval(()=>{
+      _pomLeft--;
+      if(_pomLeft<=0){
+        clearInterval(_pomTimer);_pomTimer=null;
+        try{beep(800,0.6);}catch(e){}
+        if(_pomMode==='focus'){_pomMode='break';_pomLeft=5*60;_pomCycles++;document.getElementById('pomLabel').textContent='☕ Break ('+_pomCycles+')';bumpStreak();}
+        else{_pomMode='focus';_pomLeft=25*60;document.getElementById('pomLabel').textContent='🍅 Focus';}
+        document.getElementById('pomBtn').textContent='▶';
+      }
+      renderPom();
+    },1000);
+  }
+};
+window.resetPom=function(){if(_pomTimer){clearInterval(_pomTimer);_pomTimer=null;}_pomMode='focus';_pomLeft=25*60;_pomCycles=0;document.getElementById('pomLabel').textContent='🍅 Focus';document.getElementById('pomBtn').textContent='▶';renderPom();};
+function renderPom(){const m=Math.floor(_pomLeft/60),s=_pomLeft%60;const t=document.getElementById('pomTime');if(t)t.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+
+// PWA install banner: iOS Safari only, dismissible
+setTimeout(()=>{
+  if(localStorage.getItem('yInstallDismissed'))return;
+  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isStandalone=window.navigator.standalone;
+  const isAndroid=/Android/.test(navigator.userAgent);
+  if(isStandalone)return; // already installed
+  const b=document.getElementById('installBanner');
+  if(!b)return;
+  if(isIOS){b.querySelector('#installMsg').textContent='📱 Add to Home Screen: Share button → Add to Home Screen';b.style.display='block';}
+  else if(isAndroid){b.querySelector('#installMsg').textContent='📱 Install app: ⋮ menu → Install app';b.style.display='block';}
+},5000);
+
+// ═══════════════════════════════════════════════════════════════
+// CONFIDENCE TREND GRAPH
+// ═══════════════════════════════════════════════════════════════
+let _confTrendChart=null;
+window.openConfTrend=function(){
+  const hist=JSON.parse(localStorage.getItem('qa_conf_hist')||'{}');
+  // Aggregate per category per day (last 30 days)
+  const days=[];const today=new Date();today.setHours(0,0,0,0);
+  for(let i=29;i>=0;i--){const d=new Date(today);d.setDate(d.getDate()-i);days.push(d.toISOString().slice(0,10));}
+  // Per-cat avg per day
+  const catData={};
+  Object.keys(CATS).forEach(c=>{catData[c]={};days.forEach(d=>{catData[c][d]={sum:0,n:0};});});
+  Object.entries(hist).forEach(([qn,arr])=>{
+    const q=QA.find(x=>x.n===parseInt(qn));if(!q||!catData[q.c])return;
+    arr.forEach(entry=>{
+      const day=new Date(entry.t).toISOString().slice(0,10);
+      if(catData[q.c][day]){catData[q.c][day].sum+=entry.r;catData[q.c][day].n++;}
+    });
+  });
+  // Build datasets — pick top 6 categories with most data
+  const catCounts=Object.entries(catData).map(([c,d])=>{const total=Object.values(d).reduce((s,v)=>s+v.n,0);return{c,total};}).filter(x=>x.total>0).sort((a,b)=>b.total-a.total).slice(0,6);
+  const colors=['#7b6cf7','#48bb78','#f6ad55','#06b6d4','#e74c3c','#9b59b6'];
+  const datasets=catCounts.map((cc,i)=>{
+    const data=days.map(d=>{const v=catData[cc.c][d];return v.n?(v.sum/v.n):null;});
+    // Forward-fill nulls so trend is continuous
+    let lastVal=null;const filled=data.map(v=>{if(v!==null){lastVal=v;return v;}return lastVal;});
+    return{label:CATS[cc.c]||cc.c,data:filled,borderColor:colors[i],backgroundColor:colors[i]+'33',tension:0.3,spanGaps:true,pointRadius:2};
+  });
+  // Modal
+  const ovr=document.createElement('div');
+  ovr.id='confTrendModal';
+  ovr.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9998;display:flex;align-items:center;justify-content:center;padding:12px';
+  ovr.onclick=e=>{if(e.target===ovr){if(_confTrendChart){_confTrendChart.destroy();_confTrendChart=null;}ovr.remove();}};
+  ovr.innerHTML=`<div style="background:var(--card);border:1px solid var(--bdr);border-radius:14px;width:min(96vw,800px);max-height:94vh;overflow:hidden;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--bdr);background:var(--card2)">
+      <span style="font-size:15px;font-weight:700">📈 Confidence Trend (last 30 days)</span>
+      <button onclick="if(_confTrendChart){_confTrendChart.destroy();_confTrendChart=null;}this.closest('#confTrendModal').remove()" style="width:30px;height:30px;border-radius:50%;background:var(--card);border:1px solid var(--bdr);cursor:pointer;font-size:14px;color:var(--tx)">×</button>
+    </div>
+    <div style="padding:18px 22px;overflow-y:auto">
+      ${catCounts.length?`<canvas id="confTrendCanvas" style="width:100%;max-height:380px"></canvas>
+        <div style="margin-top:12px;font-size:11px;color:var(--tx3)">📊 Top 6 categories by activity. Higher = better mastery (5 = expert). Trend shows whether you're improving.</div>`:'<div style="text-align:center;color:var(--tx3);padding:40px">No confidence ratings yet. Rate Q&A confidence to see trends.</div>'}
+    </div>
+  </div>`;
+  document.body.appendChild(ovr);
+  if(catCounts.length){
+    setTimeout(()=>{
+      const ctx=document.getElementById('confTrendCanvas').getContext('2d');
+      _confTrendChart=new Chart(ctx,{type:'line',data:{labels:days.map(d=>d.slice(5)),datasets},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#aaa',font:{size:10}}}},scales:{y:{min:0,max:5,ticks:{color:'#888'},grid:{color:'rgba(128,128,128,0.15)'}},x:{ticks:{color:'#888',maxRotation:0,autoSkipPadding:20},grid:{color:'rgba(128,128,128,0.1)'}}}}});
+    },50);
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════
+// MOCK INTERVIEW SIMULATOR
+// ═══════════════════════════════════════════════════════════════
+let _mockState=null;
+
+window.openMockSim=function(){
+  // Setup: pick categories, count, time
+  document.getElementById('mockSimModal').style.display='flex';
+  _mockState=null;
+  document.getElementById('mockTimerHdr').textContent='';
+  const body=document.getElementById('mockSimBody');
+  const ftr=document.getElementById('mockSimFooter');
+  body.innerHTML=`<h3 style="margin:0 0 14px;font-size:14px">Setup your mock interview</h3>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div><label style="font-size:11px;color:var(--tx3)">Number of questions</label>
+    <select id="mockQCount" style="width:100%;padding:8px;background:var(--card2);border:1px solid var(--bdr);border-radius:6px;color:var(--tx)">
+      <option value="5">5 (quick — 15 min)</option>
+      <option value="8" selected>8 (standard — 25 min)</option>
+      <option value="12">12 (full — 40 min)</option>
+    </select></div>
+    <div><label style="font-size:11px;color:var(--tx3)">Time per question (seconds)</label>
+    <select id="mockTime" style="width:100%;padding:8px;background:var(--card2);border:1px solid var(--bdr);border-radius:6px;color:var(--tx)">
+      <option value="60">60 sec (rapid fire)</option>
+      <option value="120" selected>120 sec (2 min — typical)</option>
+      <option value="180">180 sec (3 min — depth)</option>
+    </select></div>
+    <div><label style="font-size:11px;color:var(--tx3)">Categories (leave empty for all)</label>
+    <div id="mockCatList" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:11px"></div></div>
+    <div><label style="font-size:11px;color:var(--tx3)">Difficulty</label>
+    <select id="mockDiff" style="width:100%;padding:8px;background:var(--card2);border:1px solid var(--bdr);border-radius:6px;color:var(--tx)">
+      <option value="all">Any difficulty</option>
+      <option value="1">🟢 Easy only</option>
+      <option value="2">🟡 Medium only</option>
+      <option value="3">🔴 Hard only</option>
+    </select></div>
+  </div>`;
+  // Render category checkboxes
+  const cl=document.getElementById('mockCatList');
+  cl.innerHTML=Object.keys(CATS).map(c=>`<label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding:4px 6px;background:var(--card2);border-radius:4px"><input type="checkbox" value="${c}" class="mockCatChk"> ${CATS[c]}</label>`).join('');
+  ftr.innerHTML=`<span style="font-size:11px;color:var(--tx3)">Random selection from your Q&A bank</span>
+    <button onclick="startMockSim()" style="padding:8px 18px;background:var(--pu);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:700">▶ Start Mock</button>`;
+};
+
+window.closeMockSim=function(){document.getElementById('mockSimModal').style.display='none';if(_mockState&&_mockState.timer){clearInterval(_mockState.timer);}_mockState=null;};
+
+window.startMockSim=function(){
+  const count=parseInt(document.getElementById('mockQCount').value);
+  const time=parseInt(document.getElementById('mockTime').value);
+  const diff=document.getElementById('mockDiff').value;
+  const cats=Array.from(document.querySelectorAll('.mockCatChk:checked')).map(c=>c.value);
+  let pool=QA.slice();
+  if(cats.length)pool=pool.filter(q=>cats.includes(q.c));
+  if(diff!=='all')pool=pool.filter(q=>String(q.d||'')===diff);
+  if(pool.length<count){alert('Not enough questions matching filters. Found: '+pool.length);return;}
+  // Shuffle
+  pool.sort(()=>Math.random()-0.5);
+  const questions=pool.slice(0,count);
+  _mockState={questions,answers:[],idx:0,timePerQ:time,startedAt:Date.now(),timer:null,timeLeft:time};
+  bumpStreak();
+  showMockQuestion();
+};
+
+function showMockQuestion(){
+  if(!_mockState)return;
+  const s=_mockState;
+  const q=s.questions[s.idx];
+  const body=document.getElementById('mockSimBody');
+  const ftr=document.getElementById('mockSimFooter');
+  body.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span style="font-size:11px;color:var(--tx3)">Question ${s.idx+1} of ${s.questions.length}</span>
+    <span style="font-size:10px;padding:2px 8px;background:var(--card2);border-radius:8px">${CATS[q.c]||q.c}${q.d?' · '+(q.d==1?'🟢':q.d==2?'🟡':'🔴'):''}</span></div>
+    <div style="font-size:15px;font-weight:600;margin-bottom:14px;line-height:1.5">${q.q}</div>
+    <textarea id="mockAns" placeholder="Type your answer outline (or speak it aloud)..." style="width:100%;min-height:140px;padding:10px;background:var(--card2);border:1px solid var(--bdr);border-radius:8px;color:var(--tx);font-size:12px;font-family:inherit;resize:vertical"></textarea>
+    <details style="margin-top:10px;font-size:11px"><summary style="cursor:pointer;color:var(--tx3)">💡 Reveal model answer</summary>
+    <div style="margin-top:8px;padding:10px;background:var(--card2);border-radius:6px;line-height:1.6">${q.a}</div></details>`;
+  ftr.innerHTML=`<div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px;font-weight:700;color:var(--am)" id="mockTimer">${s.timeLeft}s</span></div>
+    <div style="display:flex;gap:6px"><button onclick="skipMock()" style="padding:6px 14px;background:var(--card2);border:1px solid var(--bdr);border-radius:6px;cursor:pointer;color:var(--tx2)">Skip</button>
+    <button onclick="nextMock()" style="padding:6px 18px;background:var(--pu);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:700">Next →</button></div>`;
+  // Reset timer
+  s.timeLeft=s.timePerQ;
+  if(s.timer)clearInterval(s.timer);
+  s.timer=setInterval(()=>{
+    s.timeLeft--;
+    const tEl=document.getElementById('mockTimer');
+    if(tEl){tEl.textContent=s.timeLeft+'s';tEl.style.color=s.timeLeft<10?'var(--co)':s.timeLeft<30?'var(--am)':'var(--tx2)';}
+    if(s.timeLeft<=0){clearInterval(s.timer);try{beep(400,0.4);}catch(e){}}
+  },1000);
+}
+window.skipMock=function(){if(!_mockState)return;_mockState.answers.push({q:_mockState.questions[_mockState.idx].n,skipped:true,answer:''});advanceMock();};
+window.nextMock=function(){if(!_mockState)return;const ans=document.getElementById('mockAns').value;_mockState.answers.push({q:_mockState.questions[_mockState.idx].n,answer:ans,timeUsed:_mockState.timePerQ-_mockState.timeLeft});advanceMock();};
+function advanceMock(){
+  _mockState.idx++;
+  if(_mockState.idx>=_mockState.questions.length){finishMock();}
+  else{showMockQuestion();}
+}
+function finishMock(){
+  const s=_mockState;
+  if(s.timer)clearInterval(s.timer);
+  const totalTime=Math.round((Date.now()-s.startedAt)/60000);
+  const answered=s.answers.filter(a=>!a.skipped).length;
+  const skipped=s.answers.filter(a=>a.skipped).length;
+  const avgTime=Math.round(s.answers.filter(a=>!a.skipped).reduce((sum,a)=>sum+(a.timeUsed||0),0)/Math.max(1,answered));
+  // Save to history
+  try{
+    const hist=JSON.parse(localStorage.getItem('yMockHistory')||'[]');
+    hist.push({date:new Date().toISOString(),total:s.questions.length,answered,skipped,totalMin:totalTime,avgSec:avgTime});
+    if(hist.length>30)hist.shift();
+    localStorage.setItem('yMockHistory',JSON.stringify(hist));
+  }catch(e){}
+  document.getElementById('mockSimBody').innerHTML=`<div style="text-align:center;padding:20px"><div style="font-size:48px;margin-bottom:10px">🎯</div>
+    <h2 style="margin:0 0 14px">Mock complete!</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px">
+      <div style="padding:14px;background:var(--card2);border-radius:8px"><div style="font-size:24px;font-weight:700;color:var(--pu)">${answered}/${s.questions.length}</div><div style="font-size:11px;color:var(--tx3)">Answered</div></div>
+      <div style="padding:14px;background:var(--card2);border-radius:8px"><div style="font-size:24px;font-weight:700;color:var(--am)">${avgTime}s</div><div style="font-size:11px;color:var(--tx3)">Avg/Q</div></div>
+      <div style="padding:14px;background:var(--card2);border-radius:8px"><div style="font-size:24px;font-weight:700;color:var(--co)">${totalTime}m</div><div style="font-size:11px;color:var(--tx3)">Total</div></div>
+    </div>
+    <div style="text-align:left;font-size:12px;color:var(--tx2);padding:12px;background:var(--card2);border-radius:8px">
+      <b>💡 Next steps:</b><br>
+      • Review skipped questions in the main Q&A list<br>
+      • Use AI Coach to grade your answers<br>
+      • Re-attempt this category with shorter timer<br>
+      ${skipped>3?'<br><b style="color:var(--co)">⚠️ '+skipped+' skipped — these are your weak areas. Drill them first.</b>':''}
+    </div></div>`;
+  document.getElementById('mockSimFooter').innerHTML=`<button onclick="closeMockSim()" style="margin-left:auto;padding:8px 18px;background:var(--pu);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:700">Done</button>`;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// AI COACH FEEDBACK
+// ═══════════════════════════════════════════════════════════════
+let _aiCoachQ=null;
+window.aiCoach=function(qn){
+  _aiCoachQ=QA.find(q=>q.n===qn);
+  if(!_aiCoachQ){alert('Question not found');return;}
+  document.getElementById('aiCoachQuestion').innerHTML='<b>Q'+qn+'</b>: '+_aiCoachQ.q;
+  document.getElementById('aiCoachAnswer').value='';
+  document.getElementById('aiCoachResult').innerHTML='';
+  document.getElementById('aiCoachModal').style.display='flex';
+};
+window.closeAiCoach=function(){document.getElementById('aiCoachModal').style.display='none';};
+
+window.submitAiCoach=async function(){
+  const userAns=document.getElementById('aiCoachAnswer').value.trim();
+  if(!userAns){alert('Type your answer first');return;}
+  if(!_aiCoachQ){return;}
+  const apiKey=localStorage.getItem('yasser_api_key');
+  const result=document.getElementById('aiCoachResult');
+  const btn=document.getElementById('aiCoachBtn');
+  if(!apiKey){
+    result.innerHTML='<div style="padding:12px;background:rgba(231,76,60,.1);border:1px solid #e74c3c;border-radius:8px;color:#e74c3c;font-size:12px">⚠️ Set your Claude API key in Settings → AI Key first.</div>';
+    return;
+  }
+  btn.textContent='⏳ Analyzing...';btn.disabled=true;
+  bumpStreak();
+  const prompt=`You are an expert interview coach for senior PMO/Project Manager roles in the Gulf market. Grade this candidate's answer on a 1-10 scale and give specific, actionable feedback.
+
+QUESTION: ${_aiCoachQ.q}
+
+CANDIDATE'S ANSWER: ${userAns}
+
+REFERENCE ANSWER (for comparison only — don't expect identical): ${_aiCoachQ.a}
+
+Grade in this format:
+SCORE: X/10
+STRENGTHS: (2-3 bullets)
+GAPS: (2-3 bullets — what's missing or weak)
+STAR FORMAT: (does it use Situation/Task/Action/Result? Y/N + comment)
+SUGGESTED IMPROVEMENT: (1-2 paragraphs of specific rewriting advice)
+QUICK WIN: (one concrete sentence the candidate could add right now)`;
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:1500,messages:[{role:'user',content:prompt}]})
+    });
+    const data=await resp.json();
+    if(data.error){result.innerHTML='<div style="padding:12px;background:rgba(231,76,60,.1);border:1px solid #e74c3c;border-radius:8px;color:#e74c3c;font-size:12px">⚠️ '+(data.error.message||'API error')+'</div>';btn.textContent='📊 Get AI Feedback';btn.disabled=false;return;}
+    const text=(data.content&&data.content[0]&&data.content[0].text)||'(no response)';
+    result.innerHTML='<div style="padding:14px;background:var(--card2);border-radius:8px;font-size:12px;line-height:1.7;white-space:pre-wrap">'+text.replace(/</g,'&lt;')+'</div>';
+  }catch(e){
+    result.innerHTML='<div style="padding:12px;background:rgba(231,76,60,.1);border:1px solid #e74c3c;border-radius:8px;color:#e74c3c;font-size:12px">⚠️ '+e.message+'</div>';
+  }
+  btn.textContent='📊 Get AI Feedback';btn.disabled=false;
+};
+
+// ═══════════════════════════════════════════════════════════════
+// WEAK AREAS DASHBOARD
+// ═══════════════════════════════════════════════════════════════
+window.openWeakAreas=function(){
+  const conf=JSON.parse(localStorage.getItem('qa_conf')||'{}');
+  const sr=JSON.parse(localStorage.getItem('qa_sr')||'{}');
+  const assess=JSON.parse(localStorage.getItem('yassess')||'{}');
+  // Per-category aggregates
+  const catAgg={};
+  Object.keys(CATS).forEach(c=>{catAgg[c]={total:0,unrated:0,low:0,confSum:0,confCount:0,need:0,know:0};});
+  QA.forEach(q=>{
+    const c=q.c;if(!catAgg[c])return;
+    catAgg[c].total++;
+    const cv=conf[q.n];
+    if(cv){catAgg[c].confSum+=cv;catAgg[c].confCount++;if(cv<=2)catAgg[c].low++;}
+    else catAgg[c].unrated++;
+    if(sr[q.n]==='need')catAgg[c].need++;
+    if(sr[q.n]==='know')catAgg[c].know++;
+  });
+  // Score per category (lower = weaker)
+  const scored=Object.entries(catAgg).filter(([c,a])=>a.total>0).map(([c,a])=>{
+    const avgConf=a.confCount?a.confSum/a.confCount:0;
+    const masteryPct=a.total?(a.know/a.total)*100:0;
+    const assessPct=assess[c]||0;
+    const weakness=(a.low*3)+(a.need*2)+(a.unrated)+(50-avgConf*10)+(100-masteryPct)*0.5+(100-assessPct)*0.3;
+    return{c,name:CATS[c]||c,...a,avgConf,masteryPct,assessPct,weakness};
+  }).sort((a,b)=>b.weakness-a.weakness);
+  const top5=scored.slice(0,5);
+  const ovr=document.createElement('div');
+  ovr.id='weakAreasModal';
+  ovr.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9998;display:flex;align-items:center;justify-content:center;padding:12px';
+  ovr.onclick=e=>{if(e.target===ovr)ovr.remove();};
+  ovr.innerHTML=`<div style="background:var(--card);border:1px solid var(--bdr);border-radius:14px;width:min(96vw,720px);max-height:94vh;overflow:hidden;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--bdr);background:var(--card2)">
+      <span style="font-size:15px;font-weight:700">📊 Weak Areas Dashboard</span>
+      <button onclick="this.closest('#weakAreasModal').remove()" style="width:30px;height:30px;border-radius:50%;background:var(--card);border:1px solid var(--bdr);cursor:pointer;font-size:14px;color:var(--tx)">×</button>
+    </div>
+    <div style="padding:18px 22px;overflow-y:auto">
+      <div style="font-size:12px;color:var(--tx3);margin-bottom:14px">Ranked by weakness score (low confidence + unmastered + low test scores)</div>
+      ${top5.length?top5.map((s,i)=>{
+        const colors=['#e74c3c','#f6ad55','#f6e05e','#48bb78','#7b6cf7'];
+        const col=colors[i]||'var(--tx3)';
+        return `<div style="margin-bottom:12px;padding:12px;background:var(--card2);border-left:4px solid ${col};border-radius:6px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <b style="font-size:13px">${i+1}. ${s.name}</b>
+            <span style="font-size:11px;color:${col};font-weight:700">Weakness: ${Math.round(s.weakness)}</span>
+          </div>
+          <div style="font-size:10px;color:var(--tx3);display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+            <div>📝 ${s.total} Q&A</div>
+            <div>✓ ${s.know}/${s.total} mastered (${Math.round(s.masteryPct)}%)</div>
+            <div>⏰ ${s.unrated} unrated</div>
+            <div>🟢 Avg conf: ${s.avgConf.toFixed(1)}/5</div>
+            <div>📊 Test: ${s.assessPct||'-'}%</div>
+            <div>⚠️ Low conf: ${s.low}</div>
+          </div>
+          <div style="margin-top:8px;display:flex;gap:6px">
+            <button onclick="document.querySelector('#weakAreasModal').remove();st('qa');activeCat='${s.c}';renderQA()" style="font-size:10px;padding:4px 10px;background:var(--pu);color:#fff;border:none;border-radius:4px;cursor:pointer">→ Drill Q&A</button>
+            <button onclick="document.querySelector('#weakAreasModal').remove();openMockSim()" style="font-size:10px;padding:4px 10px;background:var(--card);border:1px solid var(--bdr);color:var(--tx2);border-radius:4px;cursor:pointer">→ Mock</button>
+          </div>
+        </div>`;
+      }).join(''):'<div style="text-align:center;color:var(--tx3);padding:40px">No data yet — start rating Q&A confidence and your weak areas will appear here.</div>'}
+      <div style="margin-top:14px;padding:10px;background:var(--card2);border-radius:6px;font-size:11px;color:var(--tx3)">
+        💡 <b>Tip:</b> Aim for confidence ≥4 and mastery ≥70% per category before interview day.
+      </div>
+    </div>
+  </div>`;
+  document.body.appendChild(ovr);
+};
+
 function rateConfidence(qn,rating){
   _confData[qn]=rating;
+  // Track confidence trend (timestamp per rating for graph)
+  try{const hist=JSON.parse(localStorage.getItem('qa_conf_hist')||'{}');if(!hist[qn])hist[qn]=[];hist[qn].push({r:rating,t:Date.now()});if(hist[qn].length>50)hist[qn]=hist[qn].slice(-50);localStorage.setItem('qa_conf_hist',JSON.stringify(hist));}catch(e){}
+  bumpStreak();
   localStorage.setItem('qa_conf',JSON.stringify(_confData));
   for(var r=1;r<=5;r++){
     var btn=document.getElementById('conf_'+qn+'_'+r);
@@ -2303,7 +2959,10 @@ function getCompanies(){
     {name:"Elm Company",country:"🇸🇦",what:"National digital government platforms: ABSHER, Muqeem, Maroof. Multi-billion SAR infrastructure.",criteria:"Government transformation, Ministry-level stakeholders, PMP required, Saudization",connection:"My 24-month portal at QU and Absher app at Exa IT are directly relevant.",news:"",q1:"",q2:"",q3:""},
     {name:"STC Solutions",country:"🇸🇦",what:"Technology division of Saudi Telecom. Cloud, cybersecurity, AI, enterprise digital transformation.",criteria:"Large-scale program management, Digital transformation, C-level client management",connection:"My ERP and enterprise delivery at Pointability matches their model.",news:"",q1:"",q2:"",q3:""},
     {name:"G42 (Group 42)",country:"🇦🇪",what:"Abu Dhabi AI and cloud company. National AI infrastructure, Microsoft/OpenAI partnerships.",criteria:"AI program delivery, Strong English, Complex vendor management, Responsible AI",connection:"My AI governance knowledge and multi-stakeholder program delivery are relevant.",news:"",q1:"",q2:"",q3:""},
-    {name:"Aramco Digital",country:"🇸🇦",what:"Digital arm of Saudi Aramco. Industrial IoT, AI, cloud infrastructure.",criteria:"Large program management (100M+), CMMI/process maturity, PMO at enterprise scale",connection:"My CMMI L3 Best Implementer recognition at Exa IT is directly relevant.",news:"",q1:"",q2:"",q3:""}
+    {name:"Aramco Digital",country:"🇸🇦",what:"Digital arm of Saudi Aramco. Industrial IoT, AI, cloud infrastructure.",criteria:"Large program management (100M+), CMMI/process maturity, PMO at enterprise scale",connection:"My CMMI L3 Best Implementer recognition at Exa IT is directly relevant.",news:"",q1:"",q2:"",q3:""},
+    {name:"DAAM (Cairo)",country:"🇪🇬",what:"Hybrid Business Analyst / Project Manager role. Maadi, Cairo. Enterprise/process-heavy projects with full SDLC ownership.",criteria:"BA + PM hybrid, requirements gathering, BPMN/user stories, RAID logs, Agile ceremonies, vendor coordination, governance, UAT — full-time on-site Maadi",connection:"Fit score 8.5/10. Match: ERP/portals/workflow systems, requirement-heavy projects. Position as hands-on BA/PM hybrid (not only senior delivery manager). Sharpen BA artifact language: BPMN, user stories, acceptance criteria, gap analysis, business cases.",news:"",q1:"How would you balance the BA workload (requirements, stories, gap analysis) with the PM workload (plan, RAID, governance) in this role?",q2:"Walk us through how you would structure a discovery phase for a new internal workflow project at DAAM.",q3:"Tell us about a time you bridged a requirements misunderstanding between business and IT."},
+    {name:"Royal Sky Group",country:"🇦🇪",what:"Multi-vertical tech group: IT, e-learning, aviation, AI, digital transformation. Cross-country operations UAE/Egypt/GCC.",criteria:"Software PM with multi-region delivery, structured/Agile hybrid, stakeholder management, customer experience focus",connection:"Strong fit. My GOOO Delivery (multi-country logistics) and ERP/portal delivery match their model. Lead with: hybrid Waterfall+Agile style, structured delivery + cross-region experience.",news:"",q1:"How do you adapt your delivery method for fast-paced, multi-vertical companies?",q2:"Describe a cross-country project — how you handled time zones, cultures, and integration risk.",q3:"How would you structure a PMO for a multi-vertical group like Royal Sky?"},
+    {name:"OdooTec",country:"🇸🇦",what:"Odoo/ERP implementation partner. Discovery → SIT → UAT → cutover → hypercare. Strong on data migration and integrations.",criteria:"ERP PM with Odoo lifecycle, data migration waves, integration management, EVM, vendor and partner coordination",connection:"My ERP delivery at Pointability and CMMI process discipline align. Lead with: phased delivery (Sandbox→SIT→UAT), CR board, EVM (SPI/CPI), cutover rehearsal, hypercare KPIs (MTTR, adoption).",news:"",q1:"Walk through your end-to-end approach to managing an Odoo implementation.",q2:"Describe your plan for Odoo data migration including masters and opening balances.",q3:"How do you manage integrations (POS, e-commerce, payroll) and ensure idempotency?"}
   ];
   return JSON.parse(localStorage.getItem("ycompanies")||JSON.stringify(def));
 }
@@ -2327,11 +2986,178 @@ function buildCompanyCards(){
     <div class="lf mb8"><label>Question 2</label><input value="${(c.q2||"").replace(/"/g,"&quot;")}" onchange="updateCompany(${i},'q2',this.value)"></div>
     <div class="lf mb8"><label>Question 3</label><input value="${(c.q3||"").replace(/"/g,"&quot;")}" onchange="updateCompany(${i},'q3',this.value)"></div>
     <div class="lf mb8"><label style="font-weight:700;color:var(--pu)">📋 My Research Notes</label><textarea rows="3" placeholder="Interview date, key contacts, recent news, strategic initiatives, questions to ask..." style="width:100%;padding:8px;border:1px solid var(--bdr);border-radius:8px;background:var(--card2);color:var(--tx2);font-size:12px;resize:vertical" oninput="updateCompany(${i},'notes',this.value)">${c.notes||''}</textarea></div>
+    <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+      <button onclick="generatePrepChecklist(${i})" style="padding:6px 12px;background:var(--pu);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600">🎯 Generate Prep Checklist</button>
+      <button onclick="openScorecard()" style="padding:6px 12px;background:var(--card2);border:1px solid var(--bdr);color:var(--tx2);border-radius:6px;cursor:pointer;font-size:11px">📊 Job-Fit Scorecard</button>
+    </div>
   </div>`).join("");
 }
+
+// ═══ PER-COMPANY PREP CHECKLIST GENERATOR ═══
+window.generatePrepChecklist=function(idx){
+  const c=getCompanies()[idx];if(!c){alert('Company not found');return;}
+  const today=new Date().toLocaleDateString('en-GB');
+  const sections=[];
+  sections.push({h:'🏢 Company',i:[`Name: ${c.name||'(set)'}`,`Country: ${c.country||'(set)'}`,`What: ${c.what||'(research)'}`,`Recent news: ${c.news||'(check LinkedIn, Google news)'}`]});
+  sections.push({h:'🎯 My positioning',i:[`Connection: ${c.connection||'(write your angle)'}`,`Hiring criteria match: ${c.criteria||'(map to your strengths)'}`,'Pick 2 STAR stories most relevant to this role','Tailor opening pitch to their domain (60s + 90s versions)']});
+  sections.push({h:'❓ Questions I will ask them',i:[c.q1||'(prepare Q1)',c.q2||'(prepare Q2)',c.q3||'(prepare Q3)','Question about culture/team I would join','Question about decision-making process']});
+  sections.push({h:'📚 Q&A drilling priority',i:['Drill any Q&A with confidence < 4 in: PMO, Leadership, '+(c.country?.includes('🇸🇦')||c.country?.includes('🇦🇪')?'Gulf, ':'')+'AI Tools','Run Mock Interview Simulator with 8 questions in mixed categories','Use AI Coach on top 3 expected questions for this role']});
+  sections.push({h:'💼 Logistics',i:['Interview date confirmed','Time zone confirmed (if remote)','Camera + mic tested 24h before','Internet backup tested','Outfit ready (and tested for fit)','CV printed × 2 copies + portfolio digital','Arrive 10 min early / join 5 min early']});
+  sections.push({h:'💰 Compensation',i:['Salary range researched on Glassdoor / Naukrigulf','Total comp expectations defined (base + bonus + housing/transport)','Counter-offer plan: minimum acceptable + walk-away point','Tax/iqama/relocation impact considered']});
+  sections.push({h:'🤝 Network + References',i:['Recruiter contact name + email','Reference contacts notified (notice period)','LinkedIn profile updated and matches CV','Connection request to interviewer post-meeting prepared']});
+  sections.push({h:'📝 Day-of + after',i:['Power pose 2 min before','Water + notepad on desk','Phone on silent','During: take notes on questions asked','Within 24h: thank-you email per interviewer','Within 48h: log debrief in app (Debrief tab)']});
+  let html=`<div style="font-family:DM Sans,system-ui,sans-serif;color:#000;background:#fff;padding:24px;max-width:760px;margin:0 auto"><h1 style="margin:0 0 4px;color:#7b6cf7">${c.country||'🏢'} ${c.name||'Opportunity'} — Interview Prep Checklist</h1><div style="font-size:11px;color:#666;margin-bottom:18px">Generated ${today} for Yasser Hassan</div>`;
+  sections.forEach(s=>{
+    html+=`<h3 style="margin:14px 0 6px;color:#7b6cf7;font-size:14px;border-bottom:1px solid #ddd;padding-bottom:4px">${s.h}</h3><ul style="margin:6px 0 0;padding-left:22px;font-size:13px;line-height:1.8">${s.i.map(x=>`<li>☐ ${x}</li>`).join('')}</ul>`;
+  });
+  html+=`<div style="margin-top:24px;padding:12px;background:#f0f4ff;border-left:3px solid #7b6cf7;font-size:11px;color:#444">Tip: Print this checklist, tick items as you complete them, and keep next to your laptop on interview day. Best of luck.</div></div>`;
+  // Open in new window for printing
+  const w=window.open('','_blank');
+  if(!w){alert('Pop-up blocked — please allow pop-ups for this site.');return;}
+  w.document.write(`<!DOCTYPE html><html><head><title>Prep — ${c.name||'Company'}</title><style>@media print{body{margin:0}}body{margin:0;background:#fff}h1{font-size:20px}h3{margin-top:14px}</style></head><body>${html}<div style="text-align:center;padding:20px"><button onclick="window.print()" style="padding:10px 20px;background:#7b6cf7;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px">🖨 Print</button></div></body></html>`);
+};
 function updateCompany(i,field,val){const c=getCompanies();c[i][field]=val;saveCompanies(c);}
 function removeCompany(i){const c=getCompanies();c.splice(i,1);saveCompanies(c);buildCompanyCards();}
 function addCompanyCard(){const c=getCompanies();c.push({name:"",country:"",what:"",criteria:"",connection:"",news:"",q1:"",q2:"",q3:""});saveCompanies(c);buildCompanyCards();}
+
+// ═══ LOAD SUGGESTED COMPANIES ═══
+function loadSuggestedCompanies(){
+  const suggested=[
+    {name:"DAAM (Cairo)",country:"🇪🇬",what:"Hybrid Business Analyst / Project Manager role. Maadi, Cairo. Enterprise/process-heavy projects with full SDLC ownership.",criteria:"BA + PM hybrid, requirements gathering, BPMN/user stories, RAID logs, Agile ceremonies, vendor coordination, governance, UAT — full-time on-site Maadi",connection:"Fit score 8.5/10. Match: ERP/portals/workflow systems, requirement-heavy projects. Position as hands-on BA/PM hybrid (not only senior delivery manager). Sharpen BA artifact language: BPMN, user stories, acceptance criteria, gap analysis, business cases.",news:"",q1:"How would you balance the BA workload (requirements, stories, gap analysis) with the PM workload (plan, RAID, governance) in this role?",q2:"Walk us through how you would structure a discovery phase for a new internal workflow project at DAAM.",q3:"Tell us about a time you bridged a requirements misunderstanding between business and IT."},
+    {name:"Royal Sky Group",country:"🇦🇪",what:"Multi-vertical tech group: IT, e-learning, aviation, AI, digital transformation. Cross-country operations UAE/Egypt/GCC.",criteria:"Software PM with multi-region delivery, structured/Agile hybrid, stakeholder management, customer experience focus",connection:"Strong fit. My GOOO Delivery (multi-country logistics) and ERP/portal delivery match their model. Lead with: hybrid Waterfall+Agile style, structured delivery + cross-region experience.",news:"",q1:"How do you adapt your delivery method for fast-paced, multi-vertical companies?",q2:"Describe a cross-country project — how you handled time zones, cultures, and integration risk.",q3:"How would you structure a PMO for a multi-vertical group like Royal Sky?"},
+    {name:"OdooTec",country:"🇸🇦",what:"Odoo/ERP implementation partner. Discovery → SIT → UAT → cutover → hypercare. Strong on data migration and integrations.",criteria:"ERP PM with Odoo lifecycle, data migration waves, integration management, EVM, vendor and partner coordination",connection:"My ERP delivery at Pointability and CMMI process discipline align. Lead with: phased delivery (Sandbox→SIT→UAT), CR board, EVM (SPI/CPI), cutover rehearsal, hypercare KPIs (MTTR, adoption).",news:"",q1:"Walk through your end-to-end approach to managing an Odoo implementation.",q2:"Describe your plan for Odoo data migration including masters and opening balances.",q3:"How do you manage integrations (POS, e-commerce, payroll) and ensure idempotency?"}
+  ];
+  const current=getCompanies();
+  let added=0;
+  suggested.forEach(s=>{if(!current.some(c=>c.name===s.name)){current.push(s);added++;}});
+  saveCompanies(current);
+  buildCompanyCards();
+  alert(added>0?`✅ Added ${added} suggested compan${added===1?'y':'ies'}.`:`✓ All 3 suggested companies are already in your list.`);
+}
+
+// ═══ JOB-FIT SCORECARD ═══
+const SCO_AREAS=[
+  {key:"overall",label:"Overall Fit"},
+  {key:"pm",label:"Project Management"},
+  {key:"ba",label:"Business Analysis"},
+  {key:"ent",label:"Enterprise / Transformation"},
+  {key:"agile",label:"Agile / Tools Readiness"},
+  {key:"domain",label:"Domain Knowledge (industry/sector)"},
+  {key:"gulf",label:"Gulf Market Knowledge"},
+  {key:"comm",label:"Communication / English"},
+  {key:"lead",label:"Leadership Experience"}
+];
+
+function openScorecard(){
+  const fields=document.getElementById('scoFields');
+  fields.innerHTML=SCO_AREAS.map(a=>`<div style="display:flex;align-items:center;gap:8px"><label style="flex:1;font-size:11px">${a.label}</label><input type="range" id="sco_${a.key}" min="0" max="10" step="1" value="0" oninput="updateScoTotal();document.getElementById('scoVal_${a.key}').textContent=this.value+' /10'" style="flex:1.5"><span id="scoVal_${a.key}" style="min-width:50px;text-align:right;font-family:monospace;font-size:11px;color:var(--tx2)">0 /10</span></div>`).join('');
+  document.getElementById('scoOpp').value='';
+  document.getElementById('scoNotes').value='';
+  document.getElementById('scoVerdict').style.display='none';
+  updateScoTotal();
+  renderSavedScorecards();
+  document.getElementById('scorecardModal').style.display='flex';
+}
+function closeScorecard(){document.getElementById('scorecardModal').style.display='none';}
+function resetScorecard(){SCO_AREAS.forEach(a=>{const el=document.getElementById('sco_'+a.key);if(el){el.value=0;document.getElementById('scoVal_'+a.key).textContent='0 /10';}});document.getElementById('scoOpp').value='';document.getElementById('scoNotes').value='';updateScoTotal();}
+function updateScoTotal(){
+  const scores=SCO_AREAS.map(a=>parseInt((document.getElementById('sco_'+a.key)||{}).value)||0);
+  const avg=scores.reduce((a,b)=>a+b,0)/SCO_AREAS.length;
+  document.getElementById('scoTotal').textContent=avg.toFixed(1)+' / 10';
+  const verdict=document.getElementById('scoVerdict');
+  if(avg>=8){verdict.style.display='block';verdict.style.color='var(--grtx)';verdict.innerHTML='<b>🟢 Strong fit</b> — pursue seriously, prepare to position your strengths confidently.';}
+  else if(avg>=6.5){verdict.style.display='block';verdict.style.color='var(--amtx)';verdict.innerHTML='<b>🟡 Moderate fit</b> — worth pursuing, but address weak areas explicitly in prep.';}
+  else if(avg>0){verdict.style.display='block';verdict.style.color='var(--cotx)';verdict.innerHTML='<b>🔴 Weak fit</b> — invest only if other strategic reasons (industry, location, growth) justify it.';}
+  else verdict.style.display='none';
+}
+function saveScorecard(){
+  const opp=document.getElementById('scoOpp').value.trim();
+  if(!opp){alert('Enter an opportunity name first.');return;}
+  const scores={};SCO_AREAS.forEach(a=>{scores[a.key]=parseInt(document.getElementById('sco_'+a.key).value)||0;});
+  const total=Object.values(scores).reduce((a,b)=>a+b,0)/SCO_AREAS.length;
+  const list=JSON.parse(localStorage.getItem('yfitscorecards')||'[]');
+  list.push({opp,scores,total:parseFloat(total.toFixed(1)),notes:document.getElementById('scoNotes').value,dt:new Date().toISOString()});
+  localStorage.setItem('yfitscorecards',JSON.stringify(list));
+  renderSavedScorecards();
+  alert('✅ Scorecard saved for: '+opp);
+}
+function renderSavedScorecards(){
+  const list=JSON.parse(localStorage.getItem('yfitscorecards')||'[]');
+  const el=document.getElementById('scoSaved');
+  if(!list.length){el.innerHTML='<i style="color:var(--tx3)">No saved scorecards yet.</i>';return;}
+  el.innerHTML=list.slice().reverse().map((s,revIdx)=>{
+    const idx=list.length-1-revIdx;
+    const dot=s.total>=8?'🟢':s.total>=6.5?'🟡':'🔴';
+    return `<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-bottom:1px solid var(--bdr)"><div><b>${dot} ${s.opp}</b> <span style="color:var(--tx3)">— ${s.total} / 10</span> <span style="color:var(--tx3);font-size:10px">(${new Date(s.dt).toLocaleDateString()})</span>${s.notes?'<div style="font-size:10px;color:var(--tx3);margin-top:2px">'+s.notes.substring(0,140)+(s.notes.length>140?'...':'')+'</div>':''}</div><button onclick="deleteScorecard(${idx})" style="background:none;border:none;color:var(--tx3);cursor:pointer;font-size:14px" title="Delete">🗑️</button></div>`;
+  }).join('');
+}
+function deleteScorecard(idx){
+  if(!confirm('Delete this scorecard?'))return;
+  const list=JSON.parse(localStorage.getItem('yfitscorecards')||'[]');
+  list.splice(idx,1);
+  localStorage.setItem('yfitscorecards',JSON.stringify(list));
+  renderSavedScorecards();
+}
+
+// ═══ TOOLS SELF-RATING ═══
+const TOOLS_LIST=[
+  {key:"jira",label:"Jira"},
+  {key:"msproject",label:"MS Project"},
+  {key:"msteams",label:"MS Teams / 365"},
+  {key:"notionai",label:"Notion AI"},
+  {key:"clickupai",label:"ClickUp AI"},
+  {key:"miro",label:"Miro / Miro AI"},
+  {key:"trello",label:"Trello / Asana / Monday"},
+  {key:"powerbi",label:"Power BI / Tableau"},
+  {key:"azuredevops",label:"Azure DevOps"},
+  {key:"chatgpt",label:"ChatGPT / Claude"},
+  {key:"copilot",label:"GitHub Copilot"},
+  {key:"slack",label:"Slack"}
+];
+let _toolsChart=null;
+
+function openToolsRating(){
+  document.getElementById('toolsRatingModal').style.display='flex';
+  renderToolsRating();
+}
+function closeToolsRating(){document.getElementById('toolsRatingModal').style.display='none';}
+function renderToolsRating(){
+  const data=JSON.parse(localStorage.getItem('ytoolsrating')||'{}');
+  const list=document.getElementById('toolsList');
+  list.innerHTML=TOOLS_LIST.map(t=>{
+    const v=data[t.key]||0;
+    const flag=v>0&&v<3?' 🚩':'';
+    return `<div style="display:flex;align-items:center;gap:6px;padding:6px 10px;background:var(--card2);border-radius:6px"><span style="flex:1;font-size:11px">${t.label}${flag}</span>${[1,2,3,4,5].map(r=>`<button onclick="rateTool('${t.key}',${r})" style="width:24px;height:24px;border-radius:4px;border:1px solid var(--bdr);background:${v>=r?'var(--pu)':'var(--card)'};color:${v>=r?'#fff':'var(--tx2)'};cursor:pointer;font-size:10px;font-weight:600">${r}</button>`).join('')}</div>`;
+  }).join('');
+  // Focus area summary
+  const focusEl=document.getElementById('toolsFocus');
+  const toLearn=TOOLS_LIST.filter(t=>(data[t.key]||0)>0&&(data[t.key]||0)<3).map(t=>t.label);
+  const unrated=TOOLS_LIST.filter(t=>!data[t.key]).map(t=>t.label);
+  let focusHtml='<b style="color:var(--tx)">📌 Focus to learn:</b><br>';
+  focusHtml+=toLearn.length?toLearn.map(l=>`• ${l}`).join('<br>'):'<i style="color:var(--tx3)">All rated tools at 3+. Solid baseline.</i>';
+  if(unrated.length)focusHtml+='<br><br><b style="color:var(--tx)">❓ Not rated yet:</b><br>'+unrated.map(l=>`• ${l}`).join('<br>');
+  focusEl.innerHTML=focusHtml;
+  // Radar chart
+  drawToolsRadar(data);
+}
+function rateTool(key,r){
+  const data=JSON.parse(localStorage.getItem('ytoolsrating')||'{}');
+  data[key]=r;
+  localStorage.setItem('ytoolsrating',JSON.stringify(data));
+  renderToolsRating();
+}
+function drawToolsRadar(data){
+  const canvas=document.getElementById('toolsRadar');
+  if(!canvas||typeof Chart==='undefined')return;
+  if(_toolsChart){try{_toolsChart.destroy();}catch(e){}}
+  const labels=TOOLS_LIST.map(t=>t.label);
+  const values=TOOLS_LIST.map(t=>data[t.key]||0);
+  _toolsChart=new Chart(canvas.getContext('2d'),{
+    type:'radar',
+    data:{labels:labels,datasets:[{label:'Skill (1-5)',data:values,backgroundColor:'rgba(123,108,247,0.2)',borderColor:'rgba(123,108,247,0.9)',borderWidth:2,pointBackgroundColor:'rgba(123,108,247,1)',pointRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{r:{min:0,max:5,ticks:{stepSize:1,backdropColor:'transparent',color:'#888',font:{size:9}},grid:{color:'rgba(128,128,128,0.2)'},angleLines:{color:'rgba(128,128,128,0.2)'},pointLabels:{font:{size:10},color:'#888'}}}}
+  });
+}
 
 // ═══ WRITING LAB ═══
 function sw(id){
@@ -2455,14 +3281,59 @@ function saveLog(){
   const m=((document.getElementById("_lm")||document.getElementById("lm")||{}).value)||'';
   const l=((document.getElementById("_ll")||document.getElementById("ll")||{}).value)||'';
   const t=parseInt((document.getElementById("_lt")||document.getElementById("lt")||{}).value)||0;
+  const dateStr=((document.getElementById("_ldate")||document.getElementById("ldate")||{}).value)||'';
   if(d<1||d>90){alert("Enter a day between 1-90");return;}
+  // Backdate via Date input. Use noon local time so the same calendar day shows in any timezone.
+  const dt=dateStr?new Date(dateStr+"T12:00:00").toISOString():new Date().toISOString();
   const data=JSON.parse(localStorage.getItem("yk")||"[]");
-  data.push({d,c,w,m:m?parseInt(m):null,l:l?parseInt(l):null,t,dt:new Date().toISOString()});
+  const entry={d,c,w,m:m?parseInt(m):null,l:l?parseInt(l):null,t,dt};
+  const editIdx=window._editingLogIdx;
+  if(typeof editIdx==='number'&&editIdx>=0&&editIdx<data.length){
+    data[editIdx]=entry;
+    window._editingLogIdx=undefined;
+  }else{
+    data.push(entry);
+  }
   localStorage.setItem("yk",JSON.stringify(data));
   updateDash(data);
   document.getElementById("ls").style.display="block";
   setTimeout(()=>document.getElementById("ls").style.display="none",3000);
-  ["ld","lc","lw","lm","ll","lt"].forEach(id=>document.getElementById(id).value="");
+  ["ld","lc","lw","lm","ll","lt","ldate"].forEach(id=>{const el=document.getElementById(id);if(el)el.value="";});
+  // Reset date back to today after clearing
+  const dEl=document.getElementById("ldate");if(dEl)dEl.value=new Date().toISOString().slice(0,10);
+}
+function editLog(dayNum){
+  const data=JSON.parse(localStorage.getItem("yk")||"[]");
+  const idx=data.findIndex(s=>s.d===dayNum);
+  if(idx<0){alert("No log entry found for Day "+dayNum);return;}
+  if(typeof closeDayModal==='function')closeDayModal();
+  openLogModal();
+  window._editingLogIdx=idx;
+  const entry=data[idx];
+  const set=(id,val)=>{
+    const el=document.getElementById('_'+id)||document.getElementById(id);
+    if(el)el.value=(val===null||val===undefined)?'':val;
+  };
+  set('ldate', entry.dt?new Date(entry.dt).toISOString().slice(0,10):'');
+  set('ld', entry.d);
+  set('lc', entry.c);
+  set('lw', entry.w);
+  set('lm', entry.m);
+  set('ll', entry.l);
+  set('lt', entry.t);
+  // Update modal title to show edit mode
+  const titleEl=document.querySelector('#_dynLogModal .modal-title');
+  if(titleEl)titleEl.textContent='✏️ Edit Day '+dayNum+' Session';
+}
+function deleteLog(dayNum){
+  if(!confirm("Delete log entry for Day "+dayNum+"? This cannot be undone."))return;
+  const data=JSON.parse(localStorage.getItem("yk")||"[]");
+  const idx=data.findIndex(s=>s.d===dayNum);
+  if(idx<0){alert("No entry found");return;}
+  data.splice(idx,1);
+  localStorage.setItem("yk",JSON.stringify(data));
+  if(typeof closeDayModal==='function')closeDayModal();
+  if(typeof updateDash==='function')updateDash(data);
 }
 function updateDash(data){
   if(!data.length)return;
@@ -2862,7 +3733,7 @@ function ensureSyncSetup(){
 }
 window.resetSync=function(){localStorage.removeItem('_syncToken');alert('Sync token cleared. Reload the page to enter a new one.');};
 // Explicit key list — prevents leaking other apps' data if both files share an origin (e.g. on GitHub Pages).
-const SYNC_KEYS=['yk','ysr','ygrammar','ycompanies','yvoice','yspeed','ypitch','yvol','ytheme','yfontsize','yqanotes','ypractime','ydebriefs','ychecklist','yintdate','yassess','yapps','ylinkedin','ynetwork','ybbc','yjournal','yassess_hist','qa_conf','qa_sr','log_sessions','ylogs','interviewDate','lastTab','yai_explain_count','yasser_api_key'];
+const SYNC_KEYS=['yk','ysr','ygrammar','ycompanies','yvoice','yspeed','ypitch','yvol','ytheme','yfontsize','yqanotes','ypractime','ydebriefs','ychecklist','yintdate','yassess','yapps','ylinkedin','ynetwork','ybbc','yjournal','yassess_hist','qa_conf','qa_sr','log_sessions','ylogs','interviewDate','lastTab','yai_explain_count','yasser_api_key','yfitscorecards','ytoolsrating','dstOverride','yfavQA','yStudyStreak','qa_conf_hist','yMockHistory','yRealInterviews'];
 let _syncBusy=false,_pushTimer=null,_syncSuspend=false;
 
 function _buildSyncBundle(){
@@ -2890,7 +3761,7 @@ function _setSyncBadge(icon,note){
   if(!el){
     el=document.createElement('div');
     el.id='_syncBadge';
-    el.style.cssText='position:fixed;bottom:8px;right:8px;z-index:9999;font-size:11px;padding:4px 8px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;font-family:system-ui,sans-serif;pointer-events:none;opacity:.85';
+    el.style.cssText='position:fixed;bottom:calc(8px + env(safe-area-inset-bottom,0px));right:calc(8px + env(safe-area-inset-right,0px));z-index:9999;font-size:11px;padding:4px 8px;background:rgba(0,0,0,.7);color:#fff;border-radius:6px;font-family:system-ui,sans-serif;pointer-events:none;opacity:.9';
     document.body.appendChild(el);
   }
   el.textContent=icon+' '+(note||new Date().toLocaleTimeString());
@@ -2904,18 +3775,30 @@ async function _syncPull(){
       cache:'no-store'
     });
     if(!r.ok){_setSyncBadge('⚠️','sync failed');return;}
+    localStorage.setItem('_lastPullAt',String(Date.now()));
     const data=await r.json();
     const f=data.files&&data.files[SYNC_M.filename];
-    if(!f||!f.content||f.content.trim()===''||f.content.trim()==='{}'){_setSyncBadge('☁️','awaiting data');return;}
+    if(!f||!f.content||f.content.trim()===''||f.content.trim()==='{}'){_setSyncBadge('☁️','awaiting data');updateSyncTimes();return;}
     let remote;try{remote=JSON.parse(f.content);}catch(e){_setSyncBadge('⚠️','corrupt remote');return;}
     const myT=parseInt(localStorage.getItem('_syncLastActive'))||0;
     const remoteT=parseInt(remote._lastActive)||0;
     if(remoteT>myT){
       _applySyncBundle(remote);
-      _setSyncBadge('☁️','pulled — reload to refresh UI');
+      const ago=Math.round((Date.now()-remoteT)/60000);
+      _setSyncBadge('☁️','pulled — reload to apply');
+      // Floating toast notification
+      try{
+        const t=document.createElement('div');
+        t.style.cssText='position:fixed;top:60px;right:20px;z-index:99999;background:var(--pu);color:#fff;padding:10px 16px;border-radius:8px;font-size:12px;box-shadow:0 4px 16px rgba(0,0,0,.3);max-width:300px;cursor:pointer';
+        t.innerHTML='☁️ <b>Newer version pulled</b><br><span style="font-size:10px;opacity:.85">From another device · '+ago+' min ago · Click to reload</span>';
+        t.onclick=()=>location.reload();
+        document.body.appendChild(t);
+        setTimeout(()=>{t.style.transition='opacity .5s';t.style.opacity='0';setTimeout(()=>t.remove(),500);},8000);
+      }catch(e){}
     }else{
       _setSyncBadge('✅','up to date');
     }
+    updateSyncTimes();
   }catch(e){_setSyncBadge('⚠️','offline');}
 }
 
@@ -2932,10 +3815,42 @@ async function _syncPush(){
       headers:{'Authorization':'Bearer '+SYNC_M.token,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
       body:JSON.stringify(body)
     });
+    if(r.ok)localStorage.setItem('_lastPushAt',String(Date.now()));
     _setSyncBadge(r.ok?'✅':'⚠️',r.ok?'synced':'push failed');
+    updateSyncTimes();
   }catch(e){_setSyncBadge('⚠️','offline');}
   _syncBusy=false;
 }
+function updateSyncTimes(){
+  const fmt=ts=>{if(!ts)return '—';const d=new Date(parseInt(ts));if(isNaN(d.getTime()))return '—';return d.toLocaleString();};
+  const pullEl=document.getElementById('stgLastPull');
+  if(pullEl)pullEl.textContent=fmt(localStorage.getItem('_lastPullAt'));
+  const pushEl=document.getElementById('stgLastPush');
+  if(pushEl)pushEl.textContent=fmt(localStorage.getItem('_lastPushAt'));
+  const dstSel=document.getElementById('stgDstSel');
+  if(dstSel)dstSel.value=localStorage.getItem('dstOverride')||'auto';
+  // Auto-compute counts
+  const cntEl=document.getElementById('stgCounts');
+  if(cntEl){
+    let mcq=0;try{ASSESS_TESTS.forEach(t=>{mcq+=(t.bank||[]).length+(t.questions||[]).length;});}catch(e){}
+    cntEl.textContent=mcq.toLocaleString()+' questions · '+(QA||[]).length+' Q&A';
+  }
+}
+// Compute counts on page load too
+setTimeout(()=>{try{
+  const cntEl=document.getElementById('stgCounts');
+  if(cntEl){
+    let mcq=0;ASSESS_TESTS.forEach(t=>{mcq+=(t.bank||[]).length+(t.questions||[]).length;});
+    cntEl.textContent=mcq.toLocaleString()+' questions · '+QA.length+' Q&A';
+  }
+  const introEl=document.getElementById('qaIntroCount');
+  if(introEl)introEl.textContent=QA.length;
+}catch(e){}},2000);
+window.setDSTMaster=function(v){
+  if(!['auto','on','off'].includes(v))return;
+  localStorage.setItem('dstOverride',v);
+  alert('Time zone updated. Applies to next Telegram run.');
+};
 
 function _scheduleSyncPush(){
   if(!SYNC_M.token||!SYNC_M.gistId||_syncSuspend)return;
@@ -2975,6 +3890,8 @@ setTimeout(()=>{
 // Add to Shadowing section
 const ELEVATOR_PITCHES={
   intro:[
+    {label:"60 sec — BA/PM Hybrid (DAAM-style)",script:"I am Yasser Hassan, with over 25 years in IT and 18 years in project management — PMP and MBA from ESLSCA. I have spent my career in the space where business analysis meets project delivery: requirement workshops, BPMN flows, user stories with acceptance criteria, gap analysis, and turning business problems into structured execution. I have delivered ERP, portals, workflow systems, e-services, and mobile apps end-to-end — from charter and RAID logs through Agile ceremonies, UAT, vendor coordination, and handover. What attracts me to this role is the hybrid combination — analyzing the business deeply, then owning the delivery to make sure value is realized, not just promised."},
+    {label:"60 sec — ERP/Odoo Specialist (OdooTec-style)",script:"I am Yasser Hassan, Projects Delivery Manager with deep ERP delivery experience — implementations across Egypt, Saudi Arabia, and the Gulf. My approach is structured: discovery and scoping, phased build with Sandbox → SIT → UAT, demos every sprint, formal change control, and data migration in waves with cutover rehearsal. I drive go-live with a readiness checklist and hypercare KPIs like ticket MTTR and adoption rate. I track delivery with EVM — SPI, CPI, EAC — and escalate early when thresholds are breached. I bring CMMI process discipline (recognized as Best Implementer at Exa IT) and integrations experience across POS, e-commerce, HR, and payroll."},
     {label:"60 sec — Phone Screen",script:"I am Yasser Hassan, Projects Delivery Manager with 25 years in IT and 18 years in project management. PMP certified, MBA from ESLSCA. I have delivered enterprise platforms, government portals, and mobile apps across Egypt and Saudi Arabia. My proudest delivery was the Qassim University portal — 24 months, 40,000 students. I am targeting a PMO Director role where I can operate at strategic scale."},
     {label:"90 sec — Standard Interview",script:"I am Yasser Hassan, a Projects Delivery Manager with over 25 years in IT and 18 years in project management. I hold a PMP certification and an MBA from ESLSCA in General Management. Since 2017, I have led delivery at Pointability, managing ERP systems, web platforms, and mobile applications for clients across Egypt, Saudi Arabia, UAE, and Libya. My proudest achievement was delivering the Qassim University portal over 24 months in Saudi Arabia, serving over 40,000 students. I was also recognized as the CMMI Best Implementer at Exa IT. I combine technical depth from a decade of coding with strategic thinking from my MBA and PMP. I am now targeting a PMO Director or Senior Program Manager role where I can shape how organizations deliver."},
     {label:"2 min — Panel Deep Dive",script:"I am Yasser Hassan. Let me walk you through my career trajectory and why I am the right fit for this role. I started in 1998 as a developer, spending my first decade writing code in VB, ASP.NET, and SQL Server. That technical foundation is what gives me credibility with development teams today. In 2004 I moved into project management at Netwave, then spent four years at Exa IT managing government projects for Saudi Arabia, including the Absher e-government passport app. I led the company through CMMI Level 3 certification and was recognized as CMMI Best Implementer. In 2012 I relocated to Saudi Arabia to manage the Portal and E-Services Department at Qassim University — a 24-month program serving 40,000 students with a multinational team of 50 people. Since 2017 at Pointability, I have delivered platforms like GOOODelivery, a logistics platform with a 15-person team over 24 months. My career has moved from technical depth to strategic breadth: PMP since 2009, MBA from ESLSCA in 2015, and now I am ready for the PMO Director level. I bring three things that are hard to find in one person: technical credibility, strategic management capability, and proven Gulf market experience."}
@@ -3221,7 +4138,28 @@ function loadQANotes(){
 
 // ═══ INTERVIEW CHECKLIST ═══
 function buildChecklist(){
-  const items=["Company research printed","5 key answers rehearsed","Questions for interviewer prepared","Professional outfit ready","Camera and microphone tested","Internet connection checked","Water and notepad on desk","CV printed (2 copies)","Arrive 10 minutes early / join call 5 min early","Power pose for 2 minutes before"];
+  const items=[
+    "Company research printed (website, LinkedIn, recent news)",
+    "Glassdoor reviews and salary range checked",
+    "Job-fit self-scorecard completed (rate fit 1-10 per area)",
+    "5 STAR stories ready (Qassim, GOOO, Absher, Al Ahsa, CMMI)",
+    "Elevator pitch rehearsed (60 sec + 90 sec versions)",
+    "Top 5 likely questions for THIS company prepared",
+    "3 strong questions for the interviewer prepared",
+    "Salary range and total comp expectations defined",
+    "Counter-offer plan thought through",
+    "References notified they may be contacted",
+    "LinkedIn profile updated and matches CV",
+    "Professional outfit ready (and tested for fit)",
+    "Camera and microphone tested (Zoom/Teams)",
+    "Internet connection checked (speed test, backup hotspot)",
+    "Water, notepad, pen on desk; phone on silent",
+    "CV printed (2 copies) + portfolio printed/digital",
+    "Arrive 10 minutes early / join call 5 min early",
+    "Power pose for 2 minutes before",
+    "Follow-up email template drafted (send within 24 hours)",
+    "Debrief notes template open (capture questions asked)"
+  ];
   const el=document.getElementById("interviewChecklist");
   if(!el)return;
   const saved=JSON.parse(localStorage.getItem("ychecklist")||"{}");
@@ -3379,9 +4317,12 @@ function openDayModal(dayNum){
   html+='<div style="background:var(--amdim);border:1px solid #352008;border-radius:var(--r);padding:10px;font:12px var(--mono);color:var(--amtx);line-height:1.5;cursor:pointer" onclick="navigator.clipboard.writeText(this.textContent).then(function(){alert(String.fromCharCode(67,111,112,105,101,100,33))})">Day '+dayData.d+' session. Topic: '+dayData.topic+'. '+rehType+'</div></div>';
 
   // Action buttons
-  html+='<div style="display:flex;gap:8px;margin-top:14px">';
+  html+='<div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">';
   if(!daySession){
     html+='<button class="btn" onclick="closeDayModal();openLogModal()">📝 Log This Day</button>';
+  }else{
+    html+='<button class="btn" onclick="editLog('+dayNum+')">✏️ Edit Log</button>';
+    html+='<button class="btn btn-sm btn-ghost" onclick="deleteLog('+dayNum+')" style="color:var(--rd,#e74c3c)">🗑️ Delete</button>';
   }
   html+='<button class="btn btn-sm btn-ghost" onclick="st("plan");showWeek('+dayData.w+');closeDayModal()">Open in Plan Tab &#8594;</button>';
   html+='</div>';
@@ -4004,10 +4945,13 @@ function openLogModal(){
   for(var i=1;i<=90;i++){if(!completedDays.has(i)){nextDay=i;break;}}
   var dayInput=overlay.querySelector('#ld');
   if(dayInput){dayInput.id='_ld';if(!dayInput.value)dayInput.value=nextDay;}
-  ['lc','lw','lm','ll','lt'].forEach(function(id){
+  ['lc','lw','lm','ll','lt','ldate'].forEach(function(id){
     var el=overlay.querySelector('#'+id);
     if(el)el.id='_'+id;
   });
+  // Default modal date to today
+  var modalDate=overlay.querySelector('#_ldate');
+  if(modalDate&&!modalDate.value)modalDate.value=new Date().toISOString().slice(0,10);
   // Auto-fill day based on progress
   var saved=JSON.parse(localStorage.getItem('yk')||'[]');
   var completedDays=new Set(saved.map(function(d){return d.d;}));
@@ -4020,6 +4964,7 @@ function closeLogModal(){
   var overlay=document.getElementById('_dynLogModal');
   if(overlay){overlay.style.opacity='0';overlay.style.transition='opacity 0.2s';
     window._logHideTimer=setTimeout(function(){if(overlay)overlay.remove();window._logHideTimer=null;},200);}
+  window._editingLogIdx=undefined;
 }
 
 
@@ -8936,6 +9881,8 @@ window.addEventListener("load",function(){
   // Theme
   loadTheme();
   loadFontSize();
+  // Default inline log-session date to today
+  try{var _ldEl=document.getElementById("ldate");if(_ldEl&&!_ldEl.value)_ldEl.value=new Date().toISOString().slice(0,10);}catch(e){}
   // Build all sections
   renderQA();
   try{buildMockSets();}catch(e){console.log("buildMockSets:",e.message);}
