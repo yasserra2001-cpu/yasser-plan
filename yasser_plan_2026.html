@@ -3626,8 +3626,23 @@ window.saveHealth=function(){
 // FASTING / MEDS / WEIGHT GOAL / WHATSAPP REMINDER (added)
 // ═══════════════════════════════════════════════════════════════
 
-const TG_TOKEN='8652333381:AAHtPiWWl9By2Jb18BXk4W-uBLOnS7k8Mu8';
-const TG_CHAT_ID='6379835999';
+// Telegram credentials live in localStorage (per-device), prompted on first send.
+// Run resetTelegram() in console to clear and re-enter.
+const TG=Object.freeze({
+  get token(){return localStorage.getItem('_tgToken')||'';},
+  get chatId(){return localStorage.getItem('_tgChatId')||'';}
+});
+function ensureTelegramSetup(){
+  if(localStorage.getItem('_tgToken')&&localStorage.getItem('_tgChatId'))return true;
+  const t=prompt('Telegram setup (one-time per device)\n\nEnter your Bot Token (from @BotFather):\n\nLeave empty to disable Telegram features.');
+  if(!t||!t.trim())return false;
+  localStorage.setItem('_tgToken',t.trim());
+  const c=prompt('Now enter your Chat ID (numeric):\n\nGet it via: https://api.telegram.org/bot<TOKEN>/getUpdates → look for chat.id');
+  if(!c||!c.trim()){localStorage.removeItem('_tgToken');return false;}
+  localStorage.setItem('_tgChatId',c.trim());
+  return true;
+}
+window.resetTelegram=function(){localStorage.removeItem('_tgToken');localStorage.removeItem('_tgChatId');alert('Telegram credentials cleared. Reload to re-enter.');};
 const TODAY_KEY=()=>new Date().toISOString().slice(0,10);
 const HIJRI_MONTHS=['','محرم','صفر','ربيع الأول','ربيع الآخر','جمادى الأولى','جمادى الآخرة','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'];
 const HIJRI_MONTHS_EN=['','Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada al-Ula','Jumada al-Thaniya','Rajab','Shaban','Ramadan','Shawwal','Dhu al-Qadah','Dhu al-Hijjah'];
@@ -3880,14 +3895,16 @@ window.showWAPreview=function(timeOfDay){
 };
 
 window.sendWANow=function(){
+  if(!TG.token||!TG.chatId){
+    if(!ensureTelegramSetup())return;
+  }
   const now=new Date().getHours();
   const tod=(now<11)?'morning':(now<16)?'midday':'evening';
   const msg=generateWAMessage(tod);
-  // Send via Telegram Bot API directly (POST so token isn't logged in URL bar)
-  fetch('https://api.telegram.org/bot'+TG_TOKEN+'/sendMessage',{
+  fetch('https://api.telegram.org/bot'+TG.token+'/sendMessage',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({chat_id:TG_CHAT_ID,text:msg,parse_mode:'Markdown',disable_web_page_preview:true})
+    body:JSON.stringify({chat_id:TG.chatId,text:msg,parse_mode:'Markdown',disable_web_page_preview:true})
   }).then(r=>r.json()).then(d=>{
     if(d.ok)showToast('✅',L({a:'تم الإرسال على Telegram',e:'Sent to Telegram'}));
     else showToast('⚠️',L({a:'فشل الإرسال: '+(d.description||''),e:'Failed: '+(d.description||'')}));
@@ -5733,9 +5750,11 @@ window.addEventListener('beforeunload',()=>{
   if(!SYNC.token||!SYNC.gistId)return;
   if(_pushTimer){clearTimeout(_pushTimer);_pushTimer=null;autoSyncPush();}
 });
-// Prompt on first load if token missing, then start pulling
+// Prompt on first load if credentials missing, then start pulling
 setTimeout(()=>{
   ensureSyncSetup();
+  // Telegram setup right after, only if user wants daily reminders
+  setTimeout(()=>{try{ensureTelegramSetup();}catch(e){}},800);
   if(SYNC.token&&SYNC.gistId){
     autoSyncPull();
     if(!window._syncInterval)window._syncInterval=setInterval(autoSyncPull,120000);
