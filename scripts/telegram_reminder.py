@@ -605,19 +605,19 @@ def main():
     print(f'DST mode: {_dst_override}')
     print(f'Cairo time now: {cairo_now().isoformat()}')
 
-    # Auto-detect time of day from current Cairo hour
+    # Auto-detect time of day from UTC hour (handles GitHub cron delays of 1-4 hours)
+    # Crons fire at UTC 4,5 (morning), 10,11 (midday), 15,16 (evening)
+    # With delays, actual UTC fire time can be much later. Use forgiving boundaries.
     tod = TIME_OF_DAY
     if tod == 'auto':
-        h = cairo_now().hour
-        if 6 <= h <= 8:
+        utc_h = datetime.now(timezone.utc).hour
+        if utc_h < 9:          # UTC 4-8: morning fires (with delay tolerance)
             tod = 'morning'
-        elif 12 <= h <= 14:
+        elif utc_h < 14:        # UTC 10-13: midday fires
             tod = 'midday'
-        elif 17 <= h <= 19:
+        else:                   # UTC 15+: evening fires (even if 4hr delayed)
             tod = 'evening'
-        else:
-            print(f'Skip: Cairo hour {h} not in any target window (6-8, 12-14, 17-19)')
-            sys.exit(0)
+        print(f'Auto-detected: UTC hour={utc_h}, slot={tod}')
     print(f'Resolved time-of-day: {tod}')
 
     text = build_message(state, tod)
