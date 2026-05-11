@@ -35,11 +35,17 @@ try:
 except ImportError:
     TTS_OK = False
 
-GIST_ID = os.environ['GIST_ID']
-GH_TOKEN = os.environ['GH_TOKEN']
-TG_TOKEN = os.environ['TG_TOKEN']
-TG_CHAT_ID = os.environ['TG_CHAT_ID']
-TIME_OF_DAY = os.environ.get('TIME_OF_DAY', 'auto')
+def _env(key, default=None):
+    v = os.environ.get(key, default)
+    if v is None:
+        raise KeyError(f'Missing required env var: {key}')
+    return v.strip()  # Strip whitespace/newlines (common paste mistake)
+
+GIST_ID = _env('GIST_ID')
+GH_TOKEN = _env('GH_TOKEN')
+TG_TOKEN = _env('TG_TOKEN')
+TG_CHAT_ID = _env('TG_CHAT_ID')
+TIME_OF_DAY = _env('TIME_OF_DAY', 'auto')
 FILENAME = 'yasser_plan_state.json'
 
 # Cairo time is computed dynamically via Africa/Cairo timezone (handles DST automatically).

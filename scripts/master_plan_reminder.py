@@ -23,10 +23,16 @@ try:
 except ImportError:
     ZONEINFO_OK = False
 
-GIST_ID = os.environ['GIST_ID']
-GH_TOKEN = os.environ['GH_TOKEN']
-TG_TOKEN = os.environ['TG_TOKEN']
-TG_CHAT_ID = os.environ['TG_CHAT_ID']
+def _env(key, default=None):
+    v = os.environ.get(key, default)
+    if v is None:
+        raise KeyError(f'Missing required env var: {key}')
+    return v.strip()
+
+GIST_ID = _env('GIST_ID')
+GH_TOKEN = _env('GH_TOKEN')
+TG_TOKEN = _env('TG_TOKEN')
+TG_CHAT_ID = _env('TG_CHAT_ID')
 FILENAME = 'yasser_master_state.json'
 
 
