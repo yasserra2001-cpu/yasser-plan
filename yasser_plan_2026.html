@@ -74,7 +74,7 @@ a{color:var(--ac3);text-decoration:none}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 
 /* TOP NAV */
-.topnav{display:flex;align-items:center;padding:env(safe-area-inset-top,0) 12px 0;min-height:calc(48px + env(safe-area-inset-top,0px));border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100;gap:6px;background:rgba(20,27,36,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.topnav{display:flex!important;align-items:center;padding:max(env(safe-area-inset-top,0px),20px) 12px 0;min-height:calc(48px + max(env(safe-area-inset-top,0px),20px));border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:1000;gap:6px;background:rgba(20,27,36,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);width:100%;visibility:visible!important;opacity:1!important}
 [data-t="light"] .topnav{background:rgba(255,255,255,.92)}
 .tn-logo{display:flex;align-items:center;gap:6px;font-weight:700;font-size:13px;flex-shrink:0}
 .tn-tabs{display:flex;gap:0;margin:0 auto;align-items:center;background:var(--bg3);border-radius:10px;padding:3px}
@@ -342,7 +342,7 @@ a{color:var(--ac3);text-decoration:none}
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  .topnav{padding:env(safe-area-inset-top,0) 8px 0;min-height:calc(44px + env(safe-area-inset-top,0px))}
+  .topnav{padding:max(env(safe-area-inset-top,0px),20px) 8px 0;min-height:calc(44px + max(env(safe-area-inset-top,0px),20px))}
   .tn-tabs{display:flex!important;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex:1}.tn-tabs::-webkit-scrollbar{display:none}.tn-name{display:none}
   .bb{display:flex}
   .main{padding:10px;padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
@@ -352,7 +352,7 @@ a{color:var(--ac3);text-decoration:none}
   .hero .ab2{font-size:11px!important;padding:6px 10px!important}
   .nt{font-size:16px!important;padding:6px 8px!important}
   .nt span{display:none!important}
-  .topnav{gap:4px;padding:env(safe-area-inset-top,0) 6px 0}
+  .topnav{gap:4px;padding:max(env(safe-area-inset-top,0px),20px) 6px 0}
   .hero-left{text-align:center}
   .hero-greeting{font-size:16px}
 
@@ -633,7 +633,7 @@ a{color:var(--ac3);text-decoration:none}
 </div>
 
 <div id="appWrap">
-<nav class="topnav" role="navigation">
+<nav class="topnav" role="navigation" style="padding-top:max(env(safe-area-inset-top,0px),20px);min-height:calc(44px + max(env(safe-area-inset-top,0px),20px));position:sticky;top:0;z-index:1000;display:flex;visibility:visible;opacity:1">
   <div class="tn-logo">🎯 <span class="tn-name" data-a="خطة ياسر" data-e="Yasser Plan">خطة ياسر</span></div>
   <div class="tn-tabs">
     <button class="nt a" data-p="overview" title="🏠 الرئيسية — لوحة التحكم الرئيسية / Main Dashboard">🏠 <span data-a="الرئيسية" data-e="Overview">الرئيسية</span></button>
