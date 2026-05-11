@@ -22,15 +22,17 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: pip install requests tzdata
-      - name: Skip duplicate runs (only one of the two crons should send)
+      - name: Skip duplicate runs (handles cron delays — accept hours 7-12 Cairo)
         id: skip
         run: |
           HOUR=$(TZ='Africa/Cairo' date +%H)
-          if [ "$HOUR" = "09" ]; then
+          # Widened to handle GitHub cron delays of up to 3 hours
+          if [ "$HOUR" -ge 7 ] && [ "$HOUR" -le 12 ]; then
             echo "send=true" >> $GITHUB_OUTPUT
+            echo "Sending — Cairo hour $HOUR is in window 7-12"
           else
             echo "send=false" >> $GITHUB_OUTPUT
-            echo "Skip — Cairo hour is $HOUR, not 9"
+            echo "Skip — Cairo hour is $HOUR, outside window 7-12"
           fi
       - name: Send reminder
         if: steps.skip.outputs.send == 'true' || github.event_name == 'workflow_dispatch'
